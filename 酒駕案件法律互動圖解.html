@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>酒駕案件法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F8F8F8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #2f3c58;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #2f3c58;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #2f3c58;
+        }
+        .btn {
+            display: inline-block;
+            background: #2f3c58;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2f3c58;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F8F8F8;
+        }
+        #calculator {
+            background: #F8F8F8;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #2f3c58;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #2f3c58;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #2f3c58;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #2f3c58;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F8F8F8;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F8F8F8;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F8F8F8;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F8F8F8 transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #2f3c58;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #2f3c58;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #2f3c58;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F8F8F8;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #2f3c58;
+        }
+        /* 罰金計算器專用樣式 */
+        .fine-calculator {
+            background: #F8F8F8;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .fine-calculator h1, 
+        .fine-calculator h2, 
+        .fine-calculator h3 {
+            color: #2f3c58;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .fine-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #2f3c58;
+            padding-bottom: 10px;
+        }
+        .fine-calculator .btn {
+            background: #2f3c58;
+        }
+        .fine-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .fine-calculator th {
+            background-color: #2f3c58;
+        }
+        .fine-calculator .note {
+            background: #F8F8F8;
+            border-left: 4px solid #2f3c58;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 罰金計算器響應式 */
+    .fine-calculator h1 {
+        font-size: 1.5em;
+    }
+    .fine-calculator h2 {
+        font-size: 1.2em;
+    }
+    .fine-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .fine-calculator th, 
+    .fine-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .fine-calculator input, 
+    .fine-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .fine-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .fine-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+</head>
+<body>
+<h1>酒駕案件法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'fine')" style="font-size: 110% !important;">罰金計算</button>
+</div>
+
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>酒駕案件基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是酒後駕車罪？</h3>
+<p>依據《刑法》第185條之3第1項規定，駕駛動力交通工具而吐氣酒精濃度達每公升0.25毫克以上者，即構成酒後駕車罪，可處二年以下有期徒刑、拘役或科或併科二十萬元以下罰金。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以爭取的權益</h3>
+<ul>
+<li>爭取緩起訴處分避免刑事紀錄</li>
+<li>聲請易科罰金或社會勞動替代徒刑</li>
+<li>提出有利事證減輕處罰</li>
+<li>參與防制教育課程降低再犯風險</li>
+<li>依家庭狀況請求從輕量刑</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="card">
+<h2>酒駕案件處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 酒駕案件處理流程時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 調查階段
+                    警方攔檢與檢測 :done, a1, 2023-01-01, 1d
+                    移送地檢署 :done, a2, after a1, 1d
+                    section 偵查階段
+                    檢察官訊問 :active, a3, 2023-01-03, 14d
+                    證據調查 : a4, after a3, 30d
+                    section 處分階段
+                    檢察官處分 : a5, after a4, 14d
+                    法院審理（如起訴） : a6, after a5, 60d
+            </div></div>
+<p><small>※ 注意：從攔檢到最終處分通常需2-4個月，視案件複雜度而定</small></p>
+</div>
+</div>
+
+<div class="tabcontent" id="process">
+<h2>酒駕案件處理流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">酒駕案件互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg height="400" id="interactive-flowchart" style="background: #F9F6F1; border: 1px solid #F8F8F8; border-radius: 8px; cursor: pointer;" width="1000 style="min-width:1000px; display:block;">
+<!-- 節點 -->
+<g class="node" data-name="警方攔檢">
+<rect fill="#2f3c58" height="40" rx="8" width="100" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="70" y="205">警方攔檢</text>
+</g>
+<g class="node" data-name="酒精檢測">
+<rect fill="#D9C1A6" height="40" rx="8" width="120" x="150" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="210" y="205">酒精檢測</text>
+</g>
+<g class="node" data-name="移送程序">
+<rect fill="#d1b46f" height="40" rx="8" width="120" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="360" y="165">移送程序</text>
+</g>
+<g class="node" data-name="無罪釋放">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">無罪釋放</text>
+</g>
+<g class="node" data-name="偵查程序">
+<rect fill="#2f3c58" height="40" rx="8" width="120" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="510" y="205">偵查程序</text>
+</g>
+<g class="node" data-name="檢察官處分">
+<rect fill="#d1b46f" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">檢察官處分</text>
+</g>
+<g class="node" data-name="緩起訴">
+<rect fill="#D9C1A6" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">緩起訴</text>
+</g>
+<g class="node" data-name="法院審理">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">法院審理</text>
+</g>
+<g class="node" data-name="刑罰執行">
+<rect fill="#d1b46f" height="40" rx="8" width="120" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="660" y="265">刑罰執行</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="120" x2="150" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="570" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="660" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d1b46f");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.addEventListener("click", () => {
+                const name = node.getAttribute("data-name");
+                alert("您點擊了節點：「" + name + "」\n\n" + getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "警方攔檢": "警方在路檢點或巡邏時發現駕駛人有酒駕嫌疑，依法進行攔檢。駕駛人應配合警方指示停車接受檢查。",
+                "酒精檢測": "警方使用酒精測試儀器對駕駛人進行呼氣酒精濃度檢測，檢測值達每公升0.15毫克以上即違反行政法規，達0.25毫克以上則觸犯刑法。",
+                "移送程序": "如檢測值達刑事標準，警方將製作筆錄並移送地檢署偵辦。駕駛人可保持緘默並請求律師協助。",
+                "無罪釋放": "如證據不足或檢測程序有瑕疵，可能獲不起訴處分。但此情況在明確超標案件中較為少見。",
+                "偵查程序": "檢察官將訊問被告、調查證據，並決定是否起訴。此階段可提出有利事證爭取緩起訴。",
+                "檢察官處分": "檢察官可能做出不起訴、緩起訴或起訴處分。初犯且情節輕微者較有機會獲緩起訴。",
+                "緩起訴": "檢察官得命被告完成一定條件（如參加教育課程、公益捐款等），期間內未再犯即不再追訴。",
+                "法院審理": "如案件起訴，法院將審理並判刑。可請求易科罰金或緩刑以避免入監。",
+                "刑罰執行": "依判決結果執行刑罰，可能為罰金、社會勞動或徒刑。家庭因素可作為執行方式考量。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>警方攔檢</td>
+<td>配合檢測但可保持緘默</td>
+<td>即時</td>
+<td>拒絕檢測將受行政罰且可能成為不利證據</td>
+</tr>
+<tr>
+<td>偵查程序</td>
+<td>委任律師、準備有利事證</td>
+<td>1-2個月</td>
+<td>可主動提出悔過書與參加教育課程證明</td>
+</tr>
+<tr>
+<td>檢察官處分</td>
+<td>爭取緩起訴或輕微處分</td>
+<td>1-3週</td>
+<td>初犯、無事故、低酒精濃度較有利</td>
+</tr>
+<tr>
+<td>法院審理</td>
+<td>提出量刑減輕事由</td>
+<td>1-3個月</td>
+<td>家庭狀況、經濟條件可作為考量因素</td>
+</tr>
+<tr>
+<td>刑罰執行</td>
+<td>依判決結果履行</td>
+<td>視處分內容</td>
+<td>可聲請易科罰金或社會勞動替代徒刑</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>酒駕案件處分比例</h3>
+<div class="mermaid">
+                pie
+                    title 酒駕案件處分比例
+                    "緩起訴" : 40
+                    "易科罰金" : 35
+                    "徒刑" : 25
+            </div>
+<p><small>※ 根據近年統計，初犯且酒精濃度0.25-0.55mg/L者多獲緩起訴或易科罰金</small></p>
+</div>
+</div>
+
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的酒駕案件處分可能性評估</h3>
+<p>請回答以下問題，評估您的案件可能處分結果：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您的酒精濃度檢測值？</label>
+<select id="q1">
+<option value="3">0.25-0.40 mg/L（略超標）</option>
+<option value="2">0.41-0.55 mg/L（中度超標）</option>
+<option value="1">0.56-0.80 mg/L（高度超標）</option>
+<option value="0">0.81 mg/L以上（嚴重超標）</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 您是否有酒駕前科？</label>
+<select id="q2">
+<option value="3">無任何酒駕紀錄</option>
+<option value="2">曾有行政酒駕紀錄</option>
+<option value="1">5年前曾有刑事酒駕</option>
+<option value="0">5年內曾有刑事酒駕</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 本次酒駕是否造成事故？</label>
+<select id="q3">
+<option value="3">無事故且無危害他人</option>
+<option value="2">輕微事故無人受傷</option>
+<option value="1">事故造成財產損失</option>
+<option value="0">事故造成人員受傷</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 您是否已採取補救措施？</label>
+<select id="q4">
+<option value="3">已完成防制課程並提出證明</option>
+<option value="2">已報名防制課程</option>
+<option value="1">僅口頭表示悔意</option>
+<option value="0">無任何補救措施</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 您的家庭與經濟狀況？</label>
+<select id="q5">
+<option value="3">有未成年子女需扶養且經濟困難</option>
+<option value="2">有家庭需扶養</option>
+<option value="1">單身但有固定工作</option>
+<option value="0">無固定收入或家庭責任</option>
+</select>
+</div>
+</form>
+<div style="background: #F8F8F8; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">案件處分可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>嚴厲處分</span>
+<span>中等處分</span>
+<span>寬鬆處分</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p style='font-size: 90%; color: #666;'>本AI分析結果不具法律效力僅供參考，如需進一步協助，請洽本站律師諮詢。</p><p></p>
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：緩起訴處分</h4>
+<p>可能性：60% (初犯、低酒精濃度、已補救)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>完成酒駕防制教育課程</li>
+<li>一定期間內不得再犯</li>
+<li>可能需支付公益捐款</li>
+<li>免於刑事前科紀錄</li>
+<li>無需入監服刑</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：易科罰金</h4>
+<p>可能性：30% (中度超標或有輕微前科)</p>
+<p>可能內容：</p>
+<ul>
+<li>判處拘役或罰金刑</li>
+<li>可聲請易科罰金</li>
+<li>可能附加緩刑條件</li>
+<li>留有刑事紀錄</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：徒刑</h4>
+<p>可能性：10% (高濃度、事故或累犯)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>爭取社會勞動替代</li>
+<li>提出上訴理由</li>
+<li>準備入監相關安排</li>
+<li>家庭照顧計畫</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">防制教育課程證明</span>
+</div>
+<p class="evidence-desc">效力最高，建議參加政府認可之酒駕防制課程並取得完課證明，可顯著提高緩起訴機會。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">👨‍👩‍👧‍👦</span>
+<span class="evidence-title">家庭扶養證明</span>
+</div>
+<p class="evidence-desc">戶籍謄本、就學證明等可證明家庭責任，作為請求從輕量刑之依據。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💰</span>
+<span class="evidence-title">經濟狀況證明</span>
+</div>
+<p class="evidence-desc">薪資單、存款證明等可作為易科罰金金額或社會勞動時數之參考。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">⚕️</span>
+<span class="evidence-title">醫療評估報告</span>
+</div>
+<p class="evidence-desc">由醫院出具無酒癮問題證明，可降低再犯風險疑慮。</p>
+</div>
+</div>
+</div>
+
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>酒駕案件準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">警方製作之調查筆錄影本</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">酒精濃度檢測結果通知書</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">身分證件與戶籍資料</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">防制教育課程完課證明</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">醫療機構酒癮評估報告</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">家庭扶養證明文件</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">經濟狀況證明（薪資單等）</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">悔過書與再犯預防切結書</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認檢測程序是否合法</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估緩起訴可能性</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備替代處分方案</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">安排家庭照顧計畫</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">聯繫法律扶助資源</label>
+</div>
+</div>
+</div>
+</div>
+
+<div class="tabcontent fine-calculator" id="fine">
+    <h1>罰金計算與處分模擬</h1>
+
+    <div class="note">
+        📘 <strong>說明：</strong><br>
+        本工具依據刑法第185條之3及相關實務見解，模擬酒駕案件可能之處分結果。
+        實際處分仍由檢察官或法官依個案情況裁量，本計算結果僅供參考。
+    </div>
+
+    <h2>👤 基本案情設定</h2>
+    <table id="caseTable">
+        <tr>
+            <th>項目</th>
+            <th>數值</th>
+            <th>說明</th>
+        </tr>
+        <tr>
+            <td>酒精濃度 (mg/L)</td>
+            <td><input type="number" id="alcoholLevel" value="0.28" step="0.01" min="0.25" max="2.0"></td>
+            <td>法定標準為0.25mg/L</td>
+        </tr>
+        <tr>
+            <td>是否有前科</td>
+            <td>
+                <select id="priorRecord">
+                    <option value="0">無任何前科</option>
+                    <option value="1">行政酒駕前科</option>
+                    <option value="2">5年以上刑事前科</option>
+                    <option value="3">5年內刑事前科</option>
+                </select>
+            </td>
+            <td>影響處分嚴厲程度</td>
+        </tr>
+        <tr>
+            <td>是否造成事故</td>
+            <td>
+                <select id="accident">
+                    <option value="0">無事故</option>
+                    <option value="1">財產損失</option>
+                    <option value="2">人員輕傷</option>
+                    <option value="3">人員重傷或死亡</option>
+                </select>
+            </td>
+            <td>加重處分因素</td>
+        </tr>
+    </table>
+
+    <h2>🛡️ 有利因素設定</h2>
+    <table id="favorTable">
+        <tr>
+            <th>有利因素</th>
+            <th>是否具備</th>
+            <th>說明</th>
+        </tr>
+        <tr>
+            <td>已完成防制課程</td>
+            <td><input type="checkbox" id="courseComplete" checked></td>
+            <td>顯著提高緩起訴機會</td>
+        </tr>
+        <tr>
+            <td>有家庭扶養責任</td>
+            <td><input type="checkbox" id="hasDependents" checked></td>
+            <td>可能影響處分方式</td>
+        </tr>
+        <tr>
+            <td>主動表示悔意</td>
+            <td><input type="checkbox" id="showsRemorse" checked></td>
+            <td>提出悔過書等文件</td>
+        </tr>
+    </table>
+
+    <button class="btn" onclick="calculateFine()">計算可能處分結果</button>
+
+    <h2>計算結果</h2>
+    <div id="fineResult"></div>
+</div>
+
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="#">預約律師諮詢</a>
+<a class="btn" download="" href="酒駕緩起訴聲請範本.docx">下載聲請狀範本</a>
+</div>
+</div>
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>最佳情況：極可能獲緩起訴處分</p>";
+                recommendation = "建議完整提出所有有利證明文件，檢察官很可能給予緩起訴處分。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等情況：可能獲易科罰金</p>";
+                recommendation = "建議加強有利事證的準備，特別是防制課程證明與家庭狀況說明，爭取最輕處分。";
+            } else {
+                resultText = "<p style='color:#2f3c58;font-weight:bold;'>嚴厲處分：可能面臨徒刑風險</p>";
+                recommendation = "建議立即尋求專業律師協助，準備減刑事由與替代刑罰方案，爭取社會勞動或最低刑度。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            const element = document.getElementById('checklist-full-content');
+            const opt = {
+                margin:       [0.2, 0.2, 0.2, 0.2],
+                filename:     '酒駕案件準備清單.pdf',
+                image:        { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['avoid-all'] }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 罰金計算器功能
+        function calculateFine() {
+            const alcoholLevel = parseFloat(document.getElementById('alcoholLevel').value);
+            const priorRecord = parseInt(document.getElementById('priorRecord').value);
+            const accident = parseInt(document.getElementById('accident').value);
+            const courseComplete = document.getElementById('courseComplete').checked;
+            const hasDependents = document.getElementById('hasDependents').checked;
+            const showsRemorse = document.getElementById('showsRemorse').checked;
+
+            // 基本分數計算
+            let baseScore = 0;
+            if (alcoholLevel <= 0.4) baseScore = 1;
+            else if (alcoholLevel <= 0.55) baseScore = 2;
+            else if (alcoholLevel <= 0.8) baseScore = 3;
+            else baseScore = 4;
+
+            // 前科加權
+            baseScore += priorRecord;
+
+            // 事故加權
+            baseScore += accident;
+
+            // 有利因素減分
+            if (courseComplete) baseScore -= 1;
+            if (hasDependents) baseScore -= 0.5;
+            if (showsRemorse) baseScore -= 0.5;
+            baseScore = Math.max(1, baseScore); // 最低為1
+
+            // 決定處分類型
+            let resultHtml = "";
+            if (baseScore <= 2) {
+                resultHtml = `<div class="positive" style="padding:15px; border-radius:5px;">
+                    <h3>可能處分：緩起訴</h3>
+                    <p>根據輸入條件，您的案件極可能獲得緩起訴處分，條件可能包括：</p>
+                    <ul>
+                        <li>完成酒駕防制教育課程</li>
+                        <li>6個月至1年緩起訴期間</li>
+                        <li>可能需支付公益捐款2-5萬元</li>
+                        <li>期間內不得再犯</li>
+                    </ul>
+                    <p>建議儘速準備課程證明與悔過書，向檢察官提出緩起訴聲請。</p>
+                </div>`;
+            } else if (baseScore <= 4) {
+                const fineMin = 5 + (baseScore - 2) * 3;
+                const fineMax = 8 + (baseScore - 2) * 4;
+                resultHtml = `<div class="neutral" style="padding:15px; border-radius:5px;">
+                    <h3>可能處分：易科罰金</h3>
+                    <p>根據輸入條件，您的案件可能被判處拘役或罰金，可聲請易科罰金：</p>
+                    <ul>
+                        <li>預估刑度：拘役30-50天</li>
+                        <li>易科罰金金額：約${fineMin}-${fineMax}萬元（每日1,000元折算）</li>
+                        <li>可能附加緩刑2-3年</li>
+                        <li>將留下刑事紀錄</li>
+                    </ul>
+                    <p>建議提出家庭經濟狀況證明，爭取最低罰金折算標準。</p>
+                </div>`;
+            } else {
+                const prisonMin = 2 + (baseScore - 4) * 1;
+                const prisonMax = 3 + (baseScore - 4) * 2;
+                resultHtml = `<div class="negative" style="padding:15px; border-radius:5px;">
+                    <h3>可能處分：徒刑</h3>
+                    <p>根據輸入條件，您的案件可能面臨徒刑：</p>
+                    <ul>
+                        <li>預估刑度：${prisonMin}-${prisonMax}個月有期徒刑</li>
+                        <li>可能得聲請社會勞動替代</li>
+                        <li>將留下刑事紀錄</li>
+                        <li>可能吊銷駕照1-3年</li>
+                    </ul>
+                    <p>建議立即尋求專業律師協助，準備減刑事由與替代刑罰方案。</p>
+                </div>`;
+            }
+
+            document.getElementById('fineResult').innerHTML = resultHtml;
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

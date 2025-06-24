@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>配偶權侵害損害賠償法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 賠償計算器專用樣式 */
+        .compensation-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .compensation-calculator h1, 
+        .compensation-calculator h2, 
+        .compensation-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .compensation-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .compensation-calculator .btn {
+            background: #4f6c7d;
+        }
+        .compensation-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .compensation-calculator th {
+            background-color: #4f6c7d;
+        }
+        .compensation-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 賠償計算器響應式 */
+    .compensation-calculator h1 {
+        font-size: 1.5em;
+    }
+    .compensation-calculator h2 {
+        font-size: 1.2em;
+    }
+    .compensation-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .compensation-calculator th, 
+    .compensation-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .compensation-calculator input, 
+    .compensation-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .compensation-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .compensation-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+</head>
+<body>
+<h1>配偶權侵害損害賠償法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'compensation')" style="font-size: 110% !important;">賠償計算</button>
+</div>
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>配偶權侵害基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是配偶權侵害？</h3>
+<p>當第三人明知他人已婚，仍與其配偶發展超越正常社交範圍之親密關係，導致婚姻關係受損，即可能構成對配偶權的侵害。受害配偶得依民法請求精神損害賠償。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>請求第三人賠償精神慰撫金</li>
+<li>要求停止侵害行為</li>
+<li>保全婚姻關係相關證據</li>
+<li>作為後續離婚訴訟之依據</li>
+<li>維護自身人格權益</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="card">
+<h2>配偶權侵害訴訟時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 配偶權侵害訴訟流程時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    證據蒐集 :done, a1, 2023-01-01, 30d
+                    醫療診斷取得 :done, a2, after a1, 14d
+                    section 訴訟階段
+                    提出告訴 :done, a3, 2023-03-01, 7d
+                    法院審理 :active, a4, 2023-04-01, 60d
+                    判決確定 : a5, after a4, 30d
+                    section 執行階段
+                    賠償金給付 : a6, after a5, 30d
+            </div></div>
+<p><small>※ 注意：完整流程通常需3-6個月，視證據完整性與法院排程而定</small></p>
+</div>
+</div>
+<div class="tabcontent" id="process">
+<h2>配偶權侵害處理流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">配偶權侵害互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="發現侵害行為">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="70" y="205">發現侵害行為</text>
+</g>
+<g class="node" data-name="蒐集證據">
+<rect fill="#f2f2f2" height="40" rx="8" width="120" x="150" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="210" y="205">蒐集證據</text>
+</g>
+<g class="node" data-name="協商嘗試">
+<rect fill="#d8d8d8" height="40" rx="8" width="120" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="360" y="165">協商嘗試</text>
+</g>
+<g class="node" data-name="達成和解">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">達成和解</text>
+</g>
+<g class="node" data-name="提出訴訟">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="510" y="205">提出訴訟</text>
+</g>
+<g class="node" data-name="法院審理">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">法院審理</text>
+</g>
+<g class="node" data-name="判決確定">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">判決確定</text>
+</g>
+<g class="node" data-name="執行賠償">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">執行賠償</text>
+</g>
+<g class="node" data-name="醫療評估">
+<rect fill="#d8d8d8" height="40" rx="8" width="120" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="660" y="265">醫療評估</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="120" x2="150" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="570" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="660" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.addEventListener("click", () => {
+                const name = node.getAttribute("data-name");
+                alert("您點擊了節點：「" + name + "」\n\n" + getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "發現侵害行為": "察覺配偶與第三人間有不當往來，如異常通訊、頻繁見面、親密互動等。",
+                "蒐集證據": "合法取得對話紀錄、照片、影片、通聯記錄等，必要時可委請徵信社協助，注意證據合法性。",
+                "協商嘗試": "可先嘗試與第三人協商，要求停止侵害行為並賠償，協商過程應保留紀錄。",
+                "達成和解": "如能達成和解，應簽訂書面和解契約，載明賠償金額與條件，避免後續爭議。",
+                "提出訴訟": "向地方法院提出民事訴訟，需準備起訴狀及相關證據，主張配偶權受侵害之事實。",
+                "法院審理": "法院將審查證據效力，評估侵害程度，並酌定適當賠償金額。",
+                "判決確定": "判決後如雙方未上訴即確定，可持確定判決聲請強制執行。",
+                "執行賠償": "依判決內容請求賠償金給付，必要時可聲請強制執行對方財產。",
+                "醫療評估": "因侵害行為導致精神痛苦，應就醫取得診斷證明，作為損害程度之證據。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>證據蒐集</td>
+<td>取得對話紀錄、照片等</td>
+<td>1-3個月</td>
+<td>注意證據取得合法性</td>
+</tr>
+<tr>
+<td>醫療診斷</td>
+<td>就醫取得精神損害證明</td>
+<td>2-4週</td>
+<td>保留所有就醫紀錄</td>
+</tr>
+<tr>
+<td>提出訴訟</td>
+<td>準備起訴狀及證據</td>
+<td>1-2週</td>
+<td>可委任律師辦理</td>
+</tr>
+<tr>
+<td>法院審理</td>
+<td>出庭陳述與舉證</td>
+<td>2-4個月</td>
+<td>準備完整證據鏈</td>
+</tr>
+<tr>
+<td>執行賠償</td>
+<td>聲請強制執行</td>
+<td>1-2個月</td>
+<td>需確認對方財產狀況</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決賠償金額比例</h3>
+<div class="mermaid">
+                pie
+                    title 法院判決賠償金額比例
+                    "10-30萬元" : 45
+                    "30-50萬元" : 30
+                    "50萬元以上" : 15
+                    "10萬元以下" : 10
+            </div>
+<p><small>※ 根據近年法院統計，賠償金額視侵害情節與證據強度而定</small></p>
+</div>
+</div>
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的訴訟成功可能性評估</h3>
+<p>請回答以下問題，評估您的配偶權侵害訴訟成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 證據完整性如何？</label>
+<select id="q1">
+<option value="3">有多項直接證據（如對話、照片）</option>
+<option value="2">有部分直接證據與間接證據</option>
+<option value="1">僅有間接證據或單一證據</option>
+<option value="0">證據薄弱或取得方式有疑慮</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 侵害行為的明確程度？</label>
+<select id="q2">
+<option value="3">有親密稱呼、約會、過夜等明確事證</option>
+<option value="2">有親密互動但無具體親密行為證據</option>
+<option value="1">僅有頻繁聯絡紀錄</option>
+<option value="0">互動內容尚屬正常社交範圍</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 是否有精神損害醫療證明？</label>
+<select id="q3">
+<option value="3">有正式醫療診斷與就醫紀錄</option>
+<option value="2">有就醫紀錄但無正式診斷</option>
+<option value="1">僅有自行就醫紀錄</option>
+<option value="0">無任何醫療證明</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 第三人是否知悉婚姻關係？</label>
+<select id="q4">
+<option value="3">明確知悉且有證據證明</option>
+<option value="2">應可知悉（如共同朋友、社交媒體）</option>
+<option value="1">可能不知悉</option>
+<option value="0">明確不知悉</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 婚姻現況如何？</label>
+<select id="q5">
+<option value="3">仍維持婚姻關係但已分居</option>
+<option value="2">仍同居但關係緊張</option>
+<option value="1">已提起離婚訴訟</option>
+<option value="0">已離婚</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">訴訟成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p style="font-size: 90%; color: #666;">本AI分析結果不具法律效力僅供參考，如需進一步協助，請洽本站律師諮詢。</p><p></p>
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：判決全額賠償</h4>
+<p>可能性：60% (證據充分、侵害明確、損害嚴重)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>判決第三人賠償精神慰撫金</li>
+<li>命第三人停止侵害行為</li>
+<li>訴訟費用由第三人負擔</li>
+<li>確認侵害配偶權之事實</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分賠償</h4>
+<p>可能性：30% (部分證據不足或侵害情節較輕)</p>
+<p>可能內容：</p>
+<ul>
+<li>判決部分金額賠償</li>
+<li>可能分擔部分訴訟費用</li>
+<li>確認有限度的侵害事實</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：駁回或和解</h4>
+<p>可能性：10% (證據不足或程序瑕疵)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強證據重新提告</li>
+<li>考慮調解程序</li>
+<li>評估離婚訴訟可能性</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📱</span>
+<span class="evidence-title">通訊軟體對話紀錄</span>
+</div>
+<p class="evidence-desc">效力最高，需包含時間戳記與完整對話內容，避免截圖片段遭質疑真實性。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🏨</span>
+<span class="evidence-title">旅館住宿紀錄</span>
+</div>
+<p class="evidence-desc">共同入住旅館的訂房紀錄或監視器畫面，可證明雙方親密互動的事實。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🏥</span>
+<span class="evidence-title">醫療診斷證明</span>
+</div>
+<p class="evidence-desc">精神科或身心科診斷證明，需載明症狀與侵害事件的關聯性，強化損害主張。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">👥</span>
+<span class="evidence-title">證人證詞</span>
+</div>
+<p class="evidence-desc">親友或同事目睹雙方不當互動的證詞，可補強其他證據的證明力。</p>
+</div>
+</div>
+</div>
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>配偶權侵害訴訟準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">民事起訴狀（可向法院索取範本）</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">婚姻關係證明（戶籍謄本）</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">侵害行為證據（對話、照片等）</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">醫療診斷證明書</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">就醫紀錄與收據</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">第三人知悉婚姻的證據</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">證人名單與陳述書</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">其他有利證據（通聯記錄等）</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確定請求賠償金額範圍</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估是否聲請證據保全</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備證據清單與說明</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">確認第三人財產狀況</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估調解可能性與方案</label>
+</div>
+</div>
+</div>
+</div>
+<div class="tabcontent compensation-calculator" id="compensation">
+<h1>精神慰撫金計算與評估模擬</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據民法第195條及實務判決，綜合考量侵害情節、雙方經濟狀況、損害程度等因素，
+        模擬可能判決金額範圍。法院實務上通常會綜合考量以下因素決定賠償金額。
+    </div>
+<h2>👤 基本資訊輸入</h2>
+<table id="infoTable">
+<tr>
+<th>評估因素</th>
+<th>程度選擇</th>
+<th>權重</th>
+</tr>
+<tr>
+<td>侵害行為嚴重性</td>
+<td>
+<select id="severity">
+<option value="1">輕微（如曖昧對話）</option>
+<option value="2" selected>中等（如約會、親密互動）</option>
+<option value="3">嚴重（如同居、性關係）</option>
+</select>
+</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>精神損害程度</td>
+<td>
+<select id="damage">
+<option value="1">輕微（短期情緒低落）</option>
+<option value="2" selected>中等（需就醫諮商）</option>
+<option value="3">嚴重（長期治療影響工作）</option>
+</select>
+</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>雙方經濟狀況</td>
+<td>
+<select id="economic">
+<option value="1">收入普通（月收5萬以下）</option>
+<option value="2" selected>收入中等（月收5-10萬）</option>
+<option value="3">收入較高（月收10萬以上）</option>
+</select>
+</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>第三人是否知悉婚姻</td>
+<td>
+<select id="knowledge">
+<option value="0">不知悉</option>
+<option value="1" selected>應可知悉</option>
+<option value="2">明確知悉</option>
+</select>
+</td>
+<td>10%</td>
+</tr>
+</table>
+<h2>💰 賠償金額評估</h2>
+<button class="btn" onclick="calculateCompensation()">計算賠償金額範圍</button>
+<div id="compResult" style="margin-top: 20px;"></div>
+<h3>近年類似案例參考</h3>
+<table>
+<tr>
+<th>案例類型</th>
+<th>侵害情節</th>
+<th>判決金額</th>
+</tr>
+<tr>
+<td>曖昧對話案</td>
+<td>頻繁親密對話但無見面</td>
+<td>8-15萬元</td>
+</tr>
+<tr>
+<td>約會出遊案</td>
+<td>多次約會與親密互動</td>
+<td>15-30萬元</td>
+</tr>
+<tr>
+<td>同居關係案</td>
+<td>長期同居與親密關係</td>
+<td>30-50萬元</td>
+</tr>
+<tr>
+<td>重大破壞案</td>
+<td>導致婚姻破裂與嚴重精神疾病</td>
+<td>50-80萬元</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="#">預約律師諮詢</a>
+<a class="btn" download="" href="配偶權侵害起訴狀範本.docx">下載起訴狀範本</a>
+</div>
+</div>
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A',
+                pie4: '#D1C4E9'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能獲有利判決</p>";
+                recommendation = "建議完整提出所有證據，法院很可能採納您的請求內容，判決金額可能落在中高範圍。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能獲部分賠償</p>";
+                recommendation = "建議加強證據鏈的完整性，特別是精神損害與侵害行為的關聯性證明。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨訴訟困難</p>";
+                recommendation = "建議立即補強證據，特別是直接證明侵害行為與損害的證據，考慮聲請證據保全。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            alert('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 賠償金額計算
+        function calculateCompensation() {
+            const severity = parseInt(document.getElementById('severity').value);
+            const damage = parseInt(document.getElementById('damage').value);
+            const economic = parseInt(document.getElementById('economic').value);
+            const knowledge = parseInt(document.getElementById('knowledge').value);
+            
+            // 基礎計算公式
+            let baseAmount = 100000; // 10萬基準
+            let multiplier = 1;
+            
+            // 侵害行為嚴重性加權
+            multiplier *= (0.5 + severity * 0.5);
+            
+            // 精神損害程度加權
+            multiplier *= (0.5 + damage * 0.5);
+            
+            // 經濟狀況調整
+            multiplier *= (0.8 + economic * 0.2);
+            
+            // 知悉婚姻加權
+            multiplier *= (0.9 + knowledge * 0.1);
+            
+            const calculatedAmount = baseAmount * multiplier;
+            
+            // 產生範圍
+            const minAmount = Math.round(calculatedAmount * 0.7);
+            const maxAmount = Math.round(calculatedAmount * 1.3);
+            
+            let evaluation = "";
+            if (calculatedAmount > 300000) {
+                evaluation = "高賠償範圍（侵害情節嚴重）";
+            } else if (calculatedAmount > 150000) {
+                evaluation = "中等賠償範圍（典型侵害案例）";
+            } else {
+                evaluation = "基本賠償範圍（侵害情節較輕）";
+            }
+            
+            document.getElementById('compResult').innerHTML = `
+                <div class="result">
+                    <h3>預估賠償金額範圍</h3>
+                    <p style="font-size: 24px; color: #4f6c7d;">${minAmount.toLocaleString()} 元 ～ ${maxAmount.toLocaleString()} 元</p>
+                    <p>評估等級：${evaluation}</p>
+                    <p><small>※ 實際判決金額仍視具體證據與法官裁量而定，此為模擬估算僅供參考</small></p>
+                </div>
+            `;
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '配偶權侵害訴訟準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+</script>
+</body>
+</html>

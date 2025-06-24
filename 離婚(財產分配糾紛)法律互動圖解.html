@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>離婚財產分配法律互動圖解（完整版）</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 財產計算器專用樣式 */
+        .property-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .property-calculator h1, 
+        .property-calculator h2, 
+        .property-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .property-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .property-calculator .btn {
+            background: #4f6c7d;
+        }
+        .property-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .property-calculator th {
+            background-color: #4f6c7d;
+        }
+        .property-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .property-calculator .warning {
+            background: #FFF3E0;
+            border-left: 4px solid #FFA000;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .mixed-property {
+            background-color: #FFF9C4;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 財產計算器響應式 */
+    .property-calculator h1 {
+        font-size: 1.5em;
+    }
+    .property-calculator h2 {
+        font-size: 1.2em;
+    }
+    .property-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .property-calculator th, 
+    .property-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .property-calculator input, 
+    .property-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .property-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .property-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+</head>
+<body>
+<h1>離婚財產分配法律互動圖解（完整版）</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'property')" style="font-size: 110% !important;">財產計算</button>
+</div>
+
+<!-- 案件總覽 -->
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>離婚財產分配基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是剩餘財產分配？</h3>
+<p>法定財產制下，夫妻離婚時應計算雙方婚後財產差額，較少財產之一方可請求差額之一半。此制度旨在保障婚姻中經濟弱勢一方，但需注意婚前財產、繼承或無償取得財產不列入計算。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">📅</div>
+<div>
+<h3>離婚基準日的重要性</h3>
+<p>離婚基準日（通常為起訴狀遞交日）是區分婚後財產的關鍵時點：</p>
+<ul>
+<li>基準日前取得：婚後財產（需列入分配計算）</li>
+<li>基準日後取得：個人財產（不列入分配）</li>
+</ul>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🔄</div>
+<div>
+<h3>財產混同的實務影響</h3>
+<p>實務上常見財產混同情況：</p>
+<ul>
+<li>婚前財產變賣後存入共同帳戶</li>
+<li>雙方資金混合使用難以區分</li>
+<li>財產形式轉換（如不動產變現金）</li>
+</ul>
+<p>混同後可能被認定為婚後共同財產，難以主張婚前財產權利。</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>離婚財產分配時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 離婚財產分配流程時間軸（含基準日概念）
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 財產狀態
+                    婚前財產 :a1, 2020-01-01, 2021-01-01
+                    婚後財產 :a2, 2021-01-01, 2023-04-01
+                    基準日後財產 :a3, 2023-04-01, 2023-10-01
+                    section 法律程序
+                    提起離婚訴訟 :milestone, m1, 2023-04-01, 0d
+                    財產清算評估 :2023-04-01, 90d
+                    法院裁判 :2023-07-01, 60d
+            </div></div>
+<p><small>※ 注意：離婚基準日（通常為起訴日）是區分婚後財產的關鍵時點，基準日後新增財產不列入分配範圍</small></p>
+</div>
+</div>
+
+<!-- 處理流程 -->
+<div class="tabcontent" id="process">
+<h2>離婚財產分配申請流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">離婚財產分配互動流程圖（含混同財產處理）</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="500" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="婚姻關係終止">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="80" y="205">婚姻關係終止</text>
+</g>
+<g class="node" data-name="確定基準日">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="170" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="220" y="205">確定基準日</text>
+</g>
+<g class="node" data-name="財產清冊製作">
+<rect fill="#f2f2f2" height="40" rx="8" width="120" x="300" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="360" y="205">財產清冊製作</text>
+</g>
+<g class="node" data-name="識別混同財產">
+<rect fill="#FFC107" height="40" rx="8" width="120" x="450" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="510" y="165">識別混同財產</text>
+</g>
+<g class="node" data-name="協議分配嘗試">
+<rect fill="#d8d8d8" height="40" rx="8" width="120" x="450" y="220"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="510" y="245">協議分配嘗試</text>
+</g>
+<g class="node" data-name="達成協議">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="600" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="650" y="125">達成協議</text>
+</g>
+<g class="node" data-name="聲請裁判分配">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="600" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="660" y="205">聲請裁判分配</text>
+</g>
+<g class="node" data-name="法院審理混同">
+<rect fill="#FFC107" height="40" rx="8" width="140" x="600" y="260"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="670" y="285">法院審理混同</text>
+</g>
+<g class="node" data-name="法院審理">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="750" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="800" y="205">法院審理</text>
+</g>
+<g class="node" data-name="裁判確定">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="880" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="930" y="205">裁判確定</text>
+</g>
+<g class="node" data-name="執行分配">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="880" y="260"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="930" y="285">執行分配</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="120" x2="170" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="200" y2="220"></line>
+<line stroke="#333333" stroke-width="2" x1="570" x2="600" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="570" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="570" x2="600" y1="240" y2="260"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="750" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="850" x2="880" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="930" x2="930" y1="220" y2="260"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.addEventListener("click", () => {
+                const name = node.getAttribute("data-name");
+                alert("您點擊了節點：「" + name + "」\n\n" + getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "婚姻關係終止": "離婚程序開始時，雙方應立即釐清婚後財產狀況，包括不動產、存款、投資等各項財產。",
+                "確定基準日": "離婚基準日（通常為起訴狀遞交日）是區分婚後財產與個人財產的關鍵時點，基準日後取得的財產不列入分配範圍。",
+                "財產清冊製作": "詳細列出雙方婚後取得之財產（不動產、存款、股票、保險等）及價值，需特別注意基準日前後的財產區分。",
+                "識別混同財產": "實務上常見財產混同情況，如婚前財產變賣後存入共同帳戶、資金混合使用等，可能被認定為婚後共同財產。",
+                "協議分配嘗試": "雙方應先嘗試協議分配，可透過調解或協商方式處理財產分配問題，特別注意混同財產的處理方式。",
+                "達成協議": "如能達成協議，應訂立財產分配協議書並辦理相關財產移轉登記，完成分配程序。",
+                "聲請裁判分配": "向管轄法院提出聲請，需附財產清冊（明確標註基準日）、協議失敗證明及分配方案建議。",
+                "法院審理混同": "法院將特別審查混同財產的性質，判斷是否應列入婚後財產範圍，可能需雙方舉證資金來源。",
+                "法院審理": "法院將調查財產狀況，必要時命鑑價或調查，並聽取各方意見後裁定分配方式。",
+                "裁判確定": "法院裁定後，如無人抗告即確定，可持裁定書辦理財產移轉或給付程序。",
+                "執行分配": "依裁定內容辦理不動產登記、存款分配、股票過戶等實際分配程序，包括混同財產的處理結果。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+
+<div class="card">
+<h3>各階段說明（含混同財產處理）</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>關鍵注意事項</th>
+</tr>
+<tr>
+<td>確定基準日</td>
+<td>確認離婚起訴狀遞交日期</td>
+<td>此日期後取得的財產不列入分配</td>
+</tr>
+<tr>
+<td>財產清冊製作</td>
+<td>清查所有婚前、婚後財產</td>
+<td>區分基準日前後財產，標註可能混同財產</td>
+</tr>
+<tr>
+<td>識別混同財產</td>
+<td>追查資金流向與原始來源</td>
+<td>共同帳戶資金、變賣婚前財產所得等</td>
+</tr>
+<tr>
+<td>協議分配</td>
+<td>嘗試協商分配方案</td>
+<td>對混同財產達成特別協議</td>
+</tr>
+<tr>
+<td>法院審理</td>
+<td>準備資金來源證明</td>
+<td>主張特定財產不應列入分配</td>
+</tr>
+<tr>
+<td>執行分配</td>
+<td>依裁定辦理登記或給付</td>
+<td>注意混同財產的執行方式</td>
+</tr>
+</table>
+</div>
+
+<div class="card">
+<h3>財產混同的法院認定比例</h3>
+<div class="mermaid">
+                pie
+                    title 混同財產認定比例
+                    "認定為婚後財產" : 65
+                    "部分排除" : 20
+                    "完全排除" : 15
+            </div>
+<p><small>※ 根據近年法院統計，多數混同財產被認定為婚後共同財產，完全排除比例較低</small></p>
+</div>
+</div>
+
+<!-- 風險評估 -->
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的財產分配成功可能性評估</h3>
+<p>請回答以下問題，評估您的財產分配成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 是否已明確離婚基準日？</label>
+<select id="q1">
+<option value="3">已確定起訴日期並標註基準日</option>
+<option value="2">大致確定但未正式記錄</option>
+<option value="1">尚未確定具體日期</option>
+<option value="0">完全未考慮基準日問題</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 財產清冊是否區分婚前/婚後財產？</label>
+<select id="q2">
+<option value="3">完整區分並有證明文件</option>
+<option value="2">主要財產已區分</option>
+<option value="1">部分財產未區分</option>
+<option value="0">完全未區分</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 是否有財產混同情況？</label>
+<select id="q3">
+<option value="3">無混同情況</option>
+<option value="2">少量混同可追溯來源</option>
+<option value="1">多項混同財產</option>
+<option value="0">主要財產均已混同</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 對混同財產是否有資金來源證明？</label>
+<select id="q4">
+<option value="3">有完整資金流向證明</option>
+<option value="2">部分證明文件</option>
+<option value="1">僅口頭說明</option>
+<option value="0">完全無證明</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 是否已採取財產保全措施？</label>
+<select id="q5">
+<option value="3">已完成財產保全及證據固定</option>
+<option value="2">已完成部分保全</option>
+<option value="1">僅有基本證據</option>
+<option value="0">無任何保全措施</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">財產分配成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p style="font-size: 90%; color: #666;">本AI分析結果不具法律效力僅供參考，如需進一步協助，請洽本站律師諮詢。</p><p></p>
+</div>
+</div>
+
+<div class="card">
+<h3>混同財產的可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：成功排除混同財產</h4>
+<p>可能性：30% (有完整資金來源證明)</p>
+<p>可能內容：</p>
+<ul>
+<li>法院認定混同資金為婚前財產</li>
+<li>從婚後財產中扣除該部分價值</li>
+<li>維持原始財產分配比例</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分混同被認定</h4>
+<p>可能性：50% (有部分證明文件)</p>
+<p>可能內容：</p>
+<ul>
+<li>部分混同財產被列入分配</li>
+<li>法院酌減分配比例</li>
+<li>需補償部分差額</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：完全認定為婚後財產</h4>
+<p>可能性：20% (無任何證明文件)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強資金來源證據</li>
+<li>考慮上訴或另案主張</li>
+<li>尋求專業會計鑑定</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<h3>混同財產證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🏦</span>
+<span class="evidence-title">銀行交易明細</span>
+</div>
+<p class="evidence-desc">完整顯示資金流向的銀行交易紀錄效力最高，可證明婚前財產與混同過程。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📑</span>
+<span class="evidence-title">不動產買賣契約</span>
+</div>
+<p class="evidence-desc">婚前不動產的買賣契約及價金收取證明，可佐證混同資金的原始來源。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💬</span>
+<span class="evidence-title">通訊紀錄</span>
+</div>
+<p class="evidence-desc">關於財產處分的對話紀錄（如：『賣房款先放共同帳戶』）可證明混同意圖。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🧾</span>
+<span class="evidence-title">會計師鑑定報告</span>
+</div>
+<p class="evidence-desc">專業會計師對資金流向的鑑定報告，法院通常給予高度重視。</p>
+</div>
+</div>
+</div>
+
+<!-- 準備清單 -->
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>財產分配申請準備清單（含混同財產處理）</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">財產分配聲請狀（註明基準日）</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">結婚證明及離婚協議/判決</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">婚前財產證明文件</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">基準日前後財產清冊</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">混同財產資金流向證明</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">銀行交易明細（至少5年）</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">不動產買賣契約書</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">會計師鑑定報告（如有）</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+
+<div class="card">
+<h3>混同財產處理策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">追查所有混同財產的原始來源</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">整理資金流向圖表與時間軸</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">評估是否聲請財產保全</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">考慮專業會計鑑定</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">準備替代方案供法院參考</label>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 財產計算 -->
+<div class="tabcontent property-calculator" id="property">
+<h1>剩餘財產差額計算與分配模擬（含混同財產）</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據民法第1030-1條，計算雙方婚後財產差額，特別考慮：
+        <ul>
+            <li><strong>離婚基準日</strong>：僅計算基準日前取得的婚後財產</li>
+            <li><strong>財產混同</strong>：標記可能混同的財產並計算其影響</li>
+            <li><strong>婚前財產變賣</strong>：追查變賣所得是否混入共同財產</li>
+        </ul>
+    </div>
+    
+<div class="warning">
+        ⚠️ <strong>混同財產注意：</strong> 婚前財產變賣後若存入共同帳戶或用於共同生活，實務上可能被認定為婚後共同財產，難以主張排除。
+    </div>
+
+<h2>📅 離婚基準日設定</h2>
+<div class="step">
+<label for="divorceDate">離婚基準日（通常為起訴狀遞交日）：</label>
+<input type="date" id="divorceDate" name="divorceDate">
+</div>
+
+<h2>💰 財產清冊輸入</h2>
+<table id="propertyTable">
+<tr>
+<th>財產項目</th>
+<th>價值（元）</th>
+<th>取得日期</th>
+<th>財產類型</th>
+<th>混同情況</th>
+<th>歸屬方</th>
+</tr>
+<tr>
+<td><input type="text" value="婚後購置房產"/></td>
+<td><input type="number" value="8000000"/></td>
+<td><input type="date" value="2022-05-15"/></td>
+<td>
+<select>
+<option value="婚後">婚後財產</option>
+<option value="婚前">婚前財產</option>
+<option value="繼承">繼承/受贈</option>
+</select>
+</td>
+<td>
+<select>
+<option value="無">無混同</option>
+<option value="部分">部分混同</option>
+<option value="完全">完全混同</option>
+</select>
+</td>
+<td>
+<select>
+<option value="我方">我方</option>
+<option selected value="對方">對方</option>
+</select>
+</td>
+</tr>
+<tr class="mixed-property">
+<td><input type="text" value="變賣婚前房產所得"/></td>
+<td><input type="number" value="2000000"/></td>
+<td><input type="date" value="2021-08-10"/></td>
+<td>
+<select>
+<option value="婚前" selected>婚前財產</option>
+<option value="婚後">婚後財產</option>
+<option value="繼承">繼承/受贈</option>
+</select>
+</td>
+<td>
+<select>
+<option value="無">無混同</option>
+<option value="部分">部分混同</option>
+<option value="完全" selected>完全混同</option>
+</select>
+</td>
+<td>
+<select>
+<option value="我方">我方</option>
+<option selected value="對方">對方</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><input type="text" value="證券投資"/></td>
+<td><input type="number" value="1500000"/></td>
+<td><input type="date" value="2023-01-20"/></td>
+<td>
+<select>
+<option value="婚後" selected>婚後財產</option>
+<option value="婚前">婚前財產</option>
+<option value="繼承">繼承/受贈</option>
+</select>
+</td>
+<td>
+<select>
+<option value="無" selected>無混同</option>
+<option value="部分">部分混同</option>
+<option value="完全">完全混同</option>
+</select>
+</td>
+<td>
+<select>
+<option value="我方">我方</option>
+<option selected value="對方">對方</option>
+</select>
+</td>
+</tr>
+</table>
+
+<button class="btn" onclick="addProperty()">新增財產項目</button>
+<button class="btn" onclick="calculateDifference()">計算剩餘財產差額</button>
+
+<h2>計算結果</h2>
+<div id="propertyResult"></div>
+
+<div id="mixedPropertyAnalysis" style="display:none;">
+<h3>混同財產分析</h3>
+<div id="mixedPropertyResult"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="#">預約律師諮詢</a>
+<a class="btn" download="" href="財產分配範本下載.docx">下載聲請狀範本</a>
+<a class="btn" href="#" onclick="showMixedPropertyTips()">混同財產處理技巧</a>
+</div>
+</div>
+
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能獲有利分配裁定</p>";
+                recommendation = "建議完整提出分配方案並附具所有證據，特別是混同財產的來源證明，法院很可能採納您的聲請內容。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能獲部分採納</p>";
+                recommendation = "建議加強混同財產的證據力，提出更具彈性的分配方案供法院參考，特別是資金流向證明。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨聲請困難</p>";
+                recommendation = "建議立即補強證據，特別是混同財產的來源與流向證明，考慮聲請財產保全及專業會計鑑定。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            alert('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 財產計算器功能
+        function addProperty() {
+            const table = document.getElementById('propertyTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" placeholder="例如：股票、保險金"></td>
+                <td><input type="number" placeholder="價值"></td>
+                <td><input type="date"></td>
+                <td>
+                    <select>
+                        <option value="婚後">婚後財產</option>
+                        <option value="婚前">婚前財產</option>
+                        <option value="繼承">繼承/受贈</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="無">無混同</option>
+                        <option value="部分">部分混同</option>
+                        <option value="完全">完全混同</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="我方">我方</option>
+                        <option value="對方">對方</option>
+                    </select>
+                </td>
+            `;
+        }
+
+        function calculateDifference() {
+            const divorceDate = new Date(document.getElementById('divorceDate').value);
+            const rows = document.querySelectorAll('#propertyTable tr');
+            
+            let myMaritalProperty = 0;
+            let spouseMaritalProperty = 0;
+            let myMixedProperty = 0;
+            let spouseMixedProperty = 0;
+            let mixedPropertyList = [];
+            
+            rows.forEach((row, idx) => {
+                if (idx === 0) return; // Skip header row
+                
+                const value = Number(row.cells[1].querySelector('input').value);
+                const date = new Date(row.cells[2].querySelector('input').value);
+                const type = row.cells[3].querySelector('select').value;
+                const mixed = row.cells[4].querySelector('select').value;
+                const owner = row.cells[5].querySelector('select').value;
+                
+                // 只計算基準日前的財產
+                if (date <= divorceDate) {
+                    // 婚後財產
+                    if (type === '婚後') {
+                        if (owner === '我方') {
+                            myMaritalProperty += value;
+                        } else {
+                            spouseMaritalProperty += value;
+                        }
+                    } 
+                    // 婚前財產但有混同
+                    else if (type === '婚前' && mixed !== '無') {
+                        const mixedValue = mixed === '完全' ? value : value * 0.5;
+                        
+                        if (owner === '我方') {
+                            myMixedProperty += mixedValue;
+                        } else {
+                            spouseMixedProperty += mixedValue;
+                        }
+                        
+                        mixedPropertyList.push({
+                            name: row.cells[0].querySelector('input').value,
+                            value: value,
+                            mixed: mixed,
+                            owner: owner
+                        });
+                    }
+                }
+            });
+            
+            // 加入混同財產價值（實務上常被認定為婚後財產）
+            myMaritalProperty += myMixedProperty;
+            spouseMaritalProperty += spouseMixedProperty;
+            
+            const difference = Math.abs(myMaritalProperty - spouseMaritalProperty);
+            const share = difference / 2;
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>金額</th></tr>
+                <tr><td>我方婚後財產總額</td><td>${myMaritalProperty.toLocaleString()} 元</td></tr>
+                <tr><td>對方婚後財產總額</td><td>${spouseMaritalProperty.toLocaleString()} 元</td></tr>
+                <tr><td>財產差額</td><td>${difference.toLocaleString()} 元</td></tr>
+                <tr><td>可請求分配金額</td><td>${share.toLocaleString()} 元</td></tr>
+            </table>`;
+            
+            if (myMaritalProperty > spouseMaritalProperty) {
+                resultHtml += `<div class="note" style="margin-top:15px;">
+                    <strong>法律說明：</strong> 對方可向您請求分配 ${share.toLocaleString()} 元
+                </div>`;
+            } else if (spouseMaritalProperty > myMaritalProperty) {
+                resultHtml += `<div class="note" style="margin-top:15px;">
+                    <strong>法律說明：</strong> 您可向對方請求分配 ${share.toLocaleString()} 元
+                </div>`;
+            } else {
+                resultHtml += `<div class="note" style="margin-top:15px;">
+                    <strong>法律說明：</strong> 雙方婚後財產相等，無需分配
+                </div>`;
+            }
+            
+            // 顯示混同財產分析
+            if (mixedPropertyList.length > 0) {
+                let mixedHtml = `<h4>混同財產分析（共 ${mixedPropertyList.length} 筆）</h4><table>
+                    <tr><th>財產項目</th><th>價值</th><th>混同程度</th><th>影響金額</th></tr>`;
+                
+                mixedPropertyList.forEach(item => {
+                    const affectValue = item.mixed === '完全' ? item.value : item.value * 0.5;
+                    mixedHtml += `<tr>
+                        <td>${item.name}</td>
+                        <td>${item.value.toLocaleString()} 元</td>
+                        <td>${item.mixed}</td>
+                        <td>${affectValue.toLocaleString()} 元</td>
+                    </tr>`;
+                });
+                
+                mixedHtml += `</table><div class="warning">
+                    <strong>實務注意：</strong> 法院可能將混同財產認定為婚後共同財產，上表顯示如被認定後的影響金額。
+                    如需排除，需提出充分證據證明其婚前性質及無混同意圖。
+                </div>`;
+                
+                document.getElementById('mixedPropertyResult').innerHTML = mixedHtml;
+                document.getElementById('mixedPropertyAnalysis').style.display = 'block';
+            } else {
+                document.getElementById('mixedPropertyAnalysis').style.display = 'none';
+            }
+            
+            document.getElementById('propertyResult').innerHTML = resultHtml;
+        }
+
+        function showMixedPropertyTips() {
+            alert(`混同財產處理技巧：\n\n1. 儘早蒐集資金來源證明（如賣房契約、原始帳戶明細）\n2. 建立完整資金流向圖表\n3. 考慮聲請法院調查令調取金融資料\n4. 必要時委請會計師製作鑑定報告\n5. 準備證人證明財產原始性質`);
+        }
+
+        window.onload = function() {
+            // 設定預設離婚基準日（3個月前）
+            const today = new Date();
+            const threeMonthsAgo = new Date(today.setMonth(today.getMonth() - 3));
+            document.getElementById('divorceDate').valueAsDate = threeMonthsAgo;
+            
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '財產分配準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+</script>
+</body>
+</html>

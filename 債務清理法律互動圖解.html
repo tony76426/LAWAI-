@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>債務清理法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 債務計算器專用樣式 */
+        .debt-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .debt-calculator h1, 
+        .debt-calculator h2, 
+        .debt-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .debt-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .debt-calculator .btn {
+            background: #4f6c7d;
+        }
+        .debt-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .debt-calculator th {
+            background-color: #4f6c7d;
+        }
+        .debt-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 債務計算器響應式 */
+    .debt-calculator h1 {
+        font-size: 1.5em;
+    }
+    .debt-calculator h2 {
+        font-size: 1.2em;
+    }
+    .debt-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .debt-calculator th, 
+    .debt-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .debt-calculator input, 
+    .debt-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .debt-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .debt-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+</head>
+<body>
+<h1>債務清理法律自助分析工具</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'debt')" style="font-size: 110% !important;">債務計算</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>債務清理基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是債務清理程序？</h3>
+<p>當債務人因財務困難無法清償債務時，可依《消費者債務清理條例》向法院聲請更生或清算程序，透過法律途徑調整債務條件或免除部分債務，重建財務生活。常見適用情況包括：信用卡債務過高、信用貸款無法償還、因失業或疾病導致財務困難等。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求調整還款條件或免除債務</li>
+<li>停止債權人的催收與強制執行程序</li>
+<li>透過法院裁定公平分配可償還金額</li>
+<li>重建信用與財務生活的機會</li>
+<li>保障基本生活所需不受影響</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="card">
+<h2>債務清理程序時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 債務清理程序時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    財務評估與文件準備 :done, a1, 2023-01-01, 14d
+                    法律諮詢與方案選擇 :done, a2, after a1, 14d
+                    section 法律程序
+                    聲請更生/清算 :done, a3, 2023-02-01, 7d
+                    法院審查程序 :active, a4, 2023-03-01, 60d
+                    債權人會議 : a5, after a4, 30d
+                    section 執行階段
+                    更生方案執行/清算分配 : a6, after a5, 180d
+            </div></div>
+<p><small>※ 注意：完整流程通常需6-12個月，視案件複雜度及法院審理進度而定</small></p>
+</div>
+</div>
+<div class="tabcontent" id="process">
+<h2>債務清理申請流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">債務清理互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="財務困難">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="70" y="205">財務困難</text>
+</g>
+<g class="node" data-name="債務評估">
+<rect fill="#f2f2f2" height="40" rx="8" width="120" x="150" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="210" y="205">債務評估</text>
+</g>
+<g class="node" data-name="協商嘗試">
+<rect fill="#d8d8d8" height="40" rx="8" width="120" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="360" y="165">協商嘗試</text>
+</g>
+<g class="node" data-name="協商成功">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">協商成功</text>
+</g>
+<g class="node" data-name="聲請更生">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="510" y="205">聲請更生</text>
+</g>
+<g class="node" data-name="法院審查">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">法院審查</text>
+</g>
+<g class="node" data-name="更生認可">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">更生認可</text>
+</g>
+<g class="node" data-name="改為清算">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">改為清算</text>
+</g>
+<g class="node" data-name="清算程序">
+<rect fill="#d8d8d8" height="40" rx="8" width="120" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="660" y="265">清算程序</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="120" x2="150" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="570" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="660" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.addEventListener("click", () => {
+                const name = node.getAttribute("data-name");
+                alert("您點擊了節點：「" + name + "」\n\n" + getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "財務困難": "債務人因失業、疾病或其他不可抗力因素，導致無法如期清償債務的狀態。",
+                "債務評估": "全面整理債務狀況，包括債權人清單、債務金額、利率及還款條件等。",
+                "協商嘗試": "與債權人協商調整還款條件，如降低利率、延長還款期限或部分減免。",
+                "協商成功": "與債權人達成還款協議，簽訂書面契約並依新條件履行還款義務。",
+                "聲請更生": "向法院提出更生聲請，提出6年內最長72期的償還計畫。",
+                "法院審查": "法院審查債務人財產狀況、收入支出及償還能力，決定是否認可更生方案。",
+                "更生認可": "法院認可更生方案，債務人依方案履行，完成後未清償債務免除。",
+                "改為清算": "法院認定無更生可能時，裁定開始清算程序，變賣財產分配予債權人。",
+                "清算程序": "管理人清理變賣債務人財產，分配予債權人後，法院裁定免責。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>債務評估</td>
+<td>整理所有債務文件與財產清單</td>
+<td>1-2週</td>
+<td>需完整誠實申報所有資產負債</td>
+</tr>
+<tr>
+<td>協商嘗試</td>
+<td>與主要債權人聯繫協商</td>
+<td>1-2個月</td>
+<td>保留所有協商紀錄與往來文件</td>
+</tr>
+<tr>
+<td>聲請更生</td>
+<td>準備聲請書狀與附件</td>
+<td>1-2週</td>
+<td>需附財產目錄、債權人清冊等</td>
+</tr>
+<tr>
+<td>法院審查</td>
+<td>配合法院要求補正資料</td>
+<td>2-4個月</td>
+<td>需出席債權人會議說明狀況</td>
+</tr>
+<tr>
+<td>更生執行</td>
+<td>按期履行更生方案</td>
+<td>6-72個月</td>
+<td>需嚴格遵守還款計畫</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院裁定結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 債務清理裁定比例
+                    "更生認可" : 50
+                    "改為清算" : 30
+                    "駁回聲請" : 20
+            </div>
+<p><small>※ 根據近年法院統計，多數誠實申報的債務人可獲更生或清算認可</small></p>
+</div>
+</div>
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的債務清理成功可能性評估</h3>
+<p>請回答以下問題，評估您的債務清理成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您的債務性質為何？</label>
+<select id="q1">
+<option value="3">純消費性債務（信用卡、信用貸款）</option>
+<option value="2">主要為消費性債務，含少額營業債務</option>
+<option value="1">消費與營業債務比例相當</option>
+<option value="0">主要為營業債務</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 您是否已嘗試與債權人協商？</label>
+<select id="q2">
+<option value="3">已嘗試協商但未達成協議</option>
+<option value="2">已開始協商程序</option>
+<option value="1">尚未嘗試但有協商意願</option>
+<option value="0">完全未嘗試協商</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 您的財產申報完整度？</label>
+<select id="q3">
+<option value="3">已完整列出所有資產與負債</option>
+<option value="2">主要資產負債已列出，細節待補</option>
+<option value="1">僅列出部分資產負債</option>
+<option value="0">尚未開始整理</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 您目前的收入狀況？</label>
+<select id="q4">
+<option value="3">有穩定收入可負擔基本生活與部分還款</option>
+<option value="2">有不穩定收入勉強維持生活</option>
+<option value="1">暫時無收入但有就業能力</option>
+<option value="0">無收入且無就業能力</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 近2年內是否有重大資產處分？</label>
+<select id="q5">
+<option value="3">無任何資產處分或轉移</option>
+<option value="2">有小額正常交易（如換車）</option>
+<option value="1">有出售資產但用於償債</option>
+<option value="0">有不明資產轉移或贈與</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">債務清理成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p style="font-size: 90%; color: #666;">本AI分析結果不具法律效力僅供參考，如需進一步協助，請洽本站律師諮詢。</p><p></p>
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：更生方案認可</h4>
+<p>可能性：50% (條件符合、誠實申報、有還款能力)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>法院認可6年內償還部分債務的方案</li>
+<li>停止利息計算與催收程序</li>
+<li>按期履行後免除剩餘債務</li>
+<li>保留必要生活財產</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：改為清算程序</h4>
+<p>可能性：30% (無足夠還款能力但誠實申報)</p>
+<p>可能內容：</p>
+<ul>
+<li>變賣非必要財產分配予債權人</li>
+<li>法院裁定免責後免除剩餘債務</li>
+<li>可能受若干職業資格限制</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：聲請遭駁回</h4>
+<p>可能性：20% (申報不實或有不當行為)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補正資料重新聲請</li>
+<li>尋求法律專業協助</li>
+<li>考慮其他債務解決方案</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">債權人清冊</span>
+</div>
+<p class="evidence-desc">效力最高，完整列出所有債權人、債務金額及性質，證明債務狀況真實性。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🏠</span>
+<span class="evidence-title">財產目錄</span>
+</div>
+<p class="evidence-desc">詳細申報所有動產、不動產、存款及其他資產，證明無隱匿財產情事。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💼</span>
+<span class="evidence-title">收入支出證明</span>
+</div>
+<p class="evidence-desc">薪資轉帳證明、勞保投保紀錄等，佐證收入狀況及必要生活支出。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📧</span>
+<span class="evidence-title">協商紀錄</span>
+</div>
+<p class="evidence-desc">與債權人的往來文件、協商紀錄，證明已嘗試自行解決債務問題。</p>
+</div>
+</div>
+</div>
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>債務清理準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">身分證正反面影本</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">債權人清冊（含債務金額、利率）</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">財產目錄（動產、不動產、存款等）</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">近2年綜合所得稅資料</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">近6個月薪資證明或收入來源證明</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">近6個月生活支出證明（水電、房租等）</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">與債權人的協商紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">其他相關文件（如醫療證明、失業證明）</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>聲請策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認適用更生或清算程序</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估合理償還能力與方案</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備財產與債務說明文件</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">確認無資產隱匿或詐害行為</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估更生方案可行性</label>
+</div>
+</div>
+</div>
+</div>
+<div class="tabcontent debt-calculator" id="debt">
+<h1>債務清理計算與方案模擬</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據《消費者債務清理條例》第42條及第53條，模擬更生方案可能之清償比例及清算程序之債務免除效果。
+        預設情境為一般消費性債務案例，實際結果需經法院審酌債務人具體狀況後裁定。
+    </div>
+<h2>💰 債務基本設定</h2>
+<table id="debtTable">
+<tr>
+<th>項目</th>
+<th>金額/內容</th>
+</tr>
+<tr>
+<td>總債務金額</td>
+<td><input type="number" value="750000"/></td>
+</tr>
+<tr>
+<td>主要債務類型</td>
+<td>
+<select>
+<option value="credit">信用卡/現金卡</option>
+<option value="loan" selected>信用貸款</option>
+<option value="mixed">混合型債務</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>每月可償還金額</td>
+<td><input type="number" value="5000"/></td>
+</tr>
+</table>
+<h2>📝 財產狀況輸入</h2>
+<table id="assetTable">
+<tr>
+<th>財產項目</th>
+<th>價值</th>
+<th>是否為生活必需</th>
+</tr>
+<tr>
+<td><input type="text" value="銀行存款"/></td>
+<td><input type="number" value="20000"/></td>
+<td>
+<select>
+<option value="yes">是</option>
+<option value="no" selected>否</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><input type="text" value="機車"/></td>
+<td><input type="number" value="30000"/></td>
+<td>
+<select>
+<option value="yes" selected>是</option>
+<option value="no">否</option>
+</select>
+</td>
+</tr>
+</table>
+<button class="btn" onclick="addAsset()">新增財產項目</button>
+<button class="btn" onclick="calculateDebt()">計算償還方案</button>
+<h2>計算結果</h2>
+<div id="result"></div>
+</div><div class="tabcontent inheritance-calculator" id="documents">
+<h2 style="color: #7054a0; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>更生程序聲請狀範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;">
+民事聲請更生程序狀
+
+聲請人：王大明 （身分證字號：A123456789）
+住址：新北市中和區XX路XX號
+電話：0912-345-678
+
+為聲請更生程序，依法陳報如下：
+
+一、聲請事項：
+請求准予開始更生程序。
+
+二、聲請理由：
+（一）聲請人前因失業及家庭因素，積欠多家銀行債務無力清償，總額約新臺幣75萬元。
+（二）聲請人現有穩定工作，每月收入新臺幣32,000元，扣除必要生活支出後，每月可償還新臺幣5,000元。
+（三）聲請人已誠實申報所有財產及債務狀況，並嘗試與債權人協商未果。
+（四）為此，依消費者債務清理條例第42條規定，聲請 貴院准予開始更生程序。
+
+三、附件：
+1. 債權人清冊及債務證明文件
+2. 財產及收入狀況說明書
+3. 近二年綜合所得稅資料
+4. 其他相關證明文件
+
+此致
+臺灣新北地方法院
+
+聲請人：王大明 （簽名蓋章）
+中華民國112年10月1日
+            </textarea>
+<button class="btn" onclick="downloadTextFile('debt-application.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h3>債權人清冊範例</h3>
+<textarea style="width:100%; height:200px; margin-bottom:15px;">
+債權人清冊
+
+債務人：王大明 （身分證字號：A123456789）
+
+編號 | 債權人名稱 | 債務金額 | 債務性質 | 利率 | 備註
+1 | 中國信託商業銀行 | 150,000 | 信用卡債 | 15% | 已逾期6個月
+2 | 台新國際商業銀行 | 200,000 | 信用貸款 | 8% | 分期付款中
+3 | 遠東國際商業銀行 | 120,000 | 現金卡 | 18% | 已停止動用
+4 | 國泰世華商業銀行 | 280,000 | 信用卡債 | 15% | 協商中
+
+總計：新臺幣750,000元整
+
+製表人：王大明
+中華民國112年10月1日
+            </textarea>
+<button class="btn" onclick="downloadTextFile('creditor-list.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="#">預約律師諮詢</a>
+<a class="btn" download="" href="更生聲請狀範本.docx">下載聲請狀範本</a>
+</div>
+</div>
+</div>
+
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能獲更生認可</p>";
+                recommendation = "建議完整提出財務資料並擬定合理償還計畫，成功機會很高。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能改為清算</p>";
+                recommendation = "建議誠實申報所有財產，仍有機會透過清算程序免除債務。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨聲請困難</p>";
+                recommendation = "建議補強財務證明文件，尋求專業法律協助提升成功機會。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            alert('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 債務計算器功能
+        function addAsset() {
+            const table = document.getElementById('assetTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" placeholder="例如：汽車、股票"></td>
+                <td><input type="number" placeholder="估計價值"></td>
+                <td>
+                    <select>
+                        <option value="yes">是</option>
+                        <option value="no" selected>否</option>
+                    </select>
+                </td>
+            `;
+        }
+
+        function calculateDebt() {
+            const totalDebt = Number(document.querySelector('#debtTable input[type="number"]').value);
+            const monthlyPayment = Number(document.querySelectorAll('#debtTable input[type="number"]')[1].value);
+            const debtType = document.querySelector('#debtTable select').value;
+            
+            const assetRows = document.querySelectorAll('#assetTable tr');
+            let totalAssets = 0;
+            let exemptAssets = 0;
+            
+            assetRows.forEach((row, idx) => {
+                if (idx === 0) return;
+                const value = Number(row.cells[1].querySelector('input').value);
+                const isEssential = row.cells[2].querySelector('select').value;
+                
+                totalAssets += value;
+                if (isEssential === 'yes') {
+                    exemptAssets += value;
+                }
+            });
+            
+            const repayableAssets = totalAssets - exemptAssets;
+            const repaymentPeriod = Math.min(72, Math.ceil((totalDebt - repayableAssets) / monthlyPayment));
+            const totalRepayment = repayableAssets + (monthlyPayment * repaymentPeriod);
+            const dischargeAmount = totalDebt - totalRepayment;
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>金額/內容</th></tr>
+                <tr><td>總債務金額</td><td>${totalDebt.toLocaleString()} 元</td></tr>
+                <tr><td>可處分非必需財產</td><td>${repayableAssets.toLocaleString()} 元</td></tr>
+                <tr><td>每月可償還金額</td><td>${monthlyPayment.toLocaleString()} 元</td></tr>
+                <tr><td><strong>建議更生方案</strong></td><td><strong>${repaymentPeriod} 個月內償還 ${totalRepayment.toLocaleString()} 元</strong></td></tr>
+                <tr><td>預估免除債務</td><td>${dischargeAmount.toLocaleString()} 元</td></tr>
+                <tr><td>清償比例</td><td>${Math.round((totalRepayment/totalDebt)*100)}%</td></tr>
+            </table>`;
+            
+            if (dischargeAmount < 0) {
+                resultHtml += `<div class="note" style="background:#FFEBEE;border-left-color:#F44336;">
+                    <strong>注意：</strong>依計算結果，您的財產可能足以清償全部債務，建議重新評估。
+                </div>`;
+            } else if (dischargeAmount === totalDebt) {
+                resultHtml += `<div class="note" style="background:#E8F5E9;border-left-color:#4CAF50;">
+                    <strong>分析：</strong>您可能符合清算條件，有機會免除全部債務。
+                </div>`;
+            } else {
+                resultHtml += `<div class="note">
+                    <strong>分析：</strong>此為模擬結果，實際方案需經法院審酌您的具體狀況後裁定。
+                </div>`;
+            }
+            
+            document.getElementById('result').innerHTML = resultHtml;
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '債務清理準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+</body>
+</html>
