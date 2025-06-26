@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- 保持原有的 CSS 樣式不變 -->
+</head>
+<body>
+  <!-- 保持原有的 HTML 結構不變 -->
+
+<script>
+  // ... 保持其他函數不變 ...
+
+  async function submitInitialQuestion() {
+    const input = document.getElementById("initialQuestion").value.trim();
+    if (!input) {
+      alert("⚠️ 請輸入問題後再繼續！");
+      return;
+    }
+    
+    showLoading("AI 正在生成問題，請稍候...");
+    
+    try {
+      const prompt = `請嚴格按照以下規則回應：
+1. 只返回純JSON陣列格式
+2. 不要包含任何Markdown標記
+3. 不要包含解釋文字
+
+針對以下描述生成三個問題：
+「${input}」
+
+格式範例：["問題1","問題2","問題3"]`;
+
+      const res = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [{ role: "user", content: prompt }],
+          temperature: 0.2
+        })
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`API 錯誤: ${res.status} ${errorText}`);
+      }
+
+      const data = await res.json();
+      
+      // 多層次解析處理
+      let questions = [];
+      if (typeof data.result === 'string') {
+        try {
+          // 嘗試直接解析
+          questions = JSON.parse(data.result);
+        } catch (e) {
+          // 嘗試清理後解析
+          const cleaned = data.result
+            .replace(/```json/g, '')
+            .replace(/```/g, '')
+            .trim();
+          questions = JSON.parse(cleaned);
+        }
+      } else if (Array.isArray(data.result)) {
+        questions = data.result;
+      } else {
+        throw new Error("無法解析 AI 回應格式");
+      }
+
+      if (!Array.isArray(questions)) {
+        throw new Error("問題列表格式無效");
+      }
+
+      steps = questions;
+      currentStep = 0;
+      updateStep();
+      
+    } catch (err) {
+      console.error("完整錯誤紀錄:", err);
+      showError(`處理回應時出錯: ${err.message}. 請嘗試簡化問題描述或稍後再試。`);
+    }
+  }
+
+  // ... 保持其他函數不變 ...
+</script>
+</body>
+</html>
