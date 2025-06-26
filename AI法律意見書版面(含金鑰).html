@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI 法律諮詢</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #004B6B;
+      --primary-light: #0077A3;
+      --primary-dark: #002D42;
+      --secondary: #E0F2FF;
+      --accent-bg: #F3F9FC;
+      --text-color: #111827;
+      --text-muted: #6B7280;
+      --highlight: #A5D8FC;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+      --neon-blue: #00B4D8;
+      --neon-purple: #48CAE4;
+      --gold: #90E0EF;
+      --card-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 24px rgba(0, 75, 107, 0.2);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Sans TC", "Segoe UI", sans-serif;
+      background: var(--accent-bg);
+      color: var(--text-color);
+    }
+    .wrapper {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0, 75, 107, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      font-size: 32px;
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    textarea {
+      width: 100%;
+      min-height: 240px;
+      padding: 18px;
+      font-size: 18px;
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      margin-bottom: 24px;
+      resize: vertical;
+      background: #fffefc;
+      transition: all 0.3s ease;
+    }
+    textarea:focus {
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    button {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 28px;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      background: linear-gradient(to right, var(--primary-light), var(--primary));
+    }
+    .progress-container {
+      margin: 28px 0;
+    }
+    .progress-bar {
+      height: 10px;
+      background: var(--secondary);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--neon-blue));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .encouragement {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+    .loading {
+      text-align: center;
+      font-size: 20px;
+      color: var(--primary);
+      padding: 40px 20px;
+    }
+    .opinion-section {
+      margin-bottom: 24px;
+      background: #fffefc;
+      padding: 24px;
+      border-radius: 16px;
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .opinion-section h3 {
+      color: var(--primary);
+      margin-top: 0;
+      border-bottom: 1px solid var(--secondary);
+      padding-bottom: 8px;
+      font-weight: 700;
+    }
+    .material-icons {
+      color: var(--primary);
+    }
+    
+    /* Floating tech elements */
+    .tech-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+      background: 
+          radial-gradient(circle at 20% 30%, var(--neon-blue), transparent 40%),
+          radial-gradient(circle at 80% 70%, var(--neon-purple), transparent 40%);
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-5%, 5%); }
+        100% { transform: translate(5%, -5%); }
+    }
+    
+    /* Back button styling */
+    .back-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 24px;
+      z-index: 999;
+      align-items: center;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      color: var(--primary-dark);
+    }
+    .help-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .help-btn:hover {
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+
+<div class="tech-bg"></div>
+
+<div class="back-container">
+  <a class="back-btn" href="index.html">
+    <span class="material-icons">arrow_back</span><span>返回首頁</span>
+  </a>
+  <a class="help-btn" href="#">
+    <span class="material-icons">help_outline</span><span>使用說明</span>
+  </a>
+</div>
+
+<div class="wrapper">
+  <div class="card">
+    <h1><span class="material-icons">auto_awesome</span> AI 諮詢與意見書生成</h1>
+    <p class="subtitle">由您輸入問題開始，AI 產生後續關鍵問題進行分析</p>
+    <div id="step-container"></div>
+    <div class="progress-container">
+      <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+      <div class="encouragement" id="encouragement"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+    let currentStep = -1;
+  let steps = [];
+  const answers = [];
+  const stepContainer = document.getElementById("step-container");
+
+  initFirstStep();
+
+  function initFirstStep() {
+    stepContainer.innerHTML = `
+      <label style="color:var(--primary)">請描述您的法律問題（例如：我買的房子交屋後發現漏水）</label>
+      <textarea id="initialQuestion" placeholder="請簡要輸入您的問題..." style="background:var(--secondary);"></textarea>
+<div class="encouragement">✍️ 請盡量具體描述，有助於後續問答準確</div>
+
+      <div class="buttons" style="margin-top:20px;">
+        <button onclick="submitInitialQuestion()">➡️ 開始分析</button>
+      </div>
+    `;
+    document.getElementById("progress").style.width = "0%";
+  }
+
+  async function submitInitialQuestion() {
+    const input = document.getElementById("initialQuestion").value.trim();
+    if (!input) {
+      alert("⚠️ 請輸入問題後再繼續！");
+      return;
+    }
+    showLoading("AI 正在生成問題，請稍候...");
+    try {
+      const prompt = `針對以下用戶描述的情況，請生成三個深入瞭解事實的問題：
+      
+用戶描述：「${input}」
+
+請直接以 JSON 陣列格式回覆，例如：
+[
+"第一個問題",
+"第二個問題",
+"第三個問題"
+]`;
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [{ role: "user", content: prompt }],
+          temperature: 0.2
+        })
+      });
+      const data = await res.json();
+      steps = JSON.parse(data.result);
+      currentStep = 0;
+      updateStep();
+    } catch (err) {
+      showError("生成問題時發生錯誤，請重新嘗試。");
+      console.error(err);
+    }
+  }
+
+  function showLoading(message) {
+    stepContainer.innerHTML = `<div class="loading">${message}<br><br>⏳</div>`;
+  }
+
+  function showError(message) {
+    stepContainer.innerHTML = `
+      <div class="loading">${message}</div>
+      <div class="buttons" style="margin-top:20px;">
+        <button onclick="initFirstStep()">🔄 重新開始</button>
+      </div>`;
+  }
+
+  function updateStep() {
+    const question = steps[currentStep];
+    let navButtons = "";
+    if (currentStep > 0) {
+      navButtons += `<button onclick="prevStep()">⬅️ 上一步</button>`;
+    }
+    navButtons += `<button onclick="nextStep()">➡️ 下一步</button>`;
+    stepContainer.innerHTML = `
+      <label>第 ${currentStep + 1} 題</label>
+      <p style="font-size:20px; font-weight:bold; color:var(--primary)">${question}</p>
+      <textarea id="answer">${answers[currentStep] || ""}</textarea>
+      <div class="buttons" style="margin-top:20px;">${navButtons}</div>
+    `;
+    const encouragements = ["👍 很好，再接再厲！", "💡 記得詳述細節哦！", "👏 再兩題就完成啦！", "✅ 快完成囉，加油！"];
+    document.getElementById("encouragement").innerText = encouragements[currentStep % encouragements.length];
+    document.getElementById("progress").style.width = ((currentStep + 1) / steps.length * 100) + "%";
+  }
+
+  function nextStep() {
+    const input = document.getElementById("answer");
+    if (!input.value.trim()) {
+      alert("⚠️ 請完整填寫本題後再繼續！");
+      return;
+    }
+    answers[currentStep] = input.value.trim();
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      updateStep();
+    } else {
+      generateFinalOpinion();
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      updateStep();
+    }
+  }
+
+  async function generateFinalOpinion() {
+    showLoading("AI 正在產生法律意見書中...");
+    try {
+      let finalPrompt = `根據以下用戶的回答，請依下列格式撰寫一份完整且專業的法律意見書(使用台灣地區法律)：
+
+一、案件摘要：
+簡要概述案件的基本事實和爭議點
+
+二、法律分析與適用：
+分析本案涉及的法律條文、判例和法理依據
+
+三、勝訴機率與關鍵要點：
+評估勝訴可能性(低/中/高)並說明關鍵因素
+
+四、具體建議：
+提供具體可行的法律行動建議
+
+五、證據整理：
+列出本案所需或已有的重要證據及其證明目的
+
+請根據以下問答內容撰寫：
+------------------------------\n\n`;
+      
+      steps.forEach((q, i) => {
+        finalPrompt += `問題${i + 1}：${q}\n回答：${answers[i]}\n\n`;
+      });
+
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [{ role: "user", content: finalPrompt }],
+          temperature: 0.3
+        })
+      });
+      const data = await res.json();
+      const opinion = data.result;
+      
+      // Format the opinion with sections
+      const formattedOpinion = formatOpinion(opinion);
+      
+      stepContainer.innerHTML = `
+        <h2 style="color:var(--primary)">📄 法律意見書</h2>
+        ${formattedOpinion}
+        <div class="buttons" style="margin-top:20px;">
+          <button onclick="initFirstStep()">🔄 重新開始新的諮詢</button>
+        </div>
+      `;
+      document.getElementById("progress").style.width = "100%";
+      document.getElementById("encouragement").innerText = "✅ 法律意見書已完成！";
+    } catch (err) {
+      showError("生成法律意見書時發生錯誤，請重新嘗試。");
+      console.error(err);
+    }
+  }
+
+  function formatOpinion(text) {
+    // Split the text into sections
+    const sections = text.split(/\n(?=[一二三四五]、)/g);
+    
+    let html = '';
+    sections.forEach(section => {
+      if (!section.trim()) return;
+      
+      const titleMatch = section.match(/^([一二三四五]、[^:：]+)[:：]?/);
+      if (titleMatch) {
+        const title = titleMatch[1];
+        const content = section.replace(titleMatch[0], '').trim();
+        
+        html += `
+          <div class="opinion-section">
+            <h3>${title}</h3>
+            <div style="white-space: pre-wrap;">${content}</div>
+          </div>
+        `;
+      } else {
+        html += `<div style="white-space: pre-wrap; margin-bottom: 24px;">${section}</div>`;
+      }
+    });
+    
+    return html;
+  }
+</script>
+
+</body>
+</html>
