@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 諮詢與意見書生成</title>
+</head>
+<body>
+  <h3>✨ AI 諮詢與意見書生成</h3>
+  <textarea id="question" rows="5" cols="60" placeholder="請簡要輸入您的問題..."></textarea><br>
+  <button onclick="submitInitialQuestion()">➡️ 開始分析</button>
+  <pre id="resultContainer"></pre>
+
+<script>
+async function submitInitialQuestion() {
+  const question = document.getElementById("question").value;
+  const resultContainer = document.getElementById("resultContainer");
+  resultContainer.innerText = "⏳ 正在產生分析結果...";
+
+  try {
+    const response = await fetch("https://flask-law-ai.onrender.com/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
+    });
+
+    const data = await response.json();
+
+    if (!data.result || !data.result[0]) {
+      throw new Error("Invalid response format");
+    }
+
+    resultContainer.innerText = data.result[0].content;
+  } catch (error) {
+    console.error("Error:", error);
+    resultContainer.innerText = "⚠️ 無法取得分析結果，請稍後再試。";
+  }
+}
+</script>
+</body>
+</html>
