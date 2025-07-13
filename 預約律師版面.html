@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>預約律師版面</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary: #004B6B;
+        --primary-light: #0077A3;
+        --primary-dark: #002D42;
+        --secondary: #E0F2FF;
+        --accent: #F3F9FC;
+        --bg-light: #FFFFFF;
+        --bg-dark: #1F2937;
+        --text-light: #111827;
+        --text-muted: #6B7280;
+        --text-dark: #F9FAFB;
+        --highlight: #A5D8FC;
+        --success: #10B981;
+        --warning: #F59E0B;
+        --error: #EF4444;
+        --neon-blue: #00B4D8;
+        --neon-purple: #48CAE4;
+        --neon-pink: #FF6B9E;
+        --neon-green: #00C49A;
+        --gold: #90E0EF;
+        --shadow: 0 6px 16px rgba(0,0,0,0.08);
+        --shadow-hover: 0 8px 24px rgba(0, 75, 107, 0.2);
+        --shadow-large: 0 12px 28px rgba(0,0,0,0.12);
+        --glow: 0 0 15px rgba(0, 75, 107, 0.6);
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-xl: 32px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: var(--bg-light);
+        color: var(--text-light);
+        font-family: 'Noto Sans TC', sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* 科技感背景元素 */
+    .tech-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.15;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--neon-blue), transparent 40%),
+            radial-gradient(circle at 80% 70%, var(--neon-purple), transparent 40%);
+        animation: float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-5%, 5%); }
+        100% { transform: translate(5%, -5%); }
+    }
+
+    /* 漂浮的科技元素 */
+    .floating-tech {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .tech-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        opacity: 0.15;
+    }
+
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--neon-blue);
+        top: 20%;
+        left: 10%;
+        animation: float-circle 25s infinite alternate ease-in-out;
+    }
+
+    .circle-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--neon-purple);
+        bottom: 10%;
+        right: 10%;
+        animation: float-circle 30s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float-circle {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(-50px, 50px) rotate(180deg); }
+        100% { transform: translate(50px, -50px) rotate(360deg); }
+    }
+
+    /* 品牌頭部 */
+    .brand-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transform: scale(0.9);
+        transform-origin: left center;
+    }
+
+    .logo-container img {
+        height: 64px;
+    }
+
+    /* 主內容區 */
+    .main-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-weight: 900;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    
+
+    h2 {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+        color: var(--primary-light);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    /* 卡片樣式 */
+    .card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--radius-md);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 75, 107, 0.1);
+        animation: glowFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes glowFloat {
+        0% { transform: translateY(0px); box-shadow: var(--shadow); }
+        50% { transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0, 75, 107, 0.2); }
+        100% { transform: translateY(0px); box-shadow: var(--shadow); }
+    }
+
+    /* 步驟樣式 */
+    .step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        background: white;
+        border-left: 4px solid var(--primary);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: var(--transition);
+    }
+
+    .step:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .step-icon {
+        font-size: 2rem;
+        margin-right: 1.5rem;
+        color: var(--primary);
+        min-width: 2.5rem;
+        text-align: center;
+    }
+
+    /* 按鈕樣式 */
+    .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        margin: 0.5rem;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transition: all 0.5s ease;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    /* 表單樣式 */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--primary);
+    }
+
+    .required:after {
+        content: " *";
+        color: var(--error);
+    }
+
+    input, select, textarea {
+        padding: 0.8rem;
+        width: 100%;
+        border: 1px solid rgba(0, 75, 107, 0.2);
+        border-radius: var(--radius-sm);
+        font-family: 'Noto Sans TC', sans-serif;
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(0, 75, 107, 0.1);
+    }
+
+    textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    /* 驗證碼樣式 */
+    .captcha-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .captcha-container input {
+        width: auto;
+        flex: 1;
+    }
+
+    .captcha-code {
+        font-family: monospace;
+        font-size: 1.5rem;
+        letter-spacing: 0.3rem;
+        padding: 0.5rem 1rem;
+        background: var(--accent);
+        border-radius: var(--radius-sm);
+        color: var(--primary);
+        font-weight: bold;
+    }
+
+    /* 聯繫卡片網格 */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .contact-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .contact-icon {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-right: 1rem;
+    }
+
+    /* 地圖容器 */
+    .map-container {
+        height: 300px;
+        margin: 1.5rem 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* QR Code 樣式 */
+    .qrcode-container {
+        text-align: center;
+        margin: 1.5rem 0;
+    }
+
+    .qrcode-container img {
+        max-width: 200px;
+        border: 1px solid rgba(0, 75, 107, 0.1);
+        padding: 1rem;
+        background: white;
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow);
+    }
+
+    /* 底部導航 */
+    .nav-galaxy {
+        display: flex;
+        justify-content: space-around;
+        background: linear-gradient(135deg, rgba(0, 75, 107, 0.9), rgba(0, 42, 66, 0.9));
+        padding: 0.8rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+    }
+
+    .nav-planet {
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0.5rem;
+        border-radius: var(--radius-sm);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        min-width: 60px;
+        position: relative;
+        opacity: 0.8;
+    }
+
+    .nav-planet.active,
+    .nav-planet:hover {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+
+    .nav-planet::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    .nav-planet:hover::after,
+    .nav-planet.active::after {
+        width: 50%;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+        .brand-header {
+            padding: 1rem;
+        }
+
+        .main-content {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .card, .step {
+            padding: 1.5rem;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        body {
+            padding-bottom: 70px;
+        }
+
+        .nav-galaxy {
+            padding: 0.5rem;
+        }
+
+        .nav-planet {
+            min-width: 45px;
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        .step {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .step-icon {
+            margin-bottom: 1rem;
+            margin-right: 0;
+        }
+    }
+
+/* 強化 Banner 樣式以還原 lawyer_banner_only 的視覺 */
+.hero {
+  font-family: 'Noto Serif TC', serif !important;
+}
+.hero h1 {
+  margin-bottom: 10px;
+  font-size: 2.8rem !important;
+  font-weight: 900 !important;
+  font-family: 'Noto Serif TC', serif !important;
+}
+.hero p {
+  margin-top: 10px;
+  font-size: 1.2rem !important;
+  color: #e0f2ff !important;
+}
+
+.hero h1 {
+  margin-bottom: 10px;
+  color: white !important;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      font-family: 'Noto Serif TC', sans-serif;
+      background: #FFFFFF;
+      color: #111827;
+      line-height: 1.7;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #004B6B;
+      color: white;
+      padding: 6px 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    .back-button:hover {
+      background: #00334d;
+    }
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #004B6B;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #e0f2ff;
+    }
+  </style><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/></head>
+<body><a class="back-button" href="index.html">← 返回首頁</a><div class="hero">
+<h1>預約律師諮詢</h1>
+<p>線上預約律師，立即啟動您的專屬法律支援</p>
+</div>
+<!-- 科技感背景元素 -->
+<div class="tech-bg"></div>
+<div class="floating-tech">
+<div class="tech-circle circle-1"></div>
+<div class="tech-circle circle-2"></div>
+</div>
+<!-- 品牌頭部 -->
+<!-- 主內容區 -->
+<div class="main-content">
+<div class="card"><div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;"><div style="flex: 1;"><div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; text-align: left;"><h2>預約律師聯絡資訊</h2></div><div class="contact-grid">
+<div class="contact-card">
+<h3 style="color:var(--primary);">電話聯絡</h3>
+<div class="step">
+<div class="step-icon">📞</div>
+<div>
+<p><strong>手機：</strong> <a href="tel:0906986512">0906-986-512</a></p>
+<p><strong>事務所：</strong> <a href="tel:0222668879">(02)2266-8879</a></p>
+<p>服務時間：週一至週五 9:00-18:00</p>
+</div>
+</div>
+</div>
+<div class="contact-card">
+<h3 style="color:var(--primary);">電子郵件</h3>
+<div class="step">
+<div class="step-icon">✉️</div>
+<div>
+<p><strong>電子信箱：</strong> <a href="mailto:lawaiadvisor@gmail.com">lawaiadvisor@gmail.com</a></p>
+<p>我們將在1-2個工作天內回覆您的郵件</p>
+</div>
+</div>
+</div>
+</div></div></div></div>
+<div class="card">
+<h2>LINE線上諮詢</h2>
+<div class="qrcode-container">
+<p>掃描下方QR Code加入LINE官方帳號</p>
+<img alt="LINE QR Code" src="line_qr_resized_v2.jpg" style="width:200px;height:auto;"/>
+<p>或搜尋LINE ID: <strong>lawaiadvisor</strong></p>
+</div>
+</div>
+<div class="card">
+<h2>律師預約表單</h2>
+<p>請填寫以下表單預約法律諮詢，我們將盡快與您聯繫確認預約時間。</p>
+<form id="appointmentForm" onsubmit="submitForm(event)">
+<div class="form-group">
+<label class="required" for="name">姓名</label>
+<input id="name" name="name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="required" for="phone">聯絡電話</label>
+<input id="phone" name="phone" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label for="email">電子信箱</label>
+<input id="email" name="email" type="email"/>
+</div>
+<div class="form-group">
+<label for="message">留言內容 <span style="color: #6B7280;">(例如:想預約律師的時間)</span></label>
+<textarea id="message" name="message" rows="6"></textarea>
+</div>
+<div class="form-group">
+<label class="required" for="captcha">驗證碼</label>
+<div class="captcha-container">
+<input id="captcha" name="captcha" required="" type="text"/>
+<span class="captcha-code" id="captchaCode">A7B9</span>
+<button class="btn" onclick="generateCaptcha()" type="button">更新驗證碼</button>
+</div>
+</div>
+<button class="btn" type="submit">送出預約</button>
+</form>
+</div>
+<div class="card">
+<h2>律師事務所位置</h2>
+<p><strong>地址：</strong>新北市土城區青雲路145號2樓</p>
+<div class="map-container">
+<iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps?q=新北市土城區青雲路145號 慈律律師事務所&amp;output=embed"></iframe>
+</div>
+<div class="step">
+<div class="step-icon">🚆</div>
+<div>
+<h3>大眾運輸</h3>
+<p>搭乘捷運板南線至土城站，轉乘公車275、705至青雲路口站下車，步行約3分鐘</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🅿️</div>
+<div>
+<h3>停車資訊</h3>
+<p>附近有金城立體停車場（每小時30元）及路邊停車格</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 底部導航 -->
+<script>
+    function generateCaptcha() {
+        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let captcha = "";
+        for (let i = 0; i < 4; i++) {
+            captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        document.getElementById("captchaCode").textContent = captcha;
+    }
+
+    // 初始化驗證碼
+    generateCaptcha();
+
+    // 提交表單
+    function submitForm(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+        const captcha = document.getElementById("captcha").value;
+        const captchaCode = document.getElementById("captchaCode").textContent;
+        
+        // 驗證碼檢查
+        if (captcha.toUpperCase() !== captchaCode) {
+            alert("驗證碼錯誤，請重新輸入");
+            generateCaptcha();
+            return;
+        }
+        
+        // 這裡實際應用中應該使用AJAX發送到後端
+        // 以下是模擬發送郵件的功能
+        const mailtoLink = `mailto:lawaiadvisor@gmail.com?subject=法律諮詢預約 - ${name}&body=姓名: ${name}%0D%0A電話: ${phone}%0D%0A電子郵件: ${email}%0D%0A留言內容: ${message}`;
+        window.location.href = mailtoLink;
+        
+        alert("預約表單已送出，我們將盡快與您聯繫！");
+        document.getElementById("appointmentForm").reset();
+        generateCaptcha();
+    }
+
+    // 滾動動畫
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.card, .step');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if(elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+</script>
+<!-- 固定於右下角的 LINE 按鈕 -->
+<a href="https://line.me/ti/p/@lawaiadvisor" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background-color: #00c300;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 999;
+" target="_blank">
+  LINE<br/>立即回覆
+</a>
+<!-- 固定於右下角的 LINE 按鈕 -->
+<style>
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
+</style>
+<a href="https://line.me/ti/p/@lawaiadvisor" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 92px;
+  height: 92px;
+  background-color: #00c300;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 999;
+  animation: shake 2s infinite ease-in-out;
+" target="_blank">
+<div style="font-size: 15.6px; font-weight: 900;">LINE</div>
+<div style="font-family: 'Merriweather', serif; font-size: 14.4px; font-weight: bold;">立即回覆</div>
+</a>
+</body>
+</html>
