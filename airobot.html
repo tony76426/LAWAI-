@@ -894,7 +894,7 @@ async function fetchAnswer(question) {
         conversationHistory = conversationHistory.slice(conversationHistory.length - 10);
     }
 
-    const response = await fetch("https://flask-law-ai.onrender.com/api/generate", {
+    const response = await fetch("https://airobot-br7n.onrender.com/airobot/api/generate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -902,8 +902,10 @@ async function fetchAnswer(question) {
         body: JSON.stringify({
             messages: [
                 {
-                    role: "system",
-                    content: "請依下列兩點原則回答使用者問題：1. 回覆內容請使用台灣法律用語與台灣民眾習慣表達方式。2. 請將回覆控制在150個字以內。"
+                    role: "system", content: `請依下列原則回答使用者問題：
+1. 回覆內容請使用台灣法律用語與台灣民眾習慣表達方式。
+2. 回覆請控制在150個字以內。
+3. 若問題與法律無關（如生活、天氣、娛樂、心情等），請直接回覆：「⚠️ LawAi 法詢僅處理法律相關問題，請改為提出法律問題。」並不要嘗試回答其他內容。`
                 },
                 ...conversationHistory
             ]
