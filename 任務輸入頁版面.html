@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>任務詳情頁 | LawAI 法詢</title>
+<meta content="AI科技與法律的完美結合，智能法律諮詢、文件生成與案例分析" name="description"/>
+<link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary: #4f6c7d;
+        --primary-light: #6a7e8c;
+        --primary-dark: #2e4a3f;
+        --secondary: #F2E8DF;
+        --accent: #f9f6f1;
+        --bg-light: #F2E8DF;
+        --bg-dark: #1F2937;
+        --text-light: #2c3e50;
+        --text-muted: #5a5a5a;
+        --text-dark: #F9FAFB;
+        --highlight: #A5D8FC;
+        --success: #10B981;
+        --warning: #F59E0B;
+        --error: #EF4444;
+        --neon-blue: #00B4D8;
+        --neon-purple: #48CAE4;
+        --neon-pink: #FF6B9E;
+        --neon-green: #00C49A;
+        --gold: #90E0EF;
+        --shadow: 0 6px 16px rgba(0,0,0,0.08);
+        --shadow-hover: 0 8px 24px rgba(0, 75, 107, 0.2);
+        --shadow-large: 0 12px 28px rgba(0,0,0,0.12);
+        --glow: 0 0 15px rgba(0, 75, 107, 0.6);
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-xl: 32px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: var(--bg-light);
+        color: var(--text-light);
+        font-family: 'Noto Sans TC', sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding: 20px;
+    }
+
+    /* 科技感背景元素 */
+    .tech-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.15;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--neon-blue), transparent 40%),
+            radial-gradient(circle at 80% 70%, var(--neon-purple), transparent 40%);
+        animation: float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-5%, 5%); }
+        100% { transform: translate(5%, -5%); }
+    }
+
+    /* 漂浮的科技元素 */
+    .floating-tech {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .tech-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        opacity: 0.15;
+    }
+
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--neon-blue);
+        top: 20%;
+        left: 10%;
+        animation: float-circle 25s infinite alternate ease-in-out;
+    }
+
+    .circle-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--neon-purple);
+        bottom: 10%;
+        right: 10%;
+        animation: float-circle 30s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float-circle {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(-50px, 50px) rotate(180deg); }
+        100% { transform: translate(50px, -50px) rotate(360deg); }
+    }
+
+    /* 品牌頭部 */
+    .brand-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+    }
+
+    .logo-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 1.8rem;
+        color: var(--primary);
+        transition: var(--transition);
+        line-height: 1;
+    }
+
+    /* 任務卡片 */
+    
+.task-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-large);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(10, 36, 99, 0.1);
+    position: relative;
+    overflow: hidden;
+    max-width: 960px;
+    margin: 40px auto;
+}
+.task-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 0;
+        background: linear-gradient(to bottom, var(--neon-blue), var(--primary));
+        transition: height 0.3s ease;
+    }
+
+    .task-card:hover::before {
+        height: 100%;
+    }
+
+    
+.task-field {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    border: 2px solid var(--primary-light);
+    border-radius: var(--radius-md);
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: var(--transition);
+    line-height: 1.7;
+}
+
+.task-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.2);
+}
+
+textarea.task-field {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    min-height: 240px;
+    resize: vertical;
+}
+
+
+    /* 按鈕樣式 */
+    .action-btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-sm);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .action-btn .material-icons {
+        font-size: 1.2rem;
+    }
+
+    .action-btn.publish {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        width: 100%;
+        max-width: 500px;
+        margin: 2rem auto 0;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-large);
+        transition: var(--transition);
+    }
+
+    .action-btn.publish:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: var(--shadow-hover), 0 0 25px rgba(0, 75, 107, 0.8);
+    }
+
+    /* 文件預覽 */
+    #filePreview {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #filePreview div {
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(0, 75, 107, 0.2);
+        border-radius: var(--radius-sm);
+        background: rgba(224, 242, 255, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    #filePreview span:first-child {
+        font-size: 1.2rem;
+    }
+
+    /* 律師回應卡片 */
+    .response-card {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 75, 107, 0.1);
+        backdrop-filter: blur(5px);
+    }
+
+    .response-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .response-card p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .lawyer-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    /* 底部導航 */
+    .nav-galaxy {
+        display: flex;
+        justify-content: space-around;
+        background: linear-gradient(135deg, rgba(0, 75, 107, 0.9), rgba(0, 42, 66, 0.9));
+        padding: 0.8rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+    }
+
+    .nav-planet {
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0.5rem;
+        border-radius: var(--radius-sm);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        min-width: 60px;
+        position: relative;
+        opacity: 0.8;
+    }
+
+    .nav-planet.active,
+    .nav-planet:hover {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+
+    .nav-planet::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    .nav-planet:hover::after,
+    .nav-planet.active::after {
+        width: 50%;
+    }
+
+    .nav-planet .material-icons {
+        font-size: 1.4rem;
+    }
+
+    /* 返回按鈕 */
+    .tool-btn {
+        padding: 0.5rem 1rem;
+        border: 2px solid var(--primary);
+        background-color: white;
+        color: var(--primary);
+        font-weight: 600;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .tool-btn:hover {
+        background-color: var(--primary);
+        color: white;
+    }
+
+    /* 標題 */
+    h1 {
+        text-align: center;
+        color: var(--primary);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 900;
+    }
+
+    h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem;
+            padding-bottom: 70px;
+        }
+        
+        .task-card, .response-card {
+            padding: 1.5rem;
+        }
+        
+        .action-btn.publish {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .lawyer-actions {
+            flex-direction: column;
+        }
+    }
+</style>
+<style>
+@media (max-width: 768px) {
+    .step-container {
+        flex-direction: column !important;
+    }
+    .step-arrow {
+        transform: rotate(90deg);
+        font-size: 2rem;
+        margin: 0.5rem 0;
+    }
+}
+</style>
+<style>
+.tool-btn:hover {
+    background-color: #4f6c7d;
+    color: white;
+}
+</style>
+
+<style>
+.back-container {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 999;
+  align-items: center;
+}
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.back-btn:hover {
+  color: var(--primary-dark);
+}
+@media (max-width: 600px) {
+  .back-btn span:last-child {
+    display: none;
+  }
+  .back-btn .material-icons {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="back-container">
+<a class="back-btn" href="index.html">
+<span class="material-icons">arrow_back</span><span>返回首頁</span>
+</a>
+</div>
+
+<!-- 科技感背景元素 -->
+<div class="tech-bg"></div>
+<div class="floating-tech">
+<div class="tech-circle circle-1"></div>
+<div class="tech-circle circle-2"></div>
+</div>
+
+<div class="task-card">
+<h1 style="text-align: center; color: var(--primary); font-size: 2.2rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><span class="material-icons" style="">auto_awesome</span>任務發布區</h1>
+<p class="subtitle" style="text-align: center; color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2.5rem;">
+    由您輸入問題後發布任務，12小時內律師回覆
+</p>
+<h3>
+<span class="material-icons">title</span>任務標題
+        </h3>
+<input class="task-field" placeholder="輸入任務標題..." style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/>
+<h3>
+<span class="material-icons">description</span>任務描述
+        </h3>
+<textarea class="task-field" placeholder="詳細描述您的需求..." rows="6"></textarea>
+<input accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" id="fileInput" multiple="" onchange="previewFiles(event)" style="display: none;" type="file"/><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;"><button class="action-btn" onclick="document.getElementById('fileInput').click()">
+<span class="material-icons">upload_file</span>上傳檔案
+        </button><div style="font-size: 1rem; color: var(--text-muted); margin-left: 0.3rem; white-space: nowrap;">（請點擊，上傳您相關案情的文件與檔案）</div></div>
+<div id="filePreview" style="margin-top: 1rem;"></div>
+<div style="background: rgba(255,255,255,0.85); border-radius: 14px; padding: 1rem 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1.5rem 0 1rem 0; border: 1px solid rgba(0,0,0,0.04);"><h3 style="margin-bottom: 0.8rem; font-size: 1.05rem; color: var(--primary); font-weight: 700;">📬 聯絡方式</h3><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">👤 您的姓名或暱稱</label><input class="task-field" placeholder="請輸入您的姓名或暱稱" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/><div style="display:flex; flex-wrap:wrap; gap:1rem;"><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">📞 聯絡電話</label><input class="task-field" placeholder="請輸入電話" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="tel"/></div><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">💬 LINE ID</label><input class="task-field" placeholder="請輸入LINE ID" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/></div></div><label style="display:block; font-weight: 500; margin-top: 1.2rem; margin-bottom: 0.2rem; font-size: 0.9rem;">📧 Email</label><input class="task-field" placeholder="請輸入Email（選填）" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="email"/></div><button class="action-btn publish">
+<span class="material-icons">task_alt</span>發布任務
+        </button>
+</div>
+<div class="lawyer-actions">
+</div>
+<script>
+    function getIconByType(filename) {
+        const ext = filename.split('.').pop().toLowerCase();
+        if (['jpg', 'jpeg', 'png'].includes(ext)) return '🖼️';
+        if (['pdf'].includes(ext)) return '📄';
+        if (['doc', 'docx'].includes(ext)) return '📝';
+        return '📎';
+    }
+
+    function previewFiles(event) {
+        const files = event.target.files;
+        const preview = document.getElementById('filePreview');
+        preview.innerHTML = ''; // clear existing
+
+        Array.from(files).slice(0, 3).forEach(file => {
+            const icon = getIconByType(file.name);
+            const item = document.createElement('div');
+            item.style.padding = '8px 12px';
+            item.style.border = '1px solid rgba(0, 75, 107, 0.2)';
+            item.style.borderRadius = '8px';
+            item.style.background = 'rgba(224, 242, 255, 0.3)';
+            item.style.display = 'flex';
+            item.style.alignItems = 'center';
+            item.style.gap = '8px';
+            item.innerHTML = `<span style="font-size: 24px">${icon}</span><span style="font-size:14px">${file.name}</span>`;
+            preview.appendChild(item);
+        });
+    }
+
+    // 底部導航交互
+    const navPlanets = document.querySelectorAll('.nav-planet');
+    navPlanets.forEach(planet => {
+        planet.addEventListener('click', function() {
+            navPlanets.forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    let allFiles = [];
+
+    function previewFiles(event) {
+        const newFiles = Array.from(event.target.files);
+        allFiles = allFiles.concat(newFiles).slice(0, 5); // 最多保留5個
+
+        const preview = document.getElementById('filePreview');
+        preview.innerHTML = ''; // 重新繪製全部
+
+        allFiles.forEach(file => {
+            const icon = getIconByType(file.name);
+            const item = document.createElement('div');
+            item.style.padding = '8px 12px';
+            item.style.border = '1px solid rgba(0, 75, 107, 0.2)';
+            item.style.borderRadius = '8px';
+            item.style.background = 'rgba(224, 242, 255, 0.3)';
+            item.style.display = 'flex';
+            item.style.alignItems = 'center';
+            item.style.gap = '8px';
+            item.innerHTML = `<span style="font-size: 24px">${icon}</span><span style="font-size:14px">${file.name}</span>`;
+            preview.appendChild(item);
+        });
+
+        // 清空 input 允許重複上傳
+        event.target.value = '';
+    }
+    </script>
+<div style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-top: 4rem; margin-bottom: 1.2rem; color: var(--primary); text-shadow: 0 1px 1px rgba(0,0,0,0.05);">✨ 智能任務流程說明</div><div class="step-container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 4rem;"><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">auto_awesome</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">輸入任務標題</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">notes</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">撰寫詳細說明</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">upload_file</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">上傳相關檔案</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">rocket_launch</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">發佈任務給團隊</div></div></div>
+<script>
+document.querySelector(".action-btn.publish").addEventListener("click", async () => {
+    const title = document.querySelector("input[placeholder='輸入任務標題...']").value.trim();
+    const description = document.querySelector("textarea.task-field").value.trim();
+    const name = document.querySelector("input[placeholder='請輸入您的姓名或暱稱']").value.trim();
+    const phone = document.querySelector("input[placeholder='請輸入電話']").value.trim();
+    const line = document.querySelector("input[placeholder='請輸入LINE ID']").value.trim();
+    const email = document.querySelector("input[placeholder='請輸入Email（選填）']").value.trim();
+
+    const res = await fetch("https://你的後端網址.onrender.com/submit-task", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description, name, phone, line, email })
+    });
+
+    const result = await res.json();
+    if (result.success) {
+        alert("✅ 任務已成功送出！");
+    } else {
+        alert("❌ 發生錯誤：" + result.error);
+    }
+});
+</script>
+
+
+<script>
+document.querySelector(".action-btn.publish").addEventListener("click", async () => {
+    const title = document.querySelector("input[placeholder='輸入任務標題...']").value.trim();
+    const description = document.querySelector("textarea.task-field").value.trim();
+    const name = document.querySelector("input[placeholder='請輸入您的姓名或暱稱']").value.trim();
+    const phone = document.querySelector("input[placeholder='請輸入電話']").value.trim();
+    const line = document.querySelector("input[placeholder='請輸入LINE ID']").value.trim();
+    const email = document.querySelector("input[placeholder='請輸入Email（選填）']").value.trim();
+
+    const res = await fetch("https://task-submit-api.onrender.com/submit-task", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description, name, phone, line, email })
+    });
+
+    const result = await res.json();
+    if (result.success) {
+        alert("✅ 任務已成功送出！");
+    } else {
+        alert("❌ 發生錯誤：" + result.error);
+    }
+});
+</script>
+
+</body>
+</html>
