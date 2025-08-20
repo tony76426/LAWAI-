@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>調職減薪爭議法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 工資計算器專用樣式 */
+        .salary-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .salary-calculator h1, 
+        .salary-calculator h2, 
+        .salary-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .salary-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .salary-calculator .btn {
+            background: #4f6c7d;
+        }
+        .salary-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .salary-calculator th {
+            background-color: #4f6c7d;
+        }
+        .salary-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+        /* 新增計算式分頁專用樣式 */
+        .formula-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .formula-title {
+            color: #4f6c7d;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .formula-content {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+        }
+        .formula-example {
+            background: #F2E8DF;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 工資計算器響應式 */
+    .salary-calculator h1 {
+        font-size: 1.5em;
+    }
+    .salary-calculator h2 {
+        font-size: 1.2em;
+    }
+    .salary-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .salary-calculator th, 
+    .salary-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .salary-calculator input, 
+    .salary-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .salary-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .salary-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    /* 計算式分頁響應式 */
+    .formula-content {
+        font-size: 0.9em;
+        padding: 10px;
+        overflow-x: auto;
+    }
+}
+</style>
+<style>
+@media (min-width: 769px) {
+  .back-home-container a {
+    border: 1px solid #4f6c7d !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 14px !important;
+    color: #4f6c7d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    text-decoration: none !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 18px !important;
+    color: #4f6c7d !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    margin-left: 2px !important;
+    font-weight: 600 !important;
+  }
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+.back-home-container a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  color: #4f6c7d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-home-container a:visited,
+.back-home-container a:active,
+.back-home-container a:hover {
+  color: #4f6c7d;
+  text-decoration: none;
+}
+.back-home-container .material-icons {
+  font-size: 22px;
+  color: #4f6c7d !important;
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+@media screen and (max-width: 768px) {
+    #salaryResult {
+        font-size: 1.1em;
+        padding: 15px 10px;
+        line-height: 1.6;
+    }
+    #salaryResult table {
+        font-size: 1em;
+    }
+    #salaryResult .note {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+</style>
+<style>
+/* Hide Mermaid's auto legend next to charts (keep our custom legend below) */
+.mermaid .legend { display: none !important; }
+
+/* Remove mobile tap highlight & text selection for the interactive flowchart */
+#interactive-flowchart, #interactive-flowchart * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+svg#interactive-flowchart {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+<style>
+
+@media (max-width: 768px) {
+  /* Keep the bottom CTA compact (not 100% width) on mobile */
+  .salary-calculator .btn.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+  .salary-calculator .cta-left-row {
+    justify-content: flex-start !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="back-home-container">
+<a href="index.html">
+<span class="material-icons">arrow_back</span>
+<span class="desktop-only">返回首頁</span>
+</a>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.back-home-container {
+  margin-bottom: 5px !important;
+}
+h1 {
+  margin-top: 5px !important;
+}
+body {
+  padding-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .back-home-container a {
+    position: relative;
+    display: inline-block;
+  }
+  .back-home-container a::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: -30%;
+    right: -30%;
+    z-index: 1;
+  }
+  .back-home-container a span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+</style>
+<h1>調職減薪爭議法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'formula')" style="font-size: 110% !important;">計算式</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+
+<!-- 案件總覽分頁 -->
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>調職減薪爭議基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是調職減薪爭議？</h3>
+<p>當雇主未經勞工同意，單方面變更工作地點、職務內容或降低薪資時，即構成調職減薪爭議。常見爭議包括：工作地點變更造成通勤負擔、職務性質重大變更、薪資無故減少等。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求確認調職或減薪無效</li>
+<li>請求補發薪資差額及法定遲延利息（年利率5%）</li>
+<li>向主管機關申訴，對雇主進行裁罰</li>
+<li>透過調解或訴訟程序解決爭議</li>
+<li>申請恢復原勞動條件</li>
+</ul>
+</div>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>調職減薪爭議處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 調職減薪爭議處理時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    收到調職減薪通知 :done, a1, 2023-01-01, 1d
+                    協商談判 :done, a2, after a1, 14d
+                    section 法律程序
+                    申請勞資爭議調解 :done, a3, 2023-02-01, 7d
+                    調解會議 :active, a4, 2023-03-01, 30d
+                    訴訟程序 : a5, after a4, 60d
+                    section 執行階段
+                    確認調動無效或補發薪資 : a6, after a5, 14d
+            </div></div>
+<p><small>※ 注意：完整流程通常需1-3個月，視爭議複雜度而定</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 處理流程分頁 -->
+<div class="tabcontent" id="process">
+<h2>調職減薪爭議申請流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">調職減薪爭議互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="收到調職減薪通知">
+<rect fill="#4f6c7d" height="40" rx="8" width="160" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="100" y="205">收到調職減薪通知</text>
+</g>
+<g class="node" data-name="評估合理性">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="200" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="250" y="205">評估合理性</text>
+</g>
+<g class="node" data-name="協商談判">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="330" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="380" y="165">協商談判</text>
+</g>
+<g class="node" data-name="達成協議">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="480" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="530" y="125">達成協議</text>
+</g>
+<g class="node" data-name="申請調解">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="480" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="530" y="205">申請調解</text>
+</g>
+<g class="node" data-name="調解會議">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="630" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="680" y="205">調解會議</text>
+</g>
+<g class="node" data-name="調解成立">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="760" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="810" y="205">調解成立</text>
+</g>
+<g class="node" data-name="提起訴訟">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="760" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="810" y="265">提起訴訟</text>
+</g>
+<g class="node" data-name="訴訟程序">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="630" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="680" y="265">訴訟程序</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="180" x2="200" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="300" x2="330" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="430" x2="480" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="430" x2="480" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="580" x2="630" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="730" x2="760" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="810" x2="810" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="680" x2="760" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="630" x2="630" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.setAttribute("tabindex", "-1");
+            node.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            }, { passive: false });
+            node.addEventListener("click", (e) => {
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "收到調職減薪通知": "雇主通知變更工作地點、職務內容或降低薪資，應立即評估合理性並保留通知文件。",
+                "評估合理性": "評估調職或減薪是否符合業務需要、是否造成重大不利益、是否違反誠信原則。",
+                "協商談判": "與雇主就調職減薪內容進行協商，建議以書面方式記錄協商過程及結果。",
+                "達成協議": "如能達成協議，應訂立書面協議書並依約履行，完成勞動條件變更程序。",
+                "申請調解": "向當地勞工局或調解委員會提出申請，需附勞動契約、調職通知及相關證據。",
+                "調解會議": "調解委員將聽取雙方意見，協助達成協議，調解成立結果與確定判決有同一效力。",
+                "調解成立": "調解成立後，雙方應依調解內容履行，如有不履行可聲請強制執行。",
+                "提起訴訟": "調解不成立時，可向法院提起確認調動無效或給付薪資差額之訴。",
+                "訴訟程序": "法院將審理雙方主張及證據，判決調動是否有效及應否補發薪資差額。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>評估合理性</td>
+<td>確認調動是否符合業務需要、是否造成重大不利益</td>
+<td>1-3天</td>
+<td>評估通勤時間、家庭照顧責任、職務性質變更程度</td>
+</tr>
+<tr>
+<td>協商談判</td>
+<td>書面溝通、保留證據</td>
+<td>1-2週</td>
+<td>避免口頭承諾無紀錄，明確表達不同意立場</td>
+</tr>
+<tr>
+<td>申請調解</td>
+<td>準備相關文件證據</td>
+<td>1-2週</td>
+<td>可自行或委任代理人，說明調動不合理之處</td>
+</tr>
+<tr>
+<td>調解會議</td>
+<td>陳述事實、提出方案</td>
+<td>1-2小時</td>
+<td>保持理性溝通態度，強調調動造成的不利益</td>
+</tr>
+<tr>
+<td>訴訟程序</td>
+<td>委任律師或自行起訴</td>
+<td>1-3個月</td>
+<td>舉證調動不合理及造成的不利益</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 調職減薪爭議判決比例
+                    "確認調動無效" : 55
+                    "部分調整條件" : 30
+                    "維持調動決定" : 15
+            </div>
+<div class="pie-legend" style="display:flex;justify-content:flex-start;gap:16px;margin-top:8px;flex-wrap:wrap;margin-left:1.5cm;">
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#A5D6A7;"></span>
+<span>確認調動無效</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#FFF59D;"></span>
+<span>部分調整條件</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#EF9A9A;"></span>
+<span>維持調動決定</span>
+</div>
+</div>
+<p><small>※ 根據近年法院統計，多數調職減薪爭議案件判決勞工勝訴，獲得調動無效或部分調整</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 風險評估分頁 -->
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的調職減薪爭議勝訴可能性評估</h3>
+<p>請回答以下問題，評估您的調職減薪爭議勝訴可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 調職後的通勤時間增加程度？</label>
+<select id="q1">
+<option value="3">增加超過1.5小時以上</option>
+<option value="2">增加1-1.5小時</option>
+<option value="1">增加30分鐘-1小時</option>
+<option value="0">增加少於30分鐘</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 薪資減少的比例？</label>
+<select id="q2">
+<option value="3">減少20%以上</option>
+<option value="2">減少10-20%</option>
+<option value="1">減少5-10%</option>
+<option value="0">減少少於5%</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 職務內容變更程度？</label>
+<select id="q3">
+<option value="3">完全不同的專業領域</option>
+<option value="2">需要額外專業技能</option>
+<option value="1">部分工作內容變更</option>
+<option value="0">僅輕微調整</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 雇主是否事前與您協商？</label>
+<select id="q4">
+<option value="3">完全未協商</option>
+<option value="2">僅口頭告知</option>
+<option value="1">有討論但未獲同意</option>
+<option value="0">有充分協商</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 您保存的證據完整度？</label>
+<select id="q5">
+<option value="3">完整勞動契約、調職通知、通勤證明</option>
+<option value="2">有主要證據但部分缺失</option>
+<option value="1">僅有基本勞動契約</option>
+<option value="0">幾乎無任何證據</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">調職減薪爭議勝訴可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p></p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：確認調動無效並補發薪資</h4>
+<p>可能性：55% (證據充分、調動明顯不合理)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>法院確認調職或減薪無效</li>
+<li>雇主需補發薪資差額</li>
+<li>加計法定遲延利息</li>
+<li>恢復原勞動條件</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分調整勞動條件</h4>
+<p>可能性：30% (部分爭議或證據不足)</p>
+<p>可能內容：</p>
+<ul>
+<li>調整部分勞動條件（如通勤補助）</li>
+<li>部分補發薪資差額</li>
+<li>雙方就爭議條件達成和解</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：維持調動決定</h4>
+<p>可能性：15% (重大證據不足或調動具合理性)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強證據重新主張</li>
+<li>協商其他補償方案</li>
+<li>考慮是否繼續維持勞動關係</li>
+</ul>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">調職或減薪通知文件</span>
+</div>
+<p class="evidence-desc">效力最高，特別是載明變更內容、生效日期及理由的正式文件。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💼</span>
+<span class="evidence-title">原勞動契約與薪資證明</span>
+</div>
+<p class="evidence-desc">證明原勞動條件，最好有雇主簽章或公司抬頭。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🗺️</span>
+<span class="evidence-title">通勤時間與費用證明</span>
+</div>
+<p class="evidence-desc">證明調動後增加的通勤負擔，如地圖路線、車票收據等。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💬</span>
+<span class="evidence-title">協商過程紀錄</span>
+</div>
+<p class="evidence-desc">雙方協商過程的簡訊、電子郵件等紀錄，可證明雇主未獲同意。</p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 準備清單分頁 -->
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>調職減薪爭議準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">勞動契約書正本或影本</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">調職或減薪通知文件</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">原薪資單與變更後薪資證明</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">通勤時間與費用證明</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">職務內容說明文件</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">與雇主的協商紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">家庭照顧責任證明（如適用）</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">其他證人聯絡方式</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認調職減薪法律依據</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估調動不合理之處</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備替代方案供調解參考</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">計算薪資差額及損失</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估調解或訴訟成本效益</label>
+</div>
+</div>
+
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 新增計算式分頁 -->
+<div class="tabcontent" id="formula">
+<h2>調職減薪爭議計算式</h2>
+<div class="card">
+<h3>薪資差額計算公式</h3>
+<div class="formula-section">
+<h4 class="formula-title">基本薪資差額計算</h4>
+<div class="formula-content">
+薪資差額 = 原約定月薪 - 調整後月薪
+</div>
+<p>此為最基礎的薪資差額計算方式，適用於單純減薪情況。</p>
+<div class="formula-example">
+<strong>範例：</strong>原月薪為新臺幣45,000元，調整後為新臺幣40,000元，則每月薪資差額為45,000 - 40,000 = 5,000元。
+</div>
+</div>
+
+<div class="formula-section">
+<h4 class="formula-title">含遲延利息計算</h4>
+<div class="formula-content">
+應補發總額 = Σ(每月薪資差額) × (1 + 5% × 遲延月數/12)
+</div>
+<p>根據民法第203條，遲延利息按年利率5%計算。</p>
+<div class="formula-example">
+<strong>範例：</strong>積欠3個月薪資差額各5,000元，遲延6個月，則應補發總額為(5,000×3) × (1 + 5%×6/12) = 15,000 × 1.025 = 15,375元。
+</div>
+</div>
+
+<div class="formula-section">
+<h4 class="formula-title">通勤成本增加計算</h4>
+<div class="formula-content">
+每月通勤成本增加 = (新通勤費用 - 原通勤費用) × 每月工作天數
+</div>
+<p>可作為主張調動不合理或請求補貼的計算依據。</p>
+<div class="formula-example">
+<strong>範例：</strong>原每日通勤費用為30元，調動後為80元，每月工作22天，則每月增加(80-30)×22 = 1,100元。
+</div>
+</div>
+
+<div class="formula-section">
+<h4 class="formula-title">總損失估算</h4>
+<div class="formula-content">
+總損失 = Σ(薪資差額 + 通勤成本增加) × 爭議期間 + 其他損失
+</div>
+<p>用於調解或訴訟時估算總損失金額。</p>
+<div class="formula-example">
+<strong>範例：</strong>6個月爭議期間，每月薪資差額5,000元，通勤成本增加1,100元，則總損失估算為(5,000+1,100)×6 = 36,600元。
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>計算工具</h3>
+<table>
+<tr>
+<th>項目</th>
+<th>輸入數值</th>
+</tr>
+<tr>
+<td>原約定月薪</td>
+<td><input type="number" id="originalSalary" placeholder="輸入金額"/></td>
+</tr>
+<tr>
+<td>調整後月薪</td>
+<td><input type="number" id="adjustedSalary" placeholder="輸入金額"/></td>
+</tr>
+<tr>
+<td>爭議期間（月）</td>
+<td><input type="number" id="disputeMonths" placeholder="輸入月數"/></td>
+</tr>
+<tr>
+<td>遲延期間（月）</td>
+<td><input type="number" id="delayMonths" placeholder="輸入月數"/></td>
+</tr>
+</table>
+<button class="btn" onclick="calculateCompensation()">計算應補發金額</button>
+<div id="formulaResult" style="margin-top: 20px;"></div>
+</div>
+
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 文件範本分頁 -->
+<div class="tabcontent inheritance-calculator" id="documents">
+<h2 style="color: #2c3e50; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>調職異議函</h3>
+<textarea style="width:100%; height:200px; margin-bottom:15px;">
+致 [雇主名稱] 先生/女士：
+
+本人[勞工姓名]前於貴公司擔任[職務名稱]，已接獲台端[日期]發函通知，擬自[生效日期]起將本人工作地點調整為[新地點]，並將月薪由新臺幣[原薪資]元調整為新臺幣[新薪資]元，新增工作內容包括[新增工作內容]。
+
+經查，上開調整未經本人事前協商同意，且已造成下列重大不利益：
+1. 通勤時間由原[原時間]增加至[新時間]，每月增加交通費用約新臺幣[金額]元。
+2. 新增工作內容[說明與原職務差異]，已超出原勞動契約約定範圍。
+3. 薪資減少幅度達[百分比]%，顯失合理。
+
+依勞動基準法第10條之1及相關規定，台端所為調動欠缺合理性與必要性，且未經本人同意，依法應屬無效。請台端於文到七日內撤銷上開調動決定，否則本人將依法採取必要法律行動，以維權益。
+
+此致
+
+[勞工姓名] 謹啟
+[發函日期]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('transfer-objection-letter.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h3>勞資爭議調解申請書範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;">
+調解申請書
+
+申請人：[勞工姓名] （身分證字號：[身分證號]）
+住址：[居住地址]
+電話：[聯絡電話]
+
+相對人：[雇主名稱]
+住址：[公司地址]
+電話：[公司電話]
+
+為請求確認調職無效及補發薪資差額事件，依法申請調解：
+
+一、調解標的：
+1. 確認相對人[日期]調職決定無效。
+2. 相對人應補發自[日期]起之薪資差額新臺幣[金額]元。
+
+二、事實及理由：
+（一）申請人前於相對人公司擔任[職務名稱]，約定工作地點為[原地點]，月薪新臺幣[原薪資]元。
+（二）相對人於[日期]未經協商即通知將工作地點改為[新地點]，月薪降為新臺幣[新薪資]元，並新增[新增工作內容]等工作。
+（三）上開調整造成申請人通勤時間由[原時間]增加至[新時間]，每月增加交通費用約[金額]元，且職務性質變更顯著，已超出原勞動契約約定範圍。
+（四）為此，申請人請求 貴會調解，命相對人撤銷調動決定並補發薪資差額。
+
+此致
+[縣市名稱]勞工局
+
+申請人：[勞工姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('labor-mediation-request.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div>
+</div>
+
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能確認調動無效</p>";
+                recommendation = "建議完整提出證據並依法主張，成功機會很高。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能獲部分調整</p>";
+                recommendation = "建議針對不合理處提出反證，爭取最大權益保障。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能維持調動決定</p>";
+                recommendation = "建議補強證據，特別是通勤與職務變更證明，考慮協商替代方案。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 計算補償金額
+        function calculateCompensation() {
+            const originalSalary = Number(document.getElementById('originalSalary').value) || 0;
+            const adjustedSalary = Number(document.getElementById('adjustedSalary').value) || 0;
+            const disputeMonths = Number(document.getElementById('disputeMonths').value) || 0;
+            const delayMonths = Number(document.getElementById('delayMonths').value) || 0;
+            
+            const monthlyDifference = originalSalary - adjustedSalary;
+            const totalDifference = monthlyDifference * disputeMonths;
+            const interest = 1 + (0.05 * delayMonths / 12);
+            const totalCompensation = totalDifference * interest;
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>金額</th></tr>
+                <tr><td>每月薪資差額</td><td>${monthlyDifference.toLocaleString()} 元</td></tr>
+                <tr><td>爭議期間總差額</td><td>${totalDifference.toLocaleString()} 元</td></tr>
+                <tr><td>遲延利息（年利率5%）</td><td>${(totalDifference * 0.05 * delayMonths / 12).toLocaleString()} 元</td></tr>
+                <tr><td><strong>應補發總額</strong></td><td><strong>${Math.round(totalCompensation).toLocaleString()} 元</strong></td></tr>
+            </table>`;
+            
+            document.getElementById('formulaResult').innerHTML = resultHtml;
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            showCustomModal('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '調職減薪爭議準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+<style>
+/* 自訂彈窗背景 */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+/* 自訂彈窗 */
+.custom-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    padding: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.custom-modal-header { display: none; }
+.custom-modal-body {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+}
+.custom-modal-close { background: #58A4B0; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;  display: block; margin: 12px auto 8px;}
+.custom-modal-close:hover { background: #4a909b; color: #FFFFFF; }
+</style>
+<!-- 自訂彈窗 HTML 結構 -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+<div class="custom-modal">
+<div class="custom-modal-body" id="customModalContent"></div>
+<button class="custom-modal-close" onclick="closeCustomModal()">確定</button>
+</div>
+</div>
+<script>
+function showCustomModal(message) {
+    document.getElementById('customModalContent').innerText = message;
+    document.getElementById('customModalOverlay').style.display = 'block';
+}
+function closeCustomModal() {
+    document.getElementById('customModalOverlay').style.display = 'none';
+}
+</script>
+</body>
+</html>
