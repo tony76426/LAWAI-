@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>懷孕歧視與不利處分法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 賠償計算器專用樣式 */
+        .compensation-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .compensation-calculator h1, 
+        .compensation-calculator h2, 
+        .compensation-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .compensation-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .compensation-calculator .btn {
+            background: #4f6c7d;
+        }
+        .compensation-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .compensation-calculator th {
+            background-color: #4f6c7d;
+        }
+        .compensation-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 賠償計算器響應式 */
+    .compensation-calculator h1 {
+        font-size: 1.5em;
+    }
+    .compensation-calculator h2 {
+        font-size: 1.2em;
+    }
+    .compensation-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .compensation-calculator th, 
+    .compensation-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .compensation-calculator input, 
+    .compensation-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .compensation-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .compensation-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+<style>
+@media (min-width: 769px) {
+  .back-home-container a {
+    border: 1px solid #4f6c7d !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 14px !important;
+    color: #4f6c7d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    text-decoration: none !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 18px !important;
+    color: #4f6c7d !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    margin-left: 2px !important;
+    font-weight: 600 !important;
+  }
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+.back-home-container a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  color: #4f6c7d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-home-container a:visited,
+.back-home-container a:active,
+.back-home-container a:hover {
+  color: #4f6c7d;
+  text-decoration: none;
+}
+.back-home-container .material-icons {
+  font-size: 22px;
+  color: #4f6c7d !important;
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+@media screen and (max-width: 768px) {
+    #compensationResult {
+        font-size: 1.1em;
+        padding: 15px 10px;
+        line-height: 1.6;
+    }
+    #compensationResult table {
+        font-size: 1em;
+    }
+    #compensationResult .note {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+</style>
+<style>
+/* Hide Mermaid's auto legend next to charts (keep our custom legend below) */
+.mermaid .legend { display: none !important; }
+
+/* Remove mobile tap highlight & text selection for the interactive flowchart */
+#interactive-flowchart, #interactive-flowchart * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+svg#interactive-flowchart {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+<style>
+
+@media (max-width: 768px) {
+  /* Keep the bottom CTA compact (not 100% width) on mobile */
+  .compensation-calculator .btn.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+  .compensation-calculator .cta-left-row {
+    justify-content: flex-start !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="back-home-container">
+<a href="index.html">
+<span class="material-icons">arrow_back</span>
+<span class="desktop-only">返回首頁</span>
+</a>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.back-home-container {
+  margin-bottom: 5px !important;
+}
+h1 {
+  margin-top: 5px !important;
+}
+body {
+  padding-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .back-home-container a {
+    position: relative;
+    display: inline-block;
+  }
+  .back-home-container a::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: -30%;
+    right: -30%;
+    z-index: 1;
+  }
+  .back-home-container a span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+</style>
+<h1>懷孕歧視與不利處分法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'compensation')" style="font-size: 110% !important;">賠償計算</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>懷孕歧視基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是懷孕歧視與不利處分？</h3>
+<p>當雇主因勞工懷孕而予以調職、減薪、削減獎金或其他不利處分時，即構成懷孕歧視。常見爭議包括：懷孕告知後突然調職、工作條件惡化、獎金或晉升機會減少等。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求回復原職或同等職務</li>
+<li>請求給付積欠工資、獎金及加班費</li>
+<li>請求精神慰撫金（最高可達50萬元）</li>
+<li>向主管機關申訴，對雇主進行裁罰（30萬至150萬元）</li>
+<li>透過調解或訴訟程序解決爭議</li>
+</ul>
+</div>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>懷孕歧視處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 懷孕歧視處理時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    告知懷孕 :done, a1, 2023-01-01, 1d
+                    不利處分發生 :done, a2, after a1, 7d
+                    證據收集 :done, a3, after a2, 14d
+                    section 法律程序
+                    申請勞資爭議調解 :done, a4, 2023-02-01, 7d
+                    調解會議 :active, a5, 2023-03-01, 30d
+                    訴訟程序 : a6, after a5, 60d
+                    section 執行階段
+                    判決執行 : a7, after a6, 14d
+            </div></div>
+<p><small>※ 注意：完整流程通常需2-6個月，視爭議複雜度而定</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="process">
+<h2>懷孕歧視申訴流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">懷孕歧視互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="告知懷孕">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="80" y="205">告知懷孕</text>
+</g>
+<g class="node" data-name="不利處分">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="170" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="220" y="205">不利處分</text>
+</g>
+<g class="node" data-name="協商談判">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="350" y="165">協商談判</text>
+</g>
+<g class="node" data-name="達成協議">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">達成協議</text>
+</g>
+<g class="node" data-name="申請調解">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="205">申請調解</text>
+</g>
+<g class="node" data-name="調解會議">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">調解會議</text>
+</g>
+<g class="node" data-name="調解成立">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">調解成立</text>
+</g>
+<g class="node" data-name="提起訴訟">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">提起訴訟</text>
+</g>
+<g class="node" data-name="訴訟程序">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="265">訴訟程序</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="140" x2="170" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="550" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="650" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.setAttribute("tabindex", "-1");
+            node.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            }, { passive: false });
+            node.addEventListener("click", (e) => {
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "告知懷孕": "勞工向雇主告知懷孕事實，此為受《性別工作平等法》保護之重要時點。",
+                "不利處分": "雇主在得知懷孕後，採取調職、減薪、削減獎金等不利處分，需證明因果關係。",
+                "協商談判": "勞資雙方可就懷孕歧視爭議進行協商，建議以書面方式記錄協商過程及結果。",
+                "達成協議": "如能達成協議，應訂立書面協議書並依約履行，包括回復原職、補發工資等。",
+                "申請調解": "向當地勞工局或調解委員會提出申請，需附勞動契約、懷孕證明、不利處分證據等。",
+                "調解會議": "調解委員將聽取雙方意見，協助達成協議，調解成立結果與確定判決有同一效力。",
+                "調解成立": "調解成立後，雙方應依調解內容履行，如有不履行可聲請強制執行。",
+                "提起訴訟": "調解不成立時，可向法院提起歧視損害賠償之訴，請求回復原職及賠償。",
+                "訴訟程序": "法院將審理雙方主張及證據，判決是否構成懷孕歧視及應賠償金額。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>不利處分發生</td>
+<td>立即收集證據、記錄時間點</td>
+<td>1-3天</td>
+<td>要求雇主出具書面說明</td>
+</tr>
+<tr>
+<td>協商談判</td>
+<td>書面溝通、保留證據</td>
+<td>1-2週</td>
+<td>避免口頭承諾無紀錄</td>
+</tr>
+<tr>
+<td>申請調解</td>
+<td>準備相關文件證據</td>
+<td>1-2週</td>
+<td>可自行或委任代理人</td>
+</tr>
+<tr>
+<td>調解會議</td>
+<td>陳述事實、提出方案</td>
+<td>1-2小時</td>
+<td>保持理性溝通態度</td>
+</tr>
+<tr>
+<td>訴訟程序</td>
+<td>委任律師或自行起訴</td>
+<td>2-6個月</td>
+<td>強調舉證責任轉換</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 懷孕歧視判決比例
+                    "全額勝訴" : 45
+                    "部分勝訴" : 35
+                    "敗訴" : 20
+            </div>
+<div class="pie-legend" style="display:flex;justify-content:flex-start;gap:16px;margin-top:8px;flex-wrap:wrap;margin-left:1.5cm;">
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#A5D6A7;"></span>
+<span>全額勝訴</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#FFF59D;"></span>
+<span>部分勝訴</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#EF9A9A;"></span>
+<span>敗訴</span>
+</div>
+</div>
+<p><small>※ 根據近年法院統計，多數懷孕歧視案件判決勞工至少部分勝訴，獲得賠償或回復原職</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的懷孕歧視申訴成功可能性評估</h3>
+<p>請回答以下問題，評估您的懷孕歧視申訴成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您是否有保存懷孕告知與不利處分的時間證明？</label>
+<select id="q1">
+<option value="3">有明確日期紀錄（如email、通訊紀錄）</option>
+<option value="2">有部分時間證明但不完整</option>
+<option value="1">僅能回憶大概時間</option>
+<option value="0">無法證明時間關聯</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 您是否有不利處分的具體證據？</label>
+<select id="q2">
+<option value="3">有調職令、減薪通知等書面證明</option>
+<option value="2">有部分書面證據但不完整</option>
+<option value="1">僅有口頭告知的證明</option>
+<option value="0">幾乎無任何不利處分證明</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 您是否有與其他同事的比較資料？</label>
+<select id="q3">
+<option value="3">有相同職位同事的薪資、獎金比較資料</option>
+<option value="2">有部分同事的比較資料</option>
+<option value="1">僅能提供個人前後差異</option>
+<option value="0">無法提供任何比較資料</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 雇主是否曾表示懷孕與處分有關？</label>
+<select id="q4">
+<option value="3">有直接言論證明（如錄音、email）</option>
+<option value="2">有暗示性言論</option>
+<option value="1">僅能推測有關聯</option>
+<option value="0">完全無相關言論</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 雇主能否提出合理調整理由？</label>
+<select id="q5">
+<option value="3">雇主完全無法提出合理理由</option>
+<option value="2">雇主理由明顯薄弱</option>
+<option value="1">雇主有部分合理理由</option>
+<option value="0">雇主有充分合理理由</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">懷孕歧視申訴成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p></p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：全額勝訴</h4>
+<p>可能性：45% (證據充分、時間關聯明確)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>雇主回復原職或同等職務</li>
+<li>補發全部積欠工資、獎金</li>
+<li>精神慰撫金（最高50萬元）</li>
+<li>雇主被處以行政罰鍰</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分勝訴</h4>
+<p>可能性：35% (部分爭議或證據不足)</p>
+<p>可能內容：</p>
+<ul>
+<li>雇主部分補發工資、獎金</li>
+<li>雙方就爭議金額達成和解</li>
+<li>獲得部分精神慰撫金</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：敗訴</h4>
+<p>可能性：20% (重大證據不足或雇主有充分理由)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強證據重新主張</li>
+<li>考慮其他法律途徑（如申訴雇主違法）</li>
+<li>尋求工會或婦女團體協助</li>
+</ul>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">懷孕告知證明</span>
+</div>
+<p class="evidence-desc">效力最高，特別是書面或錄音證明告知懷孕的時間點，可明確與不利處分的因果關係。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💼</span>
+<span class="evidence-title">調職或減薪通知</span>
+</div>
+<p class="evidence-desc">直接證明不利處分的內容與時間，最好有雇主簽章或公司正式文件。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📊</span>
+<span class="evidence-title">績效與獎金比較資料</span>
+</div>
+<p class="evidence-desc">證明與其他同事的差別待遇，特別是相同職位、相似績效卻有不同待遇。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💬</span>
+<span class="evidence-title">歧視性言論紀錄</span>
+</div>
+<p class="evidence-desc">雇主或主管關於懷孕與工作表現的言論紀錄，可證明歧視意圖。</p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>懷孕歧視準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">勞動契約書正本或影本</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">懷孕告知證明（如email、通訊紀錄）</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">調職或減薪通知文件</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">薪資單與獎金發放紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">績效考核資料</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">與雇主的通訊紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">同事的薪資或獎金比較資料</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">其他證人聯絡方式</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認懷孕歧視法律依據</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">整理時間關聯性證據</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備同事比較資料</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">評估精神慰撫金請求金額</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">考慮是否同時提出行政申訴</label>
+</div>
+</div>
+
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent compensation-calculator" id="compensation">
+<h1>懷孕歧視賠償計算模擬</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據《性別工作平等法》第29條、第30條，判斷懷孕歧視可能賠償金額，
+        包括積欠工資、獎金補發及精神慰撫金計算標準。
+    </div>
+<h2>💼 基本勞動設定</h2>
+<table id="compensationTable">
+<tr>
+<th>項目</th>
+<th>金額/內容</th>
+</tr>
+<tr>
+<td>約定月薪</td>
+<td><input type="number" value="32000"/></td>
+</tr>
+<tr>
+<td>每月平均獎金</td>
+<td><input type="number" value="5000"/></td>
+</tr>
+<tr>
+<td>不利處分期間</td>
+<td><input type="number" value="3"/> 個月</td>
+</tr>
+<tr>
+<td>請求精神慰撫金</td>
+<td>
+<select>
+<option value="low">低度損害（5-15萬元）</option>
+<option value="medium" selected="">中度損害（15-30萬元）</option>
+<option value="high">高度損害（30-50萬元）</option>
+</select>
+</td>
+</tr>
+</table>
+<h2>⏱ 不利處分類型</h2>
+<table id="discriminationTable">
+<tr>
+<th>處分類型</th>
+<th>影響程度</th>
+<th>備註</th>
+</tr>
+<tr>
+<td><input type="text" value="調職減薪"/></td>
+<td>
+<select>
+<option value="high">高度影響</option>
+<option value="medium" selected="">中度影響</option>
+<option value="low">低度影響</option>
+</select>
+</td>
+<td><input type="text" value="例如：從外勤調內勤，月薪減少20%"/></td>
+</tr>
+<tr>
+<td><input type="text" value="獎金削減"/></td>
+<td>
+<select>
+<option value="high" selected="">高度影響</option>
+<option value="medium">中度影響</option>
+<option value="low">低度影響</option>
+</select>
+</td>
+<td><input type="text" value="例如：績效獎金減少50%"/></td>
+</tr>
+</table>
+<button class="btn" onclick="addDiscriminationType()">新增處分類型</button>
+<button class="btn" onclick="calculateCompensation()">計算可能賠償</button>
+<h2>計算結果</h2>
+<div id="compensationResult"></div>
+<div class="cta-left-row" style="display: flex; justify-content: flex-start; margin-top: 20px; margin-bottom: 20px;">
+<a class="btn btn-inline" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div><div class="tabcontent inheritance-calculator" id="documents">
+<h2 style="color: #2c3e50; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>懷孕歧異申訴函</h3>
+<textarea style="width:100%; height:200px; margin-bottom:15px;">
+致 [雇主名稱] 先生/女士：
+
+本人[勞工姓名]前於貴公司擔任[職務名稱]，已於[告知懷孕日期]向主管告知懷孕事實，卻於[不利處分日期]遭[調職/減薪/削減獎金]等不利處分，顯已違反《性別工作平等法》第11條規定。
+
+經查，本人任職期間工作表現良好，並無任何績效不彰情事，台端所指[雇主理由]均無理由，依法應撤銷不利處分並補發相關給付。
+
+請台端於文到七日內撤銷不利處分並補發積欠工資、獎金共新臺幣[金額]元整，逾期未處理，本人將依法向主管機關申訴並提起民事訴訟，恐有不便，敬請見諒。
+
+此致
+
+[勞工姓名] 謹啟
+[發函日期]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('pregnancy-discrimination-complaint.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h3>懷孕歧視調解申請書範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;">
+調解申請書
+
+申請人：[勞工姓名] （身分證字號：[身分證號]）
+住址：[居住地址]
+電話：[聯絡電話]
+
+相對人：[雇主名稱]
+住址：[公司地址]
+電話：[公司電話]
+
+為請求撤銷懷孕歧視不利處分及給付積欠工資事件，依法申請調解：
+
+一、調解標的：
+1. 請求撤銷[調職/減薪/削減獎金]等不利處分
+2. 請求給付積欠工資、獎金新臺幣[金額]元整
+3. 請求給付精神慰撫金新臺幣[金額]元整
+
+二、事實及理由：
+（一）申請人前於相對人公司擔任[職務名稱]，已於[告知懷孕日期]告知懷孕事實。
+（二）申請人於[不利處分日期]遭[具體不利處分內容]，明顯與懷孕有關。
+（三）申請人工作表現良好，相對人無法提出合理調整理由，已違反《性別工作平等法》。
+（四）為此，申請人請求 貴會調解，命相對人撤銷不利處分並給付上述金額。
+
+此致
+[縣市名稱]勞工局
+
+申請人：[勞工姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('pregnancy-mediation-request.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div>
+</div>
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能勝訴獲全額賠償</p>";
+                recommendation = "建議完整提出證據並依法主張，成功機會很高，可考慮請求最高額精神慰撫金。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能獲部分賠償</p>";
+                recommendation = "建議針對爭議點補強證據，特別是時間關聯性與差別待遇證明，爭取最大賠償比例。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨申訴困難</p>";
+                recommendation = "建議補強證據，特別是懷孕與不利處分的直接關聯證明，考慮尋求專業律師協助。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            showCustomModal('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 賠償計算器功能
+        function addDiscriminationType() {
+            const table = document.getElementById('discriminationTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" placeholder="例如：晉升機會取消"></td>
+                <td>
+                    <select>
+                        <option value="high">高度影響</option>
+                        <option value="medium" selected>中度影響</option>
+                        <option value="low">低度影響</option>
+                    </select>
+                </td>
+                <td><input type="text" placeholder="備註"></td>
+            `;
+        }
+
+        function calculateCompensation() {
+            const monthlySalary = Number(document.querySelector('#compensationTable input[type="number"]').value);
+            const monthlyBonus = Number(document.querySelectorAll('#compensationTable input[type="number"]')[1].value);
+            const months = Number(document.querySelectorAll('#compensationTable input[type="number"]')[2].value);
+            const mentalCompensation = document.querySelector('#compensationTable select').value;
+            
+            // 計算積欠工資與獎金
+            let unpaidSalary = 0;
+            let unpaidBonus = 0;
+            
+            const discriminationRows = document.querySelectorAll('#discriminationTable tr');
+            discriminationRows.forEach((row, idx) => {
+                if (idx === 0) return;
+                const type = row.cells[0].querySelector('input').value;
+                const impact = row.cells[1].querySelector('select').value;
+                
+                if (type.includes('調職減薪')) {
+                    if (impact === 'high') {
+                        unpaidSalary += monthlySalary * 0.3 * months;
+                    } else if (impact === 'medium') {
+                        unpaidSalary += monthlySalary * 0.2 * months;
+                    } else {
+                        unpaidSalary += monthlySalary * 0.1 * months;
+                    }
+                } else if (type.includes('獎金削減')) {
+                    if (impact === 'high') {
+                        unpaidBonus += monthlyBonus * 0.5 * months;
+                    } else if (impact === 'medium') {
+                        unpaidBonus += monthlyBonus * 0.3 * months;
+                    } else {
+                        unpaidBonus += monthlyBonus * 0.1 * months;
+                    }
+                }
+            });
+            
+            // 計算精神慰撫金
+            let mentalComp = 0;
+            if (mentalCompensation === 'low') {
+                mentalComp = 100000;
+            } else if (mentalCompensation === 'medium') {
+                mentalComp = 225000;
+            } else {
+                mentalComp = 400000;
+            }
+            
+            const totalCompensation = unpaidSalary + unpaidBonus + mentalComp;
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>金額</th></tr>
+                <tr><td>積欠工資補發</td><td>${unpaidSalary.toLocaleString()} 元</td></tr>
+                <tr><td>積欠獎金補發</td><td>${unpaidBonus.toLocaleString()} 元</td></tr>
+                <tr><td>精神慰撫金</td><td>${mentalComp.toLocaleString()} 元</td></tr>
+                <tr><td><strong>賠償總額</strong></td><td><strong>${totalCompensation.toLocaleString()} 元</strong></td></tr>
+                <tr><td>行政罰鍰（雇主）</td><td>30萬至150萬元</td></tr>
+            </table>`;
+            
+            if (totalCompensation === 0) {
+                resultHtml += `<div class="note" style="background:#E8F5E9;border-left-color:#4CAF50;">
+                    <strong>分析：</strong>依計算結果，目前無明顯賠償請求依據，建議進一步收集證據。
+                </div>`;
+            } else {
+                resultHtml += `<div class="note">
+                    <strong>分析：</strong>根據《性別工作平等法》第29條，您可請求上述賠償金額，另雇主可能被處以30萬至150萬元行政罰鍰。
+                </div>`;
+            }
+            
+            document.getElementById('compensationResult').innerHTML = resultHtml;
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '懷孕歧視準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+<style>
+/* 自訂彈窗背景 */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+/* 自訂彈窗 */
+.custom-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    padding: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.custom-modal-header { display: none; }
+.custom-modal-body {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+}
+.custom-modal-close { background: #58A4B0; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;  display: block; margin: 12px auto 8px;}
+.custom-modal-close:hover { background: #4a909b; color: #FFFFFF; }
+</style>
+<!-- 自訂彈窗 HTML 結構 -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+<div class="custom-modal">
+<div class="custom-modal-body" id="customModalContent"></div>
+<button class="custom-modal-close" onclick="closeCustomModal()">確定</button>
+</div>
+</div>
+<script>
+function showCustomModal(message) {
+    document.getElementById('customModalContent').innerText = message;
+    document.getElementById('customModalOverlay').style.display = 'block';
+}
+function closeCustomModal() {
+    document.getElementById('customModalOverlay').style.display = 'none';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>離婚剩餘財產分配法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 財產計算器專用樣式 */
+        .property-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .property-calculator h1, 
+        .property-calculator h2, 
+        .property-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .property-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .property-calculator .btn {
+            background: #4f6c7d;
+        }
+        .property-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .property-calculator th {
+            background-color: #4f6c7d;
+        }
+        .property-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .property-calculator .warning {
+            background: #FFF3E0;
+            border-left: 4px solid #FFA000;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .mixed-property {
+            background-color: #FFF9C4;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 財產計算器響應式 */
+    .property-calculator h1 {
+        font-size: 1.5em;
+    }
+    .property-calculator h2 {
+        font-size: 1.2em;
+    }
+    .property-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .property-calculator th, 
+    .property-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .property-calculator input, 
+    .property-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .property-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .property-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+<style>
+@media (min-width: 769px) {
+  .back-home-container a {
+    border: 1px solid #4f6c7d !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 14px !important;
+    color: #4f6c7d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    text-decoration: none !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 18px !important;
+    color: #4f6c7d !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    margin-left: 2px !important;
+    font-weight: 600 !important;
+  }
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+.back-home-container a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  color: #4f6c7d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-home-container a:visited,
+.back-home-container a:active,
+.back-home-container a:hover {
+  color: #4f6c7d;
+  text-decoration: none;
+}
+.back-home-container .material-icons {
+  font-size: 22px;
+  color: #4f6c7d !important;
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+@media screen and (max-width: 768px) {
+    #propertyResult {
+        font-size: 1.1em;
+        padding: 15px 10px;
+        line-height: 1.6;
+    }
+    #propertyResult table {
+        font-size: 1em;
+    }
+    #propertyResult .note {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+</style>
+<style>
+/* Hide Mermaid's auto legend next to charts (keep our custom legend below) */
+.mermaid .legend { display: none !important; }
+
+/* Remove mobile tap highlight & text selection for the interactive flowchart */
+#interactive-flowchart, #interactive-flowchart * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+svg#interactive-flowchart {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+<style>
+
+@media (max-width: 768px) {
+  /* Keep the bottom CTA compact (not 100% width) on mobile */
+  .property-calculator .btn.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+  .property-calculator .cta-left-row {
+    justify-content: flex-start !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="back-home-container">
+<a href="index.html">
+<span class="material-icons">arrow_back</span>
+<span class="desktop-only">返回首頁</span>
+</a>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.back-home-container {
+  margin-bottom: 5px !important;
+}
+h1 {
+  margin-top: 5px !important;
+}
+body {
+  padding-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .back-home-container a {
+    position: relative;
+    display: inline-block;
+  }
+  .back-home-container a::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: -30%;
+    right: -30%;
+    z-index: 1;
+  }
+  .back-home-container a span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+</style>
+<h1>離婚剩餘財產分配法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'property')" style="font-size: 110% !important;">財產計算</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>剩餘財產分配基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是剩餘財產分配？</h3>
+<p>根據《民法》第1030條之1，夫妻未約定財產制者，於婚姻關係消滅時，得請求對剩餘財產差額分配。剩餘財產係指婚姻關係消滅時的淨資產扣除婚前財產與特有財產。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求分配婚姻期間累積的財產差額</li>
+<li>排除特有財產（如繼承或受贈財產）於分配範圍外</li>
+<li>透過調解或訴訟程序解決爭議</li>
+<li>申請法院鑑價確定財產價值</li>
+<li>必要時聲請假扣押保障債權</li>
+</ul>
+</div>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>剩餘財產分配處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 剩餘財產分配處理時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    離婚或婚姻關係消滅 :done, a1, 2023-01-01, 1d
+                    財產清冊製作與協商 :done, a2, after a1, 30d
+                    section 法律程序
+                    申請調解 :done, a3, 2023-02-01, 7d
+                    調解會議 :active, a4, 2023-03-01, 30d
+                    訴訟程序 : a5, after a4, 90d
+                    section 執行階段
+                    財產分配執行 : a6, after a5, 30d
+            </div></div>
+<p><small>※ 注意：完整流程通常需3-6個月，視財產複雜度與雙方配合度而定</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="process">
+<h2>剩餘財產分配申請流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">剩餘財產分配互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="婚姻關係消滅">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="80" y="205">婚姻關係消滅</text>
+</g>
+<g class="node" data-name="財產清冊製作">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="170" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="220" y="205">財產清冊製作</text>
+</g>
+<g class="node" data-name="協商談判">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="350" y="165">協商談判</text>
+</g>
+<g class="node" data-name="達成協議">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">達成協議</text>
+</g>
+<g class="node" data-name="申請調解">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="205">申請調解</text>
+</g>
+<g class="node" data-name="調解會議">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">調解會議</text>
+</g>
+<g class="node" data-name="調解成立">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">調解成立</text>
+</g>
+<g class="node" data-name="提起訴訟">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">提起訴訟</text>
+</g>
+<g class="node" data-name="訴訟程序">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="265">訴訟程序</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="140" x2="170" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="550" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="650" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.setAttribute("tabindex", "-1");
+            node.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            }, { passive: false });
+            node.addEventListener("click", (e) => {
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "婚姻關係消滅": "離婚或婚姻關係因其他原因消滅，雙方應進行財產清算程序。",
+                "財產清冊製作": "雙方應各自製作財產清冊，列明婚前財產、婚後財產及特有財產。",
+                "協商談判": "雙方可就財產分配進行協商，建議以書面方式記錄協商過程及結果。",
+                "達成協議": "如能達成協議，應訂立書面協議書並依約履行，完成財產分配程序。",
+                "申請調解": "向法院或調解委員會提出申請，需附財產清冊及相關證據。",
+                "調解會議": "調解委員將聽取雙方意見，協助達成協議，調解成立結果與確定判決有同一效力。",
+                "調解成立": "調解成立後，雙方應依調解內容履行，如有不履行可聲請強制執行。",
+                "提起訴訟": "調解不成立時，可向法院提起剩餘財產分配之訴。",
+                "訴訟程序": "法院將審理雙方主張及證據，判決應分配財產金額及方式。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>財產清冊製作</td>
+<td>確認財產範圍、區分特有財產</td>
+<td>1-2週</td>
+<td>詳列婚前、婚後財產及特有財產</td>
+</tr>
+<tr>
+<td>協商談判</td>
+<td>書面溝通、保留證據</td>
+<td>2-4週</td>
+<td>避免口頭承諾無紀錄</td>
+</tr>
+<tr>
+<td>申請調解</td>
+<td>準備財產清冊及相關證據</td>
+<td>1-2週</td>
+<td>可自行或委任代理人</td>
+</tr>
+<tr>
+<td>調解會議</td>
+<td>陳述事實、提出方案</td>
+<td>1-2小時</td>
+<td>保持理性溝通態度</td>
+</tr>
+<tr>
+<td>訴訟程序</td>
+<td>委任律師或自行起訴</td>
+<td>3-6個月</td>
+<td>必要時聲請財產鑑價</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 剩餘財產分配判決比例
+                    "全額分配" : 60
+                    "部分分配" : 30
+                    "不予分配" : 10
+            </div>
+<div class="pie-legend" style="display:flex;justify-content:flex-start;gap:16px;margin-top:8px;flex-wrap:wrap;margin-left:1.5cm;">
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#A5D6A7;"></span>
+<span>全額分配</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#FFF59D;"></span>
+<span>部分分配</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#EF9A9A;"></span>
+<span>不予分配</span>
+</div>
+</div>
+<p><small>※ 根據近年法院統計，多數剩餘財產分配案件判決獲得全額或部分財產分配</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的剩餘財產分配成功可能性評估</h3>
+<p>請回答以下問題，評估您的剩餘財產分配成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您是否有保存完整財產證明？</label>
+<select id="q1">
+<option value="3">有完整財產清冊、權狀、帳戶明細等證明</option>
+<option value="2">有部分財產證明但不完整</option>
+<option value="1">僅有口頭約定證明</option>
+<option value="0">幾乎無任何財產證明</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 您是否有特有財產的證明？</label>
+<select id="q2">
+<option value="3">有贈與契約、匯款註記等完整證明</option>
+<option value="2">有部分贈與證明但不完整</option>
+<option value="1">僅能提出間接證明</option>
+<option value="0">無法證明特有財產</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 對方是否承認財產範圍？</label>
+<select id="q3">
+<option value="3">完全否認有財產差額</option>
+<option value="2">僅口頭承認但未提供明細</option>
+<option value="1">有書面承認但未提供明細</option>
+<option value="0">已提供完整財產明細</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 您保存的證據完整度？</label>
+<select id="q4">
+<option value="3">完整財產清冊、贈與證明、通訊紀錄</option>
+<option value="2">有主要證據但部分缺失</option>
+<option value="1">僅有基本財產證明</option>
+<option value="0">幾乎無任何證據</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 對方目前的財產狀況？</label>
+<select id="q5">
+<option value="3">財產充足有支付能力</option>
+<option value="2">財產足夠但流動性不足</option>
+<option value="1">財產有限但仍有資產</option>
+<option value="0">已無任何財產可供分配</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">剩餘財產分配成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p></p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：全額分配財產差額</h4>
+<p>可能性：60% (證據充分、對方有支付能力)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>對方給付全部應分配財產差額</li>
+<li>法院認可特有財產排除於分配範圍</li>
+<li>訴訟費用由對方負擔</li>
+<li>可能聲請假扣押保障債權</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分分配財產差額</h4>
+<p>可能性：30% (部分爭議或證據不足)</p>
+<p>可能內容：</p>
+<ul>
+<li>對方給付部分應分配財產差額</li>
+<li>雙方就爭議金額達成和解</li>
+<li>雙方分擔訴訟費用</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：不予分配財產差額</h4>
+<p>可能性：10% (重大證據不足或對方無支付能力)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強證據重新主張</li>
+<li>追究隱匿財產責任</li>
+<li>聲請法院調查財產狀況</li>
+</ul>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">財產清冊與權狀</span>
+</div>
+<p class="evidence-desc">效力最高，可明確雙方財產範圍與價值，特別是關於不動產與金融資產的證明。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💼</span>
+<span class="evidence-title">贈與證明文件</span>
+</div>
+<p class="evidence-desc">直接證明特有財產性質，最好有贈與人簽章或銀行匯款註記。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">⏱️</span>
+<span class="evidence-title">婚姻期間財產紀錄</span>
+</div>
+<p class="evidence-desc">證明財產取得時間與來源，區分婚前財產與婚後財產。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💬</span>
+<span class="evidence-title">通訊紀錄</span>
+</div>
+<p class="evidence-desc">雙方協商過程的簡訊、LINE對話等紀錄，可證明對方承認財產範圍或特有財產性質。</p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>剩餘財產分配準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">婚前財產證明文件</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">婚後財產清冊與證明</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">贈與或繼承證明文件</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">離婚協議書或判決書</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">財產鑑價報告（如有）</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">與對方的通訊紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">銀行帳戶明細與財產權狀</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">證人聯絡方式與證詞</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認剩餘財產分配法律依據</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估是否聲請假扣押</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備替代方案供調解參考</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">確認對方資產狀況</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估調解或訴訟成本效益</label>
+</div>
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<!-- 財產計算分頁 - 從B版面完整複製 -->
+<div class="tabcontent property-calculator" id="property">
+<h1>剩餘財產差額計算與分配模擬（含混同財產）</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據民法第1030-1條，計算雙方婚後財產差額，特別考慮：
+        <ul>
+<li><strong>離婚基準日</strong>：僅計算基準日前取得的婚後財產</li>
+<li><strong>財產混同</strong>：標記可能混同的財產並計算其影響</li>
+<li><strong>婚前財產變賣</strong>：追查變賣所得是否混入共同財產</li>
+</ul>
+</div>
+<div class="warning">
+        ⚠️ <strong>混同財產注意：</strong> 婚前財產變賣後若存入共同帳戶或用於共同生活，實務上可能被認定為婚後共同財產，難以主張排除。
+    </div>
+<h2>📅 離婚基準日設定</h2>
+<div class="step">
+<label for="divorceDate">離婚基準日（通常為起訴狀遞交日）：</label>
+<input id="divorceDate" name="divorceDate" type="date"/>
+</div>
+<h2>💰 財產清冊輸入</h2>
+<table id="propertyTable">
+<tr>
+<th>財產項目</th>
+<th>價值（元）</th>
+<th>取得日期</th>
+<th>財產類型</th>
+<th>混同情況</th>
+<th>歸屬方</th>
+</tr>
+<tr>
+<td><input type="text" value="婚後購置房產"/></td>
+<td><input type="number" value="8000000"/></td>
+<td><input type="date" value="2022-05-15"/></td>
+<td>
+<select>
+<option value="婚後">婚後財產</option>
+<option value="婚前">婚前財產</option>
+<option value="繼承">繼承/受贈</option>
+</select>
+</td>
+<td>
+<select>
+<option value="無">無混同</option>
+<option value="部分">部分混同</option>
+<option value="完全">完全混同</option>
+</select>
+</td>
+<td>
+<select>
+<option value="我方">我方</option>
+<option selected="" value="對方">對方</option>
+</select>
+</td>
+</tr>
+<tr class="mixed-property">
+<td><input type="text" value="變賣婚前房產所得"/></td>
+<td><input type="number" value="2000000"/></td>
+<td><input type="date" value="2021-08-10"/></td>
+<td>
+<select>
+<option selected="" value="婚前">婚前財產</option>
+<option value="婚後">婚後財產</option>
+<option value="繼承">繼承/受贈</option>
+</select>
+</td>
+<td>
+<select>
+<option value="無">無混同</option>
+<option value="部分">部分混同</option>
+<option selected="" value="完全">完全混同</option>
+</select>
+</td>
+<td>
+<select>
+<option value="我方">我方</option>
+<option selected="" value="對方">對方</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><input type="text" value="證券投資"/></td>
+<td><input type="number" value="1500000"/></td>
+<td><input type="date" value="2023-01-20"/></td>
+<td>
+<select>
+<option selected="" value="婚後">婚後財產</option>
+<option value="婚前">婚前財產</option>
+<option value="繼承">繼承/受贈</option>
+</select>
+</td>
+<td>
+<select>
+<option selected="" value="無">無混同</option>
+<option value="部分">部分混同</option>
+<option value="完全">完全混同</option>
+</select>
+</td>
+<td>
+<select>
+<option value="我方">我方</option>
+<option selected="" value="對方">對方</option>
+</select>
+</td>
+</tr>
+</table>
+<button class="btn" onclick="addProperty()">新增財產項目</button>
+<button class="btn" onclick="calculateDifference()">計算剩餘財產差額</button>
+<h2>計算結果</h2>
+<div id="propertyResult"></div>
+<div class="cta-left-row" style="margin-top:12px;">
+  <a class="btn btn-inline" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+<div id="mixedPropertyAnalysis" style="display:none;">
+<h3>混同財產分析</h3>
+<div id="mixedPropertyResult"></div>
+</div>
+
+</div>
+<div class="tabcontent inheritance-calculator" id="documents">
+<h2 style="color: #2c3e50; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>剩餘財產分配請求函</h3>
+<textarea style="width:100%; height:200px; margin-bottom:15px;">
+致 [對方姓名] 先生/女士：
+
+本人與台端前於[結婚日期]結婚，已於[離婚日期]離婚。依民法第1030條之1規定及雙方婚姻關係，台端應給付剩餘財產差額分配新臺幣[金額]元整。
+
+經查，雙方婚姻關係存續期間累積之財產，經計算後之差額為新臺幣[金額]元整，依法應平均分配。
+
+請台端於文到七日內將應分配金額全數給付至下列帳戶，逾期未給付，本人將依法採取進一步法律行動，恐有不便，敬請見諒。
+
+給付帳戶：
+銀行名稱：
+分行名稱：
+帳號：
+戶名：[姓名]
+
+此致
+
+[姓名] 謹啟
+[發函日期]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('property-request-letter.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h3>剩餘財產分配調解申請書範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;">
+調解申請書
+
+申請人：[姓名] （身分證字號：[身分證號]）
+住址：[居住地址]
+電話：[聯絡電話]
+
+相對人：[對方姓名]
+住址：[居住地址]
+電話：[聯絡電話]
+
+為請求剩餘財產分配事件，依法申請調解：
+
+一、調解標的：
+請求相對人給付剩餘財產差額分配新臺幣[金額]元整。
+
+二、事實及理由：
+（一）申請人前與相對人於[結婚日期]結婚，於[離婚日期]離婚。
+（二）雙方婚姻關係存續期間累積之財產，經計算後之差額為新臺幣[金額]元整，依法應平均分配。
+（三）為此，申請人請求 貴會調解，命相對人給付應分配金額。
+
+此致
+[縣市名稱]法院家事法庭
+
+申請人：[姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('property-mediation-request.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div>
+</div>
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能獲全額分配</p>";
+                recommendation = "建議完整提出證據並依法主張，成功機會很高。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能獲部分分配</p>";
+                recommendation = "建議針對爭議金額提出反證，爭取最大分配比例。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨分配困難</p>";
+                recommendation = "建議補強證據，特別是財產證明，考慮聲請假扣押。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            showCustomModal('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 財產計算器功能 - 從B版面複製
+        function addProperty() {
+            const table = document.getElementById('propertyTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" placeholder="例如：股票、保險金"></td>
+                <td><input type="number" placeholder="價值"></td>
+                <td><input type="date"></td>
+                <td>
+                    <select>
+                        <option value="婚後">婚後財產</option>
+                        <option value="婚前">婚前財產</option>
+                        <option value="繼承">繼承/受贈</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="無">無混同</option>
+                        <option value="部分">部分混同</option>
+                        <option value="完全">完全混同</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="我方">我方</option>
+                        <option value="對方">對方</option>
+                    </select>
+                </td>
+            `;
+        }
+
+        function calculateDifference() {
+            const divorceDate = new Date(document.getElementById('divorceDate').value);
+            const rows = document.querySelectorAll('#propertyTable tr');
+            
+            let myMaritalProperty = 0;
+            let spouseMaritalProperty = 0;
+            let myMixedProperty = 0;
+            let spouseMixedProperty = 0;
+            let mixedPropertyList = [];
+            
+            rows.forEach((row, idx) => {
+                if (idx === 0) return; // Skip header row
+                
+                const value = Number(row.cells[1].querySelector('input').value);
+                const date = new Date(row.cells[2].querySelector('input').value);
+                const type = row.cells[3].querySelector('select').value;
+                const mixed = row.cells[4].querySelector('select').value;
+                const owner = row.cells[5].querySelector('select').value;
+                
+                // 只計算基準日前的財產
+                if (date <= divorceDate) {
+                    // 婚後財產
+                    if (type === '婚後') {
+                        if (owner === '我方') {
+                            myMaritalProperty += value;
+                        } else {
+                            spouseMaritalProperty += value;
+                        }
+                    } 
+                    // 婚前財產但有混同
+                    else if (type === '婚前' && mixed !== '無') {
+                        const mixedValue = mixed === '完全' ? value : value * 0.5;
+                        
+                        if (owner === '我方') {
+                            myMixedProperty += mixedValue;
+                        } else {
+                            spouseMixedProperty += mixedValue;
+                        }
+                        
+                        mixedPropertyList.push({
+                            name: row.cells[0].querySelector('input').value,
+                            value: value,
+                            mixed: mixed,
+                            owner: owner
+                        });
+                    }
+                }
+            });
+            
+            // 加入混同財產價值（實務上常被認定為婚後財產）
+            myMaritalProperty += myMixedProperty;
+            spouseMaritalProperty += spouseMixedProperty;
+            
+            const difference = Math.abs(myMaritalProperty - spouseMaritalProperty);
+            const share = difference / 2;
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>金額</th></tr>
+                <tr><td>我方婚後財產總額</td><td>${myMaritalProperty.toLocaleString()} 元</td></tr>
+                <tr><td>對方婚後財產總額</td><td>${spouseMaritalProperty.toLocaleString()} 元</td></tr>
+                <tr><td>財產差額</td><td>${difference.toLocaleString()} 元</td></tr>
+                <tr><td>可請求分配金額</td><td>${share.toLocaleString()} 元</td></tr>
+            </table>`;
+            
+            if (myMaritalProperty > spouseMaritalProperty) {
+                resultHtml += `<div class="note" style="margin-top:15px;">
+                    <strong>法律說明：</strong> 對方可向您請求分配 ${share.toLocaleString()} 元
+                </div>`;
+            } else if (spouseMaritalProperty > myMaritalProperty) {
+                resultHtml += `<div class="note" style="margin-top:15px;">
+                    <strong>法律說明：</strong> 您可向對方請求分配 ${share.toLocaleString()} 元
+                </div>`;
+            } else {
+                resultHtml += `<div class="note" style="margin-top:15px;">
+                    <strong>法律說明：</strong> 雙方婚後財產相等，無需分配
+                </div>`;
+            }
+            
+            // 顯示混同財產分析
+            if (mixedPropertyList.length > 0) {
+                let mixedHtml = `<h4>混同財產分析（共 ${mixedPropertyList.length} 筆）</h4><table>
+                    <tr><th>財產項目</th><th>價值</th><th>混同程度</th><th>影響金額</th></tr>`;
+                
+                mixedPropertyList.forEach(item => {
+                    const affectValue = item.mixed === '完全' ? item.value : item.value * 0.5;
+                    mixedHtml += `<tr>
+                        <td>${item.name}</td>
+                        <td>${item.value.toLocaleString()} 元</td>
+                        <td>${item.mixed}</td>
+                        <td>${affectValue.toLocaleString()} 元</td>
+                    </tr>`;
+                });
+                
+                mixedHtml += `</table><div class="warning">
+                    <strong>實務注意：</strong> 法院可能將混同財產認定為婚後共同財產，上表顯示如被認定後的影響金額。
+                    如需排除，需提出充分證據證明其婚前性質及無混同意圖。
+                </div>`;
+                
+                document.getElementById('mixedPropertyResult').innerHTML = mixedHtml;
+                document.getElementById('mixedPropertyAnalysis').style.display = 'block';
+            } else {
+                document.getElementById('mixedPropertyAnalysis').style.display = 'none';
+            }
+            
+            document.getElementById('propertyResult').innerHTML = resultHtml;
+        }
+
+        function showMixedPropertyTips() {
+            alert(`混同財產處理技巧：\n\n1. 儘早蒐集資金來源證明（如賣房契約、原始帳戶明細）\n2. 建立完整資金流向圖表\n3. 考慮聲請法院調查令調取金融資料\n4. 必要時委請會計師製作鑑定報告\n5. 準備證人證明財產原始性質`);
+        }
+
+        window.onload = function() {
+            // 設定預設離婚基準日（3個月前）
+            const today = new Date();
+            const threeMonthsAgo = new Date(today.setMonth(today.getMonth() - 3));
+            document.getElementById('divorceDate').valueAsDate = threeMonthsAgo;
+            
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '剩餘財產分配準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+<style>
+/* 自訂彈窗背景 */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+/* 自訂彈窗 */
+.custom-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    padding: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.custom-modal-header { display: none; }
+.custom-modal-body {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+}
+.custom-modal-close { background: #58A4B0; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;  display: block; margin: 12px auto 8px;}
+.custom-modal-close:hover { background: #4a909b; color: #FFFFFF; }
+</style>
+<!-- 自訂彈窗 HTML 結構 -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+<div class="custom-modal">
+<div class="custom-modal-body" id="customModalContent"></div>
+<button class="custom-modal-close" onclick="closeCustomModal()">確定</button>
+</div>
+</div>
+<script>
+function showCustomModal(message) {
+    document.getElementById('customModalContent').innerText = message;
+    document.getElementById('customModalOverlay').style.display = 'block';
+}
+function closeCustomModal() {
+    document.getElementById('customModalOverlay').style.display = 'none';
+}
+</script>
+</body>
+</html>
