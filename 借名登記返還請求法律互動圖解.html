@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>不動產借名登記返還請求法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 費用計算器專用樣式 */
+        .cost-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cost-calculator h1, 
+        .cost-calculator h2, 
+        .cost-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .cost-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .cost-calculator .btn {
+            background: #4f6c7d;
+        }
+        .cost-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .cost-calculator th {
+            background-color: #4f6c7d;
+        }
+        .cost-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 費用計算器響應式 */
+    .cost-calculator h1 {
+        font-size: 1.5em;
+    }
+    .cost-calculator h2 {
+        font-size: 1.2em;
+    }
+    .cost-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .cost-calculator th, 
+    .cost-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .cost-calculator input, 
+    .cost-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .cost-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .cost-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+<style>
+@media (min-width: 769px) {
+  .back-home-container a {
+    border: 1px solid #4f6c7d !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 14px !important;
+    color: #4f6c7d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    text-decoration: none !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 18px !important;
+    color: #4f6c7d !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    margin-left: 2px !important;
+    font-weight: 600 !important;
+  }
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+.back-home-container a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  color: #4f6c7d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-home-container a:visited,
+.back-home-container a:active,
+.back-home-container a:hover {
+  color: #4f6c7d;
+  text-decoration: none;
+}
+.back-home-container .material-icons {
+  font-size: 22px;
+  color: #4f6c7d !important;
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+@media screen and (max-width: 768px) {
+    #costResult {
+        font-size: 1.1em;
+        padding: 15px 10px;
+        line-height: 1.6;
+    }
+    #costResult table {
+        font-size: 1em;
+    }
+    #costResult .note {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+</style>
+<style>
+/* Hide Mermaid's auto legend next to charts (keep our custom legend below) */
+.mermaid .legend { display: none !important; }
+
+/* Remove mobile tap highlight & text selection for the interactive flowchart */
+#interactive-flowchart, #interactive-flowchart * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+svg#interactive-flowchart {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+<style>
+
+@media (max-width: 768px) {
+  /* Keep the bottom CTA compact (not 100% width) on mobile */
+  .cost-calculator .btn.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+  .cost-calculator .cta-left-row {
+    justify-content: flex-start !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="back-home-container">
+<a href="index.html">
+<span class="material-icons">arrow_back</span>
+<span class="desktop-only">返回首頁</span>
+</a>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.back-home-container {
+  margin-bottom: 5px !important;
+}
+h1 {
+  margin-top: 5px !important;
+}
+body {
+  padding-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .back-home-container a {
+    position: relative;
+    display: inline-block;
+  }
+  .back-home-container a::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: -30%;
+    right: -30%;
+    z-index: 1;
+  }
+  .back-home-container a span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+</style>
+<h1>不動產借名登記返還請求法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'cost')" style="font-size: 110% !important;">費用計算</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>借名登記基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是不動產借名登記？</h3>
+<p>當實際出資人（借名人）因特定原因（如貸款條件限制）將不動產登記於他人（出名登記人）名下，但實際管理、使用及收益均由借名人享有時，即構成借名登記關係。常見爭議包括：出名登記人拒絕返還、擅自處分財產等。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求返還不動產所有權登記</li>
+<li>請求出名登記人配合辦理移轉登記手續</li>
+<li>向法院聲請假處分禁止出名登記人處分財產</li>
+<li>透過訴訟確認借名登記關係存在</li>
+<li>請求損害賠償（如出名登記人已擅自處分財產）</li>
+</ul>
+</div>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>借名登記爭議處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 借名登記爭議處理時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    發現爭議 :done, a1, 2023-01-01, 1d
+                    協商談判 :done, a2, after a1, 14d
+                    section 法律程序
+                    聲請假處分 :done, a3, 2023-02-01, 7d
+                    提起返還訴訟 :active, a4, 2023-03-01, 30d
+                    訴訟程序 : a5, after a4, 60d
+                    section 執行階段
+                    返還登記執行 : a6, after a5, 14d
+            </div></div>
+<p><small>※ 注意：完整流程通常需3-6個月，視爭議複雜度而定</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="process">
+<h2>返還請求申請流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">借名登記爭議互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="發現爭議">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="80" y="205">發現爭議</text>
+</g>
+<g class="node" data-name="證據蒐集">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="170" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="220" y="205">證據蒐集</text>
+</g>
+<g class="node" data-name="協商談判">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="350" y="165">協商談判</text>
+</g>
+<g class="node" data-name="達成協議">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">達成協議</text>
+</g>
+<g class="node" data-name="聲請假處分">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="205">聲請假處分</text>
+</g>
+<g class="node" data-name="提起訴訟">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">提起訴訟</text>
+</g>
+<g class="node" data-name="判決確定">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">判決確定</text>
+</g>
+<g class="node" data-name="強制執行">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">強制執行</text>
+</g>
+<g class="node" data-name="訴訟程序">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="265">訴訟程序</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="140" x2="170" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="550" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="650" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.setAttribute("tabindex", "-1");
+            node.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            }, { passive: false });
+            node.addEventListener("click", (e) => {
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "發現爭議": "發現出名登記人拒絕返還登記或意圖處分財產時，應立即採取法律行動。",
+                "證據蒐集": "收集所有能證明借名登記關係的證據，包括出資證明、通訊紀錄、稅費繳納紀錄等。",
+                "協商談判": "與出名登記人進行協商，建議以書面方式記錄協商過程及結果，並保留所有通訊紀錄。",
+                "達成協議": "如能達成協議，應訂立書面協議書並辦理移轉登記，完成返還程序。",
+                "聲請假處分": "向法院聲請假處分，禁止出名登記人處分財產，確保財產安全。",
+                "提起訴訟": "向法院提起確認借名登記關係存在及返還登記之訴，需附相關證據。",
+                "判決確定": "法院判決確定後，出名登記人應依判決結果配合辦理移轉登記。",
+                "強制執行": "如出名登記人拒絕履行判決，可聲請強制執行辦理移轉登記。",
+                "訴訟程序": "法院將審理雙方主張及證據，確認借名登記關係是否存在及應否返還。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>證據蒐集</td>
+<td>確認借名關係、保留證據</td>
+<td>1-2週</td>
+<td>盡可能收集書面證據</td>
+</tr>
+<tr>
+<td>協商談判</td>
+<td>書面溝通、保留證據</td>
+<td>1-3週</td>
+<td>避免口頭承諾無紀錄</td>
+</tr>
+<tr>
+<td>聲請假處分</td>
+<td>準備相關文件證據</td>
+<td>1-2週</td>
+<td>需提供擔保金</td>
+</tr>
+<tr>
+<td>提起訴訟</td>
+<td>委任律師或自行起訴</td>
+<td>1-2個月</td>
+<td>需繳納裁判費</td>
+</tr>
+<tr>
+<td>訴訟程序</td>
+<td>陳述事實、提出證據</td>
+<td>3-6個月</td>
+<td>保持理性溝通態度</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 借名登記判決比例
+                    "確認借名關係存在" : 60
+                    "部分證據不足" : 25
+                    "駁回請求" : 15
+            </div>
+<div class="pie-legend" style="display:flex;justify-content:flex-start;gap:16px;margin-top:8px;flex-wrap:wrap;margin-left:1.5cm;">
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#A5D6A7;"></span>
+<span>確認借名關係存在</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#FFF59D;"></span>
+<span>部分證據不足</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#EF9A9A;"></span>
+<span>駁回請求</span>
+</div>
+</div>
+<p><small>※ 根據近年法院統計，多數借名登記案件在有充分證據支持下，法院傾向認定借名關係存在</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的返還請求成功可能性評估</h3>
+<p>請回答以下問題，評估您的返還請求成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您是否有保存出資證明？</label>
+<select id="q1">
+<option value="3">有完整購屋款項匯款紀錄</option>
+<option value="2">有部分出資證明但不完整</option>
+<option value="1">僅有口頭約定證明</option>
+<option value="0">幾乎無任何出資證明</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 您是否有稅費繳納證明？</label>
+<select id="q2">
+<option value="3">有完整稅費繳納紀錄</option>
+<option value="2">有部分稅費繳納證明</option>
+<option value="1">僅能提出間接證明</option>
+<option value="0">無法證明稅費繳納</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 出名登記人是否曾承認借名關係？</label>
+<select id="q3">
+<option value="3">完全否認有借名關係</option>
+<option value="2">僅口頭承認但未書面確認</option>
+<option value="1">有書面承認但未簽署協議</option>
+<option value="0">已簽署借名登記協議</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 您保存的證據完整度？</label>
+<select id="q4">
+<option value="3">完整通訊紀錄、匯款證明、稅單</option>
+<option value="2">有主要證據但部分缺失</option>
+<option value="1">僅有基本通訊紀錄</option>
+<option value="0">幾乎無任何證據</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 該不動產目前使用狀況？</label>
+<select id="q5">
+<option value="3">由您實際居住管理</option>
+<option value="2">部分由您使用</option>
+<option value="1">由出名登記人使用</option>
+<option value="0">閒置或出租</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">返還請求成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p></p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：確認借名關係存在</h4>
+<p>可能性：60% (證據充分、使用狀況明確)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>法院確認借名登記關係存在</li>
+<li>出名登記人應返還所有權</li>
+<li>訴訟費用由對方負擔</li>
+<li>可聲請強制執行辦理移轉登記</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分證據不足</h4>
+<p>可能性：25% (部分爭議或證據不足)</p>
+<p>可能內容：</p>
+<ul>
+<li>法院認定部分事實但無法全面確認</li>
+<li>雙方就爭議金額達成和解</li>
+<li>雙方分擔訴訟費用</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：駁回請求</h4>
+<p>可能性：15% (重大證據不足或對方已處分財產)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強證據重新主張</li>
+<li>追究出名登記人刑事責任</li>
+<li>請求損害賠償</li>
+</ul>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">借名登記協議書</span>
+</div>
+<p class="evidence-desc">效力最高，特別是關於借名登記約定的條款，可明確雙方權利義務。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💼</span>
+<span class="evidence-title">出資證明與匯款紀錄</span>
+</div>
+<p class="evidence-desc">直接證明購屋資金來源，最好有銀行轉帳紀錄或收據。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🏠</span>
+<span class="evidence-title">使用管理證明</span>
+</div>
+<p class="evidence-desc">證明實際居住或管理事實，如水電瓦斯帳單、修繕發票等。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💬</span>
+<span class="evidence-title">通訊紀錄</span>
+</div>
+<p class="evidence-desc">雙方協商過程的簡訊、LINE對話等紀錄，可證明借名關係存在。</p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>借名登記返還請求準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">借名登記協議書（如有）</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">購屋款項匯款證明</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">房貸繳款紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">稅費繳納證明</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">通訊紀錄（LINE、簡訊等）</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">修繕費用單據</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">水電瓦斯帳單</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">第三人證言（如親友證明）</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認借名登記法律依據</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估是否聲請假處分</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備替代方案供調解參考</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">確認出名登記人資產狀況</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估訴訟成本效益</label>
+</div>
+</div>
+
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent cost-calculator" id="cost">
+<h1>訴訟費用與稅費計算模擬</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據民事訴訟法及相關稅法，估算返還登記訴訟可能產生的費用與稅費，
+        包含裁判費、律師費、登記規費及稅賦等項目，供您預先評估成本。
+    </div>
+<h2>💼 不動產基本設定</h2>
+<table id="propertyTable">
+<tr>
+<th>項目</th>
+<th>金額/內容</th>
+</tr>
+<tr>
+<td>不動產公告現值</td>
+<td><input type="number" value="2000000"/></td>
+</tr>
+<tr>
+<td>訴訟標的金額</td>
+<td><input type="number" value="2000000"/></td>
+</tr>
+<tr>
+<td>訴訟類型</td>
+<td>
+<select>
+<option value="first">第一審</option>
+<option selected="" value="second">第二審</option>
+<option value="third">第三審</option>
+</select>
+</td>
+</tr>
+</table>
+<h2>💰 費用項目輸入</h2>
+<table id="costTable">
+<tr>
+<th>費用類型</th>
+<th>金額</th>
+<th>備註</th>
+</tr>
+<tr>
+<td><input type="text" value="裁判費"/></td>
+<td><input type="number" value="20800"/></td>
+<td><input type="text" value="依訴訟標的金額計算"/></td>
+</tr>
+<tr>
+<td><input type="text" value="律師費"/></td>
+<td><input type="number" value="50000"/></td>
+<td><input type="text" value="依案件複雜度調整"/></td>
+</tr>
+<tr>
+<td><input type="text" value="假處分擔保金"/></td>
+<td><input type="number" value="60000"/></td>
+<td><input type="text" value="訴訟標的1/3估算"/></td>
+</tr>
+</table>
+<button class="btn" onclick="addCost()">新增費用項目</button>
+<button class="btn" onclick="calculateCost()">計算總費用</button>
+<h2>計算結果</h2>
+<div id="costResult"></div>
+<div class="cta-left-row" style="display: flex; justify-content: flex-start; margin-top: 20px; margin-bottom: 20px;">
+<a class="btn btn-inline" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div><div class="tabcontent inheritance-calculator" id="documents">
+<h2 style="color: #2c3e50; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>返還登記請求函</h3>
+<textarea style="width:100%; height:200px; margin-bottom:15px;">
+致 [出名登記人姓名] 先生/女士：
+
+本人[借名人姓名]前與台端約定，將位於[不動產地址]之不動產借名登記於台端名下（登記日期：[登記日期]），惟實際出資、管理及使用均由本人負責。依民法第767條規定及雙方約定，台端應返還該不動產所有權登記。
+
+經查，本人已提出完整出資證明、稅費繳納紀錄及使用管理證明，足證該不動產確為本人所有。請台端於文到七日內配合辦理所有權移轉登記手續，逾期未辦理，本人將依法採取進一步法律行動，恐有不便，敬請見諒。
+
+此致
+
+[借名人姓名] 謹啟
+[發函日期]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('return-request-letter.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h3>借名登記返還訴訟起訴狀範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;">
+民事起訴狀
+
+原 告：[借名人姓名] （身分證字號：[身分證號]）
+住址：[居住地址]
+電話：[聯絡電話]
+
+被 告：[出名登記人姓名]
+住址：[居住地址]
+電話：[聯絡電話]
+
+為請求返還不動產所有權登記事件，依法起訴：
+
+一、聲明：
+（一）確認坐落於[不動產地址]之不動產（地號：[地號]，建號：[建號]）為原告借名登記於被告名下。
+（二）被告應將前項不動產所有權移轉登記予原告。
+（三）訴訟費用由被告負擔。
+
+二、事實及理由：
+（一）原告於[年份]年間，因[原因，如貸款條件限制等]，與被告約定將上開不動產借名登記於被告名下，約定由原告實際出資、管理及使用。
+（二）原告已提出下列證據證明借名登記關係存在：
+    1. 購屋款項匯款證明（詳附件一）
+    2. 房貸繳款紀錄（詳附件二）
+    3. 稅費繳納證明（詳附件三）
+    4. 通訊紀錄（詳附件四）
+（三）詎被告竟否認借名登記關係，拒絕返還登記，為此提起本訴。
+
+此致
+[法院名稱]民事庭
+
+具狀人：[借名人姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('lawsuit-petition.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div>
+</div>
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能確認借名關係</p>";
+                recommendation = "建議完整提出證據並依法主張，成功機會很高。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能部分確認</p>";
+                recommendation = "建議針對爭議部分提出反證，爭取最大權益。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨駁回</p>";
+                recommendation = "建議補強證據，特別是出資證明與使用管理證明。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            showCustomModal('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 費用計算器功能
+        function addCost() {
+            const table = document.getElementById('costTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" placeholder="例如：鑑定費用"></td>
+                <td><input type="number" placeholder="金額"></td>
+                <td><input type="text" placeholder="備註"></td>
+            `;
+        }
+
+        function calculateCost() {
+            const propertyValue = Number(document.querySelector('#propertyTable input[type="number"]').value);
+            const lawsuitValue = Number(document.querySelectorAll('#propertyTable input[type="number"]')[1].value);
+            const lawsuitType = document.querySelector('#propertyTable select').value;
+            
+            // 計算裁判費（簡化計算）
+            let judgeFee = 0;
+            if (lawsuitValue <= 100000) {
+                judgeFee = 1000;
+            } else if (lawsuitValue <= 1000000) {
+                judgeFee = 1000 + (lawsuitValue - 100000) * 0.01;
+            } else {
+                judgeFee = 10000 + (lawsuitValue - 1000000) * 0.006;
+            }
+            judgeFee = Math.round(judgeFee);
+            
+            // 計算契稅（6%）
+            const deedTax = Math.round(propertyValue * 0.06);
+            
+            // 計算登記規費（0.1%）
+            const registrationFee = Math.round(propertyValue * 0.001);
+            
+            // 計算其他費用
+            const costRows = document.querySelectorAll('#costTable tr');
+            let otherCosts = 0;
+            
+            costRows.forEach((row, idx) => {
+                if (idx === 0) return;
+                const amount = Number(row.cells[1].querySelector('input').value);
+                otherCosts += amount;
+            });
+            
+            const totalCost = judgeFee + deedTax + registrationFee + otherCosts;
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>金額</th></tr>
+                <tr><td>裁判費</td><td>${judgeFee.toLocaleString()} 元</td></tr>
+                <tr><td>契稅（6%）</td><td>${deedTax.toLocaleString()} 元</td></tr>
+                <tr><td>登記規費（0.1%）</td><td>${registrationFee.toLocaleString()} 元</td></tr>
+                <tr><td>其他費用</td><td>${otherCosts.toLocaleString()} 元</td></tr>
+                <tr><td><strong>預估總費用</strong></td><td><strong>${totalCost.toLocaleString()} 元</strong></td></tr>
+            </table>`;
+            
+            resultHtml += `<div class="note">
+                <strong>分析：</strong>以上為預估費用，實際金額可能因個案情況而有所不同。裁判費部分依訴訟標的金額計算，契稅依不動產公告現值計算。
+            </div>`;
+            
+            document.getElementById('costResult').innerHTML = resultHtml;
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '借名登記準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+<style>
+/* 自訂彈窗背景 */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+/* 自訂彈窗 */
+.custom-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    padding: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.custom-modal-header { display: none; }
+.custom-modal-body {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+}
+.custom-modal-close { background: #58A4B0; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;  display: block; margin: 12px auto 8px;}
+.custom-modal-close:hover { background: #4a909b; color: #FFFFFF; }
+</style>
+<!-- 自訂彈窗 HTML 結構 -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+<div class="custom-modal">
+<div class="custom-modal-body" id="customModalContent"></div>
+<button class="custom-modal-close" onclick="closeCustomModal()">確定</button>
+</div>
+</div>
+<script>
+function showCustomModal(message) {
+    document.getElementById('customModalContent').innerText = message;
+    document.getElementById('customModalOverlay').style.display = 'block';
+}
+function closeCustomModal() {
+    document.getElementById('customModalOverlay').style.display = 'none';
+}
+</script>
+</body>
+</html>

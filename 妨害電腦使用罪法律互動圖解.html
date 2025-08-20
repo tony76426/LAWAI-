@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>妨害電腦使用罪法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 刑責計算器專用樣式 */
+        .penalty-calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .penalty-calculator h1, 
+        .penalty-calculator h2, 
+        .penalty-calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .penalty-calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .penalty-calculator .btn {
+            background: #4f6c7d;
+        }
+        .penalty-calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .penalty-calculator th {
+            background-color: #4f6c7d;
+        }
+        .penalty-calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 刑責計算器響應式 */
+    .penalty-calculator h1 {
+        font-size: 1.5em;
+    }
+    .penalty-calculator h2 {
+        font-size: 1.2em;
+    }
+    .penalty-calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .penalty-calculator th, 
+    .penalty-calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .penalty-calculator input, 
+    .penalty-calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .penalty-calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .penalty-calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+<style>
+@media (min-width: 769px) {
+  .back-home-container a {
+    border: 1px solid #4f6c7d !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 14px !important;
+    color: #4f6c7d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    text-decoration: none !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 18px !important;
+    color: #4f6c7d !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    margin-left: 2px !important;
+    font-weight: 600 !important;
+  }
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+.back-home-container a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  color: #4f6c7d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-home-container a:visited,
+.back-home-container a:active,
+.back-home-container a:hover {
+  color: #4f6c7d;
+  text-decoration: none;
+}
+.back-home-container .material-icons {
+  font-size: 22px;
+  color: #4f6c7d !important;
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+@media screen and (max-width: 768px) {
+    #penaltyResult {
+        font-size: 1.1em;
+        padding: 15px 10px;
+        line-height: 1.6;
+    }
+    #penaltyResult table {
+        font-size: 1em;
+    }
+    #penaltyResult .note {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+</style>
+<style>
+/* Hide Mermaid's auto legend next to charts (keep our custom legend below) */
+.mermaid .legend { display: none !important; }
+
+/* Remove mobile tap highlight & text selection for the interactive flowchart */
+#interactive-flowchart, #interactive-flowchart * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+svg#interactive-flowchart {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+<style>
+
+@media (max-width: 768px) {
+  /* Keep the bottom CTA compact (not 100% width) on mobile */
+  .penalty-calculator .btn.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+  .penalty-calculator .cta-left-row {
+    justify-content: flex-start !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="back-home-container">
+<a href="index.html">
+<span class="material-icons">arrow_back</span>
+<span class="desktop-only">返回首頁</span>
+</a>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.back-home-container {
+  margin-bottom: 5px !important;
+}
+h1 {
+  margin-top: 5px !important;
+}
+body {
+  padding-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .back-home-container a {
+    position: relative;
+    display: inline-block;
+  }
+  .back-home-container a::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: -30%;
+    right: -30%;
+    z-index: 1;
+  }
+  .back-home-container a span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+</style>
+<h1>妨害電腦使用罪法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'penalty')" style="font-size: 110% !important;">刑責計算</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>妨害電腦使用罪基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是妨害電腦使用罪？</h3>
+<p>當未經授權侵入他人電腦系統、取得或變更電磁紀錄時，即可能構成妨害電腦使用罪。常見爭議包括：猜測他人密碼登入帳號、未經同意下載或變更電子資料、刪除他人電腦檔案等。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求損害賠償</li>
+<li>向檢警單位提出刑事告訴</li>
+<li>透過調解或訴訟程序解決爭議</li>
+<li>申請強制執行對方財產</li>
+</ul>
+</div>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>妨害電腦使用罪處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 妨害電腦使用罪處理時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    發現電腦系統遭入侵 :done, a1, 2023-01-01, 1d
+                    證據保全 :done, a2, after a1, 7d
+                    section 法律程序
+                    提出刑事告訴 :done, a3, 2023-01-15, 7d
+                    檢警調查 :active, a4, 2023-02-01, 30d
+                    檢察官偵查 : a5, after a4, 60d
+                    section 訴訟階段
+                    法院審理 : a6, after a5, 90d
+            </div></div>
+<p><small>※ 注意：完整流程通常需3-6個月，視案件複雜度而定</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="process">
+<h2>妨害電腦使用罪處理流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">妨害電腦使用罪互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="發現電腦系統遭入侵">
+<rect fill="#4f6c7d" height="40" rx="8" width="140" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="90" y="205">發現電腦系統遭入侵</text>
+</g>
+<g class="node" data-name="證據保全">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="190" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="240" y="205">證據保全</text>
+</g>
+<g class="node" data-name="協商和解">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="320" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="370" y="165">協商和解</text>
+</g>
+<g class="node" data-name="達成和解">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">達成和解</text>
+</g>
+<g class="node" data-name="提出刑事告訴">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="205">提出刑事告訴</text>
+</g>
+<g class="node" data-name="檢警調查">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">檢警調查</text>
+</g>
+<g class="node" data-name="檢察官偵查">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">檢察官偵查</text>
+</g>
+<g class="node" data-name="法院審理">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">法院審理</text>
+</g>
+<g class="node" data-name="不起訴處分">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="265">不起訴處分</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="160" x2="190" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="290" x2="320" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="420" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="550" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="650" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.setAttribute("tabindex", "-1");
+            node.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            }, { passive: false });
+            node.addEventListener("click", (e) => {
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "發現電腦系統遭入侵": "發現電腦系統遭未經授權登入或資料遭變更，應立即停止使用該系統並保全證據。",
+                "證據保全": "保存登入紀錄、IP位址、變更紀錄等電子證據，必要時進行公證或數位鑑識。",
+                "協商和解": "雙方可就損害賠償及撤回告訴進行協商，建議以書面方式記錄協商過程及結果。",
+                "達成和解": "如能達成和解，應訂立書面和解書並依約履行，完成賠償及撤回告訴程序。",
+                "提出刑事告訴": "向警方或地檢署提出告訴，需附相關證據如登入紀錄、系統遭變更證明等。",
+                "檢警調查": "檢警將調閱相關電子紀錄、IP位址等證據，釐清入侵事實與行為人。",
+                "檢察官偵查": "檢察官將審查證據，決定是否起訴或為不起訴處分。",
+                "法院審理": "如檢察官起訴，法院將審理雙方主張及證據，判決是否有罪及刑度。",
+                "不起訴處分": "如證據不足或情節輕微，檢察官可能為不起訴處分。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>證據保全</td>
+<td>保存登入紀錄、IP位址等</td>
+<td>1-3天</td>
+<td>避免證據滅失或被覆寫</td>
+</tr>
+<tr>
+<td>協商和解</td>
+<td>書面溝通、保留證據</td>
+<td>1-2週</td>
+<td>和解書應明確記載撤回告訴條款</td>
+</tr>
+<tr>
+<td>提出刑事告訴</td>
+<td>準備相關文件證據</td>
+<td>1-2週</td>
+<td>可自行或委任代理人提出</td>
+</tr>
+<tr>
+<td>檢警調查</td>
+<td>配合提供證據</td>
+<td>1-2個月</td>
+<td>保持理性溝通態度</td>
+</tr>
+<tr>
+<td>法院審理</td>
+<td>委任律師或自行應訴</td>
+<td>3-6個月</td>
+<td>準備充分證據證明犯罪事實</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 妨害電腦使用罪判決比例
+                    "有罪判決" : 60
+                    "無罪判決" : 20
+                    "緩刑" : 15
+                    "不起訴" : 5
+            </div>
+<div class="pie-legend" style="display:flex;justify-content:flex-start;gap:16px;margin-top:8px;flex-wrap:wrap;margin-left:1.5cm;">
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#A5D6A7;"></span>
+<span>有罪判決</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#FFF59D;"></span>
+<span>無罪判決</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#90CAF9;"></span>
+<span>緩刑</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#EF9A9A;"></span>
+<span>不起訴</span>
+</div>
+</div>
+<p><small>※ 根據近年法院統計，多數妨害電腦使用案件判決有罪，但部分案件可能獲得緩刑或不起訴處分</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的妨害電腦使用罪風險評估</h3>
+<p>請回答以下問題，評估您的案件風險與可能結果：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您是否有未經授權登入他人電腦系統？</label>
+<select id="q1">
+<option value="3">有明確證據證明未經授權登入</option>
+<option value="2">部分證據顯示可能未經授權登入</option>
+<option value="1">雙方對授權與否有爭議</option>
+<option value="0">有獲得授權或正當理由</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 您是否有取得、刪除或變更他人電腦電磁紀錄？</label>
+<select id="q2">
+<option value="3">有明確證據證明變更或取得電磁紀錄</option>
+<option value="2">部分證據顯示可能變更或取得電磁紀錄</option>
+<option value="1">僅瀏覽未變更或取得電磁紀錄</option>
+<option value="0">未取得或變更任何電磁紀錄</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 行為動機為何？</label>
+<select id="q3">
+<option value="3">為獲取不法利益或損害他人</option>
+<option value="2">為蒐集證據但手段不當</option>
+<option value="1">誤以為有權限或正當理由</option>
+<option value="0">有正當防衛或緊急避難事由</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 您與對方的關係？</label>
+<select id="q4">
+<option value="3">無特殊關係</option>
+<option value="2">商業往來關係</option>
+<option value="1">親友關係</option>
+<option value="0">配偶或直系親屬關係</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 是否已與對方達成和解？</label>
+<select id="q5">
+<option value="3">對方堅持提告且拒絕和解</option>
+<option value="2">和解談判中</option>
+<option value="1">已達成口頭和解</option>
+<option value="0">已簽署書面和解除告</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">妨害電腦使用罪風險評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低風險</span>
+<span>中等風險</span>
+<span>高風險</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p></p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：不起訴或無罪</h4>
+<p>可能性：20% (證據不足或有正當理由)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>檢察官為不起訴處分</li>
+<li>法院判決無罪</li>
+<li>無刑事紀錄</li>
+<li>無需賠償</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：緩刑或輕判</h4>
+<p>可能性：50% (情節輕微或已和解)</p>
+<p>可能內容：</p>
+<ul>
+<li>判處有期徒刑得易科罰金</li>
+<li>宣告緩刑</li>
+<li>需支付賠償金</li>
+<li>無須入獄但有前科</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：有罪判刑</h4>
+<p>可能性：30% (情節重大且未和解)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>上訴爭取減刑</li>
+<li>補償被害人爭取緩刑</li>
+<li>準備入獄相關事宜</li>
+</ul>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">💻</span>
+<span class="evidence-title">系統登入紀錄</span>
+</div>
+<p class="evidence-desc">效力最高，特別是包含IP位址、時間戳記的原始紀錄，可明確證明未經授權登入事實。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📧</span>
+<span class="evidence-title">電子郵件或訊息紀錄</span>
+</div>
+<p class="evidence-desc">證明行為人承認或討論登入行為的對話紀錄，最好有時間戳記。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🔍</span>
+<span class="evidence-title">數位鑑識報告</span>
+</div>
+<p class="evidence-desc">專業鑑識單位出具的報告，證明系統遭入侵及資料變更情形。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📝</span>
+<span class="evidence-title">和解或賠償協議</span>
+</div>
+<p class="evidence-desc">雙方和解過程的書面文件，可證明犯後態度良好，爭取減輕刑責。</p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>妨害電腦使用罪準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">系統登入紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">IP位址證明</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">電磁紀錄變更前後對照</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">數位鑑識報告（如有）</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">雙方通訊紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">帳號權限證明</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">證人聯絡方式</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">其他相關電子證據</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認刑法第358條、第359條構成要件</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">評估是否聲請證據保全</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備和解方案</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">確認對方資產狀況</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估刑事附帶民事賠償可能性</label>
+</div>
+</div>
+
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+<div class="tabcontent penalty-calculator" id="penalty">
+<h1>妨害電腦使用罪刑責計算模擬</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具依據刑法第358條、第359條，判斷妨害電腦使用罪刑責標準，
+        並模擬可能刑度計算。第358條侵入電腦罪處3年以下有期徒刑；第359條無故取得或變更電磁紀錄罪處5年以下有期徒刑。
+    </div>
+<h2>💻 案件基本設定</h2>
+<table id="penaltyTable">
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+<tr>
+<td>涉嫌罪名</td>
+<td>
+<select id="crimeType">
+<option value="358">刑法第358條（侵入電腦）</option>
+<option value="359">刑法第359條（變更電磁紀錄）</option>
+<option value="both">同時涉犯兩罪</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>行為次數</td>
+<td><input type="number" id="crimeCount" value="1" min="1"/></td>
+</tr>
+<tr>
+<td>是否與被害人和解</td>
+<td>
+<select id="settlement">
+<option value="no">未和解</option>
+<option value="negotiating">和解談判中</option>
+<option value="yes">已達成和解</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>有無前科</td>
+<td>
+<select id="criminalRecord">
+<option value="no">無前科</option>
+<option value="yes">有前科</option>
+</select>
+</td>
+</tr>
+</table>
+<h2>刑責模擬計算</h2>
+<button class="btn" onclick="calculatePenalty()">計算可能刑責</button>
+<h2>計算結果</h2>
+<div id="penaltyResult"></div>
+<div class="cta-left-row" style="display: flex; justify-content: flex-start; margin-top: 20px; margin-bottom: 20px;">
+<a class="btn btn-inline" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div><div class="tabcontent inheritance-calculator" id="documents">
+<h2 style="color: #2c3e50; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>刑事告訴狀範本</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;" id="criminalComplaint">
+刑事告訴狀
+
+告訴人：[您的姓名] （身分證字號：[身分證號]）
+住址：[居住地址]
+電話：[聯絡電話]
+
+被告：[對方姓名]
+住址：[對方地址]
+電話：[對方電話]
+
+為被告涉犯刑法第358條、第359條妨害電腦使用罪案件，依法提出告訴：
+
+一、犯罪事實：
+（一）被告於[日期]起，未經告訴人同意，以[具體方式，例如：猜測密碼]侵入告訴人之[電腦系統/電子郵件帳號]。
+（二）被告侵入後，[具體行為，例如：變更密碼、下載信件、刪除檔案等]。
+（三）被告上開行為已妨害告訴人使用電腦系統之權利，並造成[具體損害]。
+
+二、證據：
+（一）系統登入紀錄
+（二）IP位址證明
+（三）電磁紀錄變更證明
+（四）其他相關證據
+
+三、所犯法條：刑法第358條、第359條
+
+四、請求調查證據：
+（一）調閱[具體證據，例如：網路連線紀錄]
+（二）進行數位鑑識
+
+此致
+[地檢署名稱]檢察署
+
+告訴人：[您的姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('criminal-complaint.txt', document.getElementById('criminalComplaint').value)">下載範本</button>
+</div>
+<div class="card">
+<h3>和解協議書範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;" id="settlementAgreement">
+和解協議書
+
+立協議書人：
+甲方（被害人）：[姓名] （身分證字號：[身分證號]）
+住址：[地址]
+乙方（行為人）：[姓名] （身分證字號：[身分證號]）
+住址：[地址]
+
+緣乙方於[日期]涉犯刑法第358條、第359條妨害電腦使用罪，經雙方協商，達成如下協議：
+
+一、乙方承認上開行為不當，並向甲方致歉。
+
+二、乙方同意給付甲方新臺幣[金額]元整作為損害賠償，給付方式如下：
+（一）[具體給付方式與時間]
+（二）[其他約定]
+
+三、甲方同意於乙方履行本協議後，向檢察官或法院表示願意原諒乙方，並請求從輕處理或撤回告訴。
+
+四、雙方同意本協議內容保密，不得對外公開。
+
+五、本協議書一式兩份，由雙方各執一份為憑。
+
+立協議書人：
+甲方：[姓名] （簽名蓋章）
+乙方：[姓名] （簽名蓋章）
+見證人：[姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('settlement-agreement.txt', document.getElementById('settlementAgreement').value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div>
+</div>
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A',
+                pie4: '#90CAF9'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#F44336;font-weight:bold;'>高風險：極可能面臨有罪判決</p>";
+                recommendation = "建議立即尋求專業律師協助，準備辯護策略並嘗試與對方和解。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等風險：可能獲得緩刑或輕判</p>";
+                recommendation = "建議積極與對方和解，並準備有利證據爭取減輕刑責。";
+            } else {
+                resultText = "<p style='color:#4CAF50;font-weight:bold;'>低風險：可能不起訴或無罪</p>";
+                recommendation = "建議整理完整證據，證明行為正當性或證據不足。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            showCustomModal('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        // 刑責計算器功能
+        function calculatePenalty() {
+            const crimeType = document.getElementById('crimeType').value;
+            const crimeCount = parseInt(document.getElementById('crimeCount').value);
+            const settlement = document.getElementById('settlement').value;
+            const criminalRecord = document.getElementById('criminalRecord').value;
+            
+            let basePenalty = "";
+            let penaltyRange = "";
+            let fineRange = "";
+            let possibleOutcome = "";
+            
+            if (crimeType === "358") {
+                basePenalty = "刑法第358條：3年以下有期徒刑、拘役或科或併科30萬元以下罰金";
+                penaltyRange = "6個月以下有期徒刑（得易科罰金）";
+                fineRange = "5萬至15萬元";
+            } else if (crimeType === "359") {
+                basePenalty = "刑法第359條：5年以下有期徒刑、拘役或科或併科60萬元以下罰金";
+                penaltyRange = "1年以下有期徒刑（得易科罰金）";
+                fineRange = "10萬至30萬元";
+            } else {
+                basePenalty = "刑法第358條及第359條：數罪併罰";
+                penaltyRange = "1年至3年有期徒刑";
+                fineRange = "20萬至60萬元";
+            }
+            
+            // 調整刑責基於其他因素
+            if (crimeCount > 1) {
+                penaltyRange = "加重" + penaltyRange;
+                fineRange = "加重" + fineRange;
+            }
+            
+            if (settlement === "yes") {
+                penaltyRange = "可能緩刑或" + penaltyRange.replace("加重", "");
+                fineRange = "可能降低或" + fineRange.replace("加重", "");
+                possibleOutcome = "可能獲得緩起訴或緩刑";
+            } else if (settlement === "negotiating") {
+                possibleOutcome = "若能達成和解，可能獲得較輕刑責";
+            } else {
+                possibleOutcome = "可能面臨較重刑責";
+            }
+            
+            if (criminalRecord === "yes") {
+                penaltyRange = "加重" + penaltyRange;
+                fineRange = "加重" + fineRange;
+                possibleOutcome += "（因有前科可能加重刑度）";
+            }
+            
+            let resultHtml = `<table>
+                <tr><th>項目</th><th>內容</th></tr>
+                <tr><td>涉嫌罪名</td><td>${basePenalty}</td></tr>
+                <tr><td>可能刑度</td><td>${penaltyRange}</td></tr>
+                <tr><td>可能罰金</td><td>${fineRange}</td></tr>
+                <tr><td>和解狀況</td><td>${settlement === "yes" ? "已和解" : settlement === "negotiating" ? "和解談判中" : "未和解"}</td></tr>
+                <tr><td><strong>可能結果</strong></td><td><strong>${possibleOutcome}</strong></td></tr>
+            </table>`;
+            
+            if (settlement === "no") {
+                resultHtml += `<div class="note" style="background:#FFEBEE;border-left-color:#F44336;">
+                    <strong>建議：</strong>強烈建議嘗試與對方和解，和解可大幅降低刑責風險。
+                </div>`;
+            } else {
+                resultHtml += `<div class="note">
+                    <strong>分析：</strong>依計算結果，${possibleOutcome}。
+                </div>`;
+            }
+            
+            document.getElementById('penaltyResult').innerHTML = resultHtml;
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '妨害電腦使用罪準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+<style>
+/* 自訂彈窗背景 */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+/* 自訂彈窗 */
+.custom-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    padding: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.custom-modal-header { display: none; }
+.custom-modal-body {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+}
+.custom-modal-close { background: #58A4B0; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;  display: block; margin: 12px auto 8px;}
+.custom-modal-close:hover { background: #4a909b; color: #FFFFFF; }
+</style>
+<!-- 自訂彈窗 HTML 結構 -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+<div class="custom-modal">
+<div class="custom-modal-body" id="customModalContent"></div>
+<button class="custom-modal-close" onclick="closeCustomModal()">確定</button>
+</div>
+</div>
+<script>
+function showCustomModal(message) {
+    document.getElementById('customModalContent').innerText = message;
+    document.getElementById('customModalOverlay').style.display = 'block';
+}
+function closeCustomModal() {
+    document.getElementById('customModalOverlay').style.display = 'none';
+}
+</script>
+</body>
+</html>
