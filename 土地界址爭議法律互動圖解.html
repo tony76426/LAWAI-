@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>土地界址爭議法律自助分析工具</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: #F2E8DF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 4px solid #4f6c7d;
+        }
+        .step-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4f6c7d;
+        }
+        .btn {
+            display: inline-block;
+            background: #4f6c7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F2E8DF;
+        }
+        #calculator {
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            color: #4f6c7d;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4f6c7d;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .checklist-item {
+            margin-bottom: 10px;
+        }
+        .checklist-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4f6c7d;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4f6c7d;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #F2E8DF;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #F2E8DF;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #F2E8DF transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .content h3 {
+            color: #4f6c7d;
+            margin-top: 0;
+        }
+        .risk-meter {
+            height: 30px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .risk-pointer {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: black;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .outcome-card {
+            border-left: 5px solid;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        .positive {
+            border-left-color: #58A4B0;
+        }
+        .negative {
+            border-left-color: #4f6c7d;
+        }
+        .neutral {
+            border-left-color: #FFC107;
+        }
+        .evidence-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .evidence-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #4f6c7d;
+        }
+        .evidence-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .evidence-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        .protection-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #F2E8DF;
+            border-radius: 5px;
+        }
+        .protection-title {
+            font-weight: bold;
+            color: #4f6c7d;
+        }
+        /* 計算器專用樣式 */
+        .calculator {
+            background: #F2E8DF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .calculator h1, 
+        .calculator h2, 
+        .calculator h3 {
+            color: #4f6c7d;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .calculator h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #4f6c7d;
+            padding-bottom: 10px;
+        }
+        .calculator .btn {
+            background: #4f6c7d;
+        }
+        .calculator .btn:hover {
+            background: #58A4B0;
+        }
+        .calculator th {
+            background-color: #4f6c7d;
+        }
+        .calculator .note {
+            background: #f2f2f2;
+            border-left: 4px solid #4f6c7d;
+            padding: 10px;
+            margin: 10px 0;
+            color: #333;
+        }
+    
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .card, .step, .tabcontent, .timeline .content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .step-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .timeline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    svg#interactive-flowchart {
+        width: 100%;
+        height: auto;
+    }
+    .tab button {
+        font-size: 12px;
+        padding: 10px;
+    }
+    table, th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .risk-labels {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 計算器響應式 */
+    .calculator h1 {
+        font-size: 1.5em;
+    }
+    .calculator h2 {
+        font-size: 1.2em;
+    }
+    .calculator table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .calculator th, 
+    .calculator td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .calculator input, 
+    .calculator select {
+        padding: 8px;
+        font-size: 1em;
+    }
+    .calculator .btn {
+        width: 100%;
+        padding: 12px 0;
+        margin: 10px 0;
+        font-size: 1em;
+    }
+    .calculator .note {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+</style>
+<style>
+@media (min-width: 769px) {
+  .back-home-container a {
+    border: 1px solid #4f6c7d !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 14px !important;
+    color: #4f6c7d !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    text-decoration: none !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 18px !important;
+    color: #4f6c7d !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    margin-left: 2px !important;
+    font-weight: 600 !important;
+  }
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .back-home-container .material-icons {
+    font-size: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+.back-home-container a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  color: #4f6c7d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-home-container a:visited,
+.back-home-container a:active,
+.back-home-container a:hover {
+  color: #4f6c7d;
+  text-decoration: none;
+}
+.back-home-container .material-icons {
+  font-size: 22px;
+  color: #4f6c7d !important;
+}
+@media (max-width: 768px) {
+  .back-home-container a {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .back-home-container .desktop-only {
+    display: none !important;
+  }
+}
+</style><style>
+@media screen and (max-width: 768px) {
+    #areaResult, #prescriptionResult {
+        font-size: 1.1em;
+        padding: 15px 10px;
+        line-height: 1.6;
+    }
+    #areaResult table, #prescriptionResult table {
+        font-size: 1em;
+    }
+    #areaResult .note, #prescriptionResult .note {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+</style>
+<style>
+/* Hide Mermaid's auto legend next to charts (keep our custom legend below) */
+.mermaid .legend { display: none !important; }
+
+/* Remove mobile tap highlight & text selection for the interactive flowchart */
+#interactive-flowchart, #interactive-flowchart * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+svg#interactive-flowchart {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+<style>
+
+@media (max-width: 768px) {
+  /* Keep the bottom CTA compact (not 100% width) on mobile */
+  .calculator .btn.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+  .calculator .cta-left-row {
+    justify-content: flex-start !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="back-home-container">
+<a href="index.html">
+<span class="material-icons">arrow_back</span>
+<span class="desktop-only">返回首頁</span>
+</a>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.back-home-container {
+  margin-bottom: 5px !important;
+}
+h1 {
+  margin-top: 5px !important;
+}
+body {
+  padding-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .back-home-container a {
+    position: relative;
+    display: inline-block;
+  }
+  .back-home-container a::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: -30%;
+    right: -30%;
+    z-index: 1;
+  }
+  .back-home-container a span {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+</style>
+<h1>土地界址爭議法律互動圖解</h1>
+<div class="tab">
+<button class="tablinks active" onclick="openTab(event, 'overview')" style="font-size: 110% !important;">案件總覽</button>
+<button class="tablinks" onclick="openTab(event, 'process')" style="font-size: 110% !important;">處理流程</button>
+<button class="tablinks" onclick="openTab(event, 'calculator')" style="font-size: 110% !important;">風險評估</button>
+<button class="tablinks" onclick="openTab(event, 'calculation')" style="font-size: 110% !important;">計算工具</button>
+<button class="tablinks" onclick="openTab(event, 'checklist')" style="font-size: 110% !important;">準備清單</button>
+<button class="tablinks" onclick="openTab(event, 'documents')" style="font-size: 110% !important;">文件範本</button></div>
+
+<!-- 案件總覽分頁 -->
+<div class="tabcontent" id="overview" style="display: block;">
+<div class="card">
+<h2>土地界址爭議基本資訊</h2>
+<div class="step">
+<div class="step-icon">⚖️</div>
+<div>
+<h3>什麼是土地界址爭議？</h3>
+<p>當相鄰土地所有權人對於土地界址位置有不同主張時，即構成土地界址爭議。常見爭議包括：界標位置、既有設施（如圍牆、籬笆）是否為分界、測量結果差異等。</p>
+</div>
+</div>
+<div class="step">
+<div class="step-icon">🛡️</div>
+<div>
+<h3>您可以獲得的保障</h3>
+<ul>
+<li>依法請求確認土地界址位置</li>
+<li>主張時效取得爭議範圍土地所有權</li>
+<li>維持既有界址設施（如圍牆）現狀</li>
+<li>向地政機關申請複測</li>
+<li>透過調解或訴訟程序解決爭議</li>
+</ul>
+</div>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>土地界址爭議處理時間軸</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;"><div class="mermaid" style="min-width: 600px; overflow: visible;">
+                gantt
+                    title 土地界址爭議處理時間軸
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m/%d
+                    section 準備階段
+                    發現界址爭議 :done, a1, 2023-01-01, 1d
+                    協商談判 :done, a2, after a1, 14d
+                    section 行政程序
+                    申請地政複測 :done, a3, 2023-02-01, 7d
+                    地政機關測量 :active, a4, 2023-03-01, 30d
+                    section 法律程序
+                    訴訟程序 : a5, after a4, 90d
+                    section 執行階段
+                    界址確定執行 : a6, after a5, 14d
+            </div></div>
+<p><small>※ 注意：完整流程通常需3-6個月，視爭議複雜度而定</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 處理流程分頁 -->
+<div class="tabcontent" id="process">
+<h2>土地界址爭議處理流程圖解</h2>
+<div class="card">
+<h3 style="color:#2E4A3F;">土地界址爭議互動流程圖</h3>
+<div style="overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;"><div style="width:1020px;">
+<svg display:block;"="" height="400" id="interactive-flowchart" min-width:1000px;="" style="background: #F9F6F1; border: 1px solid #f2f2f2; border-radius: 8px; cursor: pointer;" width="1000 style=">
+<!-- 節點 -->
+<g class="node" data-name="發現界址爭議">
+<rect fill="#4f6c7d" height="40" rx="8" width="120" x="20" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="80" y="205">發現界址爭議</text>
+</g>
+<g class="node" data-name="收集證據">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="170" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="220" y="205">收集證據</text>
+</g>
+<g class="node" data-name="協商談判">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="300" y="140"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="350" y="165">協商談判</text>
+</g>
+<g class="node" data-name="達成協議">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="450" y="100"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="125">達成協議</text>
+</g>
+<g class="node" data-name="申請複測">
+<rect fill="#4f6c7d" height="40" rx="8" width="100" x="450" y="180"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="500" y="205">申請複測</text>
+</g>
+<g class="node" data-name="地政測量">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="205">地政測量</text>
+</g>
+<g class="node" data-name="測量結果確認">
+<rect fill="#f2f2f2" height="40" rx="8" width="100" x="730" y="180"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="780" y="205">測量結果確認</text>
+</g>
+<g class="node" data-name="提起訴訟">
+<rect fill="#58A4B0" height="40" rx="8" width="100" x="730" y="240"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="780" y="265">提起訴訟</text>
+</g>
+<g class="node" data-name="訴訟程序">
+<rect fill="#d8d8d8" height="40" rx="8" width="100" x="600" y="240"></rect>
+<text fill="#333333" font-size="12" text-anchor="middle" x="650" y="265">訴訟程序</text>
+</g>
+<!-- 連線 -->
+<line stroke="#333333" stroke-width="2" x1="140" x2="170" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="270" x2="300" y1="200" y2="160"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="120"></line>
+<line stroke="#333333" stroke-width="2" x1="400" x2="450" y1="160" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="550" x2="600" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="700" x2="730" y1="200" y2="200"></line>
+<line stroke="#333333" stroke-width="2" x1="780" x2="780" y1="220" y2="240"></line>
+<line stroke="#333333" stroke-width="2" x1="650" x2="730" y1="240" y2="240"></line>
+<line stroke="#333333" stroke-dasharray="5,5" stroke-width="2" x1="600" x2="600" y1="220" y2="240"></line>
+</svg></div></div>
+</div>
+<script>
+        document.querySelectorAll("#interactive-flowchart .node").forEach(node => {
+            node.addEventListener("mouseover", () => {
+                node.querySelector("rect").setAttribute("stroke", "#d8d8d8");
+                node.querySelector("rect").setAttribute("stroke-width", "3");
+            });
+            node.addEventListener("mouseout", () => {
+                node.querySelector("rect").setAttribute("stroke", "");
+                node.querySelector("rect").setAttribute("stroke-width", "");
+            });
+            node.setAttribute("tabindex", "-1");
+            node.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            }, { passive: false });
+            node.addEventListener("click", (e) => {
+                const name = node.getAttribute("data-name");
+                e && e.preventDefault && e.preventDefault();
+                e && e.stopPropagation && e.stopPropagation();
+                showCustomModal(getNodeDescription(name));
+            });
+        });
+
+        function getNodeDescription(name) {
+            const descriptions = {
+                "發現界址爭議": "發現相鄰土地所有權人對界址位置有不同主張，可能涉及既有設施（如圍牆、籬笆）位置爭議。",
+                "收集證據": "收集土地買賣契約、地籍圖、歷史照片、航照圖、證人證詞等能證明界址位置的證據。",
+                "協商談判": "與相鄰土地所有權人就界址位置進行協商，建議以書面方式記錄協商過程及結果。",
+                "達成協議": "如能達成協議，應訂立書面協議書並向地政機關申請界址標示變更登記。",
+                "申請複測": "向地政機關申請界址複測，需附上相關證據資料說明爭議情形。",
+                "地政測量": "地政機關派員實地測量，依據地籍資料與現地狀況確認界址位置。",
+                "測量結果確認": "地政機關核發測量成果圖，雙方得依此確認界址位置或進一步提起訴訟。",
+                "提起訴訟": "對測量結果有異議或無法達成協議時，可向法院提起確認界址或所有權之訴。",
+                "訴訟程序": "法院將審理雙方主張及證據，可能委託專業測量單位重新測量後判決確定界址位置。"
+            };
+            return descriptions[name] || "無相關說明";
+        }
+        </script>
+<div class="card">
+<h3>各階段說明</h3>
+<table>
+<tr>
+<th>階段</th>
+<th>行動建議</th>
+<th>所需時間</th>
+<th>注意事項</th>
+</tr>
+<tr>
+<td>收集證據</td>
+<td>整理地籍資料、歷史照片、證人名單</td>
+<td>1-2週</td>
+<td>證據越早期越具證明力</td>
+</tr>
+<tr>
+<td>協商談判</td>
+<td>書面溝通、保留證據</td>
+<td>1-2週</td>
+<td>避免口頭承諾無紀錄</td>
+</tr>
+<tr>
+<td>申請複測</td>
+<td>準備相關文件證據</td>
+<td>1-2週</td>
+<td>可自行或委任代理人申請</td>
+</tr>
+<tr>
+<td>地政測量</td>
+<td>配合測量人員說明主張</td>
+<td>1-2小時</td>
+<td>現場指界需明確</td>
+</tr>
+<tr>
+<td>訴訟程序</td>
+<td>委任律師或自行起訴</td>
+<td>3-6個月</td>
+<td>需準備充分證據支持主張</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3>法院判決結果比例</h3>
+<div class="mermaid">
+                pie
+                    title 土地界址爭議判決比例
+                    "維持既有界址" : 60
+                    "調整部分界址" : 30
+                    "完全變更界址" : 10
+            </div>
+<div class="pie-legend" style="display:flex;justify-content:flex-start;gap:16px;margin-top:8px;flex-wrap:wrap;margin-left:1.5cm;">
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#A5D6A7;"></span>
+<span>維持既有界址</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#FFF59D;"></span>
+<span>調整部分界址</span>
+</div>
+<div class="legend-item" style="display:flex;align-items:center;gap:8px;font-size:16.1px;">
+<span class="swatch" style="width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,0.1);background:#EF9A9A;"></span>
+<span>完全變更界址</span>
+</div>
+</div>
+<p><small>※ 根據近年法院統計，多數土地界址爭議案件判決維持既有界址或僅調整部分界址</small></p>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 風險評估分頁 -->
+<div class="tabcontent" id="calculator">
+<h2>案件風險評估</h2>
+<div class="card">
+<h3>您的土地界址主張成功可能性評估</h3>
+<p>請回答以下問題，評估您的土地界址主張成功可能性與風險：</p>
+<form id="riskAssessment">
+<div class="step">
+<label for="q1">1. 您是否有保存完整土地買賣契約與地籍圖？</label>
+<select id="q1">
+<option value="3">有完整契約與地籍圖，且載明界址位置</option>
+<option value="2">有部分契約資料但不完整</option>
+<option value="1">僅有地籍圖無契約</option>
+<option value="0">幾乎無任何書面證明</option>
+</select>
+</div>
+<div class="step">
+<label for="q2">2. 爭議界址設施（如圍牆）存在時間？</label>
+<select id="q2">
+<option value="3">超過20年</option>
+<option value="2">10-20年</option>
+<option value="1">5-10年</option>
+<option value="0">少於5年</option>
+</select>
+</div>
+<div class="step">
+<label for="q3">3. 是否有歷史照片或航照圖證明界址位置？</label>
+<select id="q3">
+<option value="3">有10年以上的清晰照片或航照圖</option>
+<option value="2">有部分照片但不夠清晰</option>
+<option value="1">僅有近期照片</option>
+<option value="0">無任何照片證明</option>
+</select>
+</div>
+<div class="step">
+<label for="q4">4. 是否有證人可以證明界址長期使用狀況？</label>
+<select id="q4">
+<option value="3">有2位以上證人可證明長期使用狀況</option>
+<option value="2">有1位證人可證明</option>
+<option value="1">證人僅能證明部分事實</option>
+<option value="0">無任何證人</option>
+</select>
+</div>
+<div class="step" style="">
+<label for="q5">5. 您對爭議範圍的實際使用狀況？</label>
+<select id="q5">
+<option value="3">長期持續使用（如耕作、建築等）</option>
+<option value="2">定期使用</option>
+<option value="1">偶爾使用</option>
+<option value="0">幾乎未使用</option>
+</select>
+</div>
+</form>
+<div style="background: #F2E8DF; padding: 12px 15px; margin: 25px 0; border-radius: 6px; font-size: 15px; display: flex; align-items: center;"><span style="font-size: 18px; margin-right: 10px;">ℹ️</span><span>請先完成所有問題的選擇，並點選「確定進行風險評估」按鈕後，即可顯示評估結果。</span></div><h4 style="margin-top: 2px; margin-bottom: 2px; line-height: 1.1;">土地界址主張成功可能性評估</h4>
+<button class="btn" onclick="calculateRisk()" style="display:block; margin: 20px auto;" type="button">確定進行風險評估</button><div class="risk-meter">
+<div class="risk-pointer" id="riskPointer" style="left: 50%;"></div>
+</div>
+<div class="risk-labels">
+<span>低可能性</span>
+<span>中等可能性</span>
+<span>高可能性</span>
+</div>
+<div id="riskResult" style="margin-top: 20px;">
+<p>請回答所有問題以獲得評估結果</p>
+<p></p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>可能結果分析</h3>
+<div class="outcome-card positive">
+<h4>最佳情況：維持既有界址</h4>
+<p>可能性：60% (證據充分、長期使用事實明確)</p>
+<p>可能內容包括：</p>
+<ul>
+<li>法院判決維持既有界址設施位置</li>
+<li>確認您對爭議範圍的所有權</li>
+<li>對方需負擔測量及訴訟費用</li>
+</ul>
+</div>
+<div class="outcome-card neutral">
+<h4>中等情況：部分調整界址</h4>
+<p>可能性：30% (部分爭議或證據不足)</p>
+<p>可能內容：</p>
+<ul>
+<li>法院判決調整部分界址位置</li>
+<li>雙方就爭議範圍達成妥協方案</li>
+<li>雙方分擔測量及訴訟費用</li>
+</ul>
+</div>
+<div class="outcome-card negative">
+<h4>最差情況：完全變更界址</h4>
+<p>可能性：10% (重大證據不足或對方證據充分)</p>
+<p>後續行動建議：</p>
+<ul>
+<li>補強證據重新主張</li>
+<li>考慮上訴或另案主張時效取得</li>
+<li>協商最小變動範圍</li>
+</ul>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h3>證據效力評估</h3>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">📄</span>
+<span class="evidence-title">土地買賣契約與地籍圖</span>
+</div>
+<p class="evidence-desc">效力最高，特別是關於土地界址的明確記載，可證明原始約定的界址位置。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🖼️</span>
+<span class="evidence-title">歷史照片與航照圖</span>
+</div>
+<p class="evidence-desc">直接證明界址設施長期存在位置，越早期的照片證明力越強。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">👥</span>
+<span class="evidence-title">證人證詞</span>
+</div>
+<p class="evidence-desc">證明界址設施長期存在及雙方使用狀況，多位證人一致證詞更具說服力。</p>
+</div>
+<div class="evidence-item">
+<div style="display: flex; align-items: center;">
+<span class="evidence-icon">🌱</span>
+<span class="evidence-title">實際使用證據</span>
+</div>
+<p class="evidence-desc">耕作紀錄、建築許可等證明長期使用爭議範圍的事實，支持時效取得主張。</p>
+</div>
+<div class="note" id="riskDisclaimer" style="margin-top:8px; font-size: 90%; color:#666; background:#f9f9f9; border-left:4px solid #4f6c7d; padding:8px 12px;">
+  本結果為權重計算之模擬評估，僅供參考，並不構成法律意見；如需進一步協助，請洽本站律師諮詢。
+</div>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 新增的計算工具分頁 -->
+<div class="tabcontent calculator" id="calculation">
+<h1>土地界址爭議計算工具</h1>
+<div class="note">
+        📘 <strong>說明：</strong><br/>
+        本工具協助計算土地界址爭議涉及的實際面積與價值影響，依據土地登記謄本資料與市場行情估算可能損失或增益。
+    </div>
+
+    <h2>📏 爭議範圍面積計算</h2>
+    <table id="areaTable">
+        <tr>
+            <th>項目</th>
+            <th>數值</th>
+            <th>單位</th>
+        </tr>
+        <tr>
+            <td>爭議範圍長度</td>
+            <td><input type="number" id="disputeLength" value="10"/></td>
+            <td>公尺</td>
+        </tr>
+        <tr>
+            <td>爭議範圍寬度</td>
+            <td><input type="number" id="disputeWidth" value="1.5"/></td>
+            <td>公尺</td>
+        </tr>
+        <tr>
+            <td>土地公告現值</td>
+            <td><input type="number" id="landValue" value="50000"/></td>
+            <td>元/平方公尺</td>
+        </tr>
+        <tr>
+            <td>市場行情倍數</td>
+            <td><input type="number" id="marketMultiplier" value="1.2" step="0.1" min="0.5" max="3"/></td>
+            <td>倍</td>
+        </tr>
+    </table>
+
+    <button class="btn" onclick="calculateArea()">計算爭議面積與價值</button>
+
+    <h2>計算結果</h2>
+    <div id="areaResult" style="background:#f8f8f8; padding:15px; border-radius:8px;"></div>
+
+    <div class="note" style="margin-top:20px;">
+        <strong>計算公式說明：</strong>
+        <ul>
+            <li>爭議面積 = 爭議長度 × 爭議寬度</li>
+            <li>公告現值總額 = 爭議面積 × 土地公告現值</li>
+            <li>市場估值 = 公告現值總額 × 市場行情倍數</li>
+            <li>年租金估算 = 市場估值 × 2% (一般土地收益率)</li>
+        </ul>
+    </div>
+
+    <h2>⏳ 時效取得計算器</h2>
+    <table id="prescriptionTable">
+        <tr>
+            <th>項目</th>
+            <th>日期</th>
+        </tr>
+        <tr>
+            <td>開始占有日期</td>
+            <td><input type="date" id="startDate" value="2000-01-01"/></td>
+        </tr>
+        <tr>
+            <td>爭議發生日期</td>
+            <td><input type="date" id="disputeDate" value="2023-01-01"/></td>
+        </tr>
+    </table>
+
+    <button class="btn" onclick="calculatePrescription()">計算占有期間</button>
+
+    <div id="prescriptionResult" style="background:#f8f8f8; padding:15px; border-radius:8px; margin-top:20px;"></div>
+
+    <div class="note" style="margin-top:20px;">
+        <strong>民法時效取得要件：</strong>
+        <ul>
+            <li>普通時效：占有他人不動產，和平、公然、繼續占有達20年</li>
+            <li>特別時效：善意且無過失占有，滿10年可請求登記為所有人</li>
+            <li>占有需以所有之意思，並有相當之證明</li>
+        </ul>
+    </div>
+
+    <div class="cta-left-row" style="display: flex; justify-content: flex-start; margin-top: 20px; margin-bottom: 20px;">
+        <a class="btn btn-inline" href="預約律師版面.html">預約律師諮詢</a>
+    </div>
+</div>
+
+<!-- 準備清單分頁 -->
+<div class="tabcontent" id="checklist"><div id="checklist-full-content">
+<h2>土地界址爭議準備清單</h2>
+<div class="card">
+<h3>必要文件檢查表</h3>
+<div class="checklist-item">
+<input id="check1" type="checkbox"/>
+<label for="check1">土地買賣契約書正本或影本</label>
+</div>
+<div class="checklist-item">
+<input id="check2" type="checkbox"/>
+<label for="check2">地籍圖與土地登記謄本</label>
+</div>
+<div class="checklist-item">
+<input id="check3" type="checkbox"/>
+<label for="check3">歷史照片（不同時期）</label>
+</div>
+<div class="checklist-item">
+<input id="check4" type="checkbox"/>
+<label for="check4">航照圖或空拍圖</label>
+</div>
+<div class="checklist-item">
+<input id="check5" type="checkbox"/>
+<label for="check5">界址設施現況照片</label>
+</div>
+<div class="checklist-item">
+<input id="check6" type="checkbox"/>
+<label for="check6">與對方協商的通訊紀錄</label>
+</div>
+<div class="checklist-item">
+<input id="check7" type="checkbox"/>
+<label for="check7">土地使用證明（如耕作紀錄）</label>
+</div>
+<div class="checklist-item">
+<input id="check8" type="checkbox"/>
+<label for="check8">證人名單與聯絡方式</label>
+</div>
+<button class="btn" onclick="saveChecklist()">儲存檢查表</button>
+<button class="btn" onclick="printChecklist()">列印檢查表</button>
+</div>
+<div class="card">
+<h3>訴訟策略檢查表</h3>
+<div class="checklist-item">
+<input id="safe1" type="checkbox"/>
+<label for="safe1">確認主張法律依據（時效取得/既成界址）</label>
+</div>
+<div class="checklist-item">
+<input id="safe2" type="checkbox"/>
+<label for="safe2">委託專業測量技師測繪成果圖</label>
+</div>
+<div class="checklist-item">
+<input id="safe3" type="checkbox"/>
+<label for="safe3">準備替代方案供調解參考</label>
+</div>
+<div class="checklist-item">
+<input id="safe4" type="checkbox"/>
+<label for="safe4">確認對方提出的證據與主張</label>
+</div>
+<div class="checklist-item">
+<input id="safe5" type="checkbox"/>
+<label for="safe5">評估調解或訴訟成本效益</label>
+</div>
+</div>
+
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div></div>
+
+<!-- 文件範本分頁 -->
+<div class="tabcontent calculator" id="documents">
+<h2 style="color: #2c3e50; margin-top: 20px;">📁 常用文件範本</h2>
+<div class="card">
+<h3>界址爭議協商函</h3>
+<textarea style="width:100%; height:200px; margin-bottom:15px;">
+致 [相鄰土地所有權人姓名] 先生/女士：
+
+本人為[土地地段地號]土地所有權人，就雙方土地界址位置爭議，依法提出協商請求。
+
+經查，兩造土地間以[界址設施，如：混凝土矮牆]為分界已逾[年數]年，此有[證據，如：歷史照片、證人證詞]可證，符合民法第769條時效取得及既成界址原則。
+
+請台端於文到七日內與本人聯繫協商，或提供具體事證說明貴方主張。逾期未獲回應，本人將依法採取進一步法律行動，恐有不便，敬請見諒。
+
+此致
+
+[您的姓名] 謹啟
+[發函日期]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('boundary-negotiation-letter.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h3>界址確認訴訟起訴狀範例</h3>
+<textarea style="width:100%; height:300px; margin-bottom:15px;">
+民事起訴狀
+
+原 告：[您的姓名] （身分證字號：[身分證號]）
+住址：[居住地址]
+電話：[聯絡電話]
+
+被 告：[對方姓名]
+住址：[對方地址]
+電話：[對方電話]
+
+為請求確認土地界址事件，依法起訴：
+
+一、聲明：
+(一)確認兩造所有[土地地段地號]土地與[土地地段地號]土地之界址如附圖所示[坐標或特徵點]連線。
+(二)訴訟費用由被告負擔。
+
+二、事實及理由：
+（一）原告所有[土地地段地號]土地與被告所有[土地地段地號]土地相鄰，長期以[界址設施，如：混凝土矮牆]為界，已逾20年。
+（二）有[證據，如：歷史照片、證人證詞、航照圖]可證該界址設施自[年份]年即已存在，雙方長期依此使用土地。
+（三）被告於[日期]突然主張該界址設施南移[距離]公尺，並[具體行為，如：插立界樁]，惟其主張與事實不符。
+（四）依民法第769條時效取得及既成界址原則，該界址設施位置應為兩造土地之分界。
+
+三、證據：
+(一)土地登記謄本及地籍圖
+(二)[年份]年歷史照片[張]
+(三)證人[姓名]等人之證詞
+(四)[其他證據]
+
+此致
+[法院名稱]法院 公鑒
+
+            具狀人：[您的姓名] （簽名蓋章）
+中華民國[年月日]
+            </textarea>
+<button class="btn" onclick="downloadTextFile('boundary-lawsuit-petition.txt', this.previousElementSibling.value)">下載範本</button>
+</div>
+<div class="card">
+<h2>立即行動建議</h2>
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+<a class="btn" href="預約律師版面.html">預約律師諮詢</a>
+</div>
+</div>
+</div>
+
+<script>
+        // 初始化Mermaid圖表
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                pie1: '#A5D6A7',
+                pie2: '#FFF59D',
+                pie3: '#EF9A9A'
+            }
+        });
+
+        // 切換標籤頁
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 計算風險評估
+        function calculateRisk() {
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+            
+            const total = q1 + q2 + q3 + q4 + q5;
+            const percentage = (total / 15) * 100;
+            
+            // 更新指針位置
+            document.getElementById('riskPointer').style.left = `${percentage}%`;
+            
+            // 顯示評估結果
+            let resultText = "";
+            let recommendation = "";
+            
+            if (percentage >= 80) {
+                resultText = "<p style='color:#58A4B0;font-weight:bold;'>高可能性：極可能維持既有界址</p>";
+                recommendation = "建議完整提出證據並依法主張時效取得及既成界址原則，成功機會很高。";
+            } else if (percentage >= 50) {
+                resultText = "<p style='color:#FFC107;font-weight:bold;'>中等可能性：可能部分調整界址</p>";
+                recommendation = "建議針對爭議部分提出反證，爭取最小變動範圍。";
+            } else {
+                resultText = "<p style='color:#4f6c7d;font-weight:bold;'>低可能性：可能面臨界址變更</p>";
+                recommendation = "建議補強證據，特別是長期使用事實證明，考慮協商替代方案。";
+            }
+            
+            document.getElementById('riskResult').innerHTML = resultText + "<p>" + recommendation + "</p>";
+        }
+
+        // 新增面積計算函數
+        function calculateArea() {
+            const length = parseFloat(document.getElementById('disputeLength').value);
+            const width = parseFloat(document.getElementById('disputeWidth').value);
+            const value = parseFloat(document.getElementById('landValue').value);
+            const multiplier = parseFloat(document.getElementById('marketMultiplier').value);
+            
+            const area = length * width;
+            const officialValue = area * value;
+            const marketValue = officialValue * multiplier;
+            const annualRent = marketValue * 0.02;
+            
+            let resultHtml = `
+                <table>
+                    <tr><th>項目</th><th>數值</th><th>說明</th></tr>
+                    <tr>
+                        <td>爭議面積</td>
+                        <td>${area.toFixed(2)} 平方公尺</td>
+                        <td>約 ${(area * 0.3025).toFixed(2)} 坪</td>
+                    </tr>
+                    <tr>
+                        <td>公告現值總額</td>
+                        <td>${officialValue.toLocaleString()} 元</td>
+                        <td>按土地公告現值計算</td>
+                    </tr>
+                    <tr>
+                        <td>市場估值</td>
+                        <td>${marketValue.toLocaleString()} 元</td>
+                        <td>公告現值 × ${multiplier}倍</td>
+                    </tr>
+                    <tr>
+                        <td>年租金估算</td>
+                        <td>${annualRent.toLocaleString()} 元</td>
+                        <td>市場估值 × 2%</td>
+                    </tr>
+                </table>
+            `;
+            
+            if (area > 100) {
+                resultHtml += `
+                    <div class="note" style="background:#FFEBEE;border-left-color:#F44336;margin-top:15px;">
+                        <strong>注意：</strong>爭議面積超過100平方公尺，可能涉及較高價值，建議尋求專業法律協助。
+                    </div>
+                `;
+            } else {
+                resultHtml += `
+                    <div class="note" style="background:#E8F5E9;border-left-color:#4CAF50;margin-top:15px;">
+                        <strong>分析：</strong>依計算結果，爭議面積為${area.toFixed(2)}平方公尺，價值約${marketValue.toLocaleString()}元。
+                    </div>
+                `;
+            }
+            
+            document.getElementById('areaResult').innerHTML = resultHtml;
+        }
+
+        // 新增時效取得計算函數
+        function calculatePrescription() {
+            const startDate = new Date(document.getElementById('startDate').value);
+            const disputeDate = new Date(document.getElementById('disputeDate').value);
+            
+            // 計算天數差異
+            const diffTime = Math.abs(disputeDate - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            const diffYears = (diffDays / 365).toFixed(1);
+            
+            let prescriptionStatus = "";
+            if (diffDays >= 365 * 20) {
+                prescriptionStatus = `<span style="color:#4CAF50;font-weight:bold;">已滿足20年普通時效取得要件</span>`;
+            } else if (diffDays >= 365 * 10) {
+                prescriptionStatus = `<span style="color:#FFC107;font-weight:bold;">已滿足10年特別時效要件（需證明善意無過失）</span>`;
+            } else {
+                prescriptionStatus = `<span style="color:#F44336;font-weight:bold;">未滿足時效取得最短年限</span>`;
+            }
+            
+            const resultHtml = `
+                <h4>占有期間計算結果</h4>
+                <p>從 ${startDate.toLocaleDateString()} 至 ${disputeDate.toLocaleDateString()}</p>
+                <p>總占有天數：${diffDays} 天（約 ${diffYears} 年）</p>
+                <p>時效取得評估：${prescriptionStatus}</p>
+                
+                <div class="risk-meter" style="margin-top:15px;margin-bottom:5px;">
+                    <div class="risk-pointer" style="left: ${Math.min((diffDays / (365 * 20)) * 100, 100)}%;"></div>
+                </div>
+                <div class="risk-labels">
+                    <span>0年</span>
+                    <span>10年</span>
+                    <span>20年</span>
+                </div>
+                
+                <div class="note" style="margin-top:15px;">
+                    <strong>注意：</strong>時效取得除時間要件外，尚需證明「和平」、「公然」、「繼續」占有事實，且以所有之意思為之。
+                </div>
+            `;
+            
+            document.getElementById('prescriptionResult').innerHTML = resultHtml;
+        }
+
+        // 儲存檢查表狀態
+        function saveChecklist() {
+            showCustomModal('檢查表狀態已儲存（此為演示功能，實際需搭配後端儲存）');
+        }
+
+        // 列印檢查表
+        function printChecklist() {
+            window.print();
+        }
+
+        window.onload = function() {
+            // 初始化標籤頁
+            document.getElementById('overview').style.display = 'block';
+            // 初始化計算結果
+            calculateArea();
+            calculatePrescription();
+        };
+    </script>
+<!-- 引入 html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function saveChecklist() {
+    const element = document.getElementById('checklist-full-content');
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2],
+        filename:     '土地界址爭議準備清單.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all'] }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+<style>
+/* 自訂彈窗背景 */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+/* 自訂彈窗 */
+.custom-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    padding: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.custom-modal-header { display: none; }
+.custom-modal-body {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+}
+.custom-modal-close { background: #58A4B0; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px;  display: block; margin: 12px auto 8px;}
+.custom-modal-close:hover { background: #4a909b; color: #FFFFFF; }
+</style>
+<!-- 自訂彈窗 HTML 結構 -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+<div class="custom-modal">
+<div class="custom-modal-body" id="customModalContent"></div>
+<button class="custom-modal-close" onclick="closeCustomModal()">確定</button>
+</div>
+</div>
+<script>
+function showCustomModal(message) {
+    document.getElementById('customModalContent').innerText = message;
+    document.getElementById('customModalOverlay').style.display = 'block';
+}
+function closeCustomModal() {
+    document.getElementById('customModalOverlay').style.display = 'none';
+}
+</script>
+</body>
+</html>
