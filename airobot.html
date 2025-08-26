@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   ⚖️ LawAI法詢 客服平台
+  </title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+   :root {
+            --deep-green: #002D42;
+            --medium-green: #004B6B;
+            --light-green: #0077A3;
+            --pale-green: #E0F2FF;
+            --accent-green: #A5D8FC;
+            --background: #F3F9FC;
+            --light-gray: #e9ecef;
+            --text-dark: #111827;
+            --text-medium: #6B7280;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', system-ui, sans-serif;
+        }
+        
+        body {
+            background: #F3F9FC;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .chatbot-container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(26, 60, 50, 0.15);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 30px);
+            border: 1px solid rgba(45, 106, 79, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-header {
+    min-height: 56px;
+    padding: 10px 20px;
+            background: linear-gradient(120deg, var(--deep-green) 0%, var(--medium-green) 100%);
+            color: var(--white);
+            padding: 22px 30px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .logo-container {
+            background: var(--light-green);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container i {
+    color: #D4AF37 !important;
+            font-size: 24px;
+            color: var(--white);
+        }
+        
+        .header-text {
+            flex: 1;
+        }
+        
+        .header-subtitle {
+    display: flex;
+    flex-direction: column;
+            font-size: 0.95rem;
+            font-weight: 400;
+            opacity: 0.85;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .decoration {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(116,198,157,0.2)" d="M28.1,76.1Q16.4,62.3,16.7,43.9Q17,25.5,34.2,24.8Q51.5,24.1,61.9,36.3Q72.3,48.5,71.2,62.7Q70.1,76.9,56.4,80.6Q42.7,84.3,28.1,76.1Z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+        }
+        
+        /* .chatbot-disclaimer 被整併進 header 中，不再顯示 */
+.chatbot-disclaimer {
+    display: none;
+            background: var(--pale-green);
+            padding: 16px 25px;
+            font-size: 0.95rem;
+            color: var(--deep-green);
+            line-height: 1.6;
+            border-bottom: 2px solid var(--accent-green);
+            position: relative;
+        }
+        
+        .chatbot-disclaimer strong {
+            font-weight: 700;
+            color: var(--medium-green);
+        }
+        
+        .disclaimer-icon {
+            position: absolute;
+            top: -14px;
+            left: 30px;
+            background: var(--medium-green);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .chat-window {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px 30px 15px;
+            background: #F3F9FC;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(216, 243, 220, 0.1) 0%, transparent 15%),
+                radial-gradient(circle at 90% 85%, rgba(116, 198, 157, 0.1) 0%, transparent 15%);
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 18px 22px;
+            border-radius: 16px;
+            line-height: 1.6;
+            position: relative;
+            animation: fadeIn 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .bot-message {
+            background: white;
+            color: var(--text-dark);
+            border:  1px solid rgba(0, 75, 107, 0.1);
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+        }
+        
+        .bot-message::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid rgba(74, 156, 130, 0.3);
+        }
+        
+        .bot-message::after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid var(--white);
+        }
+        
+        .user-message {
+            background: linear-gradient(to right, #002D42, #004B6B);
+            color: var(--white);
+            border-bottom-right-radius: 4px;
+            align-self: flex-end;
+        }
+        
+        .user-message::before {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid var(--light-green);
+        }
+        
+        .message-role {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .bot-message .message-role {
+            color: #004B6B;
+        }
+        
+        .user-message .message-role {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .message-content {
+            font-size: 1.05rem;
+        }
+        
+        .chat-input-area {
+            padding: 20px 25px;
+            background: var(--white);
+            border-top: 1px solid var(--light-gray);
+            display: flex;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 1px solid rgba(74, 156, 130, 0.4);
+            border-radius: 12px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+            color: var(--text-dark);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--light-green);
+            box-shadow: 0 0 0 3px rgba(74, 156, 130, 0.2);
+        }
+        
+        .chat-input::placeholder {
+            color: #95a5a6;
+        }
+        
+        .send-button {
+            background: linear-gradient(135deg, var(--medium-green) 0%, var(--light-green) 100%);
+            color: var(--white);
+            border: none;
+            padding: 0 28px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.25);
+        }
+        
+        .send-button:hover {
+            background: linear-gradient(135deg, var(--deep-green) 0%, var(--medium-green) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(45, 106, 79, 0.35);
+        }
+        
+        .send-button:active {
+            transform: translateY(0);
+        }
+        
+        .bot-prefix {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--medium-green);
+            background: rgba(116, 198, 157, 0.15);
+            padding: 8px 12px;
+            border-radius: 8px;
+            width: fit-content;
+            border-left: 3px solid var(--medium-green);
+        }
+        
+        .bot-answer {
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 5px 0;
+            line-height: 1.7;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 18px 22px;
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 16px;
+            width: fit-content;
+            align-self: flex-start;
+            border: 1px solid rgba(74, 156, 130, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .typing-text {
+            font-size: 0.95rem;
+            color: var(--medium-green);
+            font-weight: 500;
+        }
+        
+        .typing-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--light-green);
+            border-radius: 12px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
+            30% { transform: translateY(-6px); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .chat-history-title {
+            text-align: center;
+            color: var(--medium-green);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed rgba(74, 156, 130, 0.3);
+        }
+        
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.8rem;
+            color: rgba(45, 106, 79, 0.3);
+            font-weight: 500;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .chatbot-container {
+                height: calc(100vh - 30px);
+                max-width: 100%;
+                border-radius: 14px;
+            }
+            
+            .chatbot-header {
+    min-height: 56px;
+    padding: 10px 20px;
+                padding: 18px 20px;
+                font-size: 1.3rem;
+            }
+            
+            .header-subtitle {
+    display: flex;
+    flex-direction: column;
+                font-size: 0.85rem;
+            }
+            
+            .logo-container {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .message {
+                max-width: 92%;
+                padding: 16px 18px;
+            }
+            
+            .chat-input-area {
+                padding: 15px 18px;
+            }
+            
+            .chat-input {
+                padding: 14px 16px;
+                font-size: 1rem;
+            }
+            
+            .send-button {
+                padding: 0 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chatbot-header {
+    min-height: 56px;
+    padding: 10px 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .logo-container {
+                margin: 0 auto;
+            }
+            
+            .message {
+                max-width: 95%;
+            }
+            
+            .message-role {
+                font-size: 0.9rem;
+            }
+            
+            .message-content {
+                font-size: 1rem;
+            }
+        }
+    
+.mic-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(74, 156, 130, 0.15);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(45, 106, 79, 0.3);
+    z-index: 9999;
+    display: none;
+    animation: micFade 1.5s ease-in-out infinite;
+}
+.mic-overlay i {
+    font-size: 48px;
+    color: rgba(45, 106, 79, 0.6);
+}
+@keyframes micFade {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+
+
+/* 更強化的響應式設計調整 */
+@media (max-width: 768px) {
+    .chatbot-container {
+        height: 100vh;
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .chatbot-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .chat-window {
+        padding: 15px 15px 10px;
+    }
+
+    .chat-input-area {
+        padding: 12px 15px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .chat-input {
+        font-size: 1rem;
+        padding: 14px 16px;
+        width: 95%;
+    }
+
+    .send-button {
+        width: 100%;
+        font-size: 1rem;
+        justify-content: center;
+    }
+
+    .sample-questions {
+        flex-direction: column;
+        gap: 6px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot-header {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+
+    .chat-window {
+        gap: 16px;
+    }
+
+    .message {
+        max-width: 96%;
+        padding: 14px 16px;
+    }
+
+    .bot-answer, .message-content {
+        font-size: 0.95rem;
+    }
+
+    .send-button {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* ✅ Header 精緻化 */
+.chatbot-header {
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    padding: 14px 20px !important;
+    gap: 12px !important;
+}
+
+/* ✅ 外框整體圓角 */
+.chatbot-container {
+    border-radius: 18px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+/* ✅ 輸入框改為多行＋加大 */
+.chat-input {
+    min-height: 3.2em;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* ✅ 對齊輸入區塊排列方向與右側按鈕 */
+.chat-input-area {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+/* ✅ 將輸入框最大寬度調整，讓送出與麥克風在右邊 */
+.chat-input {
+    flex: 1;
+    margin-right: 8px;
+}
+
+/* ✅ 麥克風與送出並排靠右 */
+.send-button {
+    white-space: nowrap;
+    padding: 12px 18px;
+    font-size: 1rem;
+}
+
+#voice-btn {
+    margin-right: 8px;
+    margin-bottom: 6px;
+}
+
+/* ✅ 響應式時微調間距與行高 */
+@media (max-width: 768px) {
+    .chatbot-header {
+        flex-direction: row;
+        font-size: 1.1rem;
+        padding: 12px 16px !important;
+    }
+
+    .chat-input-area {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #voice-btn, .send-button {
+        width: 100%;
+    }
+}
+
+
+/* ✅ ChatGPT 手機輸入區樣式 */
+@media (max-width: 768px) {
+    .chat-input-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        background: #ffffff;
+        padding: 12px 10px 10px;
+        z-index: 999;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .chat-input {
+        flex: 1;
+        min-height: 2.8em;
+        max-height: 150px;
+        padding: 12px 14px;
+        font-size: 1rem;
+        border-radius: 18px;
+        border: 1px solid #ddd;
+        overflow-y: auto;
+        resize: none;
+    }
+
+    .send-button,
+    #voice-btn {
+        margin-left: 6px;
+        margin-bottom: 4px;
+        background: #004B6B;
+        color: white;
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .send-button i,
+    #voice-btn i {
+        font-size: 16px;
+    }
+
+    .send-button span {
+        display: none;
+    }
+}
+
+/* 桌面維持原樣式 */
+@media (min-width: 769px) {
+    .chat-input {
+        height: auto;
+    }
+}
+
+
+/* ✅ 聊天區保留底部 padding，避免被輸入區遮住 */
+.chat-window {
+    padding-bottom: 120px !important;
+}
+
+/* ✅ 麥克風與送出鍵緊靠右、輸入框擴大 */
+@media (max-width: 768px) {
+    .chat-input-area {
+        padding: 12px 10px;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 6px;
+    }
+
+    .chat-input {
+        flex: 1;
+        border-radius: 18px;
+        padding: 12px 14px;
+        line-height: 1.6;
+        font-size: 1rem;
+        min-height: 2.8em;
+        max-height: 150px;
+        overflow-y: auto;
+        resize: vertical;
+    }
+
+    #voice-btn,
+    .send-button {
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #voice-btn {
+        margin-left: 4px;
+        margin-right: 2px;
+    }
+
+    .send-button {
+        margin-left: 2px;
+    }
+}
+
+.input-with-mic textarea.chat-input {
+    padding-right: 36px !important;
+}
+
+.input-with-mic textarea.chat-input {
+    padding-right: 36px !important;
+    width: 95%;
+    resize: vertical;
+}
+.chat-input-area .send-button {
+    flex-shrink: 0;
+    height: 48px;
+}
+
+.bot-message .message-role {
+    color: #004B6B;
+    background: rgba(116,198,157,0.15);
+    padding: 6px 12px;
+    border-radius: 10px;
+    border-left: 3px solid #2d6a4f;
+    display: inline-block;
+    white-space: normal;
+    max-width: 85%;
+}
+
+
+
+.bot-message .message-role {
+    background: #E0F2FF;
+    color: #004B6B;
+    padding: 6px 12px;
+    border-radius: 10px;
+    border-left: 4px solid #004B6B;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 6px rgba(0, 75, 107, 0.1);
+    white-space: normal;
+    max-width: 85%;
+}
+  
+.ad-footer {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: #FFF9E6;
+  border-left: 5px solid #D4AF37;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* === 提問上限鎖定的停用樣式 === */
+.chat-input:disabled {
+  background: #f2f2f2 !important;
+  color: #999 !important;
+  cursor: not-allowed !important;
+}
+.send-button:disabled, #voice-btn:disabled {
+  background: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+/* Override: hide static disclaimer */
+.chatbot-disclaimer { display: none !important; }
+</style>
+</head>
+<body>
+<div class="chatbot-container">
+<div class="chatbot-header">
+<a href="index.html" style="text-decoration: none;"><div class="logo-container">
+<i class="fas fa-balance-scale">
+</i>
+</div></a>
+<div class="header-text" style="font-size: 1.15rem; font-weight: 600; color: white;">
+<div>
+      LawAI法詢 客服平台
+     </div>
+</div>
+<button id="clear-history-btn" style="margin-left:auto; background:#ffffff; color:#004B6B; border:1px solid #004B6B; padding:6px 12px; border-radius:8px; font-weight:600; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+     清除紀錄
+    </button>
+</div>
+<div class="chatbot-disclaimer">
+<div class="disclaimer-icon">
+     !
+    </div>
+<strong>
+     🛑【重要聲明】
+    </strong>
+    ：本系統提供之內容為法律資訊參考，非屬個案法律意見或法律適用，請自行評估並視需求諮詢專業律師。
+   </div>
+<div class="chat-window" id="chat-window">
+<!-- 初始消息 -->
+<div class="message bot-message">
+<div class="message-role">
+<i class="fas fa-balance-scale" style="color: #D4AF37;">
+</i>
+      LawAI法詢 客服
+     </div>
+<div class="message-content">
+<div class="bot-answer">
+       您好！我是LawAI法詢法律資訊助手，專門提供簡要的法律概念說明。請問您有什麼法律相關的問題需要參考資訊？
+      </div>
+</div>
+</div>
+<div id="lawai-ad-banner" style="display:none; background:#FFF9E6; border-left:5px solid #D4AF37; padding:18px 20px; margin:20px; border-radius:12px; font-size:1rem; line-height:1.7; box-shadow: 0 4px 10px rgba(0,0,0,0.05); color:#333;">
+<strong>🎯 法律問題不知道從哪開始？</strong><br/>
+  LawAI法詢，給你第一步的信賴依據。<br/><br/>
+  📌 想請律師但怕流程複雜、費用不明？<br/>
+<strong>LawAI法詢</strong> 用最清楚的語言，幫你分析最真實的情境。<br/><br/>
+  💡 <em>AI助理解析事實，律師專責適用法律。</em><br/>
+  從事實分析到法律行動，我們幫你把路鋪好、把人找對。<br/><br/>
+  🔍 <a href="https://www.lawfavor.com/lawmap.html" style="color:#004B6B; font-weight:600;" target="_blank">立即造訪 ⚖️智圖法律分析：lawfavor.com/lawmap.html</a><br/>
+  🔹 支援30+法律情境類型｜🔹 統整最常見法律提問｜🔹 支援手機直接操作<br/><br/>
+  📱 <strong>現在就打開 LawAI法詢，讓法律變得簡單而可信。</strong><br/>
+  📍 <a href="https://www.lawfavor.com/" style="color:#004B6B;" target="_blank">https://www.lawfavor.com/</a>
+</div>
+</div>
+<div class="chat-input-area" style="display: flex; gap: 10px; align-items: flex-end;; border-radius: 22px; overflow: hidden; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+<div class="input-with-mic" style="position: relative; flex: 1; display: flex; align-items: center;">
+<textarea autocomplete="off" class="chat-input" id="user-input" placeholder="請輸入您的法律問題..." style="border-radius: 18px;"></textarea>
+<button id="voice-btn" style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%); background: none; border: none; cursor: pointer; z-index: 10;" title="語音輸入">
+<i class="fas fa-microphone" style="font-size: 20px; color: #004B6B;">
+</i>
+</button>
+</div>
+<button class="send-button" id="send-btn">
+<span>
+      送出
+     </span>
+<i class="fas fa-paper-plane">
+</i>
+</button>
+</div>
+</div>
+<div class="mic-overlay" id="mic-overlay">
+<i class="fas fa-microphone">
+</i>
+</div>
+
+
+<script>
+// === StorageUtil: 使用 localStorage（含「每日重置」）＋ 瀏覽器指紋前綴，避免不同容器誤共用 ===
+const StorageUtil = (function(){
+  let usingMemory = false;
+  let mem = { lawai_question_count: 0, lawai_question_date: "" };
+
+  // 產生簡單瀏覽器指紋（以 userAgent 做 djb2 雜湊）
+  function fpHash(ua) {
+    let h = 5381;
+    for (let i = 0; i < ua.length; i++) {
+      h = ((h << 5) + h) ^ ua.charCodeAt(i);
+    }
+    // 無符號 32 位整數轉 16 進位
+    return 'fp_' + (h >>> 0).toString(16);
+  }
+  const FP = fpHash(navigator.userAgent || '');
+
+  function k(suffix) { return `${FP}_${suffix}`; }
+
+  function todayStr() {
+    // 以使用者本地時間為準的 YYYY-MM-DD
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+
+  function canUseLS() {
+    try {
+      const ktest = '__ls_test__' + String(Math.random());
+      window.localStorage.setItem(ktest, '1');
+      window.localStorage.removeItem(ktest);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  const ok = canUseLS();
+
+  function getCount() {
+    if (!ok) { usingMemory = true; return Number.isFinite(mem.lawai_question_count) ? mem.lawai_question_count : 0; }
+    const v = window.localStorage.getItem(k('lawai_question_count'));
+    const n = parseInt(v, 10);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function setCount(n) {
+    if (!ok) { usingMemory = true; mem.lawai_question_count = n; return; }
+    window.localStorage.setItem(k('lawai_question_count'), String(n));
+  }
+
+  function getDate() {
+    if (!ok) { usingMemory = true; return mem.lawai_question_date || ""; }
+    return window.localStorage.getItem(k('lawai_question_date')) || "";
+  }
+
+  function setDate(s) {
+    if (!ok) { usingMemory = true; mem.lawai_question_date = s; return; }
+    window.localStorage.setItem(k('lawai_question_date'), s);
+  }
+
+  function reset() {
+    setCount(0);
+    setDate(todayStr());
+  }
+
+  function isMemory() { return usingMemory; }
+
+  function checkAndRollDate() {
+    const today = todayStr();
+    const stored = getDate();
+    if (!stored) {
+      // 首次使用：寫入今天
+      setDate(today);
+      return false; // 無需翻新
+    }
+    if (stored !== today) {
+      // 換日：清零並寫入今天
+      setCount(0);
+      setDate(today);
+      return true; // 有翻新
+    }
+    return false;
+  }
+
+  return { getCount, setCount, reset, isMemory, getDate, setDate, checkAndRollDate, todayStr };
+})();
+</script>
+
+
+<script>
+let conversationHistory = [];
+let userQuestionCount = 0;
+let userQuestions = [];
+
+// 修改 fetch 回傳處理，插入廣告與限制上下文長度
+async function fetchAnswer(question) {
+    userQuestionCount++;
+    conversationHistory.push({ role: "user", content: question });
+    userQuestions.push(question);
+
+    // 保留最近 5 筆上下文
+    if (conversationHistory.length > 10) {
+        conversationHistory = conversationHistory.slice(conversationHistory.length - 10);
+    }
+
+    const response = await fetch("https://airobot-br7n.onrender.com/airobot/api/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify((() => {
+            const sys = {
+                role: "system",
+                content: `請依下列原則回答使用者問題：
+1. 回覆內容請使用台灣法律用語與台灣民眾習慣表達方式。
+2. 回覆請控制在150個字以內。
+3. 當使用者的問題「完全與法律無關」時（例如僅詢問生活、天氣、娛樂、心情），請直接回覆：
+「⚠️ LawAi 法詢僅處理法律相關問題，請改為提出法律問題。」
+4. 當使用者的問題「同時包含法律與非法律部分」時，請只回答法律相關部分，並忽略非法律部分，不要附加警告訊息。`
+            };
+            if (userQuestions.length < 5) {
+                return { messages: [sys, { role: "user", content: question }] };
+            }
+            const last5 = userQuestions.slice(-5);
+            const combined = [
+                "以下是使用者最近的提問紀錄，請一併參考其上下文脈絡：",
+                `問題1：${last5[0]}`,
+                `問題2：${last5[1]}`,
+                `問題3：${last5[2]}`,
+                `問題4：${last5[3]}`,
+                `問題5：（本次提問）${last5[4]}`,
+                "→ 請針對「問題5」回覆，並綜合理解前述語境作答。"
+            ].join("\n");
+            return { messages: [sys, { role: "user", content: combined }] };
+        })()),
+    });
+
+    const data = await response.json();
+    let answer = data.choices?.[0]?.message?.content || "⚠️ AI 回覆錯誤，請稍後再試";
+
+    // 每次回答後都附加廣告
+    
+    if (!answer.includes("LawAI法詢💡 AI助理解析事實，律師專責適用法律")) {
+        answer += `
+
+<div class="ad-footer">
+    <hr style="border: none; border-top: 1px solid #ccc; margin-bottom: 12px;">
+    <strong>LawAI法詢💡  ✅ LINE 加好友｜✅ 真人律師回覆<br/>
+  ➜ <a href="https://page.line.me/621sbqlu" target="_blank" style="color:#004B6B; font-weight:600;">立即加 LINE 官方帳號</a>
+</div>`;
+    }
+
+
+    conversationHistory.push({ role: "assistant", content: answer });
+    return answer;
+}
+
+   document.addEventListener('DOMContentLoaded', function () {
+    // 每日自動重置（換日清零）
+    StorageUtil.checkAndRollDate();
+    const MAX_QUESTIONS = 9;
+    function lockUIIfNeeded() {
+        const count = StorageUtil.getCount();
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const voiceBtn = document.getElementById('voice-btn');
+        const over = Number.isFinite(count) && count >= MAX_QUESTIONS;
+        if (userInput) userInput.disabled = over;
+        if (sendBtn) sendBtn.disabled = over;
+        if (voiceBtn) voiceBtn.disabled = over;
+        return over;
+    }
+
+    const chatWindow = document.getElementById('chat-window');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const micOverlay = document.getElementById('mic-overlay');
+    lockUIIfNeeded();
+    const voiceBtn = document.getElementById('voice-btn');
+
+    function appendMessage(role, text) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}-message`;
+
+        if (role === 'bot') {
+            messageDiv.innerHTML = `
+                <div class="message-role">
+                    <i class="fas fa-balance-scale" style="color: #D4AF37;"></i> LawAI法詢 客服
+                </div>
+                <div class="message-content">
+                    <div class="bot-answer">📌 ${text}</div>
+                </div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="message-role"><i class="fas fa-user"></i> 您</div>
+                <div class="message-content">${text}</div>
+            `;
+        }
+
+        chatWindow.appendChild(messageDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.id = 'typing-indicator';
+        typingDiv.innerHTML = `
+            <div class="typing-text">LawAI法詢客服 正在思考</div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        chatWindow.appendChild(typingDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) indicator.remove();
+    }
+
+    async function handleSendMessage() {
+        // 先檢查是否跨日，必要時清零
+        StorageUtil.checkAndRollDate();
+        // 提問上限檢查（送出前）
+        if (lockUIIfNeeded()) {
+            alert("⚠️ 已達到今日提問上限（9次），系統已鎖定。");
+            return;
+        }
+        const question = userInput.value.trim();
+        if (!question) return;
+
+        appendMessage('user', question);
+        userInput.value = '';
+        showTypingIndicator();
+
+        
+        // 廣告觸發計數（使用 StorageUtil，若 sessionStorage 不可用則自動改為記憶體）
+        let count = StorageUtil.getCount();
+        count = (Number.isFinite(count) ? count : 0) + 1;
+        StorageUtil.setCount(count);
+        console.log('[LawAI] 提問次數 =', count, StorageUtil.isMemory() ? '(使用記憶體備援)' : '(localStorage)');
+        if (lockUIIfNeeded()) {
+            alert('⚠️ 已達到今日提問上限（9次），系統已鎖定。');
+        }
+
+        if (count % 3 === 0) {
+            const adBanner = document.getElementById('lawai-ad-banner');
+            if (adBanner) {
+                const clone = adBanner.cloneNode(true);
+                clone.style.display = 'block';
+                clone.id = ''; // 避免重複 ID
+                chatWindow.appendChild(clone);
+            }
+        }
+const answer = await fetchAnswer(question);
+        removeTypingIndicator();
+        appendMessage('bot', answer);
+        appendAdBlock();
+    }
+
+    sendBtn.addEventListener('click', handleSendMessage);
+    userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSendMessage(); }
+    });
+
+    if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'zh-TW';
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            userInput.value = result;
+            userInput.focus();
+        };
+
+        recognition.onstart = function () {
+            micOverlay.style.display = 'block';
+        };
+
+        recognition.onend = function () {
+            micOverlay.style.display = 'none';
+        };
+
+        recognition.onerror = function (event) {
+            console.error("語音辨識錯誤：", event.error);
+            micOverlay.style.display = 'none';
+        };
+
+        voiceBtn.addEventListener('click', () => {
+            recognition.start();
+        });
+    } else {
+        voiceBtn.addEventListener('click', () => {
+            alert("此瀏覽器不支援語音辨識功能");
+        });
+    }
+
+    userInput.focus();
+
+    // === 計數徽章顯示 ===
+    function updateCounterBadge() {
+        const v = StorageUtil.getCount();
+        const mode = StorageUtil.isMemory() ? '（記憶體）' : '（localStorage）';
+        const valEl = document.getElementById('qa-counter-val');
+        const modeEl = document.getElementById('qa-counter-mode');
+        if (valEl) valEl.textContent = String(v);
+        if (modeEl) modeEl.textContent = mode;
+    }
+    updateCounterBadge();
+    setInterval(updateCounterBadge, 1000);
+
+    // === 歸零按鈕 ===
+    const resetBtn = document.getElementById('reset-counter-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function(){
+            StorageUtil.reset();
+            updateCounterBadge();
+            const userInput = document.getElementById('user-input');
+            const sendBtn = document.getElementById('send-btn');
+            const voiceBtn = document.getElementById('voice-btn');
+            if (userInput) userInput.disabled = false;
+            if (sendBtn) sendBtn.disabled = false;
+            if (voiceBtn) voiceBtn.disabled = false;
+            console.log('[LawAI] 計數已歸零，UI 已解鎖');
+        });
+    }
+
+});
+  </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // 廣告計數與顯示已在主要聊天邏輯 (handleSendMessage) 中處理。
+  // 這裡僅保留初始狀態設定，避免重複計數造成數值跳動。
+  if (!Number.isFinite(StorageUtil.getCount())) {
+    StorageUtil.reset();
+  }
+  // 若尚未有日期，或已跨日，執行換日檢查
+  StorageUtil.checkAndRollDate();
+});
+
+function appendAdBlock() {
+  const chatWindow = document.getElementById('chat-window');
+  if (document.querySelectorAll('.ad-footer').length > 0) return;
+  const adDiv = document.createElement('div');
+  adDiv.className = "ad-footer";
+  adDiv.innerHTML = `
+<div class="ad-footer">
+  <hr style="border: none; border-top: 1px solid #ccc; margin-bottom: 12px;">
+  <strong>LawAI法詢💡  ✅ LINE 加好友｜✅ 真人律師回覆<br/>
+  ➜ <a href="https://page.line.me/621sbqlu" target="_blank" style="color:#004B6B; font-weight:600;">立即加 LINE 官方帳號</a>
+</div>`;
+  if (chatWindow) {
+    chatWindow.appendChild(adDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+}
+</script>
+</body>
+</html>
