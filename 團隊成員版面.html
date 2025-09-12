@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>專業律師團隊 - 理然法律事務所</title>
+<link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary: #004B6B;
+        --primary-light: #0077A3;
+        --primary-dark: #002D42;
+        --secondary: #E0F2FF;
+        --accent: #F3F9FC;
+        --bg-light: #FFFFFF;
+        --bg-dark: #1F2937;
+        --text-light: #111827;
+        --text-muted: #6B7280;
+        --text-dark: #F9FAFB;
+        --highlight: #A5D8FC;
+        --success: #10B981;
+        --warning: #F59E0B;
+        --error: #EF4444;
+        --neon-blue: #00B4D8;
+        --neon-purple: #48CAE4;
+        --neon-pink: #FF6B9E;
+        --neon-green: #00C49A;
+        --gold: #90E0EF;
+        --shadow: 0 6px 16px rgba(0,0,0,0.08);
+        --shadow-hover: 0 8px 24px rgba(0, 75, 107, 0.2);
+        --shadow-large: 0 12px 28px rgba(0,0,0,0.12);
+        --glow: 0 0 15px rgba(0, 75, 107, 0.6);
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-xl: 32px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: var(--bg-light);
+        color: var(--text-light);
+        font-family: 'Noto Sans TC', sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* 科技感背景元素 */
+    .tech-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.15;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--neon-blue), transparent 40%),
+            radial-gradient(circle at 80% 70%, var(--neon-purple), transparent 40%);
+        animation: float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-5%, 5%); }
+        100% { transform: translate(5%, -5%); }
+    }
+
+    /* 漂浮的科技元素 */
+    .floating-tech {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .tech-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        opacity: 0.15;
+    }
+
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--neon-blue);
+        top: 20%;
+        left: 10%;
+        animation: float-circle 25s infinite alternate ease-in-out;
+    }
+
+    .circle-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--neon-purple);
+        bottom: 10%;
+        right: 10%;
+        animation: float-circle 30s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float-circle {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(-50px, 50px) rotate(180deg); }
+        100% { transform: translate(50px, -50px) rotate(360deg); }
+    }
+
+    /* 品牌頭部 */
+    .brand-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transform: scale(0.9);
+        transform-origin: left center;
+    }
+
+    .logo-container img {
+        height: 64px;
+    }
+
+    /* 主內容區 */
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-weight: 900;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+        color: var(--primary-light);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    /* 卡片樣式 */
+    .card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--radius-md);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 75, 107, 0.1);
+        animation: none;
+    }
+
+    /* 團隊導航 */
+    .team-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: white;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+    }
+
+    .team-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: var(--text-light);
+        transition: var(--transition);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        min-width: 100px;
+    }
+
+    .team-nav-item:hover {
+        background: var(--secondary);
+        transform: translateY(-3px);
+    }
+
+    .team-nav-item.active {
+        background: var(--primary);
+        color: white;
+    }
+
+    .team-nav-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 0.5rem;
+        border: 3px solid var(--secondary);
+        transition: var(--transition);
+    }
+
+    .team-nav-item:hover .team-nav-img {
+        border-color: var(--primary-light);
+    }
+
+    .team-nav-item.active .team-nav-img {
+        border-color: white;
+    }
+
+    .team-nav-name {
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* 律師介紹區塊 */
+    .lawyer-profile {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+        scroll-margin-top: 100px;
+    }
+
+    @media (min-width: 768px) {
+        .lawyer-profile {
+            flex-direction: row;
+            gap: 2rem;
+        }
+    }
+
+    .lawyer-image {
+        flex: 0 0 300px;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .lawyer-image {
+            margin-bottom: 0;
+        }
+    }
+
+    .lawyer-img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+    }
+
+    .lawyer-details {
+        flex: 1;
+    }
+
+    .lawyer-name {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--secondary);
+    }
+
+    .lawyer-title {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .lawyer-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .lawyer-section-title {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+    }
+
+    .lawyer-section-title i {
+        margin-right: 0.5rem;
+        color: var(--primary-light);
+    }
+
+    .lawyer-list {
+        list-style-type: none;
+    }
+
+    .lawyer-list li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .lawyer-list li:before {
+        content: "•";
+        color: var(--primary-light);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+
+    .specialty-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .specialty-tag {
+        background: var(--secondary);
+        color: var(--primary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .read-more-btn {
+        background: transparent;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 500;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .read-more-btn:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    .read-more-btn i {
+        margin-left: 0.5rem;
+        transition: var(--transition);
+    }
+
+    .read-more-btn.expanded i {
+        transform: rotate(180deg);
+    }
+
+    .more-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .more-content.expanded {
+        max-height: 1000px;
+    }
+
+    /* 按鈕樣式 */
+    .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        margin: 0.5rem;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transition: all 0.5s ease;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    /* 律師標語 */
+    
+    .lawyer-tagline {
+        background: linear-gradient(135deg, var(--secondary), var(--accent));
+        padding: 1.2rem;
+        border-radius: var(--radius-sm);
+        margin: 1.5rem 0;
+        border-left: 4px solid var(--primary);
+        font-style: italic;
+        position: relative;
+        font-size: 1.1em; /* 放大10% */
+        font-family: "Noto Serif TC", "KaiTi", "DFKai-SB", "Microsoft JhengHei", serif; /* 更漂亮的字體 */
+    }
+
+    
+
+
+    /* 強化 Banner 樣式 */
+    .hero {
+        text-align: center;
+        padding: 3rem 1rem;
+        background: #004B6B;
+        color: white;
+        font-family: 'Noto Serif TC', serif !important;
+    }
+    
+    .hero h1 {
+        margin-bottom: 10px;
+        font-size: 2.8rem !important;
+        font-weight: 900 !important;
+        color: white !important;
+        font-family: 'Noto Serif TC', serif !important;
+    }
+    
+    .hero p {
+        margin-top: 10px;
+        font-size: 1.2rem !important;
+        color: #e0f2ff !important;
+    }
+
+    /* 返回按鈕 */
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: #004B6B;
+        color: white;
+        padding: 6px 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        line-height: 1.2;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    
+    .back-button:hover {
+        background: #00334d;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+        .brand-header {
+            padding: 1rem;
+        }
+
+        .main-content {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            padding: 1.5rem;
+        }
+
+        .team-nav {
+            padding: 1rem;
+        }
+
+        .team-nav-item {
+            min-width: 80px;
+        }
+
+        .team-nav-img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    /* ✅ 依照需求：手機尺寸（<=480px）下，改為「兩人一排、頭像在上、名字在下」 */
+    @media (max-width: 480px) {
+        /* 讓整個導覽改為兩欄網格，排版更緊湊 */
+        .team-nav {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            align-items: start;
+            justify-items: center;
+        }
+
+        /* 每個項目改成直向排列（頭像在上、名字在下） */
+        .team-nav-item {
+            width: 100%;
+            min-width: unset;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column !important;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* 圖片置中，名字放在下方，去掉右邊距 */
+        .team-nav-img {
+            margin-right: 0 !important;
+            margin-bottom: 0.35rem !important;
+        }
+
+        .team-nav-name {
+            display: block;
+        }
+    }
+
+    /* 放大「理念與專長」內文 20% 並套用更柔和的字體 */
+    .more-content .lawyer-section p {
+        font-size: 1.2em;
+        line-height: 1.9;
+        font-family: "Noto Serif TC", "Microsoft JhengHei", "PingFang TC", "Songti TC", serif;
+    }
+
+</style>
+</head>
+<body>
+<a class="back-button" href="index.html">← 返回首頁</a>
+<div class="hero">
+    <h1>專業律師團隊</h1>
+    <p>理然法律事務所精英團隊，為您提供最優質的法律服務</p>
+</div>
+
+<!-- 科技感背景元素 -->
+<div class="tech-bg"></div>
+<div class="floating-tech">
+    <div class="tech-circle circle-1"></div>
+    <div class="tech-circle circle-2"></div>
+</div>
+
+<!-- 主內容區 -->
+<div class="main-content">
+    <!-- 團隊導航 -->
+    <div class="card">
+        <div class="team-nav">
+            <a href="#li" class="team-nav-item">
+                <img src="李欣庭律師.jpg" alt="李欣庭律師" class="team-nav-img">
+                <span class="team-nav-name">李欣庭 律師</span>
+            </a>
+            <a href="#liu" class="team-nav-item">
+                <img src="劉添錫律師.jpg" alt="劉添錫律師" class="team-nav-img">
+                <span class="team-nav-name">劉添錫 律師</span>
+            </a>
+            <a href="#zhang" class="team-nav-item">
+                <img src="張育銜律師.jpg" alt="張育銜律師" class="team-nav-img">
+                <span class="team-nav-name">張育銜 律師</span>
+            </a>
+            <a href="#liao" class="team-nav-item">
+                <img src="廖婉茹律師.jpg" alt="廖婉茹律師" class="team-nav-img">
+                <span class="team-nav-name">廖婉茹 律師</span>
+            </a>
+            <a href="#lin" class="team-nav-item">
+                <img src="林原弘律師.jpg" alt="林原弘律師" class="team-nav-img">
+                <span class="team-nav-name">林原弘 律師</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 李欣庭律師 -->
+    <div id="li" class="lawyer-profile card">
+        <div class="lawyer-image">
+            <img src="李欣庭律師.jpg" alt="李欣庭律師" class="lawyer-img">
+        </div>
+        <div class="lawyer-details">
+            <h2 class="lawyer-name">李欣庭 律師</h2>
+            <p class="lawyer-title">理然全球法律事務所所長兼負責人</p>
+            
+            <div class="lawyer-tagline">
+                結合法遵與治理視野，前瞻規劃，為企業與個人打造最佳訴訟策略
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">school</i>學歷</h3>
+                <ul class="lawyer-list">
+                    <li>台北大學法律系</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">work</i>經歷</h3>
+                <ul class="lawyer-list">
+                    <li>律師與司法官雙榜及格</li>
+                    <li>理然全球法律事務所所長兼負責人</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">gavel</i>專業領域</h3>
+                <div class="specialty-tags">
+                    <span class="specialty-tag">跨國爭議解決</span>
+                    <span class="specialty-tag">企業治理</span>
+                    <span class="specialty-tag">債務糾紛</span>
+                    <span class="specialty-tag">SPAC併購</span>
+                </div>
+            </div>
+            
+            <button class="read-more-btn" onclick="toggleReadMore(this)">
+                顯示更多 <i class="material-icons">expand_more</i>
+            </button>
+            
+            <div class="more-content">
+                <div class="lawyer-section">
+                    <h3 class="lawyer-section-title"><i class="material-icons">lightbulb_outline</i>理念與專長</h3>
+                    <p>李欣庭律師為理然法律事務所所長，亦是法律實務界少數兼具跨國爭議解決與企業治理視野的專業律師。其辦案經歷涵蓋廣泛，曾成功處理金額上億元的債務糾紛，並於假扣押撤銷程序中展現精準的法律判斷與訴訟策略，為客戶挽回重大損失。此外，李律師亦曾參與境外SPAC併購案的爭議協商，憑藉對國際交易架構與跨領域法律問題的理解，協助各方達成兼顧權益的和解方案。</p>
+                    <p>李律師長期專注於結構複雜、跨領域的法律爭端，能夠迅速抓住訴訟重點，並制定因應不同法院審理模式的策略，展現高度的靈活性與前瞻性。她同時兼具法律專業與管理能力，不僅能在法庭上提出有力辯論，更能協助企業在日常營運中建立健全的法遵制度與治理架構。其一貫強調「預防勝於訴訟」，致力於協助企業防範法律風險、提升韌性與永續發展能力。</p>
+                    <p>在專業表現之外，李律師亦以其明快的思維、溝通能力與協調技巧，贏得企業高層與當事人的信任。她擅於在衝突中尋求平衡，並在複雜局勢中找到最佳解決方案，成為眾多企業與個人客戶心中兼具智慧與判斷力的法律戰略顧問。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 劉添錫律師 -->
+    <div id="liu" class="lawyer-profile card">
+        <div class="lawyer-image">
+            <img src="劉添錫律師.jpg" alt="劉添錫律師" class="lawyer-img">
+        </div>
+        <div class="lawyer-details">
+            <h2 class="lawyer-name">劉添錫 律師</h2>
+            <p class="lawyer-title">慈律律師事務所所長 / 理然全球法律事務所專業資深顧問</p>
+            
+            <div class="lawyer-tagline">
+                三十載執業經驗，深耕土地與民刑事，法律智慧化繁為簡
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">school</i>學歷</h3>
+                <ul class="lawyer-list">
+                    <li>台北大學法律系（前身為中興法商學院）</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">work</i>經歷</h3>
+                <ul class="lawyer-list">
+                    <li>曾任民事執行處書記官</li>
+                    <li>執業超過35年</li>
+                    <li>慈律律師事務所所長兼負責人</li>
+                    <li>理然全球法律事務所專業資深顧問</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">gavel</i>專業領域</h3>
+                <div class="specialty-tags">
+                    <span class="specialty-tag">土地法</span>
+                    <span class="specialty-tag">民事爭訟</span>
+                    <span class="specialty-tag">刑事辯護</span>
+                    <span class="specialty-tag">分割共有物訴訟</span>
+                </div>
+            </div>
+            
+            <button class="read-more-btn" onclick="toggleReadMore(this)">
+                顯示更多 <i class="material-icons">expand_more</i>
+            </button>
+            
+            <div class="more-content">
+                <div class="lawyer-section">
+                    <h3 class="lawyer-section-title"><i class="material-icons">lightbulb_outline</i>理念與專長</h3>
+                    <p>劉添錫律師為慈律律師事務所所長兼負責人，同時擔任理然全球法律事務所專業資深顧問，從事法律工作已逾三十五年，長期深耕於台灣司法與法律實務領域。劉律師以其對土地法、民事爭訟與刑事辯護的專精，建立了紮實而廣受敬重的專業聲譽。早年即投入於分割共有物訴訟的研究與實踐，承辦多起具有指標性的案件，並於判例實務中創造重要先例，為同類案件的審理提供法理基礎與指引。</p>
+                    <p>其在土地糾紛及財產相關爭議的處理上，向以縝密推理、清楚論述與靈活應變見稱，能夠有效化繁為簡，迅速抓住核心爭點，帶領當事人走向最有利的法律解決途徑。</p>
+                    <p>除了承辦案件外，劉律師亦積極投身於法律人才培育。身為所長，他深知傳承的重要性，經常親自指導年輕律師與實習律師，傳授寶貴的法庭經驗與訴訟策略，強調「法律人應兼具專業與人文」的理念，期許後輩能在法律專業與社會責任間取得平衡。多年來，其誨人不倦的態度與嚴謹風格，已使其成為律師後輩心中的典範。憑藉豐富的實務經驗與廣博的法律知識，劉律師被譽為「法律活百科」，不僅是當事人的堅定後盾，也是台灣法律界具高度影響力的人物之一。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 張育銜律師 -->
+    <div id="zhang" class="lawyer-profile card">
+        <div class="lawyer-image">
+            <img src="張育銜律師.jpg" alt="張育銜律師" class="lawyer-img">
+        </div>
+        <div class="lawyer-details">
+            <h2 class="lawyer-name">張育銜 律師</h2>
+            <p class="lawyer-title">理然法律事務所合作律師</p>
+            
+            <div class="lawyer-tagline">
+                承擔與突破並行，專注民商事爭端，為當事人力爭公允
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">school</i>學歷</h3>
+                <ul class="lawyer-list">
+                    <li>輔仁大學法律系</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">work</i>經歷</h3>
+                <ul class="lawyer-list">
+                    <li>理然法律事務所合作律師</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">gavel</i>專業領域</h3>
+                <div class="specialty-tags">
+                    <span class="specialty-tag">民商事爭訟</span>
+                    <span class="specialty-tag">公司事務</span>
+                    <span class="specialty-tag">契約糾紛</span>
+                    <span class="specialty-tag">股東爭議</span>
+                </div>
+            </div>
+            
+            <button class="read-more-btn" onclick="toggleReadMore(this)">
+                顯示更多 <i class="material-icons">expand_more</i>
+            </button>
+            
+            <div class="more-content">
+                <div class="lawyer-section">
+                    <h3 class="lawyer-section-title"><i class="material-icons">lightbulb_outline</i>理念與專長</h3>
+                    <p>張育銜律師現為慈律律師事務所資深合夥人，多年來專注於民商事爭訟與公司事務，累積處理數十起複雜而具挑戰性的重大案件。張律師長期關注契約糾紛、股東爭議、企業營運爭執與商業訴訟，並以其冷靜沉著的法庭表現與靈活的談判技巧著稱，屢次成功為客戶爭取最有利的權益，獲得眾多企業與個人客戶的高度肯定。</p>
+                    <p>張律師師承劉添錫律師，秉持謙虛學習、善於提問與不斷精進的精神，逐步累積紮實的訴訟基礎與豐富的實戰經驗。他認為「一名優秀的律師，不僅應具備深厚的專業知識，亦須善於理解人性、洞察細節」，因此在辦案過程中，總能兼顧法理與人情，讓客戶在面臨重大法律糾紛時，能感受到冷靜而可靠的支持。</p>
+                    <p>作為事務所的資深合夥人，張律師不僅專注於承辦案件，也積極擔任事務所內部的導師角色。他持續指導新進律師與實習律師，將自身的經驗傳授後輩，並注重培養其獨立思考與全局判斷的能力。在其努力之下，事務所逐漸形成一支專業穩健、互助合作的團隊。張律師憑藉專業、責任感與親和力，不僅在客戶心中建立良好口碑，也成為團隊中不可或缺的支柱力量。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 廖婉茹律師 -->
+    <div id="liao" class="lawyer-profile card">
+        <div class="lawyer-image">
+            <img src="廖婉茹律師.jpg" alt="廖婉茹律師" class="lawyer-img">
+        </div>
+        <div class="lawyer-details">
+            <h2 class="lawyer-name">廖婉茹 律師</h2>
+            <p class="lawyer-title">家事法律專業</p>
+            
+            <div class="lawyer-tagline">
+                以細膩與專業，守護家庭秩序，化解情感糾紛於法律之中
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">school</i>學歷</h3>
+                <ul class="lawyer-list">
+                    <li>文化大學法學士</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">work</i>經歷</h3>
+                <ul class="lawyer-list">
+                    <li>曾任台北地方法院家事庭書記官</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">gavel</i>專業領域</h3>
+                <div class="specialty-tags">
+                    <span class="specialty-tag">家事事件</span>
+                    <span class="specialty-tag">民事爭議</span>
+                    <span class="specialty-tag">離婚案件</span>
+                    <span class="specialty-tag">子女監護</span>
+                </div>
+            </div>
+            
+            <button class="read-more-btn" onclick="toggleReadMore(this)">
+                顯示更多 <i class="material-icons">expand_more</i>
+            </button>
+            
+            <div class="more-content">
+                <div class="lawyer-section">
+                    <h3 class="lawyer-section-title"><i class="material-icons">lightbulb_outline</i>理念與專長</h3>
+                    <p>廖婉茹律師在家事事件與民事爭議處理領域擁有深厚的專業基礎與豐富經驗。早年曾於台北地方法院家事庭擔任書記官，服務二年之久，熟悉法院對家事案件的審理流程及相關法規之適用。此段經歷使她在後續執業過程中，能夠更加準確地預測法院審理方向，並為當事人擬定最合宜的訴訟與協商策略。</p>
+                    <p>廖律師特別專注於離婚、子女監護、財產分配與繼承爭議，並以其細膩的情感理解與冷靜的專業判斷著稱。她善於傾聽當事人訴求，並能將當事人的情感與利益，轉化為具體且合法的法律主張。在面對高張力的家庭衝突時，廖律師往往能以溫和卻堅定的溝通方式，協助雙方找到折衷方案，避免家庭關係完全破裂。</p>
+                    <p>在實務經驗累積中，廖律師逐漸成為客戶口中「值得信賴的家事律師」。她不僅在專業上提供可靠的法律支持，更在過程中展現同理心，讓當事人在最艱難的時刻，能感受到一份安定與陪伴。其辦案風格兼具專業與人性化，為事務所在家事案件領域樹立良好口碑。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 林原弘律師 -->
+    <div id="lin" class="lawyer-profile card">
+        <div class="lawyer-image">
+            <img src="林原弘律師.jpg" alt="林原弘律師" class="lawyer-img">
+        </div>
+        <div class="lawyer-details">
+            <h2 class="lawyer-name">林原弘 律師</h2>
+            <p class="lawyer-title">刑事辯護專業</p>
+            
+            <div class="lawyer-tagline">
+                專注刑事攻防，冷靜精準，為當事人守住最後一道正義防線
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">school</i>學歷</h3>
+                <ul class="lawyer-list">
+                    <li>文化大學法學士</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">work</i>經歷</h3>
+                <ul class="lawyer-list">
+                    <li>曾於法律扶助基金會服務<br/>慈律律師事務所實習律師<br/>慈律律師事務所受雇律師</li>
+                </ul>
+            </div>
+            
+            <div class="lawyer-section">
+                <h3 class="lawyer-section-title"><i class="material-icons">gavel</i>專業領域</h3>
+                <div class="specialty-tags">
+                    <span class="specialty-tag">刑事辯護</span>
+                    <span class="specialty-tag">刑事訴訟策略</span>
+                </div>
+            </div>
+            
+            <button class="read-more-btn" onclick="toggleReadMore(this)">
+                顯示更多 <i class="material-icons">expand_more</i>
+            </button>
+            
+            <div class="more-content">
+                <div class="lawyer-section">
+                    <h3 class="lawyer-section-title"><i class="material-icons">lightbulb_outline</i>理念與專長</h3>
+                    <p>林原弘律師長期專注於刑事辯護與刑事訴訟策略，以其嚴謹的法律邏輯與靈活的庭辯技巧聞名。執業以來，承辦多起具爭議性的重大刑事案件，均能精準掌握訴訟程序之節奏，並有效拆解檢方論述，替當事人爭取最大化的權益保障。</p>
+                    <p>早年曾於法律扶助基金會服務，累積了豐富的實務諮詢與案件研究經驗，並培養出嚴密的邏輯思維與清晰的表達能力。這段經歷為其日後的執業奠定基礎，使其在法庭攻防中能夠條理分明、言之有物，迅速獲得法官與陪審團的注意與認同。林律師善於運用多層次的法律推論，並在辯護過程中靈活運用不同策略，以對抗強勢的檢方攻擊，展現堅毅沉穩的辯護風格。</p>
+                    <p>林律師深信「刑事辯護不僅是專業，更是責任」。因此，他在承辦案件時，始終堅持捍衛當事人程序正義與基本權利，確保每一位當事人皆能獲得公平審判。其專業與信念，使其在刑事辯護領域逐漸奠定不可取代的重要地位，並成為眾多當事人面對司法挑戰時的信賴後盾。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 預約按鈕 -->
+    <div class="card" style="text-align: center;">
+        <h2>預約專業法律諮詢</h2>
+        <p>我們的律師團隊隨時準備為您提供專業的法律服務</p>
+        <a href="預約律師版面.html" class="btn">立即預約律師</a>
+    </div>
+</div>
+
+<script>
+    // 顯示更多/更少功能
+    function toggleReadMore(button) {
+        const content = button.nextElementSibling;
+        button.classList.toggle('expanded');
+        content.classList.toggle('expanded');
+        
+        if (button.classList.contains('expanded')) {
+            button.innerHTML = '顯示更少 <i class="material-icons">expand_less</i>';
+        } else {
+            button.innerHTML = '顯示更多 <i class="material-icons">expand_more</i>';
+        }
+    }
+    
+    // 平滑滾動到錨點
+    document.querySelectorAll('.team-nav-item').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // 滾動動畫
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.card, .lawyer-profile');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if(elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // 初始化元素樣式
+    document.querySelectorAll('.card, .lawyer-profile').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+</script>
+</body>
+</html>
