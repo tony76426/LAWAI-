@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>勞工被調職之合理性與異動程序 | 專業法律資訊平台</title>
+<meta content="詳細解析調職合理性、勞動契約變更與勞工權益保障等關鍵議題" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 勞工被調職之合理性與異動程序
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">勞動法</span>
+<h1 class="article-title">勞工被調職之合理性與異動程序</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="勞工調職合理性與程序保障專業解析" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>雇主是否有權單方面調動勞工職務？調職行為是否違反勞動契約？本文將詳細解析調職合理性判斷標準、勞動契約變更原則與勞工權益保障等關鍵議題，幫助您了解在面對職務調整時如何有效保障自身權益，確保調職程序的合法性與合理性。</p>
+<div class="highlight-box">
+<p>調職合理性判斷是勞動法實務中的核心議題，了解並善用相關法律原則，不僅是保護勞工權益的重要手段，更是維護職場公平與和諧的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>調職合理性判斷標準</h2>
+<h3>調職之法律性質</h3>
+<p>根據勞動基準法及相關司法實務見解，雇主調動勞工工作應遵循以下原則：</p>
+<ol>
+<li>基於企業經營上所必須</li>
+<li>不得違反勞動契約</li>
+<li>對勞工薪資及其他勞動條件未作不利之變更</li>
+<li>調動後工作與原有工作性質為其體能及技術所可勝任</li>
+<li>調動工作地點過遠，雇主應予以必要之協助</li>
+<li>考量勞工及其家庭之生活利益</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：調職合理性判斷</div>
+<div class="case-content">最高法院判決明確指出，雇主調動勞工工作，除不得違反勞動契約約定外，尚須具備合理性。若調職僅為懲罰勞工或具不當動機，該調職命令無效。</div>
+</div>
+<h3>調職程序與勞工同意</h3>
+<p>雇主實施調職時應遵循正當程序：</p>
+<ul>
+<li>事先通知：應給予勞工合理準備時間</li>
+<li>充分溝通：說明調職原因與必要性</li>
+<li>書面確認：重要調職事項應以書面為之</li>
+<li>異議程序：勞工對調職有異議時應設有救濟管道</li>
+<li>過渡協助：提供必要訓練與適應期間</li>
+</ul>
+<div class="warning-box">
+<p>注意：若雇主未經勞工同意而單方面變更勞動條件，且對勞工造成不利影響，可能構成不當勞動行為或違法解雇。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>調職類型與法律效果</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>調職類型</th>
+<th>法律性質</th>
+<th>勞工同意必要性</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>職務內容調整</td>
+<td>勞動契約變更</td>
+<td>實質變更需要同意</td>
+<td>異議、勞資爭議調解</td>
+</tr>
+<tr>
+<td>工作地點變更</td>
+<td>勞動條件變更</td>
+<td>重大變更需要同意</td>
+<td>拒絕到職、資遣費請求</td>
+</tr>
+<tr>
+<td>薪資結構調整</td>
+<td>核心勞動條件變更</td>
+<td>必須獲得同意</td>
+<td>確認僱傭關係存在、給付薪資差額</td>
+</tr>
+<tr>
+<td>職等升降調整</td>
+<td>身分地位變更</td>
+<td>不利變更需要同意</td>
+<td>復職、損害賠償請求</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">調職合理性檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您面臨的調職類型為何？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">職務內容調整</option>
+<option value="prosecution">工作地點變更</option>
+<option value="detention">薪資結構調整</option>
+<option value="trial">職等升降調整</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為調職存在哪些問題？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">未經事先協商</option>
+<option value="lawyer">勞動條件不利變更</option>
+<option value="evidence">調職動機不合理</option>
+<option value="procedure">程序不合法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">您的職務類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般職員</option>
+<option value="serious">管理職</option>
+<option value="economic">專業技術人員</option>
+<option value="drug">外派人員</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測調職合法性</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論面臨何種類型調職，保持冷靜溝通、了解自身權利、尋求專業法律協助是保障自身權益的三大關鍵。切勿因慌亂而接受不合理調職或貿然離職。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>不合理調職之法律救濟</h2>
+<h3>救濟途徑與時效</h3>
+<p>面對不合理調職，勞工可採取以下救濟措施：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">內部異議</div>
+<div class="step-desc">向雇主提出書面異議，要求說明調職合理性</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">勞資爭議調解</div>
+<div class="step-desc">向勞工局申請勞資爭議調解</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">司法救濟</div>
+<div class="step-desc">提起確認僱傭關係存在或給付薪資等訴訟</div>
+</div>
+</div>
+</div>
+<h3>常見不合理調職類型</h3>
+<p>實務上常見的不合理調職情形：</p>
+<ul>
+<li>變相解雇：以調職方式逼迫勞工自動離職</li>
+<li>懲罰性調職：對提出異議或申訴勞工進行報復性調動</li>
+<li>實質減薪：調職後薪資結構變更導致實質收入減少</li>
+<li>遠距調動：工作地點變更過遠且未提供合理協助</li>
+<li>能力不符：調至勞工專業能力無法勝任之職務</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：調職合理性判斷</div>
+<div class="case-content">最高法院判決確立了調職五原則，明確指出「雇主調動勞工工作，不得違反勞動契約之約定，並應依誠信原則為之，如對勞工有不利之變更，應具備合理性與必要性」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>調職合理性判斷是勞動法實務中的重要議題。了解並善用相關法律原則，不僅能有效保障勞工權益，更能促進職場和諧與勞資關係穩定。</p>
+<p>面對調職時，建議保持理性溝通、了解自身權利、及時尋求專業法律協助，並在每個階段積極行使法律賦予的救濟權利，以維護自身合法權益。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或親友面臨不合理調職，應立即尋求專業勞動法律師協助，確保調職程序合法性與合理性，維護自身勞動權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「雇主有絕對人事權」：調職仍須符合合理性原則</li><li>認為「不服調職只能離職」：可依法提出異議與救濟</li><li>忽略「書面確認重要性」：口頭調職易生舉證困難</li><li>誤解「職務說明書效力」：工作內容變更仍需勞工同意</li><li>不知「救濟時效限制」：權利主張有法定時間限制</li></ul></div>
+
+<div class="rights-card">
+  <h3>調職合理性自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視調職是否合理，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未經事先協商">
+      <span>調職前，雇主是否<strong>未經事先協商</strong>或充分溝通？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="勞動條件不利變更">
+      <span>調職後，<strong>薪資、福利或職等</strong>是否遭受不利變更？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="調職動機不合理">
+      <span>調職是否缺乏<strong>業務必要性</strong>或具懲罰性動機？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="工作地點過遠">
+      <span>新工作地點是否<strong>過於遙遠</strong>且未提供合理協助？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="無法勝任新職務">
+      <span>新職務內容是否<strong>超出專業能力</strong>範圍？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要勞動法律師協助？</h2>
+<p>我們的專業勞動法律師團隊擁有豐富經驗，能為您提供調職合理性評估、勞資爭議調解、訴訟代理等全方位法律服務，確保您的勞動權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 雇主可以單方面調動我的工作地點嗎？</div>
+<div class="faq-answer">A: 雇主調動工作地點須符合合理性原則，如調動距離過遠且未提供必要協助，勞工可拒絕調職。若雇主堅持調動而勞工拒絕，可能構成雇主違反勞動契約，勞工可依法主張權利。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 調職後薪資減少是否合法？</div>
+<div class="faq-answer">A: 調職導致薪資減少原則上需經勞工同意，除非勞動契約或工作規則已有明確規定。若未經同意而實質減薪，可能構成勞動條件不利益變更，勞工可依法提出異議。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 如何判斷調職是否合理？</div>
+<div class="faq-answer">A: 判斷調職合理性可參考五大原則：基於企業經營必需、不違反勞動契約、未作不利益變更、勞工能力可勝任、調動地點不過遠且雇主提供協助。具體個案應由專業律師評估。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 面對不合理調職，我應該如何回應？</div>
+  <div class="faq-answer">A: 建議先以書面向雇主提出異議，要求說明調職合理性及必要性。同時蒐集相關證據，並諮詢專業勞動法律師。切勿貿然接受調職或自動離職，以免影響後續權利主張。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 若我拒絕不合理調職，雇主可以解雇我嗎？</div>
+  <div class="faq-answer">A: 若調職確實不合理且勞工拒絕服從，雇主不得以此為由解雇勞工，否則可能構成違法解雇。勞工可請求確認僱傭關係存在，並要求給付薪資。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 調職的救濟時效為何？</div>
+  <div class="faq-answer">A: 勞工如認為調職不合法，應於知悉調職時起30日內向勞工局申請勞資爭議調解。若涉及確認僱傭關係存在等民事訴訟，時效為10年，但仍建議儘早採取法律行動。</div>
+</div>
+
+</div>
+
+<script>
+        // 調職合理性檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '提出書面異議';
+                    explanation = '您面臨職務內容調整且未經事先協商，建議立即以書面向雇主提出異議，要求說明調職必要性與合理性，並保留相關證據。';
+                } else {
+                    recommendation = '請求專業評估';
+                    explanation = '職務內容調整涉及勞動契約變更，建議尋求專業勞動法律師評估調職合法性，並協助與雇主協商。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '評估調職合理性';
+                explanation = '工作地點變更對勞工影響重大，應仔細評估調職是否符合合理性原則，特別是通勤時間、家庭生活影響及雇主提供之協助是否充分。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '主張權利保障';
+                explanation = '薪資結構調整屬核心勞動條件變更，原則上需經勞工同意。如未經同意而減薪，可主張調職無效或請求給付薪資差額。';
+            } else {
+                recommendation = '全面評估影響';
+                explanation = '職等升降調整涉及身分地位變更，應全面評估對職涯發展、薪資福利及退休金計算之影響，必要時尋求法律救濟。';
+            }
+
+            // 顯示結果
+            const resultDiv = document.getElementById('rights-result');
+            const recommendationDiv = document.getElementById('rights-recommendation');
+
+            recommendationDiv.innerHTML = `
+                <p><strong>建議措施：${recommendation}</strong></p>
+                <p>${explanation}</p>
+                <p>建議立即諮詢專業勞動法律師，以確保您的權益獲得完整保障。</p>
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const issues = Array.from(checkboxes).map(cb => cb.value);
+            
+            let advice = '';
+            if (issues.length === 0) {
+                advice = '根據您的回答，目前調職情況似乎較為合理。但仍建議您仔細審閱勞動契約與公司規章，確認調職程序與內容完全符合相關規定。';
+            } else if (issues.length <= 2) {
+                advice = '您的調職可能存在部分不合理之處。建議您與雇主進一步溝通，要求說明調職必要性與合理性，並考慮尋求專業勞動法律意見。';
+            } else {
+                advice = '您的調職存在多項不合理之處，可能已構成不當勞動行為。強烈建議您立即尋求專業勞動法律師協助，評估後續法律行動以保障自身權益。';
+            }
+            
+            document.getElementById('checklist-text').innerHTML = advice;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

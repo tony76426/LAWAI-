@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>違建認定與拆除程序之法律救濟 | 專業法律資訊平台</title>
+<meta content="詳細解析違章建築認定標準、舉證責任分配與行政訴訟救濟途徑，保障財產權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 違建認定與拆除程序之法律救濟
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">行政救濟</span>
+<h1 class="article-title">違建認定與拆除程序之法律救濟</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="違建認定與拆除程序之法律救濟專業解析" src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>面對違章建築認定與拆除程序，當事人享有哪些法律救濟權利？這些權利如何保障財產權益與程序正義？本文將詳細解析違建認定標準、舉證責任分配、行政救濟途徑等關鍵議題，幫助您了解在違建處理程序中如何有效保障自身權益，確保行政程序的合法性與合理性。</p>
+<div class="highlight-box">
+<p>違建處理程序中的權利保障是現代法治國家的核心價值，了解並善用這些救濟途徑，不僅是保護財產權的重要手段，更是維護行政程序正義的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>違建認定標準解析</h2>
+<h3>違章建築定義與類型</h3>
+<p>根據建築法及相關法規，違章建築主要分為以下類型：</p>
+<ol>
+<li>程序違建：未經申請建築許可即擅自建造</li>
+<li>實質違建：建築物與核准圖說不符或違反建築技術規則</li>
+<li>既存違建：在特定日期前已存在之違建，得依規定補辦手續</li>
+<li>新違建：在特定日期後新建之違建，應即查報拆除</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：違建認定標準</div>
+<div class="case-content">在實務判決中，法院明確指出，違建認定應以建築法及相關法規為準，主管機關不得恣意擴大解釋。此案例確立了違建認定標準的重要性。</div>
+</div>
+<h3>舉證責任分配原則</h3>
+<p>違建認定程序中，舉證責任分配如下：</p>
+<ul>
+<li>主管機關：應就建築物違反建築法規之事實負舉證責任</li>
+<li>當事人：得提出有利證據證明建築物合法性或符合緩拆條件</li>
+<li>舉證時點：應於行政程序及行政訴訟中各階段適時提出</li>
+<li>證據類型：建築執照、使用執照、測量成果圖、照片等</li>
+</ul>
+<div class="warning-box">
+<p>注意：若主管機關未依法定程序調查證據即逕為認定違建，該行政處分可能因程序瑕疵而被撤銷。此為重要救濟理由。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>違建處理程序權利保障</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>程序階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查報階段</td>
+<td>陳述意見權、申請閱卷權、證據提出權</td>
+<td>行政程序法第39、46條</td>
+<td>聲明異議、訴願</td>
+</tr>
+<tr>
+<td>認定階段</td>
+<td>聽證權、辯護權、專業鑑定請求權</td>
+<td>行政程序法第54、107條</td>
+<td>訴願、行政訴訟</td>
+</tr>
+<tr>
+<td>拆除階段</td>
+<td>限期改善權、暫緩執行請求權、損失補償請求權</td>
+<td>建築法第58、81條</td>
+<td>停止執行、國家賠償</td>
+</tr>
+<tr>
+<td>救濟程序</td>
+<td>訴願權、行政訴訟權、國家賠償請求權</td>
+<td>訴願法、行政訴訟法、國賠法</td>
+<td>訴願、行政訴訟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">違建救濟權利檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個違建處理階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">查報階段（收到違建查報單）</option>
+<option value="identification">認定階段（收到違建認定通知）</option>
+<option value="demolition">拆除階段（收到拆除通知）</option>
+<option value="execution">執行階段（面臨強制拆除）</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權利可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="statement">陳述意見權未保障</option>
+<option value="evidence">舉證權利受限制</option>
+<option value="procedure">程序合法性有問題</option>
+<option value="compensation">補償請求權受影響</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">違建類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="procedural">程序違建（未申請建照）</option>
+<option value="substantive">實質違建（與核准圖說不符）</option>
+<option value="existing">既存違建（特定日期前存在）</option>
+<option value="new">新違建（特定日期後新建）</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測救濟權利</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種程序階段，保持冷靜、了解權利、尋求專業律師協助是保障自身權益的三大關鍵。切勿因慌亂而放棄或忽略重要救濟權利的行使。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>行政救濟途徑與時效</h2>
+<h3>救濟途徑要件</h3>
+<p>行政救濟必須符合法定要件才能有效進行：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">訴願前置</div>
+<div class="step-desc">對行政處分不服應先經訴願程序</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">時效遵守</div>
+<div class="step-desc">訴願應於處分達到次日起30日內提出</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">理由具備</div>
+<div class="step-desc">救濟請求應具體指明處分違法或不當事由</div>
+</div>
+</div>
+</div>
+<h3>行政訴訟類型</h3>
+<p>對違建處分不服可提起以下行政訴訟：</p>
+<ul>
+<li>撤銷訴訟：請求撤銷違法行政處分</li>
+<li>課予義務訴訟：請求主管機關作成特定處分</li>
+<li>確認訴訟：請求確認行政處分無效或法律關係存在</li>
+<li>一般給付訴訟：請求財產上給付或非財產上給付</li>
+<li>預防性不作為訴訟：請求防止違法處分或執行</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：違建救濟權利</div>
+<div class="case-content">實務判決確立了違建處理程序的正當法律程序原則，明確指出「主管機關作成違建認定及拆除處分前，應給予當事人陳述意見之機會，並應依職權調查證據」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>違建認定與拆除程序中的救濟權利是保障財產權與程序正義的重要機制。了解並善用這些權利，不僅能有效防禦不當行政處分，更能確保行政程序的合法性與合理性。</p>
+<p>面對違建處理程序時，建議保持冷靜、了解自身權利、及時尋求專業律師協助，並在每個程序階段積極行使法律賦予的救濟權利，以維護自身權益與行政正義。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或親友面臨違建認定或拆除程序，應立即尋求專業行政救濟律師協助，確保程序權利獲得完整保障，維護自身合法權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「收到拆除通知就只能配合」：行政處分可依法救濟。</li><li>認為「既存違建就一定安全」：仍可能被列管並限期改善。</li><li>忽略「陳述意見機會」：放棄此權利將喪失重要救濟時機。</li><li>把「程序違建當實質違建」：兩者法律效果與救濟方式不同。</li><li>錯過「救濟時效」：訴願與訴訟均有嚴格時效限制。</li></ul></div>
+
+<div class="rights-card">
+  <h3>違建救濟自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未給予陳述意見機會">
+      <span>收到違建通知前，是否未被給予<strong>陳述意見</strong>機會？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="舉證權利受限">
+      <span>是否曾提出證據但遭主管機關<strong>拒絕審酌</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="程序合法性疑慮">
+      <span>行政處分是否<strong>違反正當法律程序</strong>或調查不完備？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="認定標準不一致">
+      <span>違建<strong>認定標準</strong>是否與類似案例不一致或恣意？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="救濟時效即將屆至">
+      <span>是否尚未於法定期限內提出<strong>訴願或行政訴訟</strong>？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要違建救濟協助？</h2>
+<p>我們的專業行政救濟團隊擁有豐富經驗，能為您提供違建認定諮詢、行政程序陪同、訴願撰寫、行政訴訟等全方位法律服務，確保您的財產權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果收到違建拆除通知，應該如何處理？</div>
+<div class="faq-answer">A: 收到拆除通知後，應先確認處分合法性，檢查主管機關是否給予陳述意見機會、調查證據是否完備。如有程序瑕疵，應於法定期限內（通常為30日）提起訴願，並得同時聲請停止執行。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以聲請停止拆除執行？</div>
+<div class="faq-answer">A: 當拆除處分的合法性有疑義，且立即執行將造成難以回復的損害時，可向訴願機關或行政法院聲請停止執行。聲請時應具體說明處分違法事由及急迫性。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 既存違建是否完全不會被拆除？</div>
+<div class="faq-answer">A: 既存違建並非完全免於拆除，僅是依規定列管並得依序處理。如經認定有公共安全之虞，主管機關仍得限期令其改善或拆除。且新建部分仍屬新違建，應即查報拆除。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 違建拆除後，是否可以請求損失補償？</div>
+  <div class="faq-answer">A: 若拆除程序合法，原則上無補償；但若拆除程序違法（如未給予陳述意見機會、認定標準錯誤等）導致當事人受有損害，得依法請求國家賠償。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 違建認定有誤時，應如何舉證推翻？</div>
+  <div class="faq-answer">A: 可提出建築執照、使用執照、竣工圖說、測量成果、歷史航照圖、鄰房證明等資料，證明建物合法性或符合緩拆條件。必要時得聲請專業鑑定。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 行政救濟的時效有多長？錯過時效怎麼辦？</div>
+  <div class="faq-answer">A: 訴願應於處分達到次日起30日內提出；行政訴訟應於訴願決定書達到次日起2個月內提起。錯過時效原則上喪失救濟權，但如有不可歸責事由，得依法聲請回復原狀。</div>
+</div>
+
+</div>
+
+<script>
+        // 違建救濟權利檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'statement') {
+                    recommendation = '立即提出陳述意見';
+                    explanation = '您處於查報階段且陳述意見權未受保障，建議立即以書面提出陳述意見，並附具相關證據。在此情況下所作處分可能因程序瑕疵而違法。';
+                } else {
+                    recommendation = '請求專業協助';
+                    explanation = '查報階段是權利最容易受侵害的時期，建議立即委任律師，由律師協助保障您的程序權利，並對違法程序提出異議。';
+                }
+            } else if (procedureStage === 'identification') {
+                recommendation = '程序異議與證據提出';
+                explanation = '違建認定階段，如發現程序違法，應立即提出異議。同時可提出有利證據，聲請主管機關依職權調查，確保認定結果的合法性與正確性。';
+            } else if (procedureStage === 'demolition') {
+                recommendation = '停止執行與救濟';
+                explanation = '拆除通知送達後，如認為處分違法，應於法定期限內提起訴願，並同時聲請停止執行，以避免難以回復的損害發生。';
+            } else {
+                recommendation = '緊急救濟與暫時權利保護';
+                explanation = '面臨強制拆除階段，應立即聲請緊急處置，請求行政法院作成暫時權利保護裁定，停止執行程序，以爭取救濟時間。';
+            }
+
+            // 根據違建類型調整建議
+            if (caseType === 'existing') {
+                explanation += ' 您的違建屬於既存違建，可能享有較寬鬆的處理標準，應積極主張此一有利因素。';
+            } else if (caseType === 'procedural') {
+                explanation += ' 您的違建屬於程序違建，有補正程序的可能，應積極尋求補正機會。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            if (checkboxes.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '目前未發現明顯權利受損情況，但仍建議諮詢專業律師確認程序合法性。';
+            } else {
+                let issues = [];
+                checkboxes.forEach(cb => {
+                    issues.push(cb.value);
+                });
+                document.getElementById('checklist-text').innerHTML = `發現 ${issues.length} 項可能的權利問題：${issues.join('、')}。建議立即尋求專業律師協助，評估救濟可能性。`;
+            }
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

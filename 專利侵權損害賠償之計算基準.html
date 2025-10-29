@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>專利侵權損害賠償之計算基準 | 專業法律資訊平台</title>
+<meta content="詳細解析權利人可得利益、侵權所得與法院採認實例，掌握專利侵權賠償計算方法" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 專利侵權損害賠償之計算基準
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">智慧財產權</span>
+<h1 class="article-title">專利侵權損害賠償之計算基準</h1>
+<div class="article-meta">
+<span>閱讀時間：8 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="專利侵權損害賠償計算基準專業解析" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>專利權遭受侵害時，如何計算損害賠償金額是實務上的重要課題。本文將詳細解析專利法規定的三種計算方法：權利人可得利益、侵權人所得利益與合理權利金，並探討法院在實務中如何採認與計算，幫助專利權人有效主張權利，確保獲得合理賠償。</p>
+<div class="highlight-box">
+<p>專利侵權損害賠償的計算不僅是法律問題，更涉及複雜的商業與會計分析。了解各種計算方法的適用條件與實務操作，是有效維護專利權益的關鍵。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>專利侵權損害賠償計算方法</h2>
+<h3>權利人可得利益計算法</h3>
+<p>根據專利法第97條第1項第1款規定，專利權人得以其因侵權行為所受之損失，作為損害賠償計算基礎：</p>
+<ol>
+<li>專利產品銷售量減少之損失</li>
+<li>專利產品價格因侵權而下跌之損失</li>
+<li>其他因侵權行為導致之商業損失</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：權利人可得利益的計算</div>
+<div class="case-content">在智慧財產法院某判決中，法院採認專利權人提出的市場分析報告，認定侵權產品導致專利產品銷售量減少30%，並以此計算損害賠償金額，最終判決侵權人應賠償新台幣1,200萬元。</div>
+</div>
+<h3>侵權人所得利益計算法</h3>
+<p>專利法第97條第1項第2款規定，專利權人亦得以侵權人因侵權行為所得之利益，作為損害賠償計算基礎：</p>
+<ul>
+<li>侵權產品銷售總收入</li>
+<li>扣除侵權人主張之必要成本</li>
+<li>侵權行為與所得利益之因果關係</li>
+<li>侵權人故意或過失之程度</li>
+</ul>
+<div class="warning-box">
+<p>注意：侵權人主張扣除成本時，需負擔舉證責任。若無法提出明確證據證明成本金額，法院可能依職權酌定或採認權利人主張。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>專利侵權賠償計算比較</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>計算方法</th>
+<th>適用條件</th>
+<th>舉證責任</th>
+<th>實務挑戰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>權利人可得利益</td>
+<td>侵權導致銷售減少或價格下跌</td>
+<td>權利人需證明因果關係與損失金額</td>
+<td>市場因素干擾難以量化</td>
+</tr>
+<tr>
+<td>侵權人所得利益</td>
+<td>侵權人有明確銷售紀錄</td>
+<td>侵權人需證明成本與費用</td>
+<td>侵權人可能隱匿或銷毀紀錄</td>
+</tr>
+<tr>
+<td>合理權利金</td>
+<td>無法證明具體損失或利益</td>
+<td>雙方提出合理權利金證據</td>
+<td>權利金倍數認定標準不一</td>
+</tr>
+<tr>
+<td>法院酌定</td>
+<td>證據不足但侵權事實明確</td>
+<td>法院依職權調查與認定</td>
+<td>金額可能低於實際損失</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">專利侵權賠償計算檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您的專利侵權案件處於哪個階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">侵權證據蒐集階段</option>
+<option value="prosecution">損害賠償計算階段</option>
+<option value="detention">訴訟準備階段</option>
+<option value="trial">法院審理階段</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪種計算方法最適合您的案件？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">權利人可得利益法</option>
+<option value="lawyer">侵權人所得利益法</option>
+<option value="evidence">合理權利金法</option>
+<option value="procedure">法院酌定法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">您的專利類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">發明專利</option>
+<option value="serious">新型專利</option>
+<option value="economic">設計專利</option>
+<option value="drug">方法專利</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測賠償計算</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>賠償計算建議：無論採用何種計算方法，完善的證據保全與專業的會計分析是成功獲得合理賠償的關鍵。建議及早委任專業律師與會計師，共同制定最有利的賠償計算策略。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>合理權利金與法院酌定</h2>
+<h3>合理權利金計算法</h3>
+<p>當難以證明具體損失或侵權所得時，可依專利法第97條第1項第3款請求合理權利金：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">市場比較法</div>
+<div class="step-desc">參考類似專利的授權金標準</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">利潤分攤法</div>
+<div class="step-desc">分析專利對產品利潤的貢獻度</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">假設協商法</div>
+<div class="step-desc">模擬雙方在侵權前的授權協商</div>
+</div>
+</div>
+</div>
+<h3>法院酌定賠償金額</h3>
+<p>當證據不足但侵權事實明確時，法院得依職權酌定賠償金額：</p>
+<ul>
+<li>侵權行為的期間與規模</li>
+<li>專利的技術價值與市場影響力</li>
+<li>侵權人的主觀故意程度</li>
+<li>專利權人為排除侵害的支出</li>
+<li>雙方過去的授權實務與商業關係</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：合理權利金的計算</div>
+<div class="case-content">最高法院在某專利侵權案件中確立，合理權利金的計算應考量專利技術的創新程度、市場需求、替代技術的可得性、專利對標準的必要性，以及業界慣例等多重因素，不應僅以單一公式計算。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>專利侵權損害賠償的計算是專利維權的核心環節。了解各種計算方法的適用條件與實務操作，能有效提高求償成功的機會與金額。</p>
+<p>面對專利侵權時，建議及早蒐集侵權證據、保全相關財務紀錄、尋求專業律師與會計師協助，並根據案件特性選擇最有利的賠償計算方法，以維護自身專利權益。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您的專利遭受侵害，應立即尋求專業智慧財產律師協助，進行侵權分析與損害評估，確保獲得合理賠償，維護專利價值與市場競爭力。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「專利登記＝絕對保護」：專利權仍有範圍限制與有效性挑戰。</li><li>認為「侵權必獲高額賠償」：賠償金額需依證據與計算方法認定。</li><li>忽略「專利有效性」問題：侵權訴訟中被告常會反訴專利無效。</li><li>把「專利侵害」與「損害賠償」混為一談：兩者需分別舉證。</li><li>錯過「證據保全」黃金期：侵權產品與財務紀錄可能迅速消失。</li></ul></div>
+
+<div class="rights-card">
+  <h3>專利侵權自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未進行侵權分析">
+      <span>是否尚未進行專業的<strong>侵權分析</strong>與專利有效性評估？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未保全侵權證據">
+      <span>是否尚未<strong>保全侵權產品</strong>與相關銷售證據？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未計算損害賠償">
+      <span>是否尚未進行專業的<strong>損害賠償計算</strong>與財務分析？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未評估訴訟策略">
+      <span>是否尚未評估最有利的<strong>訴訟策略</strong>與賠償計算方法？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未尋求專業協助">
+      <span>是否尚未<strong>尋求專業律師與會計師</strong>的協助？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要專利侵權法律協助？</h2>
+<p>我們的專業智慧財產團隊擁有豐富經驗，能為您提供侵權分析、損害賠償計算、證據保全、訴訟策略等全方位法律服務，確保您的專利權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 專利侵權損害賠償的計算時效是多久？</div>
+<div class="faq-answer">A: 專利侵權損害賠償請求權時效為自請求權人知有損害及賠償義務人時起2年，或自侵權行為時起10年。建議發現侵權行為後應儘速採取法律行動，避免時效消滅。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 如何證明侵權行為與損害之間的因果關係？</div>
+<div class="faq-answer">A: 證明因果關係需透過市場分析、專家證人、銷售數據比對等方式。常見證據包括：侵權產品上市時間與銷售下滑時間的對應、消費者混淆的市場調查、價格侵蝕的財務分析等。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 合理權利金的計算通常參考哪些因素？</div>
+<div class="faq-answer">A: 合理權利金的計算通常參考：業界類似專利的授權實務、專利技術的創新程度與市場價值、專利對產品的貢獻度、授權範圍與地域、雙方過去的授權關係等。法院也可能採用假設協商法模擬雙方在侵權前的授權條件。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 侵權人主張扣除成本時，哪些成本可以被認列？</div>
+  <div class="faq-answer">A: 侵權人可主張扣除與侵權產品直接相關的必要成本，如材料成本、直接人工、製造費用等。但一般行政管理費用、研發費用（除非專為侵權產品研發）、行銷費用等間接成本，通常難以全數扣除。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 專利侵權損害賠償是否包含懲罰性賠償？</div>
+  <div class="faq-answer">A: 我國專利法原則上採填補性賠償，但若侵權人故意侵權情節重大，法院得依侵害情節酌定賠償額至已證明賠償額之三倍。此為酌定性質，非嚴格意義的懲罰性賠償。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 專利侵權訴訟中，如何有效主張損害賠償？</div>
+  <div class="faq-answer">A: 有效主張損害賠償需：1. 完整蒐集侵權證據；2. 進行專業的損害計算與財務分析；3. 準備充分的市場與技術專家證人；4. 選擇最有利的賠償計算方法；5. 適時提出證據保全與假處分聲請。</div>
+</div>
+
+</div>
+
+<script>
+        // 專利侵權賠償計算檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '立即進行侵權分析與證據保全';
+                    explanation = '您處於侵權證據蒐集階段且考慮採用權利人可得利益法，建議立即進行專業侵權分析，並保全相關銷售數據與市場資料，作為後續損害計算的基礎。';
+                } else {
+                    recommendation = '全面蒐集侵權證據';
+                    explanation = '證據蒐集階段是後續求償的基礎，建議全面蒐集侵權產品樣本、銷售紀錄、宣傳資料等證據，並考慮進行公證保全，以利後續損害賠償計算。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '專業損害計算與財務分析';
+                explanation = '損害賠償計算階段，建議委任專業會計師進行財務分析，根據案件特性選擇最有利的計算方法，並準備充分的專家報告支持計算結果。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '訴訟策略與賠償主張規劃';
+                explanation = '訴訟準備階段，建議與律師團隊詳細規劃訴訟策略，包括損害賠償計算方法的選擇、證據的組織與呈現，以及可能的和解方案評估。';
+            } else if (procedureStage === 'trial') {
+                recommendation = '專家證人與計算方法強化';
+                explanation = '法院審理階段，建議強化損害計算的專業性與說服力，考慮引入技術與財務專家證人，並針對法院可能的質疑預作準備。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<p><strong>${recommendation}</strong></p><p>${explanation}</p>`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 專利侵權自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const values = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (values.length === 0) {
+                alert('請至少選擇一項');
+                return;
+            }
+
+            let checklistText = '';
+            
+            if (values.length <= 2) {
+                checklistText = '您已具備一定的專利保護意識，但仍有改善空間。建議針對未勾選項目加強準備，特別是專業侵權分析與損害計算，以提高求償成功的機會。';
+            } else if (values.length <= 4) {
+                checklistText = '您已注意到多數專利保護要點，但仍有關鍵環節需要加強。建議儘速尋求專業律師與會計師協助，完善侵權分析與損害計算，確保專利權益獲得完整保障。';
+            } else {
+                checklistText = '您已意識到專利保護的多數關鍵環節，但仍需專業協助。建議立即委任專業團隊，進行全面的侵權分析、證據保全與損害計算，制定最有利的訴訟策略。';
+            }
+
+            document.getElementById('checklist-text').innerHTML = checklistText;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

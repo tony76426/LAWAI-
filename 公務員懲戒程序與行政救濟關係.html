@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>公務員懲戒程序與行政救濟關係 | 專業法律資訊平台</title>
+<meta content="詳細解析懲戒權限、懲戒法院審理及覆審程序等關鍵議題，保障公務員權益與程序正義" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 公務員懲戒程序與行政救濟關係
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">公務員懲戒</span>
+<h1 class="article-title">公務員懲戒程序與行政救濟關係</h1>
+<div class="article-meta">
+<span>閱讀時間：8 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="公務員懲戒程序與行政救濟關係專業解析" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>公務員懲戒制度是維護公務紀律與行政效能的重要機制，但懲戒程序與行政救濟之間的關係為何？懲戒法院的審理程序如何進行？本文將詳細解析懲戒權限劃分、懲戒法院審理程序、覆審程序與行政救濟之關聯，幫助公務員了解在面臨懲戒程序時如何有效保障自身權益，確保程序正義與實質公平。</p>
+<div class="highlight-box">
+<p>公務員懲戒程序與行政救濟的關係是現代法治國家保障公務員權益的核心機制，了解並善用這些程序，不僅是保護自身權益的重要手段，更是維護行政紀律與公正的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>懲戒權限與程序解析</h2>
+<h3>懲戒權限劃分</h3>
+<p>根據公務員懲戒法及相關法規，懲戒權限主要分為：</p>
+<ol>
+<li>司法懲戒：由懲戒法院審理，適用於較嚴重之懲戒處分</li>
+<li>行政懲處：由各機關自行辦理，適用於情節較輕微之違失行為</li>
+<li>監察院彈劾：由監察院提出，移送懲戒法院審理</li>
+<li>職務法庭審理：針對司法官之懲戒案件</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：懲戒權限劃分</div>
+<div class="case-content">在實務判決中，懲戒法院明確指出，司法懲戒與行政懲處應有明確區分，避免雙重處罰。此案例確立了懲戒權限劃分的重要性。</div>
+</div>
+<h3>懲戒法院審理程序</h3>
+<p>懲戒法院審理程序主要分為以下階段：</p>
+<ul>
+<li>移送程序：由監察院或服務機關移送懲戒案件</li>
+<li>調查程序：懲戒法院進行事實調查與證據蒐集</li>
+<li>言詞辯論：當事人得進行言詞辯論與陳述意見</li>
+<li>判決程序：懲戒法院作出懲戒判決</li>
+<li>救濟程序：當事人得提起覆審或再審之訴</li>
+</ul>
+<div class="warning-box">
+<p>注意：若懲戒案件未經正當法律程序審理，判決可能因程序違背法令而被撤銷。程序保障是懲戒案件的核心要素。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>懲戒程序與救濟途徑</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>程序階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>調查階段</td>
+<td>陳述意見權、閱卷權、委任代理人</td>
+<td>公務員懲戒法第20、21條</td>
+<td>聲明異議、行政救濟</td>
+</tr>
+<tr>
+<td>審理階段</td>
+<td>辯護權、證據聲請權、言詞辯論權</td>
+<td>公務員懲戒法第29、30條</td>
+<td>覆審、再審</td>
+</tr>
+<tr>
+<td>判決階段</td>
+<td>判決理由告知權、救濟途徑告知權</td>
+<td>公務員懲戒法第39、40條</td>
+<td>覆審、非常上訴</td>
+</tr>
+<tr>
+<td>救濟程序</td>
+<td>覆審權、再審權、行政訴訟權</td>
+<td>公務員懲戒法第44、45條</td>
+<td>覆審、行政訴訟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">公務員懲戒權利保障檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個懲戒程序階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">調查階段（服務機關或監察院）</option>
+<option value="prosecution">懲戒法院審理</option>
+<option value="judgment">判決階段</option>
+<option value="appeal">救濟程序</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權利可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">陳述意見權未受保障</option>
+<option value="lawyer">委任代理人權受限制</option>
+<option value="evidence">證據能力有問題</option>
+<option value="procedure">程序違法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">案件類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般懲戒案件</option>
+<option value="serious">重大懲戒案件</option>
+<option value="economic">經濟違失案件</option>
+<option value="disciplinary">風紀案件</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權利保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種懲戒程序階段，保持冷靜、了解權利、尋求專業法律協助是保障自身權益的三大關鍵。切勿因慌亂而放棄或忽略重要權利的行使。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>覆審程序與行政救濟</h2>
+<h3>覆審程序要件</h3>
+<p>對懲戒法院判決不服，得提起覆審之訴：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">提起期間</div>
+<div class="step-desc">應於判決送達後30日內提起</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">提起事由</div>
+<div class="step-desc">判決違背法令或認定事實錯誤</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">審理程序</div>
+<div class="step-desc">由懲戒法院職務法庭審理</div>
+</div>
+</div>
+</div>
+<h3>行政救濟與司法救濟之關係</h3>
+<p>公務員懲戒與行政救濟之間的關係複雜而重要：</p>
+<ul>
+<li>雙軌併行：司法懲戒與行政懲處可能同時進行</li>
+<li>一事不二罰：避免對同一行為重複處罰</li>
+<li>救濟途徑差異：司法懲戒與行政懲處救濟途徑不同</li>
+<li>程序保障：兩者均應遵守正當法律程序</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：懲戒與行政救濟關係</div>
+<div class="case-content">實務判決確立了司法懲戒與行政懲處的區分，明確指出「公務員之同一行為，不受二次懲罰」，保障公務員不受重複處罰的權利。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>公務員懲戒程序與行政救濟關係是保障公務員權益與維護行政紀律的重要機制。了解並善用這些程序，不僅能有效防禦不當懲戒，更能確保程序公正性與實質公平。</p>
+<p>面對懲戒程序時，建議保持冷靜、了解自身權利、及時尋求專業法律協助，並在每個程序階段積極行使法律賦予的防禦權利，以維護自身權益與程序公正。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或親友面臨公務員懲戒程序，應立即尋求專業行政法律師協助，確保程序權利獲得完整保障，維護自身合法權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「懲戒＝免職」：懲戒處分有多種類型，免職僅為最重處分。</li><li>認為只能被動接受調查：公務員有權主動陳述意見與提出有利證據。</li><li>忽略程序瑕疵救濟：程序違法可能導致懲戒處分無效。</li><li>混淆司法懲戒與行政懲處：兩者程序與救濟途徑不同。</li><li>錯過救濟時效：覆審與行政救濟均有嚴格時效限制。</li></ul></div>
+
+<div class="rights-card">
+  <h3>公務員懲戒程序自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未完整告知權利">
+      <span>調查／審理前，是否未被完整告知<strong>陳述意見權</strong>與得委任代理人？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value代理人權受限">
+      <span>是否曾要求<strong>委任代理人</strong>但遭拖延或拒絕？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="程序合法性疑慮">
+      <span>是否認為調查或審理<strong>程序合法性</strong>存有疑義？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="證據能力問題">
+      <span>調查單位所提<strong>證據合法性</strong>是否存有疑義？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未提出有利證據">
+      <span>是否尚未<strong>提出／聲請調查</strong>對自己有利之證據？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要公務員懲戒法律協助？</h2>
+<p>我們的專業行政法團隊擁有豐富經驗，能為您提供懲戒程序陪同、證據分析、程序異議、覆審程序等全方位法律服務，確保您的公務員權利獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果服務機關未告知陳述意見權就進行調查，該怎麼辦？</div>
+<div class="faq-answer">A: 若服務機關未依法告知陳述意見權即進行調查，所取得的證據可能因程序違法而不具證據能力。您應立即向專業律師反映此情況，律師可協助主張程序違法，並在後續程序中提出異議或救濟。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以聲請懲戒程序停止？</div>
+<div class="faq-answer">A: 當懲戒程序有重大程序瑕疵或同一行為已受行政懲處時，即可聲請停止懲戒程序。聲請時應具體指出程序瑕疵事由及所違反之法律規定，並提出相關證據佐證。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 懲戒案件如果未經言詞辯論，會有什麼後果？</div>
+<div class="faq-answer">A: 懲戒案件若屬應行言詞辯論案件而未經言詞辯論逕行判決，判決將因程序違背法令而被撤銷。此為重要程序保障，當事人得據此提起覆審之訴。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 在懲戒調查中，我可以拒絕回答某些問題嗎？</div>
+  <div class="faq-answer">A: 你有權拒絕回答與調查事項無關或涉及隱私的問題；若問題可能導致自證其罪，得保持緘默。但應注意配合調查的義務範圍，必要時由代理人協助應對。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 遭到懲戒處分後，可以向行政法院提起訴訟嗎？</div>
+  <div class="faq-answer">A: 對行政懲處不服，得依公務人員保障法提起復審及行政訴訟；對司法懲戒判決不服，則應向懲戒法院提起覆審。兩者救濟途徑不同，應注意區分。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 懲戒程序進行中，職務調動或升遷會受影響嗎？</div>
+  <div class="faq-answer">A: 懲戒程序進行中，服務機關得視情節輕重依規定調整職務；但不得僅因懲戒程序進行中而逕予免職或為不利處分，除非符合法定要件且經正當程序。</div>
+</div>
+
+</div>
+
+<script>
+        // 公務員懲戒權利保障檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '立即行使陳述意見權';
+                    explanation = '您處於調查階段且陳述意見權未受保障，建議立即要求行使陳述意見權，並委任代理人協助。在此情況下所為陳述可能因程序違法而不具證據能力。';
+                } else {
+                    recommendation = '請求法律代理人協助';
+                    explanation = '調查階段是權利最容易受侵害的時期，建議立即委任專業法律代理人，由代理人協助保障您的程序權利，並對違法程序提出異議。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                if (rightsViolation === 'evidence') {
+                    recommendation = '聲請調查有利證據';
+                    explanation = '您處於懲戒法院審理階段且證據能力有問題，建議立即聲請調查對您有利的證據，並對違法取得之證據提出異議，主張證據排除。';
+                } else {
+                    recommendation = '積極行使辯護權利';
+                    explanation = '審理階段是行使辯護權的關鍵時期，建議積極行使言詞辯論權、證據聲請權等程序權利，確保審理程序公正進行。';
+                }
+            } else if (procedureStage === 'judgment') {
+                recommendation = '檢視判決合法性';
+                explanation = '您處於判決階段，建議仔細檢視判決是否遵守正當法律程序，若有程序違法或認定事實錯誤，應於法定期間內提起覆審。';
+            } else if (procedureStage === 'appeal') {
+                recommendation = '依法提起救濟';
+                explanation = '您處於救濟程序，建議依法提起覆審或再審之訴，並注意各項救濟途徑的法定要件與期間限制，避免錯失救濟機會。';
+            }
+
+            // 根據案件類型調整建議
+            if (caseType === 'serious') {
+                explanation += ' 本案屬重大懲戒案件，程序要求更為嚴格，任何程序瑕疵都可能影響判決效力。';
+            } else if (caseType === 'economic') {
+                explanation += ' 本案屬經濟違失案件，建議特別注意證據合法性與證明力問題。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            if (checkboxes.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '您目前未勾選任何項目，可能表示您對自身權利已有基本了解。但仍建議與專業律師討論，確保所有程序權利獲得完整保障。';
+            } else {
+                let issues = [];
+                checkboxes.forEach(cb => {
+                    issues.push(cb.value);
+                });
+                
+                let advice = '';
+                if (issues.includes('未完整告知權利')) {
+                    advice += '• 程序初期未獲完整權利告知，可能構成程序瑕疵。<br>';
+                }
+                if (issues.includes('代理人權受限')) {
+                    advice += '• 委任代理人權受限制，應立即提出異議。<br>';
+                }
+                if (issues.includes('程序合法性疑慮')) {
+                    advice += '• 程序合法性存疑，應詳細記錄程序瑕疵事證。<br>';
+                }
+                if (issues.includes('證據能力問題')) {
+                    advice += '• 證據合法性存疑，應聲請排除違法證據。<br>';
+                }
+                if (issues.includes('未提出有利證據')) {
+                    advice += '• 尚未提出有利證據，應儘速整理並聲請調查。<br>';
+                }
+                
+                advice += '<br>建議立即尋求專業行政法律師協助，針對上述問題提出具體法律意見與救濟策略。';
+                document.getElementById('checklist-text').innerHTML = advice;
+            }
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
