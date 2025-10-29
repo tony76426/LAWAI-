@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>門禁人臉辨識的合規檢核清單 | 專業法律資訊平台</title>
+<meta content="詳細解析告知同意、目的特定與保存期限設計等關鍵議題，確保人臉辨識系統合規使用" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 門禁人臉辨識的合規檢核清單
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">個資保護</span>
+<h1 class="article-title">門禁人臉辨識的合規檢核清單</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="門禁人臉辨識系統合規檢核" src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>隨著人臉辨識技術在門禁系統中的廣泛應用，如何確保其符合個人資料保護法規已成為重要議題。本文將詳細解析告知同意、目的特定與保存期限設計等關鍵合規要素，幫助企業與機構了解在人臉辨識系統部署過程中如何有效保障個人資料權利，確保技術應用與隱私保護的平衡。</p>
+<div class="highlight-box">
+<p>人臉辨識系統的合規部署是現代隱私保護的核心挑戰，了解並落實這些合規要求，不僅是保護個人權利的重要手段，更是企業社會責任與法律遵循的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>基本合規要素解析</h2>
+<h3>告知同意原則</h3>
+<p>根據個人資料保護法第7條與第8條規定，蒐集人臉辨識資料前應明確告知下列事項：</p>
+<ol>
+<li>蒐集之特定目的</li>
+<li>個人資料之類別</li>
+<li>個人資料利用之期間、地區、對象及方式</li>
+<li>當事人得行使之權利及方式</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：告知同意的有效性</div>
+<div class="case-content">在實務判決中，法院明確指出，若企業僅以模糊不清的條款或隱藏在冗長文件中取得同意，該同意可能無效。此案例確立了明確、具體告知的重要性。</div>
+</div>
+<h3>目的特定與最小必要原則</h3>
+<p>人臉辨識系統部署必須符合特定目的與最小必要原則：</p>
+<ul>
+<li>目的特定：僅能為特定明確目的蒐集與處理</li>
+<li>最小必要：僅蒐集達成目的所需的最少資料</li>
+<li>目的限制：不得超出原告知目的範圍使用</li>
+<li>定期審查：定期檢視資料蒐集與處理的必要性</li>
+</ul>
+<div class="warning-box">
+<p>注意：若未遵循目的特定與最小必要原則，可能面臨最高20萬元罰鍰，並需負擔民事賠償責任。此為個人資料保護法核心要求。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>人臉辨識系統合規檢核</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>合規階段</th>
+<th>主要要求</th>
+<th>法律依據</th>
+<th>檢核重點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>規劃階段</td>
+<td>隱私衝擊評估、目的特定性確認</td>
+<td>個資法第5、6條</td>
+<td>必要性評估、替代方案分析</td>
+</tr>
+<tr>
+<td>部署階段</td>
+<td>告知同意、安全措施設計</td>
+<td>個資法第8、27條</td>
+<td>明確告知、自願同意、加密保護</td>
+</tr>
+<tr>
+<td>營運階段</td>
+<td>存取控制、保存期限管理</td>
+<td>個資法第11、18條</td>
+<td>權限管理、定期刪除、使用紀錄</td>
+</tr>
+<tr>
+<td>稽核階段</td>
+<td>合規審查、當事人權利保障</td>
+<td>個資法第12、13條</td>
+<td>定期稽核、權利行使管道</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">人臉辨識系統合規檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您的系統目前處於哪個階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">規劃評估階段</option>
+<option value="prosecution">部署建置階段</option>
+<option value="detention">營運使用階段</option>
+<option value="trial">稽核改善階段</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些合規要素可能不足？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">告知同意程序</option>
+<option value="lawyer">目的特定性</option>
+<option value="evidence">保存期限設計</option>
+<option value="procedure">安全保護措施</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">系統應用場域為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">辦公大樓門禁</option>
+<option value="serious">住宅社區門禁</option>
+<option value="economic">工廠倉儲管理</option>
+<option value="drug">校園安全管理</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測合規狀況</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>合規建議：無論處於何種系統階段，進行隱私衝擊評估、設計明確告知程序、建立資料保存與刪除機制是確保合規的三大關鍵。切勿因便利性而忽略重要合規要求。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>保存期限設計與資料管理</h2>
+<h3>保存期限設計原則</h3>
+<p>人臉辨識資料必須設計合理的保存期限：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">目的關聯性</div>
+<div class="step-desc">保存期限必須與蒐集目的相關聯</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">最小必要</div>
+<div class="step-desc">僅保存達成目的所需的最短時間</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">定期刪除</div>
+<div class="step-desc">建立自動化定期刪除機制</div>
+</div>
+</div>
+</div>
+<h3>資料管理與安全保護</h3>
+<p>人臉辨識資料必須實施適當的安全保護措施：</p>
+<ul>
+<li>加密儲存：生物特徵資料必須加密儲存</li>
+<li>存取控制：嚴格限制資料存取權限</li>
+<li>傳輸安全：資料傳輸過程必須加密</li>
+<li>備份管理：備份資料同樣需符合保存期限</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：資料保存期限</div>
+<div class="case-content">實務判決確立了資料保存期限的合理性標準，明確指出「個人資料之保存期限，應視蒐集之特定目的需要，且不得超過達成目的所需之期間」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>人臉辨識系統的合規部署是平衡科技應用與隱私保護的重要機制。了解並落實這些合規要求，不僅能有效防範法律風險，更能建立企業負責任的形象與信譽。</p>
+<p>部署人臉辨識系統時，建議進行隱私衝擊評估、設計明確告知同意程序、建立適當保存期限與安全保護機制，並在每個階段積極遵循法律要求，以確保技術應用與隱私保護的平衡。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或企業正規劃或使用人臉辨識系統，應立即進行合規檢核，必要時尋求專業法律與技術顧問協助，確保系統設計與營運符合個資法要求。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「張貼公告＝取得同意」：有效同意需明確、具體且自願。</li><li>認為「內部使用無需告知」：任何個人資料蒐集均需告知。</li><li>忽略保存期限設計：無限期保存生物特徵資料違反個資法。</li><li>把安全措施當選配：生物特徵資料需實施適當安全保護。</li><li>錯把目的擴張當優化：超出原告知目的使用需重新取得同意。</li></ul></div>
+
+<div class="rights-card">
+  <h3>人臉辨識系統合規檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有合規要素可能不足，並取得改善建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="告知同意程序不完整">
+      <span>系統部署前，是否未完整進行<strong>隱私衝擊評估</strong>與告知同意程序？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="目的特定性不足">
+      <span>系統使用目的是否<strong>超出原告知範圍</strong>或缺乏明確特定性？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="保存期限設計不當">
+      <span>人臉資料<strong>保存期限</strong>是否未設計或超過必要期間？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="安全保護措施不足">
+      <span>生物特徵資料的<strong>加密與保護措施</strong>是否不足？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="當事人權利保障不足">
+      <span>是否未建立<strong>查詢、更正、刪除</strong>等當事人權利行使管道？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要人臉辨識合規協助？</h2>
+<p>我們的專業個資法團隊擁有豐富經驗，能為您提供隱私衝擊評估、告知同意設計、保存期限規劃、安全措施建置等全方位法律與技術服務，確保您的人臉辨識系統符合個資法要求。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果員工已簽署勞動契約，是否還需要針對人臉辨識系統取得個別同意？</div>
+<div class="faq-answer">A: 勞動契約中的概括同意通常不足以涵蓋生物特徵資料的蒐集。人臉辨識涉及敏感個人資料，應取得明確、個別且具體的同意，並充分告知蒐集目的、使用方式與保存期限等資訊。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 人臉辨識資料的適當保存期限應如何設計？</div>
+<div class="faq-answer">A: 保存期限應與蒐集目的相關聯，並遵循最小必要原則。例如，單純門禁用途的人臉資料，應在員工離職或住戶搬離後立即刪除，最長不應超過特定目的所需之合理期間。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 人臉辨識系統若未符合個資法要求，可能面臨哪些法律責任？</div>
+<div class="faq-answer">A: 未符合個資法要求可能面臨行政罰鍰（最高20萬元）、民事賠償責任，以及刑事責任。此外，可能損害企業聲譽，並導致當事人提起團體訴訟要求損害賠償。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 人臉辨識系統是否必須進行隱私衝擊評估？何時應進行？</div>
+  <div class="faq-answer">A: 對高風險系統建議進行隱私衝擊評估，特別是在系統規劃階段。評估應分析隱私風險、設計減緩措施，並確保系統符合隱權設計原則，這是證明已盡合理注意義務的重要證據。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 住戶或訪客拒絕提供人臉資料時，應如何處理？</div>
+  <div class="faq-answer">A: 應提供同等有效的替代方案，例如傳統門禁卡、密碼或管理員協助開門。不得因當事人拒絕提供人臉資料而拒絕提供服務或限制其權利，否則可能構成不當差別待遇。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 人臉辨識資料可否用於非原告知目的，例如考勤管理或行為分析？</div>
+  <div class="faq-answer">A: 原則上不可超出原告知目的使用。如需用於其他目的，應重新取得當事人同意，或確認符合個資法第16條但書情形，例如為增進公共利益所必要，且採取適當安全保護措施。</div>
+</div>
+
+</div>
+
+<script>
+        // 人臉辨識系統合規檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '進行隱私衝擊評估';
+                    explanation = '您處於規劃評估階段且告知同意程序可能不足，建議立即進行隱私衝擊評估，設計明確的告知同意程序。在此情況下部署系統可能因程序不完整而違反個資法。';
+                } else {
+                    recommendation = '設計合規框架';
+                    explanation = '規劃評估階段是建立合規基礎的關鍵時期，建議諮詢專業法律與技術顧問，設計完整的合規框架，包括目的特定性、保存期限與安全保護措施。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '完善告知同意程序';
+                explanation = '部署建置階段，應確保告知同意程序完整且明確，同時設計適當的技術保護措施。對已蒐集資料應確認符合合法性要求。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '檢視與改善合規措施';
+                explanation = '營運使用階段應定期檢視系統合規狀況，特別是資料保存期限與安全保護措施。對發現的合規缺口應立即改善，必要時重新取得同意。';
+            } else {
+                recommendation = '全面合規稽核';
+                explanation = '稽核改善階段應進行全面合規稽核，檢視告知同意、目的特定、保存期限、安全保護等各面向，並建立持續改善機制。';
+            }
+
+            // 顯示結果
+            const resultDiv = document.getElementById('rights-result');
+            const recommendationDiv = document.getElementById('rights-recommendation');
+            
+            recommendationDiv.innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            resultDiv.style.display = 'block';
+        }
+
+        // 合規檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const resultDiv = document.getElementById('checklist-result');
+            const resultText = document.getElementById('checklist-text');
+            
+            if (checkboxes.length === 0) {
+                resultText.innerHTML = '目前未發現明顯合規問題，但仍建議定期進行系統合規檢核，確保持續符合個資法要求。';
+            } else {
+                let issues = [];
+                checkboxes.forEach(cb => {
+                    issues.push(cb.value);
+                });
+                
+                resultText.innerHTML = `發現 ${issues.length} 項潛在合規問題：${issues.join('、')}。建議尋求專業法律與技術顧問協助，進行詳細合規檢核與改善規劃。`;
+            }
+            
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

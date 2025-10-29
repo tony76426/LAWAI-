@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>最新法律觀點 | 第 6 頁</title>
+<meta content="提供最新法律觀點與專業見解，分頁瀏覽第 6 / 6 頁" name="description"/>
+<style>
+:root{--primary-color:#1a365d;--primary-light:#2d4a8a;--accent-color:#d4af37;--accent-light:#f7e7b2;--text-dark:#2d3748;--text-light:#718096;--bg-light:#f7fafc;--bg-white:#ffffff;--border-radius:8px;--shadow:0 4px 6px rgba(0,0,0,.1);--shadow-hover:0 10px 15px rgba(0,0,0,.15);--transition:all .3s ease}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif}
+body{background-color:var(--bg-light);color:var(--text-dark);line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.header{background-color:var(--bg-white);box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
+.back-link{display:flex;align-items:center;color:var(--primary-color);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px}
+.back-link:hover{text-decoration:underline}
+.breadcrumb{font-size:14px;color:var(--text-light);margin-left:20px}
+.breadcrumb a{color:var(--primary-color);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:60px 0 40px;text-align:center;background:linear-gradient(135deg,var(--bg-white) 0%,var(--bg-light) 100%);border-bottom:1px solid rgba(0,0,0,.05)}
+.hero h1{font-size:2.5rem;font-weight:700;color:var(--primary-color);margin-bottom:15px}
+.hero p{font-size:1.2rem;color:var(--text-light);max-width:600px;margin:0 auto 30px}
+.filters{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;margin-bottom:40px;gap:20px}
+.search-box{flex:1;min-width:300px;position:relative;max-width:720px}
+.search-box input{width:100%;padding:12px 20px;border:1px solid #e2e8f0;border-radius:var(--border-radius);font-size:16px;transition:var(--transition)}
+.search-box input:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(26,54,93,.1)}
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:40px}
+.card{background-color:var(--bg-white);border-radius:var(--border-radius);overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);height:100%;display:flex;flex-direction:column}
+.card.hide{display:none!important}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+.card-image{height:180px;overflow:hidden;background:linear-gradient(135deg,#e2e8f0,#cbd5e0);display:flex;align-items:center;justify-content:center;position:relative}
+.card-image img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
+.card:hover .card-image img{transform:scale(1.05)}
+.card-content{padding:20px;flex-grow:1;display:flex;flex-direction:column}
+.card-category{display:inline-block;background-color:var(--accent-light);color:var(--primary-color);font-size:12px;font-weight:600;padding:4px 10px;border-radius:12px;margin-bottom:12px}
+.card-title{font-size:1.25rem;font-weight:700;line-height:1.4;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--primary-color)}
+.card-excerpt{color:var(--text-light);margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex-grow:1}
+.card-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--text-light);margin-top:auto}
+.card-cta{display:inline-block;background-color:var(--primary-color);color:#fff;text-align:center;padding:10px 0;border-radius:var(--border-radius);text-decoration:none;font-weight:500;margin-top:15px;transition:var(--transition)}
+.card-cta:hover{background-color:var(--primary-light)}
+.pagination{display:flex;justify-content:center;gap:8px;padding:20px 0 80px;align-items:center;flex-wrap:wrap}
+.pagination a,.pagination span{display:inline-block;min-width:40px;padding:8px 12px;text-align:center;border-radius:6px;text-decoration:none;border:1px solid #e2e8f0;color:var(--primary-color);background:var(--bg-white)}
+.pagination a:hover{background:#eef2f7}
+.pagination .current{background:var(--primary-color);color:#fff;border-color:var(--primary-color);pointer-events:none}
+.pagination .disabled{color:#a0aec0;background:#f1f5f9;border-color:#e2e8f0;pointer-events:none}
+.floating-line{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background-color:#06c755;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:1000;cursor:pointer;transition:var(--transition)}
+.floating-line:hover{transform:scale(1.1)}
+.floating-line img{width:32px;height:32px}
+.empty-state{display:none;text-align:center;color:var(--text-light);padding:40px 0 20px}
+.empty-state.show{display:block}
+.empty-state .title{color:var(--primary-color);font-weight:700;margin-bottom:8px}
+.empty-state .hint{font-size:14px}
+mark{background:#fff3bf;padding:0 2px;border-radius:2px}
+@media (max-width:1024px){.content-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:768px){.hero h1{font-size:2rem}.hero p{font-size:1rem}.filters{flex-direction:column;align-items:stretch}.search-box{min-width:100%}.content-grid{grid-template-columns:1fr}.floating-line{bottom:20px;right:20px;width:50px;height:50px}.floating-line img{width:28px;height:28px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="container"><nav class="nav">
+<a class="back-link" href="index.html"><span>← 返回首頁</span></a>
+<div class="breadcrumb"><a href="index.html">首頁</a> ＞ 最新法律觀點（第 6 / 6 頁）</div>
+</nav></div></header>
+<section class="hero"><div class="container"><h1>最新法律觀點</h1><p>專業解析各類法律議題，提供實用指引</p>
+<div class="filters"><div class="search-box"><input id="searchInput" placeholder="輸入關鍵字（例：監護權、酒駕、租賃）" type="text"/></div></div>
+</div></section>
+<main class="container">
+<div class="content-grid" id="grid">
+<article aria-label="閱讀 海砂屋與輻射屋交易風險與解約權" class="card">
+<div class="card-image"><img alt="海砂屋與輻射屋交易風險與解約權" src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">不動產</span><h2 class="card-title">海砂屋與輻射屋交易風險與解約權</h2>
+<p class="card-excerpt">瑕疵擔保、告知義務與解除契約的操作。</p>
+<div class="card-meta"><span>2025-07-19</span><span>6 分鐘閱讀</span></div>
+<a class="card-cta" href="海砂屋與輻射屋交易風險與解約權.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 遠距醫療門診的責任歸屬與告知義務" class="card">
+<div class="card-image"><img alt="遠距醫療門診的責任歸屬與告知義務" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">醫療法</span><h2 class="card-title">遠距醫療門診的責任歸屬與告知義務</h2>
+<p class="card-excerpt">視訊診療、處方開立與跨院合作的法律框架。</p>
+<div class="card-meta"><span>2025-07-18</span><span>6 分鐘閱讀</span></div>
+<a class="card-cta" href="遠距醫療門診的責任歸屬與告知義務.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 私自錄音蒐證與APP側錄之合法性" class="card">
+<div class="card-image"><img alt="私自錄音蒐證與APP側錄之合法性" src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">刑事訴訟</span><h2 class="card-title">私自錄音蒐證與APP側錄之合法性</h2>
+<p class="card-excerpt">一方同意錄音、合理隱私期待與證據能力界線。</p>
+<div class="card-meta"><span>2025-07-17</span><span>5 分鐘閱讀</span></div>
+<a class="card-cta" href="私自錄音蒐證與APP側錄之合法性.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 遺產管理人選任程序與清冊編製重點" class="card">
+<div class="card-image"><img alt="遺產管理人選任程序與清冊編製重點" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">繼承法</span><h2 class="card-title">遺產管理人選任程序與清冊編製重點</h2>
+<p class="card-excerpt">指定、權限範圍與對債權人的通知。</p>
+<div class="card-meta"><span>2025-07-16</span><span>5 分鐘閱讀</span></div>
+<a class="card-cta" href="遺產管理人選任程序與清冊編製重點.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 重大傷病險理賠爭議的舉證與審查" class="card">
+<div class="card-image"><img alt="重大傷病險理賠爭議的舉證與審查" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">保險法</span><h2 class="card-title">重大傷病險理賠爭議的舉證與審查</h2>
+<p class="card-excerpt">診斷標準、除外責任與申覆策略。</p>
+<div class="card-meta"><span>2025-07-15</span><span>6 分鐘閱讀</span></div>
+<a class="card-cta" href="重大傷病險理賠爭議的舉證與審查.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 員工持股信託（ESOT）法律與稅務重點" class="card">
+<div class="card-image"><img alt="員工持股信託（ESOT）法律與稅務重點" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">公司/證券</span><h2 class="card-title">員工持股信託（ESOT）法律與稅務重點</h2>
+<p class="card-excerpt">信託架構、受益權分配與資訊揭露。</p>
+<div class="card-meta"><span>2025-07-14</span><span>6 分鐘閱讀</span></div>
+<a class="card-cta" href="員工持股信託（ESOT）法律與稅務重點.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 不競業條款的補償金與區域限制判準" class="card">
+<div class="card-image"><img alt="不競業條款的補償金與區域限制判準" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">勞動法</span><h2 class="card-title">不競業條款的補償金與區域限制判準</h2>
+<p class="card-excerpt">正當性審查、期間範圍與違約金條款。</p>
+<div class="card-meta"><span>2025-07-13</span><span>5 分鐘閱讀</span></div>
+<a class="card-cta" href="不競業條款的補償金與區域限制判準.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 門禁人臉辨識的合規檢核清單" class="card">
+<div class="card-image"><img alt="門禁人臉辨識的合規檢核清單" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">個資/資安</span><h2 class="card-title">門禁人臉辨識的合規檢核清單</h2>
+<p class="card-excerpt">告知同意、目的特定與保存期限設計。</p>
+<div class="card-meta"><span>2025-07-12</span><span>6 分鐘閱讀</span></div>
+<a class="card-cta" href="門禁人臉辨識的合規檢核清單.html">閱讀全文</a></div></article>
+<article aria-label="閱讀 都市計畫變更爭議之救濟路徑" class="card">
+<div class="card-image"><img alt="都市計畫變更爭議之救濟路徑" src="https://images.unsplash.com/photo-1444044205806-38f3ed106c10?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div>
+<div class="card-content"><span class="card-category">行政訴訟</span><h2 class="card-title">都市計畫變更爭議之救濟路徑</h2>
+<p class="card-excerpt">訴願、行政訴訟與暫時處分策略。</p>
+<div class="card-meta"><span>2025-07-11</span><span>5 分鐘閱讀</span></div>
+<a class="card-cta" href="都市計畫變更爭議之救濟路徑.html">閱讀全文</a></div></article>
+</div>
+<div aria-live="polite" class="empty-state" id="emptyState"><div class="title">查無相關結果</div><div class="hint">請試試其他關鍵字，或輸入常見詞：<em>離婚</em>、<em>車禍</em>、<em>租賃</em>、<em>勞資</em>。</div></div>
+<nav aria-label="分頁導覽" class="pagination"><a href="最新法律觀點_page5.html">« 上一頁</a><a aria-label="第 1 頁" href="最新法律觀點_page1.html">1</a><a aria-label="第 2 頁" href="最新法律觀點_page2.html">2</a><a aria-label="第 3 頁" href="最新法律觀點_page3.html">3</a><a aria-label="第 4 頁" href="最新法律觀點_page4.html">4</a><a aria-label="第 5 頁" href="最新法律觀點_page5.html">5</a><span aria-current="page" class="current">6</span><span class="disabled">下一頁 »</span></nav>
+</main>
+<script>
+function restoreOriginal(el){ if(el.dataset.original!==undefined){ el.innerHTML=el.dataset.original; } else { el.dataset.original=el.innerHTML; } }
+function escapeRegExp(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function highlight(el,kw){ restoreOriginal(el); if(!kw)return; el.innerHTML = el.innerHTML.replace(new RegExp('('+escapeRegExp(kw)+')','gi'),'<mark>$1</mark>'); }
+document.addEventListener('DOMContentLoaded',function(){
+  const input=document.getElementById('searchInput');
+  const cards=Array.from(document.querySelectorAll('.card'));
+  const empty=document.getElementById('emptyState');
+  cards.forEach(c=>{['.card-title','.card-excerpt','.card-category'].forEach(sel=>{const el=c.querySelector(sel); if(el) restoreOriginal(el);});});
+  function norm(s){return (s||'').toString().toLowerCase().trim();}
+  function match(c,kw){ if(!kw) return true;
+    const toks=kw.split(/\s+/).filter(Boolean);
+    const t=norm(c.querySelector('.card-title')?.textContent);
+    const e=norm(c.querySelector('.card-excerpt')?.textContent);
+    const cat=norm(c.querySelector('.card-category')?.textContent);
+    return toks.every(x=>t.includes(x)||e.includes(x)||cat.includes(x));
+  }
+  function apply(){ const kw=norm(input.value); let any=false;
+    cards.forEach(c=>{ const ok=match(c,kw); c.classList.toggle('hide',!ok);
+      if(ok){ any=true; ['.card-title','.card-excerpt','.card-category'].forEach(sel=>{const el=c.querySelector(sel); if(el) highlight(el,kw);}); }
+      else { ['.card-title','.card-excerpt','.card-category'].forEach(sel=>{const el=c.querySelector(sel); if(el) restoreOriginal(el);}); }
+    });
+    empty.classList.toggle('show',!any);
+  }
+  input.addEventListener('input',apply);
+  const fl=document.querySelector('.floating-line'); if(fl) fl.addEventListener('click',()=>alert('加入 LINE 諮詢功能'));
+});
+</script>
+</body>
+</html>
