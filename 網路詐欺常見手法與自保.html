@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>網路詐欺常見手法與自保 | 專業法律資訊平台</title>
+<meta content="詳細解析網路詐欺手法、幫助犯認定、洗錢防制與帳戶凍結救濟，保障金融交易安全" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 網路詐欺常見手法與自保
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">金融犯罪防制</span>
+<h1 class="article-title">網路詐欺常見手法與自保</h1>
+<div class="article-meta">
+<span>閱讀時間：8 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="網路詐欺防制與帳戶凍結救濟專業解析" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>隨著數位金融發展，網路詐欺手法不斷翻新，民眾不僅可能成為詐騙受害者，更可能因提供帳戶或協助轉帳而成為幫助犯。本文將詳細解析常見詐欺手法、幫助犯認定標準、洗錢防制規範與帳戶凍結救濟程序，幫助您在數位時代有效保護自身權益，避免誤觸法網。</p>
+<div class="highlight-box">
+<p>網路詐欺已成為現代社會最常見的犯罪型態，了解詐騙手法與法律責任，不僅是保護財產的重要防線，更是避免成為犯罪工具的必要知識。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>常見網路詐欺手法解析</h2>
+<h3>投資詐欺</h3>
+<p>近年最猖獗的詐騙類型，利用高報酬誘使被害人投入資金：</p>
+<ol>
+<li>虛擬貨幣投資：假交易所、假挖礦、假代投</li>
+<li>未上市股票：偽造財報、誇大前景</li>
+<li>外匯保證金：假冒合法券商、操控交易平台</li>
+<li>龐氏騙局：以後金補前金，最終崩盤</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：假投資真詐騙</div>
+<div class="case-content">近年法院判決中，常見詐騙集團以「穩賺不賠」、「內線消息」為誘餌，透過LINE群組經營信任感，誘使被害人投入大筆資金後消失，涉案金額動輒數千萬。</div>
+</div>
+<h3>假冒身份詐欺</h3>
+<p>利用人性弱點與信任關係進行詐騙：</p>
+<ul>
+<li>假冒公務員：假冒檢警、法院人員要求監管帳戶</li>
+<li>假冒親友：盜用通訊軟體帳號要求緊急借款</li>
+<li>假冒商家：偽造購物網站、一頁式商店</li>
+<li>假冒銀行：發送釣魚簡訊騙取網銀帳密</li>
+</ul>
+<div class="warning-box">
+<p>注意：提供個人帳戶供他人使用，即使不知情仍可能被認定為幫助犯，面臨刑事責任與民事賠償，且帳戶將被列為警示戶凍結。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>法律責任與救濟程序</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>法律責任</th>
+<th>構成要件</th>
+<th>法律依據</th>
+<th>刑責範圍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>詐欺罪</td>
+<td>施用詐術、使人陷於錯誤、交付財物、造成損害</td>
+<td>刑法第339條</td>
+<td>5年以下有期徒刑</td>
+</tr>
+<tr>
+<td>幫助詐欺</td>
+<td>提供帳戶、協助轉帳，明知或可得而知用於犯罪</td>
+<td>刑法第30條</td>
+<td>按正犯之刑減輕</td>
+</tr>
+<tr>
+<td>洗錢罪</td>
+<td>掩飾或隱匿犯罪所得來源、去向</td>
+<td>洗錢防制法第2、14條</td>
+<td>7年以下有期徒刑</td>
+</tr>
+<tr>
+<td>組織犯罪</td>
+<td>參與犯罪組織、指揮或招募他人</td>
+<td>組織犯罪防制條例第3條</td>
+<td>6月-10年有期徒刑</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">詐欺風險檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前遇到什麼情況？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="victim">已成為詐騙受害者</option>
+<option value="account">帳戶被警示凍結</option>
+<option value="investigation">被檢警調查中</option>
+<option value="prevention">想了解預防措施</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">涉及哪些問題？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="money">金錢損失</option>
+<option value="frozen">帳戶凍結</option>
+<option value="help">可能成為幫助犯</option>
+<option value="identity">身份被冒用</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">涉及金額範圍？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="small">10萬元以下</option>
+<option value="medium">10-100萬元</option>
+<option value="large">100-500萬元</option>
+<option value="huge">500萬元以上</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測風險與對策</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>自保建議：不隨意提供個人資料、不點擊不明連結、不依從遠端操作ATM、不交付存摺印章、不相信穩賺不賠投資。遇可疑情況立即撥打165反詐騙專線。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>帳戶凍結與救濟程序</h2>
+<h3>警示帳戶解除流程</h3>
+<p>帳戶被列為警示戶後的救濟程序：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">確認凍結原因</div>
+<div class="step-desc">向銀行了解被列為警示戶的具體原因與通報機關</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">取得不起訴/無罪證明</div>
+<div class="step-desc">透過司法程序取得不起訴處分書或無罪判決</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">申請解除警示</div>
+<div class="step-desc">向原通報機關申請解除警示帳戶</div>
+</div>
+</div>
+</div>
+<h3>幫助犯抗辯關鍵</h3>
+<p>被認定為幫助犯時的重要抗辯事由：</p>
+<ul>
+<li>無幫助故意：證明確實不知帳戶被用於犯罪</li>
+<li>受詐騙提供：自身也是詐騙受害者</li>
+<li>無預見可能性：依當時情況無法預見犯罪使用</li>
+<li>證據不足：檢方無法證明「明知或可得而知」</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：幫助犯認定標準</div>
+<div class="case-content">實務判決明確指出，提供帳戶是否構成幫助犯，應審酌行為人是否有「幫助故意」與「幫助行為」，不能僅因帳戶被用於犯罪就推定有幫助故意。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>網路詐欺已成為全民公敵，了解詐騙手法與法律責任是現代公民必備知識。無論是預防受害或避免誤觸法網，都需要提高警覺與法律意識。</p>
+<p>面對網路詐欺威脅，建議保持警覺、不貪不急、保護個資、定期查詢信用報告，並在發現異常時立即採取法律行動，以維護自身權益與金融安全。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或親友已成為詐騙受害者或帳戶遭凍結，應立即尋求專業律師協助，評估法律風險、制定救濟策略，避免權益受損擴大。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「借帳戶沒事」：出借帳戶可能構成幫助犯，面臨刑責。</li><li>相信「穩賺不賠」：高報酬必伴隨高風險，多是詐騙話術。</li><li>忽略「小額試探」：詐騙常以小額獲利建立信任後詐取大額。</li><li>誤認「不會被騙」：詐騙手法日新月異，任何人都可能受害。</li><li>拖延「通報處理」：發現異常應立即通報，拖延將擴大損失。</li></ul></div>
+
+<div class="rights-card">
+  <h3>詐欺防制自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有詐騙風險或法律問題，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="提供帳戶他人使用">
+      <span>是否曾將<strong>銀行帳戶</strong>提供他人使用（包括親友）？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="參與高報酬投資">
+      <span>是否參與<strong>高報酬投資</strong>，但對實際運作不了解？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="帳戶異常凍結">
+      <span>銀行帳戶是否曾<strong>無故被凍結</strong>或無法使用？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="接到可疑電話">
+      <span>是否經常接到<strong>可疑電話</strong>或投資推銷訊息？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="個資可能外洩">
+      <span>是否曾在不安全網站輸入<strong>個人資料</strong>或銀行資訊？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要詐欺防制法律協助？</h2>
+<p>我們的專業金融犯罪防制團隊擁有豐富經驗，能為您提供詐欺受害救濟、幫助犯辯護、帳戶凍結解除、洗錢防制合規等全方位法律服務，確保您的金融權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果帳戶被凍結了，該如何解除？</div>
+<div class="faq-answer">A: 帳戶被列為警示戶後，需先向銀行確認通報機關，再透過司法程序取得不起訴處分書或無罪判決，最後向原通報機關申請解除警示。整個過程可能需要數月至一年，建議尋求專業律師協助加速處理。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下會構成幫助詐欺罪？</div>
+<div class="faq-answer">A: 當您提供帳戶、協助轉帳，且「明知」或「可得而知」這些行為將被用於犯罪時，就可能構成幫助詐欺罪。實務上，檢方需證明您有幫助故意，而非僅因帳戶被犯罪使用就推定有罪。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 如果被騙的錢已經轉出，還有機會追回嗎？</div>
+<div class="faq-answer">A: 被騙款項若已轉出，仍有機會透過法律程序追回。應立即報警並取得報案證明，透過檢警追查資金流向，聲請扣押犯罪所得。同時可提起民事訴訟，向詐騙集團成員求償。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 只是把帳戶借給朋友，為什麼會變成幫助犯？</div>
+  <div class="faq-answer">A: 即使出借對象是朋友，若該朋友將帳戶用於犯罪，您仍可能被認定為幫助犯。關鍵在於您是否「可得而知」對方可能將帳戶用於非法用途，例如對方身份可疑、借用途不合理等。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 收到法院傳票說我涉嫌詐欺，該怎麼辦？</div>
+  <div class="faq-answer">A: 收到傳票應冷靜以對，切勿置之不理。應立即攜帶傳票尋求專業律師協助，了解被控具體內容，準備相關證據，並由律師陪同出庭，以保障自身權益。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 如何避免成為網路詐欺的受害者？</div>
+  <div class="faq-answer">A: 避免點擊不明連結、不隨意提供個人資料、不相信過高投資報酬、不依從他人指示操作ATM、定期檢查帳戶異常。遇可疑情況立即撥打165反詐騙專線諮詢。</div>
+</div>
+
+</div>
+
+<script>
+        // 詐欺風險檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'victim') {
+                if (rightsViolation === 'money') {
+                    recommendation = '立即報警與保存證據';
+                    explanation = '您已成為詐騙受害者且有金錢損失，建議立即撥打165反詐騙專線並至警局報案，保存所有對話紀錄、轉帳證明等證據，同時通知銀行異常交易。';
+                } else {
+                    recommendation = '身份盜用防護';
+                    explanation = '您的身份可能遭冒用，建議立即向戶政事務所申請註記，向聯徵中心申請信用報告，並更換相關帳戶密碼，防止損失擴大。';
+                }
+            } else if (procedureStage === 'account') {
+                recommendation = '帳戶凍結救濟';
+                explanation = '您的帳戶已被凍結，建議先向銀行確認凍結原因與通報機關，尋求律師協助釐清法律責任，並透過正當程序申請解除警示。';
+            } else if (procedureStage === 'investigation') {
+                recommendation = '法律防禦準備';
+                explanation = '您正被檢警調查中，建議保持緘默、不隨意簽署文件，立即委任律師協助了解案情、準備答辯策略，保障自身法律權益。';
+            } else {
+                recommendation = '詐騙預防措施';
+                explanation = '建議定期檢查帳戶異常、不點擊不明連結、不提供個人資料、不相信高報酬投資，並教育家人識別詐騙手法，建立家庭防詐意識。';
+            }
+
+            // 顯示結果
+            const resultDiv = document.getElementById('rights-result');
+            const recommendationDiv = document.getElementById('rights-recommendation');
+
+            recommendationDiv.innerHTML = `
+                <p><strong>建議措施：${recommendation}</strong></p>
+                <p>${explanation}</p>
+                <p style="margin-top:10px;">建議立即<a href="lawreserve.html">預約專業律師諮詢</a>，取得個人化法律建議。</p>
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const issues = Array.from(checkboxes).map(cb => cb.value);
+            
+            let resultText = '';
+            
+            if (issues.length === 0) {
+                resultText = '您目前沒有明顯的詐騙風險跡象，建議繼續保持警覺，定期檢查帳戶異常，並教育家人防詐知識。';
+            } else if (issues.length <= 2) {
+                resultText = '您有輕度詐騙風險，建議加強個資保護，避免提供帳戶給他人使用，並對高報酬投資保持警惕。';
+            } else {
+                resultText = '您有多項詐騙風險指標，建議立即尋求專業法律諮詢，評估潛在法律風險，並採取預防措施避免損失擴大。';
+            }
+            
+            document.getElementById('checklist-text').innerHTML = resultText;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

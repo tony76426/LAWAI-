@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>直播帶貨退換貨權益指南 | 專業法律資訊平台</title>
+<meta content="詳細解析直播平台責任、到貨瑕疵處理與申訴流程，保障消費者權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 直播帶貨退換貨權益指南
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">消費者權益</span>
+<h1 class="article-title">直播帶貨退換貨權益指南</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="直播帶貨退換貨權益指南專業解析" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>直播帶貨購物日益普及，但消費者面臨商品瑕疵、描述不符或退換貨困難等問題時，該如何保障自身權益？本文將詳細解析直播平台責任、商品瑕疵認定標準、退換貨權利行使與申訴流程，幫助您在享受便利購物的同時，有效保障自身消費權益。</p>
+<div class="highlight-box">
+<p>直播購物享有與一般網路購物相同的7天猶豫期權利，了解並善用這些權利，是保障消費權益的重要基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>基本退換貨權利解析</h2>
+<h3>7天猶豫期保障</h3>
+<p>根據消費者保護法第19條規定，通訊交易（包含直播購物）消費者享有7天猶豫期：</p>
+<ol>
+<li>收到商品後7日內可無條件解約退貨</li>
+<li>無需說明理由及負擔任何費用</li>
+<li>退貨運費原則上由業者負擔</li>
+<li>業者應於15日內完成退款</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：猶豫期的計算</div>
+<div class="case-content">在實務判決中，法院明確指出，7天猶豫期自消費者收到商品翌日起算，包含例假日。若第7天為假日，可順延至下一個工作日行使退貨權。</div>
+</div>
+<h3>商品瑕疵退換貨權利</h3>
+<p>直播購物商品如有瑕疵，消費者享有以下權利：</p>
+<ul>
+<li>到貨瑕疵：收到商品時發現瑕疵可要求退換貨</li>
+<li>描述不符：商品與直播內容明顯不符可要求退貨</li>
+<li>功能異常：商品無法正常使用屬重大瑕疵</li>
+<li>隱瞞瑕疵：業者未告知商品缺陷構成詐欺</li>
+</ul>
+<div class="warning-box">
+<p>注意：易腐敗、客製化商品、已拆封個人衛生用品等7種例外商品不適用7天猶豫期，但仍享有瑕疵擔保權利。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>直播購物權益保障</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>問題類型</th>
+<th>消費者權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品瑕疵</td>
+<td>退貨、換貨、減價、修繕</td>
+<td>民法第354、359條</td>
+<td>向業者申訴、消保官申訴</td>
+</tr>
+<tr>
+<td>描述不符</td>
+<td>解除契約、損害賠償</td>
+<td>消保法第22條</td>
+<td>平台申訴、消費爭議調解</td>
+</tr>
+<tr>
+<td>退貨遭拒</td>
+<td>要求履約、罰鍰處分</td>
+<td>消保法第19、56條</td>
+<td>行政申訴、民事訴訟</td>
+</tr>
+<tr>
+<td>平台責任</td>
+<td>連帶賠償、資訊揭露</td>
+<td>消保法第22-1條</td>
+<td>共同訴追、團體訴訟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">直播購物權益檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您遇到什麼問題？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">商品有瑕疵或損壞</option>
+<option value="prosecution">商品與描述不符</option>
+<option value="detention">業者拒絕退換貨</option>
+<option value="trial">平台不處理申訴</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您的權利可能受哪些影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">7天猶豫期遭拒絕</option>
+<option value="lawyer">瑕疵擔保權利受限</option>
+<option value="evidence">業者不承認商品問題</option>
+<option value="procedure">退貨程序不合法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">商品類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般商品</option>
+<option value="serious">3C電子產品</option>
+<option value="economic">服飾配件</option>
+<option value="drug">食品保健品</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權益保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權益行使建議：無論遇到何種問題，保存直播錄影、對話紀錄、商品照片等證據，了解自身權利、及時向平台申訴是保障消費權益的三大關鍵。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>平台責任與申訴流程</h2>
+<h3>直播平台責任</h3>
+<p>直播平台對消費者負有連帶責任：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">資訊揭露義務</div>
+<div class="step-desc">平台應確保業者提供真實商品資訊</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">交易安全保障</div>
+<div class="step-desc">提供安全支付機制與個資保護</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">爭議處理責任</div>
+<div class="step-desc">建立有效客訴機制與爭議處理程序</div>
+</div>
+</div>
+</div>
+<h3>申訴流程與管道</h3>
+<p>遇到消費爭議時的申訴管道：</p>
+<ul>
+<li>第一階段：向業者直接反映要求處理</li>
+<li>第二階段：向直播平台提出申訴</li>
+<li>第三階段：向各縣市消保官申訴</li>
+<li>第四階段：消費爭議調解或民事訴訟</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要案例：平台連帶責任</div>
+<div class="case-content">實務判決確立了直播平台連帶責任，明確指出「平台業者對於利用其服務之企業經營者，應確保其提供之商品或服務符合消費者權益保障之要求」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>直播帶貨購物雖便利，但消費者權益保障不容忽視。了解並善用消費者保護法賦予的權利，不僅能有效解決消費爭議，更能促進直播購物市場的健全發展。</p>
+<p>面對直播購物問題時，建議保存證據、了解權利、及時申訴，並在每個階段積極行使法律賦予的消費權利，以維護自身權益與市場公平交易。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您遇到直播購物爭議，應立即保存證據、向平台申訴，必要時向消保官尋求協助，確保消費權益獲得完整保障。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「直播購物無7天猶豫期」：通訊交易均受消保法保障</li><li>認為「特價商品不能退換」：特價商品仍有瑕疵擔保責任</li><li>忽略「保存直播證據」：直播內容是重要爭議證據</li><li>把「個人偏好」當瑕疵：不喜歡不等於商品有瑕疵</li><li>錯過「申訴時效」：消費爭議應於6個月內提出申訴</li></ul></div>
+
+<div class="rights-card">
+  <h3>直播購物自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權益可能受損，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="商品有瑕疵">
+      <span>收到商品時，是否發現有<strong>瑕疵、損壞或功能異常</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="商品與描述不符">
+      <span>商品是否與<strong>直播內容、圖片或描述明顯不符</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="業者拒絕退貨">
+      <span>業者是否<strong>拒絕7天猶豫期退貨</strong>或要求不合理費用？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="平台不處理申訴">
+      <span>向直播平台申訴後，是否<strong>未獲回應或處理不當</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未保存證據">
+      <span>是否尚未<strong>保存直播錄影、對話紀錄與商品照片</strong>？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要消費爭議協助？</h2>
+<p>我們的專業消費法律團隊擁有豐富經驗，能為您提供證據保存指導、申訴流程協助、消費調解與法律訴訟等全方位服務，確保您的消費權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 直播購物是否享有7天猶豫期？</div>
+<div class="faq-answer">A: 是的，直播購物屬於通訊交易的一種，根據消費者保護法第19條，消費者享有收到商品後7天內無條件解約退貨的權利，僅有7種法定例外商品不適用。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 商品有瑕疵但業者拒絕退換貨怎麼辦？</div>
+<div class="faq-answer">A: 首先向直播平台提出申訴，若平台未處理，可向各縣市消保官申訴。業者無正當理由拒絕瑕疵退貨，可處3萬至30萬元罰鍰。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 直播平台對消費爭議有什麼責任？</div>
+<div class="faq-answer">A: 直播平台對消費者負有連帶責任，應確保業者提供真實商品資訊，並建立有效客訴機制。平台若未盡監督責任，需與業者連帶負賠償責任。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 退貨時運費應該由誰負擔？</div>
+  <div class="faq-answer">A: 7天猶豫期退貨的運費原則上由業者負擔；商品瑕疵退貨的運費則絕對由業者負擔。業者不得以任何名義向消費者收取退貨手續費或運費。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 直播結束後發現商品有問題，還能退貨嗎？</div>
+  <div class="faq-answer">A: 可以。7天猶豫期從收到商品翌日起算，與直播何時結束無關。商品如有瑕疵，更可在6個月內主張瑕疵擔保責任。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 如何證明商品與直播內容不符？</div>
+  <div class="faq-answer">A: 建議保存直播錄影、截圖、業者商品描述、對話紀錄等證據。如有第三方公證單位認證，更能強化證據效力。平台通常會保存一段時間的直播紀錄。</div>
+</div>
+
+</div>
+
+<script>
+        // 直播購物權益檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '立即主張瑕疵退貨';
+                    explanation = '您購買的商品有瑕疵，建議立即拍照存證並向業者主張瑕疵擔保責任，要求退貨或換貨。在此情況下業者不得拒絕。';
+                } else {
+                    recommendation = '保存證據並申訴';
+                    explanation = '商品瑕疵問題，建議詳細拍照錄影存證，記錄瑕疵情況，並立即向業者與直播平台提出申訴，要求退換貨。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '主張描述不符解約';
+                explanation = '商品與直播描述不符，屬於重大瑕疵，建議保存直播錄影與商品比對證據，向業者主張解除契約並要求全額退款。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '向平台與消保官申訴';
+                explanation = '業者無理拒絕退換貨已違法，建議立即向直播平台提出申訴，若未獲處理可向各縣市消保官申訴，業者最高可處30萬元罰鍰。';
+            } else {
+                recommendation = '升級申訴管道';
+                explanation = '平台不處理申訴已違反消保法，建議直接向行政院消保會線上申訴系統或各縣市消保官提出申訴，必要時可提起消費爭議調解。';
+            }
+
+            // 顯示結果
+            const resultDiv = document.getElementById('rights-result');
+            const recommendationDiv = document.getElementById('rights-recommendation');
+
+            recommendationDiv.innerHTML = `
+                <p><strong>建議措施：${recommendation}</strong></p>
+                <p>${explanation}</p>
+                <p>此為初步建議，具體策略應由專業律師根據個案情況評估制定。</p>
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        // 簡單的互動功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // CTA 按鈕：僅對非 LINE 類型保留提示；LINE 相關完全放行
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const href = (this.getAttribute('href') || '').trim();
+                    const isLineCTA = this.classList.contains('cta-line') || href.indexOf('@621sbqlu') !== -1 || href.indexOf('line.me') !== -1;
+                    if (isLineCTA) {
+                        // 讓瀏覽器直接跳轉
+                        return;
+                    }
+                    e.preventDefault();
+                    alert('感謝您的點擊！此為示範頁面，實際服務請聯繫專業律師。');
+                });
+            });
+
+            // 自我檢查表功能
+            const btnChecklist = document.getElementById('btn-checklist');
+            if (btnChecklist) {
+                btnChecklist.addEventListener('click', function() {
+                    const checkedItems = document.querySelectorAll('.chk-right:checked');
+                    const resultDiv = document.getElementById('checklist-result');
+                    const resultText = document.getElementById('checklist-text');
+
+                    if (checkedItems.length === 0) {
+                        resultText.innerHTML = '您目前未勾選任何問題，建議保存所有交易紀錄與直播證據，以備不時之需。';
+                    } else {
+                        let issues = [];
+                        checkedItems.forEach(item => {
+                            issues.push(item.value);
+                        });
+
+                        let advice = '';
+                        if (issues.includes('商品有瑕疵') || issues.includes('商品與描述不符')) {
+                            advice += '<p>• 立即拍照錄影存證，記錄商品問題</p>';
+                        }
+                        if (issues.includes('業者拒絕退貨') || issues.includes('平台不處理申訴')) {
+                            advice += '<p>• 向直播平台正式提出申訴，並保留申訴紀錄</p>';
+                        }
+                        if (issues.includes('未保存證據')) {
+                            advice += '<p>• 立即補救：嘗試找回直播紀錄、截圖對話、保存商品現狀</p>';
+                        }
+                        if (advice === '') {
+                            advice = '<p>• 建議保存所有交易紀錄與證據</p>';
+                        }
+
+                        advice += '<p>• 必要時向各縣市消保官提出申訴</p>';
+
+                        resultText.innerHTML = `您勾選了 ${checkedItems.length} 個問題：${issues.join('、')}。<br>建議措施：${advice}`;
+                    }
+
+                    resultDiv.style.display = 'block';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>醫療資訊揭露與病歷影印權 | 專業法律資訊平台</title>
+<meta content="詳細解析病患知情權、病歷影印權、個資保護與醫療爭議申訴渠道等關鍵議題，保障醫病關係與權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 醫療資訊揭露與病歷影印權
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">醫療法律</span>
+<h1 class="article-title">醫療資訊揭露與病歷影印權</h1>
+<div class="article-meta">
+<span>閱讀時間：8 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="醫療資訊揭露與病歷影印權專業解析" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>在醫療過程中，病患享有哪些資訊權利？醫療機構應如何保障病患的知情權與隱私權？本文將詳細解析病歷影印權、醫療資訊揭露義務、個資保護與醫療爭議申訴渠道等關鍵議題，幫助您了解在醫療關係中如何有效保障自身權益，確保醫病關係的透明與信任。</p>
+<div class="highlight-box">
+<p>醫療資訊的透明揭露與病患隱私保護是現代醫療體系的核心價值，了解並善用這些權利，不僅是保護自己的重要手段，更是建立良好醫病關係的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>基本醫療資訊權利解析</h2>
+<h3>病患知情權保障</h3>
+<p>根據醫療法與醫師法規定，醫療機構與醫師應對病患提供下列資訊：</p>
+<ol>
+<li>病情、診斷結果及治療計畫</li>
+<li>治療方法、處置與用藥風險及副作用</li>
+<li>可能之替代治療方案</li>
+<li>預後情況及不治療之後果</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：知情權的保障</div>
+<div class="case-content">在實務判決中，法院明確指出，若醫師未充分告知治療風險與替代方案，導致病患無法做出知情同意，醫療機構應負損害賠償責任。此案例確立了醫療資訊揭露的重要性。</div>
+</div>
+<h3>病歷影印權與隱私保護</h3>
+<p>病患有權取得自己的醫療紀錄與相關資料：</p>
+<ul>
+<li>病歷影印權：病患得申請複製自己的病歷、檢驗報告與影像資料</li>
+<li>申請時限：醫療機構應於收到申請後15日內提供</li>
+<li>費用限制：醫療機構得收取必要工本費，但不得過高</li>
+<li>隱私保護：醫療機構應確保病患個資安全，不得無故洩漏</li>
+</ul>
+<div class="warning-box">
+<p>注意：若醫療機構無正當理由拒絕提供病歷影本，或要求不合理費用，可能違反醫療法規定，病患得向主管機關申訴。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>醫療資訊權利保障</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>權利類型</th>
+<th>主要內容</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>病歷影印權</td>
+<td>申請複製病歷、檢驗報告、影像資料</td>
+<td>醫療法第71條</td>
+<td>申訴、行政救濟</td>
+</tr>
+<tr>
+<td>知情同意權</td>
+<td>接受治療前獲充分告知並表示同意</td>
+<td>醫療法第63、64條</td>
+<td>民事賠償、行政處分</td>
+</tr>
+<tr>
+<td>隱私保護權</td>
+<td>醫療個資不得無故洩漏或使用</td>
+<td>個資法、醫療法第72條</td>
+<td>民事賠償、刑事告訴</td>
+</tr>
+<tr>
+<td>資訊更正權</td>
+<td>發現病歷記載錯誤時請求更正</td>
+<td>個資法第11條</td>
+<td>書面請求、申訴</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">醫療權利保障檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個醫療程序階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="treatment">治療中</option>
+<option value="post-treatment">治療後追蹤</option>
+<option value="dispute">醫療爭議處理</option>
+<option value="records">申請病歷資料</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權利可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="information">知情權未充分保障</option>
+<option value="records">病歷影印權受限制</option>
+<option value="privacy">隱私權受侵害</option>
+<option value="consent">未經同意進行處置</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">醫療情境為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般門診治療</option>
+<option value="surgery">手術治療</option>
+<option value="longterm">長期慢性病治療</option>
+<option value="emergency">急診處置</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權利保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種醫療情境，保持溝通、了解權利、保存紀錄是保障自身權益的三大關鍵。切勿因醫療專業知識不對等而放棄或忽略重要權利的行使。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>醫療個資保護與隱私權</h2>
+<h3>醫療個資保護要件</h3>
+<p>醫療機構處理病患個資必須符合下列要件：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">合法性</div>
+<div class="step-desc">個資處理必須有明確法律依據</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">目的明確</div>
+<div class="step-desc">個資使用必須符合特定明確目的</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">安全保障</div>
+<div class="step-desc">必須採取適當安全措施保護個資</div>
+</div>
+</div>
+</div>
+<h3>醫療隱私保護原則</h3>
+<p>醫療機構應確保病患隱私獲得充分保護：</p>
+<ul>
+<li>診療隱私：診療過程應保障病患身體隱私</li>
+<li>資訊保密：醫事人員不得無故洩漏病患病情</li>
+<li>資料安全：電子病歷系統應有完善資安防護</li>
+<li>同意原則：非經同意不得將病歷用於非醫療目的</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：醫療隱私保護</div>
+<div class="case-content">實務判決確立了醫療隱私權保障，明確指出「醫療機構及其人員因業務知悉或持有他人之醫療秘密，不得無故洩漏」，違反者可能面臨民事賠償與行政處分。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>醫療爭議申訴渠道</h2>
+<h3>院內申訴機制</h3>
+<p>發生醫療爭議時，病患可優先利用院內申訴管道：</p>
+<ul>
+<li>病人服務中心：提供初步諮詢與協助</li>
+<li>醫病關係委員會：調解醫病溝通問題</li>
+<li>院長信箱：直接向醫院管理階層反映</li>
+<li>申訴專線：各醫院設立之專線電話</li>
+</ul>
+
+<h3>外部申訴管道</h3>
+<p>若院內申訴未獲妥善處理，可尋求外部協助：</p>
+<ul>
+<li>衛生主管機關：向當地衛生局提出申訴</li>
+<li>醫事審議委員會：申請醫療爭議調處</li>
+<li>消費者保護機構：透過消保官協助處理</li>
+<li>司法途徑：提起民事訴訟或刑事告訴</li>
+</ul>
+
+<div class="highlight-box">
+<p>立即採取行動：若您或親友面臨醫療爭議，應先保存相關病歷與證據，並尋求專業醫療法律顧問協助，確保醫療權利獲得完整保障。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「醫院可拒絕提供病歷」：依法病患有權申請病歷影本。</li><li>認為「醫師說什麼就必須接受」：病患有知情同意權，可要求充分說明。</li><li>忽略「醫療個資保護」：醫療機構有義務保護病患隱私。</li><li>把「醫療常規」當作絕對標準：治療應考量個別病患情況與意願。</li><li>錯過「申訴時效」：醫療爭議申訴多有法定時效限制。</li></ul></div>
+
+<div class="rights-card">
+  <h3>醫療權利自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未充分告知治療風險">
+      <span>接受治療前，是否未被充分告知<strong>治療風險與替代方案</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="病歷影印權受限">
+      <span>申請<strong>病歷影本</strong>時是否遭不合理拒絕或超收費用？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="醫療隱私受侵害">
+      <span>是否發現<strong>醫療個資被不當使用或洩漏</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未經同意進行處置">
+      <span>是否在<strong>未經明確同意</strong>下接受檢查或治療？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="醫療爭議未獲處理">
+      <span>提出醫療爭議申訴後，是否<strong>未獲妥善回應或處理</strong>？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要醫療法律協助？</h2>
+<p>我們的專業醫療法律團隊擁有豐富經驗，能為您提供病歷分析、醫療爭議調處、權利保障與法律訴訟等全方位服務，確保您的醫療權利獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果醫院拒絕提供病歷影本，該怎麼辦？</div>
+<div class="faq-answer">A: 若醫療機構無正當理由拒絕提供病歷影本，您可先向該機構的病人服務中心或管理階層反映，若未獲處理，可向當地衛生主管機關提出申訴，衛生局得依法處罰並命其提供。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以主張知情同意權受侵害？</div>
+<div class="faq-answer">A: 當醫師未充分告知治療風險、副作用、替代方案或不治療之後果，導致您無法做出知情決定時，即可主張知情同意權受侵害。常見情況包括手術風險未告知、藥物副作用未說明等。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 醫療個資被洩漏時，可以尋求哪些救濟？</div>
+<div class="faq-answer">A: 醫療個資被不當洩漏時，您可以向醫療機構要求說明與賠償，向主管機關提出申訴，情節嚴重時可提起民事訴訟請求損害賠償，或提出刑事告訴追究洩密責任。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 申請病歷影本時，醫院可以收取多少費用？</div>
+  <div class="faq-answer">A: 醫院得收取病歷影印之必要工本費，依衛生主管機關規定，費用應合理且不得超過實際成本。若認為費用過高，可要求醫院說明計費基準，或向衛生局申訴。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 電子病歷的隱私如何保障？</div>
+  <div class="faq-answer">A: 醫療機構應建立完善的電子病歷安全管理制度，包括存取權限控管、資料加密、操作軌跡記錄等，並定期進行資安檢測，確保病患隱私獲得充分保障。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 發生醫療爭議時，應該先採取什麼步驟？</div>
+<div class="faq-answer">A: 發生醫療爭議時，建議先保存相關病歷與證據，向醫療機構提出書面申訴，若未獲妥善處理，再向衛生主管機關申訴或申請調處，必要時尋求專業醫療法律顧問協助。</div>
+</div>
+
+</div>
+
+<script>
+        // 醫療權利保障檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'treatment') {
+                if (rightsViolation === 'information') {
+                    recommendation = '要求充分資訊揭露';
+                    explanation = '您處於治療階段且知情權未充分保障，建議主動要求醫師詳細說明病情、治療選項、風險與預後，確保您能做出知情決定。';
+                } else {
+                    recommendation = '確認治療同意書內容';
+                    explanation = '治療階段是醫療權利行使的關鍵時期，建議仔細閱讀治療同意書內容，確認已充分了解各項風險與替代方案後再簽署。';
+                }
+            } else if (procedureStage === 'post-treatment') {
+                recommendation = '申請完整病歷資料';
+                explanation = '治療後追蹤階段，建議申請完整病歷與檢驗報告，了解治療結果與後續注意事項，並保存這些資料以備不時之需。';
+            } else if (procedureStage === 'dispute') {
+                recommendation = '保存證據與正式申訴';
+                explanation = '醫療爭議處理階段，應完整保存病歷、單據與溝通紀錄，並依循正式申訴管道提出爭議，必要時尋求專業醫療法律協助。';
+            } else {
+                recommendation = '依法行使病歷影印權';
+                explanation = '申請病歷資料時，如遇不合理拒絕或超收費用，應依法主張權利，必要時向衛生主管機關申訴。';
+            }
+
+            // 根據權利侵害類型調整建議
+            if (rightsViolation === 'records') {
+                recommendation += ' + 行使病歷影印權';
+                explanation += ' 若申請病歷影本遭不合理限制，應了解相關法規保障，必要時尋求主管機關協助。';
+            } else if (rightsViolation === 'privacy') {
+                recommendation += ' + 隱私權保護';
+                explanation += ' 醫療個資保護是重要權利，如發現隱私受侵害，應立即採取行動保護自身權益。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 醫療權利檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            let issues = [];
+            checkboxes.forEach(cb => {
+                issues.push(cb.value);
+            });
+
+            let resultText = '';
+            if (issues.length === 0) {
+                resultText = '目前未發現明顯權利受損情況。建議持續關注醫療權利，並在就醫過程中保持主動溝通。';
+            } else {
+                resultText = `您可能面臨以下權利保障問題：${issues.join('、')}。建議尋求專業醫療法律諮詢，了解具體保障措施與救濟管道。`;
+            }
+
+            document.getElementById('checklist-text').innerHTML = resultText;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

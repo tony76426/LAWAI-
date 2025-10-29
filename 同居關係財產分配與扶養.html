@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>同居關係財產分配與扶養 | 專業法律資訊平台</title>
+<meta content="詳細解析事實婚姻、共同生活費用分擔與分手協議等關鍵議題，保障同居關係中的財產權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 同居關係財產分配與扶養
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">家事法律</span>
+<h1 class="article-title">同居關係財產分配與扶養</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="同居關係財產分配與扶養專業解析" src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>隨著社會變遷，同居關係日益普遍，但法律對非婚伴侶的保障相對有限。當同居關係結束時，財產如何分配？共同生活費用如何分擔？是否有扶養義務？本文將詳細解析事實婚姻認定、共同財產計算、分手協議擬定等關鍵議題，幫助您了解在同居關係中如何保障自身財產權益。</p>
+<div class="highlight-box">
+<p>同居關係中的財產分配與扶養義務是現代社會重要的法律議題，了解相關權利與義務，不僅能預防潛在糾紛，更能確保關係結束時的公平處理。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>同居關係法律解析</h2>
+<h3>事實婚姻認定</h3>
+<p>雖然台灣不承認普通法婚姻，但實務上對於長期穩定的同居關係，法院可能參酌以下要素認定事實婚姻關係：</p>
+<ol>
+<li>持續共同生活相當期間（通常2年以上）</li>
+<li>對外以夫妻名義相稱</li>
+<li>有共同經濟生活與財產管理</li>
+<li>親友認可為伴侶關係</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：事實婚姻的財產分配</div>
+<div class="case-content">在實務判決中，法院曾認定長期同居伴侶間存在類似婚姻的信任關係，當一方對共同財產有特殊貢獻時，可依不當得利或民事契約請求返還或分配。</div>
+</div>
+<h3>共同財產認定與分配</h3>
+<p>同居關係中的財產歸屬與分配原則：</p>
+<ul>
+<li>個人財產：同居前各自擁有及同居期間以個人資金購置的財產</li>
+<li>共同財產：同居期間共同出資購置或難以區分個人貢獻的財產</li>
+<li>家庭用品：日常共同生活使用的物品，通常按實際使用需求分配</li>
+<li>贈與財產：明確贈與一方的財產屬受贈人個人所有</li>
+</ul>
+<div class="warning-box">
+<p>注意：同居關係不適用夫妻財產制，分手時無法主張剩餘財產分配請求權。財產分配需依一般民事法律原則處理。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>同居關係權利義務對照</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>權利義務類型</th>
+<th>同居關係</th>
+<th>婚姻關係</th>
+<th>法律依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>財產分配</td>
+<td>依出資比例或協議</td>
+<td>適用夫妻財產制</td>
+<td>民法物權篇、契約篇</td>
+</tr>
+<tr>
+<td>扶養義務</td>
+<td>原則無，特殊情況有</td>
+<td>互負扶養義務</td>
+<td>民法第1114條</td>
+</tr>
+<tr>
+<td>繼承權</td>
+<td>無法定繼承權</td>
+<td>有法定繼承權</td>
+<td>民法繼承篇</td>
+</tr>
+<tr>
+<td>家務貢獻補償</td>
+<td>可依不當得利請求</td>
+<td>可請求剩餘財產分配</td>
+<td>民法第179條</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">同居關係權益檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個關係階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="cohabiting">同居中</option>
+<option value="separating">準備分手</option>
+<option value="separated">已分手</option>
+<option value="dispute">發生爭議</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您關心的主要問題？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="property">財產分配問題</option>
+<option value="support">扶養費爭議</option>
+<option value="agreement">協議書擬定</option>
+<option value="contribution">家務貢獻補償</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">同居期間多長？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="short">2年以下</option>
+<option value="medium">2-5年</option>
+<option value="long">5-10年</option>
+<option value="verylong">10年以上</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權益保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權益保障建議：無論處於何種關係階段，保留財務記錄、明確財產歸屬、簽訂書面協議是保障自身權益的三大關鍵。切勿因感情因素而忽略重要權益的保護。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>共同生活費用與扶養義務</h2>
+<h3>生活費用分擔原則</h3>
+<p>同居期間共同生活費用應合理分擔：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">日常開支</div>
+<div class="step-desc">房租、水電、伙食等基本生活費用</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">特殊支出</div>
+<div class="step-desc">醫療、教育、旅遊等非經常性支出</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">分擔比例</div>
+<div class="step-desc">依收入比例、協議或實際消費習慣分擔</div>
+</div>
+</div>
+</div>
+<h3>分手後的扶養義務</h3>
+<p>同居關係結束後，原則上無扶養義務，但以下情況例外：</p>
+<ul>
+<li>有共同子女：對未成年子女有扶養義務</li>
+<li>書面協議：簽訂扶養協議且符合法律規定</li>
+<li>特殊依賴關係：一方因照顧家庭放棄工作致生活困難</li>
+<li>公平原則：長期關係中一方對他方事業有重大貢獻</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：同居關係扶養義務</div>
+<div class="case-content">實務判決中，法院曾認定長期同居關係結束後，若一方因關係而放棄工作機會致生活困難，他方於公平原則下應給予適當補償，但非一般性扶養義務。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>同居關係中的財產分配與扶養問題涉及複雜的法律原則與實務見解。了解並善用相關法律機制，不僅能預防潛在糾紛，更能確保關係結束時的公平處理。</p>
+<p>面對同居關係時，建議保持財務透明、明確財產歸屬、簽訂書面協議，並在關係變化時及時尋求專業法律協助，以維護自身權益與公平正義。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您正處於同居關係或面臨分手，應尋求專業家事律師協助，確保財產權益獲得適當保障，擬定完善的分手協議。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「同居＝事實婚姻」：台灣不承認普通法婚姻，權利義務不同。</li><li>認為「分手可平分財產」：同居不適用夫妻剩餘財產分配請求權。</li><li>忽略「書面協議重要性」：口頭協議舉證困難，易生糾紛。</li><li>誤解「家務勞動價值」：家務貢獻可請求補償，但非自動分配權。</li><li>錯認「自動扶養義務」：同居分手後原則無扶養義務，除特殊情況。</li></ul></div>
+
+<div class="rights-card">
+  <h3>同居關係權益檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權益可能受損，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="財產歸屬不明">
+      <span>同居期間購置的<strong>房產、車輛</strong>等財產登記與出資比例是否明確？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="無書面協議">
+      <span>是否從未簽訂<strong>同居協議</strong>或財產歸屬書面文件？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="家務貢獻未補償">
+      <span>是否一方為<strong>家務</strong>放棄工作或進修機會，卻無適當補償約定？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="共同債務未處理">
+      <span>是否有<strong>共同債務</strong>或聯名帳戶尚未釐清歸屬與分擔比例？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="子女扶養未約定">
+      <span>如有<strong>共同子女</strong>，是否尚未明確約定扶養費用與探視方式？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要同居關係法律協助？</h2>
+<p>我們的專業家事法律團隊擁有豐富經驗，能為您提供同居協議擬定、財產歸屬確認、分手協議協商、扶養費計算等全方位法律服務，確保您的權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 同居關係結束時，可以要求對方支付分手費嗎？</div>
+<div class="faq-answer">A: 法律上沒有「分手費」的概念，但如果您對共同財產有特殊貢獻、為關係放棄工作機會，或對方有承諾卻未履行，可能依不當得利、契約或公平原則請求適當補償，具體需由律師評估個案情況。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 同居期間買的房子，登記在一方名下，分手時如何處理？</div>
+<div class="faq-answer">A: 需視出資比例與雙方約定而定。如果您有出資證明，可主張借名登記或依出資比例分配；如果雙方共同負擔貸款，可請求返還已支付款項。建議收集相關金流記錄，由律師協助評估最有利的主張方式。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 同居協議有法律效力嗎？應該包含哪些內容？</div>
+<div class="faq-answer">A: 依法簽訂的同居協議具有法律效力，可約定財產歸屬、生活費用分擔、家務分工、關係結束時的處理方式等。協議應明確具體，符合公序良俗，並建議由律師協助擬定以確保效力。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 同居多年後分手，可以要求對方支付贍養費嗎？</div>
+  <div class="faq-answer">A: 法律上無「贍養費」規定，但若因長期同居關係導致一方放棄工作致生活困難，或對對方事業有特殊貢獻，可依公平原則請求適當補償，但非一般性扶養義務，需由法院審酌具體情況。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 同居期間生育子女，分手後子女扶養費如何計算？</div>
+  <div class="faq-answer">A: 非婚生子女經認領後，父母對子女的扶養義務與婚生子女相同。扶養費計算通常參考行政院主計處公布的平均每人月消費支出，並考量父母經濟能力、子女實際需求等因素協商或由法院裁定。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 同居伴侶過世，我有繼承權嗎？</div>
+  <div class="faq-answer">A: 同居伴侶無法定繼承權，除非有遺囑指定繼承。建議可透過遺囑、保險受益人指定、財產生前贈與等方式保障伴侶權益。如有共同子女，子女有法定繼承權，但您個人仍需透過遺囑才能繼承伴侶財產。</div>
+</div>
+
+</div>
+
+<script>
+        // 同居關係權益檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'cohabiting') {
+                if (rightsViolation === 'property') {
+                    recommendation = '簽訂同居協議';
+                    explanation = '您處於同居階段且關心財產問題，建議簽訂書面同居協議，明確約定財產歸屬、出資比例與關係結束時的處理方式，預防未來潛在糾紛。';
+                } else {
+                    recommendation = '規劃權益保障';
+                    explanation = '同居階段是規劃權益保障的最佳時機，建議諮詢專業律師，針對財產、債務、醫療決定等事項建立完善的法律保障機制。';
+                }
+            } else if (procedureStage === 'separating') {
+                recommendation = '協商分手協議';
+                explanation = '準備分手階段，建議在關係完全結束前協商並簽訂書面分手協議，明確財產分配、債務分擔、子女扶養等事項，避免後續爭議。';
+            } else if (procedureStage === 'separated') {
+                recommendation = '檢視權益救濟';
+                explanation = '已分手但未妥善處理權益問題，建議檢視是否有未分配的共同財產、未補償的家務貢獻等，必要時透過法律途徑主張權益。';
+            } else {
+                recommendation = '爭議解決策略';
+                explanation = '已發生爭議，應收集相關證據（金流記錄、通訊記錄、協議文件等），由律師評估最有利的解決策略，包括協商、調解或訴訟。';
+            }
+
+            // 顯示結果
+            const resultDiv = document.getElementById('rights-result');
+            const recommendationDiv = document.getElementById('rights-recommendation');
+
+            recommendationDiv.innerHTML = `
+                <p><strong>建議措施：${recommendation}</strong></p>
+                <p>${explanation}</p>
+                <p>此為初步建議，具體策略應由專業律師根據個案情況評估制定。</p>
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        // 簡單的檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right');
+            let checkedCount = 0;
+            let issues = [];
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    checkedCount++;
+                    issues.push(cb.value);
+                }
+            });
+
+            const resultDiv = document.getElementById('checklist-result');
+            const resultText = document.getElementById('checklist-text');
+
+            if (checkedCount === 0) {
+                resultText.innerHTML = '您目前未勾選任何潛在風險項目，建議仍定期檢視權益保障狀況，並可預約專業律師進行全面評估。';
+            } else if (checkedCount <= 2) {
+                resultText.innerHTML = `您有 ${checkedCount} 項潛在風險，建議針對勾選項目尋求專業法律意見，及早預防潛在糾紛。`;
+            } else {
+                resultText.innerHTML = `您有 ${checkedCount} 項潛在風險，權益保障可能有明顯漏洞，建議盡快預約律師進行全面評估與規劃。`;
+            }
+
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
