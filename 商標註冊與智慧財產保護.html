@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>商標註冊與智慧財產保護 | 專業法律資訊平台</title>
+<meta content="詳細解析商標、專利與著作權保護策略，保障企業智慧財產權與市場競爭力" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 商標註冊與智慧財產保護
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">智慧財產權</span>
+<h1 class="article-title">商標註冊與智慧財產保護</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="商標註冊與智慧財產保護專業解析" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>在知識經濟時代，商標、專利與著作權等智慧財產權已成為企業核心競爭力的重要組成。本文將詳細解析商標註冊流程、專利申請策略與著作權保護機制，幫助企業有效建立智慧財產權防護網，維護品牌價值與市場競爭優勢。</p>
+<div class="highlight-box">
+<p>完善的智慧財產權保護不僅是法律防禦手段，更是企業永續經營與品牌價值提升的關鍵策略，及早規劃與佈局能為企業創造無形資產與競爭壁壘。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>智慧財產權三大支柱解析</h2>
+<h3>商標註冊保護</h3>
+<p>商標是企業品牌識別的核心，註冊商標可獲得以下法律保護：</p>
+<ol>
+<li>專用權：在指定商品/服務上享有商標專用權</li>
+<li>排他權：禁止他人使用相同或近似商標</li>
+<li>授權收益：可授權他人使用創造收益</li>
+<li>資產價值：商標可作為無形資產評估與融資</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：商標侵權爭議</div>
+<div class="case-content">知名飲料品牌「茶裏王」與「茶裏玉」商標侵權案，法院認定兩商標構成近似，易導致消費者混淆誤認，判決後者應停止使用並賠償損害，凸顯商標註冊保護的重要性。</div>
+</div>
+<h3>專利申請策略</h3>
+<p>專利保護技術創新與產品設計，主要分為三種類型：</p>
+<ul>
+<li>發明專利：保護技術創新，保護期20年</li>
+<li>新型專利：保護物品形狀、構造，保護期10年</li>
+<li>設計專利：保護物品外觀設計，保護期15年</li>
+<li>專利佈局：透過組合申請建立技術防護網</li>
+</ul>
+<div class="warning-box">
+<p>注意：專利申請具有「先申請主義」特性，相同發明內容以先申請者為準。研發完成後應儘早提出申請，避免被他人搶先。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>智慧財產權保護比較</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>保護類型</th>
+<th>保護標的</th>
+<th>保護期限</th>
+<th>取得方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商標權</td>
+<td>品牌識別、標誌</td>
+<td>10年（可延展）</td>
+<td>註冊審查</td>
+</tr>
+<tr>
+<td>發明專利</td>
+<td>技術創新、方法</td>
+<td>20年</td>
+<td>實質審查</td>
+</tr>
+<tr>
+<td>新型專利</td>
+<td>物品形狀、構造</td>
+<td>10年</td>
+<td>形式審查</td>
+</tr>
+<tr>
+<td>設計專利</td>
+<td>外觀設計</td>
+<td>15年</td>
+<td>實質審查</td>
+</tr>
+<tr>
+<td>著作權</td>
+<td>文學、藝術、軟體</td>
+<td>作者終身+50年</td>
+<td>創作完成自動取得</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">智慧財產權保護檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您的企業目前處於哪個發展階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="startup">創業初期</option>
+<option value="growth">成長擴張期</option>
+<option value="mature">成熟穩定期</option>
+<option value="international">國際化階段</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您關注哪些智慧財產權問題？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="trademark">商標註冊與保護</option>
+<option value="patent">專利申請與佈局</option>
+<option value="copyright">著作權管理</option>
+<option value="enforcement">侵權取證與救濟</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">主要產業領域為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="technology">科技與軟體</option>
+<option value="consumer">消費品與零售</option>
+<option value="manufacturing">製造業</option>
+<option value="creative">文創與媒體</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測保護策略</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>策略建議：智慧財產權保護應與企業發展策略同步規劃。創業初期應優先註冊核心商標，成長期加強專利佈局，國際化階段則需考慮全球智慧財產權保護策略。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>商標註冊流程與策略</h2>
+<h3>商標註冊流程</h3>
+<p>商標註冊需經過嚴謹的審查程序：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">商標檢索</div>
+<div class="step-desc">檢索是否有相同或近似商標已註冊</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">申請提交</div>
+<div class="step-desc">準備申請文件並向智慧財產局提交</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">審查程序</div>
+<div class="step-desc">審查員審查商標是否符合註冊要件</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">4</div>
+<div class="step-content">
+<div class="step-title">公告期</div>
+<div class="step-desc">通過審查後公告三個月供異議</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">5</div>
+<div class="step-content">
+<div class="step-title">註冊核准</div>
+<div class="step-desc">公告期滿無異議則核准註冊</div>
+</div>
+</div>
+</div>
+<h3>商標保護策略</h3>
+<p>有效的商標保護需要全面策略規劃：</p>
+<ul>
+<li>防禦性註冊：註冊主要商標及防禦商標</li>
+<li>類別選擇：根據業務現狀與未來發展選擇適當類別</li>
+<li>國際佈局：透過馬德里體系或單國申請進行國際註冊</li>
+<li>監測維護：定期監測市場並及時辦理延展</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：商標著名性認定</div>
+<div class="case-content">實務判決確立了著名商標的認定標準，即使未在我國註冊，若已為相關消費者所普遍認知，仍可受到商標法保護，禁止他人以不公平方式使用或註冊。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>智慧財產權是企業無形資產的核心，完善的保護策略能有效提升企業競爭力與市場價值。商標、專利與著作權各有不同的保護標的與策略，應根據企業發展階段與產業特性進行全面規劃。</p>
+<p>建議企業及早建立智慧財產權管理制度，定期進行智慧財產權盤點與風險評估，並在專業法律顧問協助下，建立完整的智慧財產權保護網絡，為企業永續發展奠定堅實基礎。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您的企業尚未建立完整的智慧財產權保護策略，應立即尋求專業智慧財產權律師協助，進行商標檢索、專利佈局與著作權管理規劃，確保企業無形資產獲得完善保護。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「公司登記＝商標權」：公司名稱登記不具商標排他權。</li><li>認為「產品上市再申請專利」：可能喪失新穎性而無法取得專利。</li><li>忽略「商標監測與維護」：商標註冊後仍需定期監測與延展。</li><li>誤解「著作權自動保護範圍」：雖自動保護但證明創作過程很重要。</li><li>低估「國際佈局重要性」：僅在國內註冊無法保護海外市場。</li></ul></div>
+
+<div class="rights-card">
+  <h3>智慧財產權自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視企業智慧財產權保護是否完善，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="核心商標未註冊">
+      <span>企業<strong>核心商標</strong>是否尚未在主要市場完成註冊？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="技術創新未申請專利">
+      <span>是否有<strong>技術創新或產品設計</strong>尚未申請專利保護？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未建立著作權管理">
+      <span>是否尚未建立<strong>軟體、文案、設計</strong>等著作權管理機制？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未監測市場侵權">
+      <span>是否未定期<strong>監測市場</strong>潛在侵權行為？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未規劃國際保護">
+      <span>是否尚未規劃<strong>國際市場</strong>的智慧財產權保護策略？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要智慧財產權保護協助？</h2>
+<p>我們的專業智慧財產權團隊擁有豐富經驗，能為您提供商標檢索註冊、專利申請佈局、著作權管理與侵權救濟等全方位法律服務，確保企業無形資產獲得完善保護。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 商標註冊需要多長時間？註冊後可以保護多久？</div>
+<div class="faq-answer">A: 商標註冊通常需要8-12個月審查時間。註冊後保護期為10年，期滿前可申請延展，每次延展10年，且延展次數無限制，可持續保護品牌價值。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下商標申請會被駁回？</div>
+<div class="faq-answer">A: 商標申請可能因以下原因被駁回：與在先註冊商標構成近似、缺乏識別性、僅為通用名稱、違反公序良俗等。申請前進行專業檢索可大幅降低駁回風險。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 專利申請有所謂的「優惠期」嗎？什麼情況下適用？</div>
+<div class="faq-answer">A: 是的，專利法規定有12個月的優惠期。申請人因實驗、發表、展覽等情形公開其發明，在公開後12個月內申請專利，不喪失新穎性。但此規定並非所有國家都有，且條件嚴格，不應依賴優惠期而延遲申請。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 著作權與商標權有何不同？什麼情況下需要同時保護？</div>
+  <div class="faq-answer">A: 著作權保護「表達形式」，商標權保護「識別來源」。例如一個獨特的產品包裝，其美術設計受著作權保護，而上面的標誌則可註冊商標。對於品牌識別性強的設計，建議同時尋求兩種保護。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 發現他人侵權時，應該如何蒐證與採取法律行動？</div>
+  <div class="faq-answer">A: 發現侵權時應先進行證據保全，包括購買侵權產品、公證網頁內容、拍攝侵權現場等。接著可發送警告函要求停止侵權，必要時提起民事訴訟或刑事告訴。建議在專業律師指導下進行，以確保證據有效性與程序合法性。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 企業如何建立內部智慧財產權管理制度？</div>
+  <div class="faq-answer">A: 完善的智慧財產權管理制度應包括：智慧財產權盤點與分類、申請與維護流程、員工發明獎勵辦法、保密與競業禁止協議、授權與契約管理、侵權監測與救濟機制等。建議由專業顧問協助建立符合企業需求的制度。</div>
+</div>
+
+</div>
+
+<script>
+        // 智慧財產權保護檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'startup') {
+                if (rightsViolation === 'trademark') {
+                    recommendation = '優先註冊核心商標';
+                    explanation = '創業初期資源有限，建議優先註冊核心商標，建立品牌識別基礎。同時應進行商標檢索，避免侵權風險與未來品牌重塑成本。';
+                } else {
+                    recommendation = '基礎智慧財產權佈局';
+                    explanation = '創業階段應建立基礎智慧財產權保護，包括核心商標註冊、關鍵技術專利申請與著作權管理，為企業發展奠定法律基礎。';
+                }
+            } else if (procedureStage === 'growth') {
+                recommendation = '全面智慧財產權策略';
+                explanation = '成長擴張期應建立全面智慧財產權策略，包括商標防禦註冊、專利組合佈局、國際保護規劃與授權管理機制，支持業務擴張與市場競爭。';
+            } else if (procedureStage === 'mature') {
+                recommendation = '智慧財產權價值最大化';
+                explanation = '成熟穩定期應著重智慧財產權價值最大化，透過授權、融資、訴訟等策略實現無形資產價值，並建立完善的智慧財產權管理制度與風險防控機制。';
+            } else if (procedureStage === 'international') {
+                recommendation = '全球智慧財產權佈局';
+                explanation = '國際化階段需進行全球智慧財產權佈局，透過馬德里體系、PCT專利合作條約等國際機制，在目標市場取得保護，並建立跨國侵權監測與救濟機制。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+            
+            let checklistText = '';
+            if (selectedValues.length === 0) {
+                checklistText = '您的企業智慧財產權保護狀況良好！建議定期檢視與更新保護策略，以因應市場變化與新興風險。';
+            } else if (selectedValues.length <= 2) {
+                checklistText = '您的企業已有部分智慧財產權保護基礎，建議針對缺失項目加強保護，建立更完整的智慧財產權防護網。';
+            } else {
+                checklistText = '您的企業智慧財產權保護存在多項缺口，建議立即尋求專業法律顧問協助，進行全面評估與策略規劃，避免潛在法律風險。';
+            }
+            
+            document.getElementById('checklist-text').innerHTML = checklistText;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

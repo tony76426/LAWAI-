@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>網路購物消費糾紛處理 | 專業法律資訊平台</title>
+<meta content="詳細解析七日鑑賞期、退貨退款流程與申訴管道，保障消費者權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 網路購物消費糾紛處理
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">消費權益</span>
+<h1 class="article-title">網路購物消費糾紛處理</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="網路購物消費糾紛處理專業解析" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>隨著網路購物普及，消費糾紛也日益增多。消費者享有哪些權利？七日鑑賞期如何適用？退貨退款流程為何？本文將詳細解析消費者保護法相關規定，幫助您了解在網路購物遇到問題時如何有效保障自身權益，確保消費交易的公平性與安全性。</p>
+<div class="highlight-box">
+<p>網路購物七日鑑賞期是消費者保護法的核心保障，了解並善用這些權利，不僅是保護自己的重要手段，更是促進電子商務健康發展的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>基本消費權利解析</h2>
+<h3>七日鑑賞期保障</h3>
+<p>根據消費者保護法第19條規定，通訊交易（網路購物）的消費者享有七日鑑賞期：</p>
+<ol>
+<li>收到商品後七日內可無條件退貨</li>
+<li>無需說明理由及負擔任何費用</li>
+<li>退貨運費原則由業者負擔</li>
+<li>例外情況：易腐壞、客製化商品等不適用</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：七日鑑賞期的適用</div>
+<div class="case-content">在實務判決中，法院明確指出，若業者未依法告知七日鑑賞期權利，消費者得於收到商品後一個月內行使解除權。此案例確立了消費者權利保障的重要性。</div>
+</div>
+<h3>退貨退款流程與權利</h3>
+<p>網路購物消費者有權在符合條件下要求退貨退款：</p>
+<ul>
+<li>解除權行使：七日內以書面或退回商品方式解除契約</li>
+<li>退款期限：業者應於收到通知後15日內退款</li>
+<li>商品回復：消費者僅需回復商品，無需回復包装</li>
+<li>例外限制：已拆封但可回復原狀的商品仍可退貨</li>
+</ul>
+<div class="warning-box">
+<p>注意：若業者拒絕依法退貨退款，最高可處新台幣50萬元罰鍰。消費者應保留相關證據以利申訴。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>消費糾紛處理流程</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>處理階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>與業者協商</td>
+<td>七日解除權、退款請求權、瑕疵擔保</td>
+<td>消保法第19、20條</td>
+<td>書面通知、存證信函</td>
+</tr>
+<tr>
+<td>申訴階段</td>
+<td>向企業經營者申訴、消費者服務中心申訴</td>
+<td>消保法第43條</td>
+<td>申訴、調解</td>
+</tr>
+<tr>
+<td>調解階段</td>
+<td>消費爭議調解、線上調解</td>
+<td>消保法第44-46條</td>
+<td>調解申請、調解會議</td>
+</tr>
+<tr>
+<td>訴訟階段</td>
+<td>小額訴訟、消費集體訴訟</td>
+<td>民事訴訟法、消保法</td>
+<td>訴訟、團體訴訟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">消費權利保障檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個消費糾紛階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="negotiation">與業者協商中</option>
+<option value="return">申請退貨退款</option>
+<option value="complaint">已向消保官申訴</option>
+<option value="lawsuit">考慮法律訴訟</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權利可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="return-right">七日鑑賞權受限制</option>
+<option value="refund">退款遭拖延或拒絕</option>
+<option value="quality">商品品質有問題</option>
+<option value="information">業者資訊不實</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">商品類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般商品</option>
+<option value="digital">數位內容</option>
+<option value="custom">客製化商品</option>
+<option value="service">服務類商品</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權利保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種糾紛階段，保留證據、了解權利、尋求專業協助是保障自身權益的三大關鍵。切勿因金額小而放棄重要權利的行使。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>商品瑕疵與廣告不實處理</h2>
+<h3>商品瑕疵認定要件</h3>
+<p>商品必須符合約定品質及通常效用：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">不符合約定</div>
+<div class="step-desc">商品與廣告或說明內容不符</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">欠缺通常效用</div>
+<div class="step-desc">商品無法達到一般預期功能</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">欠缺安全性</div>
+<div class="step-desc">商品有危害消費者安全之虞</div>
+</div>
+</div>
+</div>
+<h3>廣告不實認定與救濟</h3>
+<p>不實廣告可能構成詐欺或違反公平交易：</p>
+<ul>
+<li>虛偽不實：廣告內容與事實不符</li>
+<li>引人錯誤：廣告內容會誤導消費者</li>
+<li>證據保全：保留網頁截圖、對話紀錄</li>
+<li>多重救濟：可同時向消保官及公平會申訴</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：廣告不實賠償</div>
+<div class="case-content">實務判決確立了廣告不實的賠償責任，明確指出「企業經營者應確保廣告內容之真實，其對消費者所負之義務不得低於廣告之內容」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>網路購物消費權利是保障交易公平與消費者權益的重要機制。了解並善用這些權利，不僅能有效解決消費糾紛，更能促進電子商務環境的健全發展。</p>
+<p>面對消費糾紛時，建議保留證據、了解自身權利、及時尋求專業協助，並在每個處理階段積極行使法律賦予的消費權利，以維護自身權益與交易公平。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您遇到網路購物消費糾紛，應立即保留證據並尋求專業法律協助，確保消費權利獲得完整保障，維護自身合法權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「特價品不能退貨」：七日鑑賞期適用所有網路交易。</li><li>認為「已拆封就不能退」：合理檢查不影響退貨權利。</li><li>忽略「運費誰負擔」：退貨運費原則由業者負擔。</li><li>錯過「七日鑑賞期」：業者未告知可延長至一個月。</li><li>不知「數位內容例外」：已開啟的數位內容不適用七日鑑賞。</li></ul></div>
+
+<div class="rights-card">
+  <h3>消費權益自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="七日鑑賞期未被告知">
+      <span>購物時是否未被完整告知<strong>七日鑑賞期</strong>權利？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="退貨遭拒或拖延">
+      <span>申請退貨時是否遭<strong>不合理拒絕或拖延</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="商品與廣告不符">
+      <span>收到商品是否與<strong>廣告或說明內容不符</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="退款問題">
+      <span>退款是否<strong>未在期限內完成</strong>或有金額爭議？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="證據未保存">
+      <span>是否尚未<strong>保存網頁截圖、對話紀錄</strong>等證據？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要消費糾紛協助？</h2>
+<p>我們的專業消費法律團隊擁有豐富經驗，能為您提供證據保全、協商談判、申訴調解、法律訴訟等全方位法律服務，確保您的消費權利獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果業者說「特價品恕不退換」有效嗎？</div>
+<div class="faq-answer">A: 無效。根據消費者保護法，七日鑑賞期適用於所有通訊交易，業者不得以特價為由限制消費者權利。此類條款屬於無效的不公平條款，消費者仍可依法行使解除權。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下不適用七日鑑賞期？</div>
+<div class="faq-answer">A: 依消保法第19條規定，易腐壞、客製化商品、已拆封的影音軟體、已兌換的線上服務、報紙期刊等不適用七日鑑賞期。但商品如有瑕疵，仍可依民法瑕疵擔保規定要求退換貨。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 退貨時運費應該由誰負擔？</div>
+<div class="faq-answer">A: 原則上由業者負擔。消費者保護法施行細則明定，通訊交易解除權的行使，退回商品的運費由企業經營者負擔。若業者要求消費者負擔，可向主管機關申訴。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 業者拖延退款超過15天該怎麼辦？</div>
+  <div class="faq-answer">A: 業者應於收到退貨後15日內退款，若拖延可：①發存證信函催告 ②向各地消費者服務中心申訴 ③向消保官申請調解 ④提起小額訴訟求償。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 網路購物遇到詐騙集團如何處理？</div>
+  <div class="faq-answer">A: 立即：①保留網頁截圖與交易紀錄 ②向銀行申請爭議帳款 ③向警局報案 ④向165反詐騙專線通報。信用卡交易可依信用卡爭議帳款處理機制申請止付。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 商品有瑕疵但已超過七日鑑賞期還能退嗎？</div>
+<div class="faq-answer">A: 可以。七日鑑賞期與瑕疵擔保是不同權利。商品有瑕疵時，在交貨後六個月內可依民法第359條請求解除契約或減少價金，但消費者需舉證瑕疵於交貨時即存在。</div>
+</div>
+
+</div>
+
+<script>
+        // 消費權利保障檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'negotiation') {
+                if (rightsViolation === 'return-right') {
+                    recommendation = '正式書面要求退貨';
+                    explanation = '您處於協商階段且七日鑑賞權受限制，建議以書面或存證信函正式要求退貨，並引用消保法第19條規定。業者無權限制法定權利。';
+                } else {
+                    recommendation = '保留證據正式申訴';
+                    explanation = '協商階段是解決糾紛的最佳時機，建議保留所有證據，若協商不成應立即向消費者服務中心申訴，確保權利不受損。';
+                }
+            } else if (procedureStage === 'return') {
+                recommendation = '依法限期催告';
+                explanation = '申請退貨退款階段，如業者拖延，應發函限期催告。同時可向消保官申訴，必要時申請消費爭議調解。';
+            } else if (procedureStage === 'complaint') {
+                recommendation = '準備調解或訴訟';
+                explanation = '已向消保官申訴階段，應準備完整證據參加調解。如調解不成，可考慮提起小額訴訟維護權益。';
+            } else {
+                recommendation = '專業法律協助';
+                explanation = '考慮法律訴訟階段應尋求專業律師協助，評估訴訟可行性與證據完整性，選擇最有利的救濟途徑。';
+            }
+
+            // 顯示結果
+            const resultDiv = document.getElementById('rights-result');
+            const recommendationDiv = document.getElementById('rights-recommendation');
+
+            recommendationDiv.innerHTML = `
+                <p><strong>建議措施：${recommendation}</strong></p>
+                <p>${explanation}</p>
+                <p>此為初步建議，具體策略應由專業人士根據個案情況評估制定。</p>
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        // 簡單的互動功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // CTA 按鈕：僅對非 LINE 類型保留提示；LINE 相關完全放行
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const href = (this.getAttribute('href') || '').trim();
+                    const isLineCTA = this.classList.contains('cta-line') || href.indexOf('@621sbqlu') !== -1 || href.indexOf('line.me') !== -1;
+                    if (!isLineCTA && !confirm('即將前往預約頁面，是否繼續？')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // 自我檢查表功能
+            document.getElementById('btn-checklist').addEventListener('click', function() {
+                const checkedItems = document.querySelectorAll('.chk-right:checked');
+                const resultDiv = document.getElementById('checklist-result');
+                const resultText = document.getElementById('checklist-text');
+
+                if (checkedItems.length === 0) {
+                    resultText.innerHTML = '您目前未勾選任何項目，建議確認是否已完整了解自身權利，若有任何疑問可透過LINE或預約諮詢獲得專業協助。';
+                } else {
+                    let issues = [];
+                    checkedItems.forEach(item => {
+                        issues.push(item.value);
+                    });
+
+                    let advice = '根據您的勾選情況，建議您：<br><br>';
+                    
+                    if (issues.includes('七日鑑賞期未被告知')) {
+                        advice += '• 立即以書面方式正式行使解除權<br>';
+                    }
+                    
+                    if (issues.includes('退貨遭拒或拖延') || issues.includes('退款問題')) {
+                        advice += '• 向業者發送存證信函限期處理<br>';
+                        advice += '• 準備向消費者服務中心申訴<br>';
+                    }
+                    
+                    if (issues.includes('商品與廣告不符')) {
+                        advice += '• 保全網頁截圖與對話紀錄證據<br>';
+                        advice += '• 可同時向公平會檢舉廣告不實<br>';
+                    }
+                    
+                    if (issues.includes('證據未保存')) {
+                        advice += '• 立即進行網頁截圖與資料備份<br>';
+                    }
+                    
+                    advice += '<br>建議尋求專業法律協助，確保權利獲得完整保障。';
+
+                    resultText.innerHTML = advice;
+                }
+
+                resultDiv.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

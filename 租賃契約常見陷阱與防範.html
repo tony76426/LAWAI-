@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>租賃契約常見陷阱與防範 | 專業法律資訊平台</title>
+<meta content="詳細解析押金返還、修繕責任與契約條款等關鍵議題，保障租賃雙方權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 租賃契約常見陷阱與防範
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">租賃法律</span>
+<h1 class="article-title">租賃契約常見陷阱與防範</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="租賃契約常見陷阱與防範專業解析" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>簽訂租賃契約時，您是否了解押金返還條件、修繕責任歸屬與隱藏條款的潛在風險？本文將詳細解析租賃契約中常見的陷阱，包括押金返還爭議、修繕責任劃分、提前解約條款等關鍵議題，幫助您了解如何有效保障自身權益，避免租賃糾紛。</p>
+<div class="highlight-box">
+<p>租賃契約是保障租賃雙方權益的重要文件，了解並仔細審閱契約條款，不僅能避免未來糾紛，更是維護自身權益的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>租賃契約關鍵條款解析</h2>
+<h3>押金返還保障</h3>
+<p>根據民法及租賃住宅市場發展及管理條例規定：</p>
+<ol>
+<li>押金不得超過二個月租金總額</li>
+<li>租賃關係消滅時，押金應於租賃契約終止後返還</li>
+<li>扣除項目限於積欠租金、損害賠償及契約約定費用</li>
+<li>房東不得任意扣押押金作為違約金</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：押金返還爭議</div>
+<div class="case-content">在實務判決中，法院明確指出，若房東無正當理由拒絕返還押金，除應返還全額押金外，還可能需支付遲延利息。此案例確立了押金返還義務的重要性。</div>
+</div>
+<h3>修繕責任與義務</h3>
+<p>租賃期間的修繕責任應明確劃分：</p>
+<ul>
+<li>房屋結構及主要設備（如水管、電路）由房東負責修繕</li>
+<li>因承租人過失造成的損壞由承租人負責</li>
+<li>房東應於合理期間內完成必要修繕</li>
+<li>若房東不履行修繕義務，承租人得自行修繕並請求償還費用</li>
+</ul>
+<div class="warning-box">
+<p>注意：若契約中約定「所有修繕均由承租人負責」等不公平條款，可能因違反民法規定而無效。此為常見的契約陷阱。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>租賃契約權利保障</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>租賃階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>簽約階段</td>
+<td>審閱權、資訊揭露權、公平條款權</td>
+<td>民法、消費者保護法</td>
+<td>拒絕簽約、要求修改</td>
+</tr>
+<tr>
+<td>租賃期間</td>
+<td>居住安寧權、修繕請求權、轉租同意權</td>
+<td>民法第423、429條</td>
+<td>減租請求、終止契約</td>
+</tr>
+<tr>
+<td>押金管理</td>
+<td>押金返還權、明細請求權、利息歸屬權</td>
+<td>租賃住宅市場發展及管理條例</td>
+<td>民事訴訟、調解</td>
+</tr>
+<tr>
+<td>契約終止</td>
+<td>提前解約權、搬遷寬限期、返還請求權</td>
+<td>民法第450、453條</td>
+<td>違約金酌減、損害賠償</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">租賃權利保障檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個租賃階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">簽約前審閱</option>
+<option value="prosecution">租賃期間</option>
+<option value="detention">押金返還爭議</option>
+<option value="trial">提前解約糾紛</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權利可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">押金返還問題</option>
+<option value="lawyer">修繕責任爭議</option>
+<option value="evidence">契約條款不公</option>
+<option value="procedure">提前解約罰則</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">租賃類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">住宅租賃</option>
+<option value="serious">商業租賃</option>
+<option value="economic">辦公室租賃</option>
+<option value="drug">廠房倉庫租賃</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權利保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種租賃階段，仔細審閱契約、了解自身權利、尋求專業法律協助是保障自身權益的三大關鍵。切勿因急迫而忽略重要權利的審視。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>契約條款效力與爭議處理</h2>
+<h3>契約條款效力要件</h3>
+<p>租賃契約條款必須符合法律規定才能有效：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">合法性</div>
+<div class="step-desc">條款內容不得違反法律強制規定</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">公平性</div>
+<div class="step-desc">條款不得顯失公平或單方面加重責任</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">明確性</div>
+<div class="step-desc">權利義務應具體明確，不得使用模糊用語</div>
+</div>
+</div>
+</div>
+<h3>無效條款排除法則</h3>
+<p>違反法律規定的契約條款可能無效：</p>
+<ul>
+<li>押金超過二個月租金：超過部分無效</li>
+<li>修繕責任全歸承租人：違反民法規定可能無效</li>
+<li>提前解約罰則過高：法院得依職權酌減</li>
+<li>放棄法律權利條款：剝奪法定權利可能無效</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：不公平條款無效</div>
+<div class="case-content">實務判決確立了契約公平原則，明確指出「契約條款若顯失公平，縱經當事人合意，仍可能因違反公序良俗或強制規定而無效」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>租賃契約審閱是保障租賃雙方權益的重要機制。了解並善用法律賦予的權利，不僅能有效防範未來糾紛，更能確保租賃關係的公平性與穩定性。</p>
+<p>簽訂租賃契約時，建議仔細審閱、了解自身權利、必要時尋求專業法律協助，並在每個階段積極行使法律賦予的權利，以維護自身權益與租賃公平。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您正面臨租賃契約審閱或糾紛，應立即尋求專業法律協助，確保契約權利獲得完整保障，維護自身合法權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「口頭約定有效」：重要事項應以書面明確記載。</li><li>認為「押金可任意扣除」：房東僅能依法定項目扣除押金。</li><li>忽略「修繕責任歸屬」：非人為損壞原則上由房東負責。</li><li>接受「過高違約金」：提前解約罰則過高可請求法院酌減。</li><li>錯把「點交當驗收」：租賃期滿應共同點交並確認返還狀態。</li></ul></div>
+
+<div class="rights-card">
+  <h3>租賃契約自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="押金返還條件不明">
+      <span>契約中是否未明確記載<strong>押金返還條件</strong>與扣除項目？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="修繕責任歸屬不清">
+      <span>修繕責任是否<strong>全部歸於承租人</strong>或歸屬不清？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="提前解約罰則過高">
+      <span>提前解約的<strong>違約金是否過高</strong>，超過合理範圍？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="契約審閱期不足">
+      <span>簽約前是否未獲充分<strong>契約審閱時間</strong>，被迫立即簽約？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="房屋現況未記載">
+      <span>契約附件是否未詳細記載<strong>房屋現況</strong>與設備清單？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要租賃法律協助？</h2>
+<p>我們的專業法律團隊擁有豐富經驗，能為您提供契約審閱、條款分析、糾紛調解、訴訟代理等全方位法律服務，確保您的租賃權利獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果房東拒絕返還押金，該怎麼辦？</div>
+<div class="faq-answer">A: 若房東無正當理由拒絕返還押金，您應先以存證信函催告，若仍不返還，可向鄉鎮市調解委員會申請調解或直接提起民事訴訟，請求返還押金及遲延利息。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以要求減少租金？</div>
+<div class="faq-answer">A: 當租賃物有瑕疵或需要修繕，導致無法達到約定使用目的時，可請求減少租金。常見情況包括：房屋漏水、設備故障、環境噪音等影響居住品質的情形。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 提前解約的違約金過高，該如何處理？</div>
+<div class="faq-answer">A: 若契約約定的違約金過高，顯失公平，可依民法第252條規定，請求法院酌減至合理数额。法院通常會審酌實際損害、契約履行程度等因素決定適當金額。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 房東可以禁止養寵物或開伙嗎？</div>
+  <div class="faq-answer">A: 房東得於契約中約定禁止事項，但應於簽約前明確告知。若簽約後才新增限制，需經承租人同意。惟限制不得違反法律強制規定或顯失公平。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 租賃期間房東可以隨意進入房屋嗎？</div>
+  <div class="faq-answer">A: 除非有緊急狀況或經承租人同意，否則房東不得隨意進入已出租的房屋。如需進行修繕或檢查，應事先與承租人約定適當時間。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 租約到期後繼續居住，法律效果為何？</div>
+  <div class="faq-answer">A: 租約到期後若承租人繼續居住，房東不表示反對，法律上視為不定期限租賃，雙方仍受原租約條款拘束，但隨時可終止租約（需提前通知）。</div>
+</div>
+
+</div>
+
+<script>
+        // 租賃權利保障檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '仔細審閱押金條款';
+                    explanation = '您處於簽約前審閱階段且關注押金返還問題，建議仔細審閱契約中押金返還條件，確保條款明確合理。必要時可要求修改不明確條款。';
+                } else {
+                    recommendation = '全面審閱契約內容';
+                    explanation = '簽約前是權利保障的關鍵時期，建議仔細審閱契約所有條款，特別是修繕責任、提前解約、違約金等重要事項，必要時尋求專業協助。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '釐清權利義務關係';
+                explanation = '租賃期間如發現權利受損，應先釐清法律責任歸屬，以書面方式與房東溝通，並保存相關證據，為可能糾紛做準備。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '依法請求押金返還';
+                explanation = '租賃關係終止後，如房東無正當理由拒絕返還押金，可先發存證信函催告，若未獲回應，可申請調解或提起訴訟請求返還。';
+            } else {
+                recommendation = '合理處理解約事宜';
+                explanation = '提前解約應依契約約定辦理，如違約金過高可請求酌減。建議與房東協商解決方案，避免爭議擴大。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = explanation;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 租賃契約自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            if (checkboxes.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '您的租賃契約似乎沒有明顯問題，但仍建議仔細審閱所有條款，必要時尋求專業協助。';
+            } else {
+                let issues = [];
+                checkboxes.forEach(cb => {
+                    issues.push(cb.value);
+                });
+                
+                let advice = '';
+                if (issues.length <= 2) {
+                    advice = '您的租賃契約有少數需要注意的事項，建議與房東溝通修改相關條款，確保權利獲得保障。';
+                } else {
+                    advice = '您的租賃契約有多項需要注意的問題，建議尋求專業法律協助，全面審閱契約內容，必要時要求修改不公平條款。';
+                }
+                
+                document.getElementById('checklist-text').innerHTML = `您勾選的問題：${issues.join('、')}。<br>${advice}`;
+            }
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

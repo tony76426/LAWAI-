@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>勞資爭議處理與權益保障 | 專業法律資訊平台</title>
+<meta content="詳細解析不當解僱、加班費計算與職場霸凌救濟等關鍵議題，保障勞工權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 勞資爭議處理與權益保障
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">勞資爭議</span>
+<h1 class="article-title">勞資爭議處理與權益保障</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="勞資爭議處理與權益保障專業解析" src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>面對職場中的勞資爭議，勞工享有哪些基本權利？這些權利如何保障工作權益與公平待遇？本文將詳細解析不當解僱、加班費計算、職場霸凌救濟等關鍵勞資爭議處理機制，幫助您了解在勞資爭議中如何有效保障自身權益，確保勞動關係的公平性與合法性。</p>
+<div class="highlight-box">
+<p>勞動權益保障是現代法治社會的核心價值，了解並善用這些權利，不僅是保護自己的重要手段，更是維護勞動尊嚴的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>基本勞動權益解析</h2>
+<h3>不當解僱保障</h3>
+<p>根據勞動基準法相關規定，雇主不得任意終止勞動契約：</p>
+<ol>
+<li>解僱必須符合法定事由</li>
+<li>預告期間與資遣費須依法計算</li>
+<li>特定對象（如懷孕、職災期間）受特別保護</li>
+<li>雇主應負舉證責任證明解僱正當性</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：不當解僱的認定</div>
+<div class="case-content">在實務判決中，法院明確指出，若雇主無法證明勞工有符合法定解僱事由之具體事實，其解僱行為即屬權利濫用，應屬無效。此案例確立了工作權保障的重要性。</div>
+</div>
+<h3>加班費請求權與工時保障</h3>
+<p>勞工有權依法請求加班費並享有合理工時：</p>
+<ul>
+<li>延長工時：平日加班前2小時加給1/3，第3小時起加給2/3</li>
+<li>休息日加班：前2小時加給1又1/3，第3至8小時加給1又2/3，第9至12小時加給2又2/3</li>
+<li>例假日與國定假日加班：工資加倍發給</li>
+<li>特休未休：應發給工資</li>
+</ul>
+<div class="warning-box">
+<p>注意：若雇主未依法給付加班費，勞工可依法請求補發並處罰鍰。此為常見勞資爭議類型，雇主應確實遵守勞動法令。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>勞資爭議處理程序</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>處理階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>協商階段</td>
+<td>工會協商權、個別協商權</td>
+<td>勞基法第74條、勞資爭議處理法第6條</td>
+<td>申訴、調解</td>
+</tr>
+<tr>
+<td>調解階段</td>
+<td>申請調解權、出席陳述權</td>
+<td>勞資爭議處理法第9、22條</td>
+<td>調解成立、調解不成立</td>
+</tr>
+<tr>
+<td>仲裁階段</td>
+<td>仲裁申請權、仲裁判斷拘束力</td>
+<td>勞資爭議處理法第25、37條</td>
+<td>仲裁判斷、司法審查</td>
+</tr>
+<tr>
+<td>司法救濟</td>
+<td>民事訴訟權、確認僱傭關係存在</td>
+<td>民事訴訟法、勞資爭議處理法第48條</td>
+<td>給付訴訟、確認訴訟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">勞動權益保障檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前面臨哪種勞資爭議？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">不當解僱爭議</option>
+<option value="prosecution">加班費爭議</option>
+<option value="detention">職場霸凌爭議</option>
+<option value="trial">其他勞動條件爭議</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權益可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">工作權受侵害</option>
+<option value="lawyer">工資請求權受限制</option>
+<option value="evidence">職場環境權受損</option>
+<option value="procedure">程序權利受侵害</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">爭議涉及類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般勞動條件</option>
+<option value="serious">不當解僱</option>
+<option value="economic">工資與加班費</option>
+<option value="drug">職場霸凌與歧視</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權益保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權益行使建議：無論處於何種爭議階段，保持冷靜、了解權利、尋求專業勞工法律師協助是保障自身權益的三大關鍵。切勿因慌亂而放棄或忽略重要權利的行使。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>職場霸凌救濟與證據保全</h2>
+<h3>職場霸凌認定要件</h3>
+<p>職場霸凌必須具備特定要件才能成立：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">不當行為</div>
+<div class="step-desc">存在言語、心理或身體上的不當對待</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">工作相關性</div>
+<div class="step-desc">行為發生在工作場所或與工作相關</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">損害結果</div>
+<div class="step-desc">造成勞工身心傷害或工作環境惡化</div>
+</div>
+</div>
+</div>
+<h3>職場霸凌救濟途徑</h3>
+<p>面對職場霸凌，勞工可採取多種救濟方式：</p>
+<ul>
+<li>內部申訴：向雇主或人資部門提出申訴</li>
+<li>行政申訴：向勞動主管機關申訴</li>
+<li>民事救濟：請求損害賠償、確認僱傭關係存在</li>
+<li>刑事告訴：涉及恐嚇、傷害、妨害名譽等刑事責任</li>
+<li>職業災害認定：因霸凌導致身心疾病可申請職災認定</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：職場霸凌救濟</div>
+<div class="case-content">實務判決確立了雇主防治職場霸凌的義務，明確指出「雇主應採取適當之預防、糾正、補救及處理措施，確保職場中員工之人格尊嚴、人身安全及身心健康不受侵害」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>勞動權益保障是維護職場公平與勞工尊嚴的重要機制。了解並善用這些權利，不僅能有效防禦不當勞動行為，更能確保勞動關係的公平性與合法性。</p>
+<p>面對勞資爭議時，建議保持冷靜、了解自身權利、及時尋求專業勞工法律師協助，並在每個程序階段積極行使法律賦予的救濟權利，以維護自身權益與勞動尊嚴。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或親友面臨勞資爭議，應立即尋求專業勞工法律師協助，確保勞動權益獲得完整保障，維護自身合法權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「自願離職＝放棄資遣費」：非自願離職若遭誘導簽署，仍可主張無效。</li><li>認為「責任制＝無加班費」：責任制仍須符合法定要件並經核備。</li><li>忽略「職場霸凌舉證」：應即時記錄不當言行並保存通訊紀錄。</li><li>誤解「試用期權益」：試用期勞工仍享有勞基法基本保障。</li><li>錯過「申訴時效」：勞資爭議調解申請有30日法定時效限制。</li></ul></div>
+
+<div class="rights-card">
+  <h3>勞資爭議自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權益可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="不當解僱疑慮">
+      <span>是否遭<strong>不當解僱</strong>或被迫簽署自願離職書？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="加班費未給付">
+      <span>是否經常<strong>加班未獲加班費</strong>或補休？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="職場霸凌經歷">
+      <span>是否遭遇<strong>職場霸凌、歧視</strong>或不當對待？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="特休未休">
+      <span>年度<strong>特休未休完</strong>且未獲工資補償？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未保存證據">
+      <span>是否尚未<strong>保存／蒐集</strong>相關事證與通訊紀錄？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要勞資爭議協助？</h2>
+<p>我們的專業勞工法律團隊擁有豐富經驗，能為您提供爭議協商、證據分析、調解程序、訴訟辯護等全方位法律服務，確保您的勞動權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果雇主未依法給付加班費，該怎麼辦？</div>
+<div class="faq-answer">A: 若雇主未依法給付加班費，您應先蒐集加班事實證據（如打卡紀錄、工作郵件、通訊紀錄等），然後向雇主請求補發。若雇主拒絕，可向勞動主管機關申訴或申請勞資爭議調解，必要時提起民事訴訟請求給付。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以主張不當解僱？</div>
+<div class="faq-answer">A: 當雇主解僱不符合勞動基準法第11條、第12條規定之法定事由時，即可主張不當解僱。常見情況包括：未具備法定解僱事由、解僱程序不合法、解僱具有歧視性、違反解僱最後手段性原則等。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 遭遇職場霸凌如何救濟？</div>
+<div class="faq-answer">A: 遭遇職場霸凌時，應先蒐集證據（如不當言行紀錄、通訊內容、證人等），然後向雇主申訴要求處理。若雇主未妥善處理，可向勞動主管機關申訴，或依民法請求損害賠償，情節嚴重者可提起刑事告訴。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 雇主可以隨意將我調職或減薪嗎？</div>
+  <div class="faq-answer">A: 調職與減薪均屬勞動條件變更，需經勞工同意。若調職具有不當動機或實質減損勞工權益，勞工可拒絕；未經同意之減薪更屬違法，您有權請求給付原約定工資。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 勞資爭議調解不成立後該怎麼辦？</div>
+  <div class="faq-answer">A: 調解不成立後，權利事項爭議可提起民事訴訟，調整事項爭議可申請仲裁或爭議行為。建議於調解不成立後儘速尋求法律專業協助，以確保權益時效。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 雇主積欠工資，有哪些救濟途徑？</div>
+  <div class="faq-answer">A: 雇主積欠工資時，可：①向勞動局申訴，由主管機關限期令其給付；②申請勞資爭議調解；③向法院聲請支付命令或提起訴訟；④同時可向勞保局申請墊償基金墊償積欠工資。</div>
+</div>
+
+</div>
+
+<script>
+        // 勞動權益保障檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '確認解僱合法性';
+                    explanation = '您正面臨不當解僱爭議且工作權受侵害，建議先確認解僱是否符合法定事由，並蒐集相關證據。若屬不當解僱，可主張確認僱傭關係存在或請求資遣費及賠償。';
+                } else {
+                    recommendation = '請求專業法律協助';
+                    explanation = '不當解僱爭議是勞資關係中最嚴重的爭議類型，建議立即委任勞工法律師，由律師協助保障您的程序權利，並對違法解僱提出救濟。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '計算與請求加班費';
+                explanation = '加班費爭議是常見的勞資爭議類型，建議先計算應得加班費數額，並向雇主請求給付。若雇主拒絕，可向勞動主管機關申訴或申請勞資爭議調解。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '蒐集霸凌證據並申訴';
+                explanation = '職場霸凌爭議需有具體證據支持，建議詳細記錄霸凌事實、時間、地點與相關證人，並向雇主或勞動主管機關申訴，必要時可請求損害賠償。';
+            } else {
+                recommendation = '全面檢視勞動條件';
+                explanation = '其他勞動條件爭議涉及範圍廣泛，建議全面檢視勞動契約、工作規則及實際勞動條件，確認雇主是否遵守勞動法令，並針對違法事項提出救濟。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `
+                <strong>${recommendation}</strong><br>
+                ${explanation}
+            `;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            if (checkboxes.length === 0) {
+                alert('請至少勾選一項您目前面臨的情況');
+                return;
+            }
+
+            let issues = [];
+            checkboxes.forEach(cb => {
+                issues.push(cb.value);
+            });
+
+            let advice = '';
+            if (issues.includes('不當解僱疑慮')) {
+                advice += '• <strong>不當解僱</strong>：切勿輕易簽署任何文件，立即蒐集解僱事由相關證據。<br>';
+            }
+            if (issues.includes('加班費未給付')) {
+                advice += '• <strong>加班費</strong>：整理過去6個月加班紀錄，計算應得加班費。<br>';
+            }
+            if (issues.includes('職場霸凌經歷')) {
+                advice += '• <strong>職場霸凌</strong>：詳細記錄霸凌事實，保存通訊紀錄與證人聯絡方式。<br>';
+            }
+            if (issues.includes('特休未休')) {
+                advice += '• <strong>特休未休</strong>：計算未休天數，依法請求工資補償。<br>';
+            }
+            if (issues.includes('未保存證據')) {
+                advice += '• <strong>證據保存</strong>：立即開始蒐集與保存所有相關文件、通訊紀錄與證人資訊。<br>';
+            }
+
+            document.getElementById('checklist-text').innerHTML = advice;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

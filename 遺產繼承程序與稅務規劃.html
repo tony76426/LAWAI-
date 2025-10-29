@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>遺產繼承程序與稅務規劃 | 專業法律資訊平台</title>
+<meta content="詳細解析遺產稅申報、特留分與遺囑等關鍵議題，保障繼承權益與稅務規劃" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 遺產繼承程序與稅務規劃
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">繼承與稅務</span>
+<h1 class="article-title">遺產繼承程序與稅務規劃</h1>
+<div class="article-meta">
+<span>閱讀時間：8 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="遺產繼承程序與稅務規劃專業解析" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>面對親人離世，遺產繼承程序與稅務規劃是每位繼承人必須面對的重要課題。本文將詳細解析遺產稅申報、特留分保障、遺囑效力與繼承程序等關鍵議題，幫助您了解在繼承過程中如何有效保障自身權益，同時進行合理的稅務規劃，確保資產順利傳承。</p>
+<div class="highlight-box">
+<p>完善的遺產規劃不僅能確保資產順利傳承，更能避免家族紛爭與不必要的稅務負擔。了解相關法律程序與稅務規定，是保障繼承權益的重要基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>基本繼承權利解析</h2>
+<h3>法定繼承順序與應繼分</h3>
+<p>根據民法第1138條規定，遺產繼承人除配偶外，依下列順序定之：</p>
+<ol>
+<li>直系血親卑親屬（子女、孫子女等）</li>
+<li>父母</li>
+<li>兄弟姊妹</li>
+<li>祖父母</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：繼承權的認定</div>
+<div class="case-content">在實務判決中，法院明確指出，非婚生子女經生父認領者，與婚生子女享有同等繼承權。此案例確立了繼承權平等原則的重要性。</div>
+</div>
+<h3>特留分保障</h3>
+<p>為保障特定繼承人的基本繼承權，民法設有特留分制度：</p>
+<ul>
+<li>直系血親卑親屬、父母及配偶之特留分為其應繼分二分之一</li>
+<li>兄弟姊妹及祖父母之特留分為其應繼分三分之一</li>
+<li>遺囑人不得以遺囑侵害特留分，否則受侵害人得行使扣減權</li>
+<li>特留分計算基礎為被繼承人死亡時之遺產總額</li>
+</ul>
+<div class="warning-box">
+<p>注意：若遺囑內容侵害特留分，受侵害之繼承人得於知悉其特留分被侵害之時起二年內，或自繼承開始時起十年內行使扣減權。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>遺產繼承程序與稅務規劃</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>程序階段</th>
+<th>主要事項</th>
+<th>法律依據</th>
+<th>注意事項</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>繼承開始</td>
+<td>辦理死亡登記、清查遺產</td>
+<td>民法第1147、1148條</td>
+<td>應於6個月內辦理遺產稅申報</td>
+</tr>
+<tr>
+<td>遺產稅申報</td>
+<td>計算遺產總額、免稅額與扣除額</td>
+<td>遺產及贈與稅法第13、17條</td>
+<td>免稅額1,333萬元，另有各項扣除額</td>
+</tr>
+<tr>
+<td>遺產分割</td>
+<td>協議分割、裁判分割、遺囑分割</td>
+<td>民法第1164、1165條</td>
+<td>侵害特留分之分割無效</td>
+</tr>
+<tr>
+<td>財產移轉</td>
+<td>辦理不動產、存款、股票等過戶</td>
+<td>土地法第73條、公司法第165條</td>
+<td>需檢附遺產稅完稅證明</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">遺產繼承規劃檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個繼承程序階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="preparation">繼承前規劃階段</option>
+<option value="reporting">遺產稅申報階段</option>
+<option value="division">遺產分割階段</option>
+<option value="transfer">財產移轉階段</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些問題可能影響繼承？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="tax">遺產稅負擔過重</option>
+<option value="will">遺囑效力有爭議</option>
+<option value="share">特留分受侵害</option>
+<option value="debts">債務大於資產</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">遺產類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般動產與不動產</option>
+<option value="business">家族企業股權</option>
+<option value="overseas">海外資產</option>
+<option value="special">特殊財產（專利、著作權等）</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測繼承規劃</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>規劃建議：無論處於何種繼承階段，及早規劃、了解法律規定、尋求專業人士協助是保障繼承權益的三大關鍵。切勿因情感因素而忽略重要的稅務與法律規劃。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>遺產稅計算與節稅策略</h2>
+<h3>遺產稅計算要件</h3>
+<p>遺產稅計算必須考慮以下要素：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">遺產總額</div>
+<div class="step-desc">計算被繼承人死亡時全部財產價值</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">免稅額與扣除額</div>
+<div class="step-desc">適用免稅額1,333萬元及各項扣除額</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">稅率計算</div>
+<div class="step-desc">按10%、15%、20%三級累進稅率計算</div>
+</div>
+</div>
+</div>
+<h3>合法節稅策略</h3>
+<p>透過合法規劃可有效降低遺產稅負擔：</p>
+<ul>
+<li>生前贈與：利用每年244萬元贈與免稅額</li>
+<li>保險規劃：指定受益人之人壽保險給付不計入遺產總額</li>
+<li>公共設施保留地：特定土地可享有高額扣除額</li>
+<li>農業用地：符合條件之農地可免徵遺產稅</li>
+<li>分年贈與：善用時間分散資產移轉</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：遺產稅扣除額認定</div>
+<div class="case-content">實務判決確立了公共設施保留地扣除額的計算方式，明確指出「公共設施保留地因繼承而移轉者，依遺產及贈與稅法施行細則第44條規定，免徵遺產稅」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>遺產繼承程序與稅務規劃是確保資產順利傳承與家族和諧的重要機制。了解並善用相關法律規定與節稅策略，不僅能有效降低稅務負擔，更能避免家族紛爭與法律糾紛。</p>
+<p>面對繼承事宜時，建議及早規劃、了解相關法律與稅務規定、尋求專業人士協助，並在每個程序階段積極行使法律賦予的權利，以維護自身權益與家族和諧。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或家人需要進行遺產規劃或面臨繼承程序，應立即尋求專業律師與會計師協助，確保繼承權益獲得完整保障，並進行合法有效的稅務規劃。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「所有遺產都要課稅」：其實有免稅額與多項扣除額可運用。</li><li>認為「遺囑可完全自由分配」：特留分制度保障特定繼承人基本權益。</li><li>忽略「拋棄繼承時效」：知悉得繼承之時起三個月內須向法院聲請。</li><li>把「生前贈與」當萬靈丹：需注意二年內贈與仍併入遺產總額課稅。</li><li>錯過「遺產稅申報期限」：繼承開始日起六個月內須完成申報。</li></ul></div>
+
+<div class="rights-card">
+  <h3>遺產規劃自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有重要事項可能忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未清查完整遺產">
+      <span>是否尚未<strong>完整清查</strong>被繼承人之動產、不動產與負債？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未考慮特留分">
+      <span>遺產分配是否未考慮<strong>特留分</strong>規定，可能導致爭議？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="稅務規劃不足">
+      <span>是否尚未進行合法<strong>節稅規劃</strong>，可能產生不必要稅負？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="遺囑效力疑慮">
+      <span>現有<strong>遺囑內容與形式</strong>是否符合法律要求，效力無疑？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未考慮特殊資產">
+      <span>是否尚未考慮<strong>公司股權、海外資產</strong>等特殊財產處理？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要遺產規劃協助？</h2>
+<p>我們的專業遺產規劃團隊擁有豐富經驗，能為您提供遺囑撰擬、稅務規劃、繼承程序協助與家族資產傳承等全方位法律服務，確保您的繼承權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 遺產稅免稅額是多少？有哪些常見扣除額？</div>
+<div class="faq-answer">A: 遺產稅免稅額為1,333萬元。常見扣除額包括：配偶扣除額493萬元、直系血親卑親屬每人50萬元、父母每人123萬元、喪葬費扣除額123萬元等。另有重度以上身心障礙特別扣除額618萬元。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以主張特留分扣減權？</div>
+<div class="faq-answer">A: 當被繼承人以遺囑將財產贈與他人，或遺贈數額導致法定繼承人應得之特留分不足時，受侵害之繼承人得於知悉其特留分被侵害之時起二年內，或自繼承開始時起十年內行使扣減權。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 拋棄繼承與限定繼承有何不同？</div>
+<div class="faq-answer">A: 拋棄繼承是全面放棄繼承權，包括資產與負債；限定繼承則是以繼承所得遺產為限，清償被繼承人債務。現行民法已改為全面限定繼承，但若知悉得繼承時起三個月內仍可辦理拋棄繼承。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 生前贈與有哪些稅務優惠與限制？</div>
+  <div class="faq-answer">A: 每人每年有244萬元贈與免稅額，此外婚嫁贈與時父母各有100萬元免稅額。但需注意死亡前二年內贈與特定人之財產，仍應併入遺產總額課稅。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 遺囑有哪些法定形式？如何確保遺囑效力？</div>
+  <div class="faq-answer">A: 法定遺囑形式包括自書遺囑、公證遺囑、密封遺囑、代筆遺囑與口授遺囑。為確保效力，建議採用公證遺囑或由律師見證之代筆遺囑，並注意遺囑人需具備行為能力，且內容不得違反特留分規定。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 保險給付是否需計入遺產課稅？</div>
+  <div class="faq-answer">A: 人壽保險金若已指定受益人，原則上不計入遺產總額。但若投保時已重病、高齡或短期內鉅額投保等有避稅意圖之情況，國稅局可能實質課稅，認定為遺產之一部分。</div>
+</div>
+
+</div>
+
+<script>
+        // 遺產繼承規劃檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'preparation') {
+                if (rightsViolation === 'tax') {
+                    recommendation = '進行生前稅務規劃';
+                    explanation = '您處於繼承前規劃階段且擔心稅務負擔，建議立即進行生前贈與、保險規劃等合法節稅策略，有效降低未來遺產稅負擔。';
+                } else {
+                    recommendation = '完善遺產規劃';
+                    explanation = '繼承前規劃階段是進行完整遺產規劃的最佳時機，建議諮詢專業人士，擬定遺囑並進行稅務規劃，確保資產順利傳承。';
+                }
+            } else if (procedureStage === 'reporting') {
+                recommendation = '正確申報遺產稅';
+                explanation = '遺產稅申報階段，應完整清查遺產並善用各項免稅額與扣除額，避免因申報不實而受罰，同時確保稅務規劃符合法律規定。';
+            } else if (procedureStage === 'division') {
+                if (rightsViolation === 'share') {
+                    recommendation = '保障特留分權益';
+                    explanation = '遺產分割階段若特留分受侵害，應及時行使扣減權，建議尋求專業律師協助，確保法定繼承權益獲得保障。';
+                } else {
+                    recommendation = '合法分割遺產';
+                    explanation = '遺產分割應遵循法律規定，避免侵害特留分，建議透過協議分割或必要時聲請法院裁判分割，確保程序合法有效。';
+                }
+            } else if (procedureStage === 'transfer') {
+                recommendation = '完成財產移轉';
+                explanation = '財產移轉階段需檢附遺產稅完稅證明，並依各財產類型辦理過戶登記，建議尋求專業協助，確保程序順利完成。';
+            }
+
+            // 根據案件類型調整建議
+            if (caseType === 'business') {
+                explanation += ' 特別注意家族企業股權的估值與傳承規劃，避免影響企業經營。';
+            } else if (caseType === 'overseas') {
+                explanation += ' 海外資產需注意雙重課稅問題與各國繼承法規差異。';
+            } else if (caseType === 'special') {
+                explanation += ' 特殊財產如專利、著作權等需特別注意估值與權利移轉程序。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = explanation;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const issues = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (issues.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '您的遺產規劃準備相當完善！建議定期檢視並更新規劃，以因應法律變更與個人情況變化。';
+            } else {
+                let advice = '您的遺產規劃有以下潛在問題需注意：<br><br>';
+                
+                if (issues.includes('未清查完整遺產')) {
+                    advice += '• <strong>遺產清查不完整</strong>：建議立即進行全面資產盤點，包括銀行帳戶、不動產、股票、保險及負債等。<br>';
+                }
+                if (issues.includes('未考慮特留分')) {
+                    advice += '• <strong>特留分問題</strong>：遺產分配需符合特留分規定，否則可能導致繼承爭議與法律訴訟。<br>';
+                }
+                if (issues.includes('稅務規劃不足')) {
+                    advice += '• <strong>稅務規劃不足</strong>：建議諮詢專業會計師，善用合法節稅策略降低遺產稅負擔。<br>';
+                }
+                if (issues.includes('遺囑效力疑慮')) {
+                    advice += '• <strong>遺囑效力問題</strong>：建議尋求律師協助，確保遺囑形式與內容符合法律要求。<br>';
+                }
+                if (issues.includes('未考慮特殊資產')) {
+                    advice += '• <strong>特殊資產處理</strong>：公司股權、海外資產等需特別規劃，建議尋求專業協助。<br>';
+                }
+                
+                advice += '<br>建議立即預約專業律師與會計師進行完整遺產規劃諮詢。';
+                document.getElementById('checklist-text').innerHTML = advice;
+            }
+            
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
