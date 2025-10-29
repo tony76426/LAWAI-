@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>最有利標評選爭議與救濟時程 | 專業法律資訊平台</title>
+<meta content="詳細解析評選紀錄、資訊公開與申訴策略，保障政府採購程序正義" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 最有利標評選爭議與救濟時程
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">政府採購</span>
+<h1 class="article-title">最有利標評選爭議與救濟時程</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="最有利標評選爭議與救濟時程專業解析" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>面對政府採購最有利標評選程序，廠商享有哪些權利保障？評選紀錄與資訊公開如何確保程序透明？本文將詳細解析評選爭議類型、救濟時程與申訴策略，幫助您了解在政府採購程序中如何有效保障自身權益，確保評選程序的公正性與合法性。</p>
+<div class="highlight-box">
+<p>最有利標評選程序中的權利保障是政府採購公平性的核心，了解並善用這些權利，不僅是保護廠商權益的重要手段，更是維護採購程序公正的基礎。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>最有利標評選程序解析</h2>
+<h3>評選程序基本原則</h3>
+<p>根據政府採購法第52條及相關子法規定，最有利標評選程序應遵循下列原則：</p>
+<ol>
+<li>評選項目應與採購目的相關</li>
+<li>評選標準應具體明確且可量化</li>
+<li>評選委員應具專業性與公正性</li>
+<li>評選過程應有完整紀錄</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：評選程序瑕疵</div>
+<div class="case-content">在實務判決中，行政法院明確指出，若評選委員會未依法定程序進行評選，或評選標準不明確，該評選結果可能因程序瑕疵而被撤銷。此案例確立了評選程序公正性的重要性。</div>
+</div>
+<h3>評選紀錄與資訊公開</h3>
+<p>最有利標評選程序應有完整紀錄並適度公開：</p>
+<ul>
+<li>評選會議紀錄：應記載各委員評分及綜合評選結果</li>
+<li>評選過程文件：包括廠商投標文件、簡報資料等</li>
+<li>資訊公開範圍：除依法應保密事項外，應適度公開評選資訊</li>
+<li>廠商查詢權：落選廠商得依法請求說明落選原因</li>
+</ul>
+<div class="warning-box">
+<p>注意：若評選程序未依法公開或紀錄不完整，該採購程序可能因違反程序正義而遭撤銷。此為重要救濟理由。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>評選爭議救濟程序</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>救濟階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>時程限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>異議程序</td>
+<td>請求說明、程序異議</td>
+<td>採購法第75條</td>
+<td>15日內提出</td>
+</tr>
+<tr>
+<td>申訴程序</td>
+<td>申訴審議、暫時權利保護</td>
+<td>採購法第76條</td>
+<td>異議結果收到後15日內</td>
+</tr>
+<tr>
+<td>行政訴訟</td>
+<td>撤銷訴訟、確認訴訟</td>
+<td>行政訴訟法第4、6條</td>
+<td>申訴審議判斷後2個月內</td>
+</tr>
+<tr>
+<td>損害賠償</td>
+<td>國家賠償、契約責任</td>
+<td>國家賠償法、民法</td>
+<td>知有損害時起2年內</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">評選爭議救濟檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個程序階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="evaluation">評選階段</option>
+<option value="announcement">決標公告</option>
+<option value="objection">異議程序</option>
+<option value="appeal">申訴程序</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些程序可能存有瑕疵？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="criteria">評選標準不明確</option>
+<option value="committee">評選委員不適格</option>
+<option value="record">評選紀錄不完整</option>
+<option value="procedure">評選程序違法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">採購案件類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="construction">工程採購</option>
+<option value="service">勞務採購</option>
+<option value="goods">財物採購</option>
+<option value="technology">技術服務</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測救濟策略</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>救濟策略建議：無論處於何種程序階段，及時行動、保存證據、尋求專業法律協助是保障自身權益的三大關鍵。切勿因時程延誤而喪失救濟權利。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>評選瑕疵與證據保全</h2>
+<h3>評選程序瑕疵類型</h3>
+<p>最有利標評選常見程序瑕疵：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">評選標準瑕疵</div>
+<div class="step-desc">評選項目與採購目的無關或標準不明確</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">評選委員瑕疵</div>
+<div class="step-desc">委員資格不符、應迴避未迴避或比例不當</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">評選過程瑕疵</div>
+<div class="step-desc">評分不一致、未依評選標準或程序不公開</div>
+</div>
+</div>
+</div>
+<h3>證據保全與舉證策略</h3>
+<p>評選爭議中應妥善保全的關鍵證據：</p>
+<ul>
+<li>招標文件：完整保存招標公告及相關附件</li>
+<li>評選紀錄：設法取得評選會議紀錄及評分表</li>
+<li>往來文件：與機關間所有書面往來及電子郵件</li>
+<li>專家意見：必要時尋求專業技術或法律意見</li>
+<li>類似案例：收集相關行政法院或採購申訴審議委員會判決</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：評選程序合法性</div>
+<div class="case-content">實務判決確立了評選程序合法性原則，明確指出「最有利標之評選程序，應確保公平、公正、公開，評選委員之組成、評選項目與標準之訂定，均應符合採購法之規定」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>最有利標評選程序的公正性是政府採購制度的核心價值。了解並善用救濟程序，不僅能有效防禦不當評選，更能確保採購程序的公正性與合法性。</p>
+<p>面對評選爭議時，建議及時行動、完整保存證據、尋求專業法律協助，並在每個救濟階段積極行使法律賦予的權利，以維護自身權益與採購公正。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或公司面臨最有利標評選爭議，應立即尋求專業政府採購法律專家協助，確保救濟權利獲得完整保障，維護合法權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「評選結果＝最終決定」：評選程序瑕疵可依法救濟。</li><li>認為「異議＝抗爭」：異議是法定權利，非對立行為。</li><li>忽略救濟時效：異議、申訴均有嚴格時限，逾期不受理。</li><li>輕視評選紀錄重要性：完整紀錄是證明程序瑕疵關鍵。</li><li>錯過證據保全時機：評選結束後證據取得困難度增加。</li></ul></div>
+
+<div class="rights-card">
+  <h3>評選爭議自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有程序瑕疵，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="評選標準不明確">
+      <span>招標文件之<strong>評選標準</strong>是否不夠具體或與採購目的無關？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="評選委員適格性疑慮">
+      <span>是否有<strong>評選委員</strong>資格不符、應迴避未迴避之情形？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="評選程序不公開">
+      <span>評選<strong>程序是否不公開</strong>，或未依法給予廠商陳述機會？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="評選紀錄不完整">
+      <span>評選<strong>會議紀錄</strong>是否記載不完整或拒絕提供？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未保存相關證據">
+      <span>是否尚未<strong>保存／請求</strong>相關招標、評選文件證據？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要政府採購法律協助？</h2>
+<p>我們的專業政府採購法律團隊擁有豐富經驗，能為您提供評選程序分析、異議申訴、行政訴訟等全方位法律服務，確保您的採購權利獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果評選標準不明確，該如何救濟？</div>
+<div class="faq-answer">A: 若評選標準不夠具體明確，您應於知悉後15日內向招標機關提出異議，主張評選標準違反政府採購法規定。如異議未獲採納，得於收到異議處理結果後15日內向採購申訴審議委員會提出申訴。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 評選會議紀錄可以要求提供嗎？</div>
+<div class="faq-answer">A: 根據政府採購法及政府資訊公開法規定，落選廠商得請求機關說明評選結果及原因。評選會議紀錄除涉及國家機密、營業秘密等依法應保密事項外，機關應適度提供相關資訊。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 評選委員組成不當，會有什麼後果？</div>
+<div class="faq-answer">A: 若評選委員組成不符合法定要求（如專業性不足、應迴避未迴避等），該評選程序可能因重大瑕疵而被撤銷。此為重要救濟理由，得於異議、申訴程序中主張。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 評選程序中的簡報與詢答，廠商有何權利？</div>
+  <div class="faq-answer">A: 廠商有權依招標文件規定進行簡報與答詢，機關應給予公平機會。若機關未依法給予陳述機會或區別對待，可能構成程序瑕疵，得依法救濟。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 評選分數計算有誤，該如何處理？</div>
+  <div class="faq-answer">A: 如發現評選分數計算有明顯錯誤，應立即以書面請求機關更正。如機關拒絕更正，得於法定期限內提出異議，並請求重新計算分數及評定最有利標。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 評選爭議救濟的時程為何？</div>
+  <div class="faq-answer">A: 異議應於事實發生或知悉後15日內提出；申訴應於收受異議處理結果後15日內提出；行政訴訟應於申訴審議判斷書送達後2個月內提起。各階段均有嚴格時限，切勿延誤。</div>
+</div>
+
+</div>
+
+<script>
+        // 評選爭議救濟檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'evaluation') {
+                if (rightsViolation === 'criteria') {
+                    recommendation = '立即提出程序異議';
+                    explanation = '您處於評選階段且評選標準不明確，建議立即以書面向招標機關提出程序異議，要求澄清或修正評選標準。在此情況下進行的評選可能因程序瑕疵而無效。';
+                } else {
+                    recommendation = '請求程序資訊公開';
+                    explanation = '評選階段是程序最容易存有瑕疵的時期，建議立即請求相關評選程序資訊，並考慮尋求專業法律協助，以保障您的程序權利。';
+                }
+            } else if (procedureStage === 'announcement') {
+                recommendation = '提出異議與資訊請求';
+                explanation = '決標公告後，如發現評選程序有瑕疵，應於15日內提出異議。同時可請求機關說明評選結果及提供相關評選紀錄，作為後續救濟依據。';
+            } else if (procedureStage === 'objection') {
+                recommendation = '準備申訴程序';
+                explanation = '異議程序如未獲滿意結果，應於收到處理結果後15日內向採購申訴審議委員會提出申訴。此時應完整整理證據與法律論點，必要時尋求專業協助。';
+            } else {
+                recommendation = '行政訴訟準備';
+                explanation = '申訴程序後如未獲有利結果，得於2個月內提起行政訴訟。此時應著重於程序瑕疵與法律適用問題的論證，並考慮尋求專業訴訟協助。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 評選爭議自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkedItems = document.querySelectorAll('.chk-right:checked');
+            const count = checkedItems.length;
+            
+            let resultText = '';
+            if (count === 0) {
+                resultText = '目前未發現明顯程序瑕疵，但仍建議保存相關文件，並密切關注評選程序發展。';
+            } else if (count <= 2) {
+                resultText = '發現部分程序瑕疵可能，建議立即保存相關證據，並考慮向招標機關請求說明或提出程序異議。';
+            } else {
+                resultText = '發現多項程序瑕疵可能，建議立即尋求專業政府採購法律協助，評估提出異議或申訴之可行性與策略。';
+            }
+            
+            document.getElementById('checklist-text').innerHTML = resultText;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

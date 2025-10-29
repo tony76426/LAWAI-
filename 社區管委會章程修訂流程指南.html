@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>社區管委會章程修訂流程指南 | 專業法律資訊平台</title>
+<meta content="詳細解析章程修訂的召集程序、表決門檻與備查重點，保障社區自治權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 社區管委會章程修訂流程指南
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">社區法律</span>
+<h1 class="article-title">社區管委會章程修訂流程指南</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="社區管委會章程修訂流程指南專業解析" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>社區管委會章程是社區自治的根本大法，其修訂程序直接關係到社區治理的合法性與有效性。本文將詳細解析章程修訂的召集程序、表決門檻與備查重點，幫助您了解在社區章程修訂過程中如何確保程序合法、表決有效，保障社區居民的共同權益。</p>
+<div class="highlight-box">
+<p>章程修訂是社區自治的重要環節，了解並遵循法定程序，不僅能確保修訂結果的合法性，更能促進社區和諧與長遠發展。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>章程修訂基本流程解析</h2>
+<h3>召集程序與通知要求</h3>
+<p>根據《公寓大廈管理條例》第25條規定，區分所有權人會議之召集程序如下：</p>
+<ol>
+<li>管委會應於開會前10日通知各區分所有權人</li>
+<li>通知應載明會議內容，特別是章程修訂議案</li>
+<li>通知方式應符合規約或慣例，並保留送達證明</li>
+<li>緊急情況可縮短通知期限，但不得少於2日</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：召集程序瑕疵</div>
+<div class="case-content">在實務判決中，法院明確指出，若區分所有權人會議未依法定程序召集，所通過之章程修訂決議無效。此案例確立了程序合法性的重要性。</div>
+</div>
+<h3>表決門檻與決議效力</h3>
+<p>章程修訂需符合法定表決門檻：</p>
+<ul>
+<li>普通事項：應有區分所有權人過半數及其應有部分過半數同意</li>
+<li>重大事項：應有區分所有權人三分之二以上及其應有部分三分之二以上同意</li>
+<li>章程修訂：通常屬於重大事項，需符合三分之二門檻</li>
+<li>特殊規定：規約另有規定者，從其規定，但不得低於法定門檻</li>
+</ul>
+<div class="warning-box">
+<p>注意：若章程修訂未達法定表決門檻，該決議將因程序違法而無效。此為絕對無效事由，利害關係人得訴請法院確認決議無效。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>章程修訂程序保障</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>程序階段</th>
+<th>主要要求</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提案階段</td>
+<td>提案資格、提案形式、提案內容</td>
+<td>公寓大廈管理條例第25、30條</td>
+<td>異議、申訴</td>
+</tr>
+<tr>
+<td>召集階段</td>
+<td>通知期限、通知方式、會議內容</td>
+<td>公寓大廈管理條例第25、30條</td>
+<td>異議、行政申訴</td>
+</tr>
+<tr>
+<td>表決階段</td>
+<td>表決方式、表決門檻、計票程序</td>
+<td>公寓大廈管理條例第31、32條</td>
+<td>異議、司法救濟</td>
+</tr>
+<tr>
+<td>備查階段</td>
+<td>決議送備、文件齊備、主管機關審查</td>
+<td>公寓大廈管理條例第34、59條</td>
+<td>補正、行政救濟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">章程修訂程序檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個修訂程序階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="proposal">提案階段</option>
+<option value="convene">召集階段</option>
+<option value="voting">表決階段</option>
+<option value="filing">備查階段</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些程序可能出現問題？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="convene">召集程序不合法</option>
+<option value="quorum">表決門檻未達標</option>
+<option value="content">議案內容不適當</option>
+<option value="procedure">程序違法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">章程修訂類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">一般條文修訂</option>
+<option value="important">重要條款變更</option>
+<option value="structure">組織結構調整</option>
+<option value="financial">財務管理變更</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測程序合法性</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>程序建議：無論處於何種程序階段，確保程序合法、保留完整記錄、尋求專業法律意見是保障章程修訂有效性的三大關鍵。切勿因程序瑕疵導致修訂結果無效。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>備查程序與文件要求</h2>
+<h3>備查文件要件</h3>
+<p>章程修訂完成後，應向主管機關辦理備查：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">會議記錄</div>
+<div class="step-desc">包含出席人數、表決過程與決議內容</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">修訂條文對照表</div>
+<div class="step-desc">明確標示新增、刪除與修改內容</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">表決統計</div>
+<div class="step-desc">證明已達法定表決門檻</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">4</div>
+<div class="step-content">
+<div class="step-title">通知證明</div>
+<div class="step-desc">會議召集程序合法之證明文件</div>
+</div>
+</div>
+</div>
+<h3>備查注意事項</h3>
+<p>主管機關審查重點與常見問題：</p>
+<ul>
+<li>程序合法性：會議召集、表決程序是否符合法定要求</li>
+<li>內容適法性：修訂內容是否違反強制或禁止規定</li>
+<li>表決門檻：是否達到法定或規約規定之表決比例</li>
+<li>文件完整性：備查文件是否齊全、內容是否一致</li>
+<li>補正程序：文件不齊或程序瑕疵時的補正要求</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：章程修訂效力</div>
+<div class="case-content">實務判決確立了章程修訂的程序要求，明確指出「區分所有權人會議之召集程序或決議方法違反法令或規約時，利害關係人得於決議後三個月內訴請法院撤銷其決議」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>社區管委會章程修訂是社區自治的重要體現，遵循法定程序不僅能確保修訂結果的合法性，更能促進社區和諧與長遠發展。</p>
+<p>進行章程修訂時，建議提前規劃、確保程序合法、保留完整記錄，並在必要時尋求專業法律協助，以維護社區居民的共同權益與社區治理的有效性。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您社區正計劃進行章程修訂，應提前了解法定程序，確保每一步驟符合法律要求，必要時尋求專業法律意見，避免程序瑕疵導致修訂無效。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「多數同意即可」：章程修訂需達三分之二特殊決議門檻。</li><li>認為「口頭通知有效」：會議召集需書面通知並保留送達證明。</li><li>忽略「代理表決限制」：委託代理表決需符合法定形式與限制。</li><li>把「備查當核准」：主管機關備查不表示核准修訂內容合法性。</li><li>錯把「規約當章程」：規約修訂與章程修訂程序門檻不同。</li></ul></div>
+
+<div class="rights-card">
+  <h3>章程修訂自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有程序可能出現問題，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="召集程序不完整">
+      <span>會議召集是否未依法提前<strong>通知全體區分所有權人</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="表決門檻未達標">
+      <span>表決結果是否未達<strong>法定三分之二門檻</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="會議記錄不完整">
+      <span>會議記錄是否未完整記載<strong>出席人數與表決過程</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="修訂內容不適當">
+      <span>修訂內容是否有<strong>違反強制或禁止規定</strong>之虞？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="備查文件不齊全">
+      <span>備查文件是否<strong>不完整或內容不一致</strong>？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要社區法律協助？</h2>
+<p>我們的專業社區法律團隊擁有豐富經驗，能為您提供章程修訂程序指導、會議記錄審查、表決程序規劃、主管機關備查等全方位法律服務，確保您的社區章程修訂程序合法有效。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果管委會未依法提前通知就召開會議，該怎麼辦？</div>
+<div class="faq-answer">A: 若管委會未依法定程序提前通知即召開區分所有權人會議，所通過之章程修訂決議可能因程序違法而無效。您應於決議後三個月內訴請法院撤銷該決議，或向主管機關提出異議。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以聲請確認決議無效？</div>
+<div class="faq-answer">A: 當區分所有權人會議之召集程序或決議方法違反法令或規約時，利害關係人得訴請法院確認決議無效。常見情況包括：未達法定表決門檻、會議召集程序不合法、議案內容違反強制規定等。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 章程修訂如果未達三分之二門檻，會有什麼後果？</div>
+<div class="faq-answer">A: 章程修訂若未達法定三分之二表決門檻，該決議將因程序違法而無效。此為絕對無效事由，利害關係人得隨時訴請法院確認決議無效，不受三個月除斥期間限制。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 區分所有權人會議可以委託他人代理出席嗎？</div>
+  <div class="faq-answer">A: 可以，但應出具委託書，並載明授權範圍。惟同一代理人不得同時代理二人以上之區分所有權人，但若同一區分所有權人擁有數專有部分者，不在此限。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 章程修訂後何時生效？需要主管機關核准嗎？</div>
+<div class="faq-answer">A: 章程修訂經區分所有權人會議決議通過後即生效，但應於決議後15日內報請主管機關備查。備查性質為事後備查，非事前核准，但主管機關得審查其合法性。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 如果對章程修訂內容有異議，應該如何救濟？</div>
+  <div class="faq-answer">A: 對章程修訂內容有異議時，得於決議後三個月內訴請法院撤銷決議；若內容違反強制或禁止規定，得訴請法院確認決議無效。亦可向主管機關陳情，請求依法處理。</div>
+</div>
+
+</div>
+
+<script>
+        // 章程修訂程序檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'proposal') {
+                if (rightsViolation === 'convene') {
+                    recommendation = '重新審查提案程序';
+                    explanation = '您處於提案階段且程序可能不合法，建議重新審查提案資格與程序，確保符合規約與法令要求。程序瑕疵可能導致後續修訂無效。';
+                } else {
+                    recommendation = '完善提案內容';
+                    explanation = '提案階段是章程修訂的基礎，建議確保提案內容明確、合法，並符合社區最大利益，必要時尋求專業法律意見。';
+                }
+            } else if (procedureStage === 'convene') {
+                recommendation = '補正召集程序';
+                explanation = '會議召集階段，如發現程序瑕疵，應立即補正。確保通知期限、方式與內容符合法定要求，避免決議因程序問題而無效。';
+            } else if (procedureStage === 'voting') {
+                recommendation = '確認表決合法性';
+                explanation = '表決階段應確保表決方式、計票程序與表決門檻符合法定要求。如發現問題，應立即提出異議，避免決議效力受影響。';
+            } else if (procedureStage === 'filing') {
+                recommendation = '補齊備查文件';
+                explanation = '備查階段應確保文件齊全、內容一致。如發現問題，應立即補正，避免主管機關不予備查或要求重新召開會議。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = explanation;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            if (checkboxes.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '目前未發現明顯程序問題，但仍建議審慎遵循法定程序，必要時尋求專業法律意見。';
+            } else {
+                let issues = [];
+                checkboxes.forEach(cb => {
+                    issues.push(cb.value);
+                });
+                document.getElementById('checklist-text').innerHTML = `您可能面臨以下程序問題：${issues.join('、')}。建議立即尋求專業法律協助，評估程序合法性並採取適當補救措施。`;
+            }
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

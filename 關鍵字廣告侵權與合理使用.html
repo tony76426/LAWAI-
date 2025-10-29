@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>關鍵字廣告侵權與合理使用 | 專業法律資訊平台</title>
+<meta content="詳細解析商標侵害、混淆可能性與比較廣告等關鍵議題，保障數位行銷合法權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 關鍵字廣告侵權與合理使用
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">智慧財產權</span>
+<h1 class="article-title">關鍵字廣告侵權與合理使用</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="關鍵字廣告侵權與合理使用專業解析" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>在數位行銷時代，關鍵字廣告已成為企業推廣產品與服務的重要工具。然而，使用競爭對手商標作為關鍵字是否構成侵權？如何判斷混淆可能性？比較廣告的界線又在哪裡？本文將詳細解析商標侵害、混淆可能性與比較廣告等關鍵議題，幫助企業在數位行銷中合法經營，避免侵權風險。</p>
+<div class="highlight-box">
+<p>關鍵字廣告的法律風險管理是現代企業數位行銷的重要環節，了解並遵守相關法律規範，不僅能保護品牌價值，更能避免潛在的法律糾紛與商譽損害。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>關鍵字廣告法律議題解析</h2>
+<h3>商標侵害認定標準</h3>
+<p>根據商標法及相關司法實務，關鍵字廣告是否構成商標侵害需考量以下因素：</p>
+<ol>
+<li>商標識別性強弱</li>
+<li>商品或服務的類似程度</li>
+<li>商標的近似程度</li>
+<li>先權利人多角化經營的可能性</li>
+<li>實際混淆誤認之情事</li>
+<li>相關消費者對各商標熟悉之程度</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：關鍵字廣告的商標使用</div>
+<div class="case-content">在實務判決中，法院明確指出，將他人商標作為關鍵字購買，若導致消費者產生混淆誤認之虞，即構成商標侵害。此案例確立了關鍵字廣告中商標使用的法律界線。</div>
+</div>
+<h3>混淆可能性判斷</h3>
+<p>判斷關鍵字廣告是否構成混淆誤認之虞，需綜合考量以下因素：</p>
+<ul>
+<li>廣告標題與內容是否明確區分不同來源</li>
+<li>搜尋結果頁面是否清楚標示廣告商身份</li>
+<li>相關消費者的注意力程度</li>
+<li>商品或服務的價格與購買決策時間</li>
+<li>實際混淆的證據</li>
+</ul>
+<div class="warning-box">
+<p>注意：即使關鍵字廣告未直接顯示競爭對手商標，若搜尋結果導致消費者對商品或服務來源產生混淆，仍可能構成商標侵害。此為企業進行數位行銷時的重要風險。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>關鍵字廣告法律風險比較</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>廣告類型</th>
+<th>主要風險</th>
+<th>法律依據</th>
+<th>防範措施</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>競爭對手商標關鍵字</td>
+<td>商標侵害、不公平競爭</td>
+<td>商標法第68、95條、公平交易法第25條</td>
+<td>明確標示廣告商身份、避免混淆表述</td>
+</tr>
+<tr>
+<td>比較廣告</td>
+<td>商標淡化、商業誹謗</td>
+<td>商標法第70條、公平交易法第24條</td>
+<td>事實陳述、客觀比較、註明資料來源</td>
+</tr>
+<tr>
+<td>關鍵字元標記</td>
+<td>商標權侵害、不正競爭</td>
+<td>商標法第5、68條</td>
+<td>避免將他人商標用於元標記</td>
+</tr>
+<tr>
+<td>關鍵字域名</td>
+<td>域名爭議、商標淡化</td>
+<td>商標法、網域名稱爭議處理辦法</td>
+<td>選擇具識別性域名、避免混淆性近似</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">關鍵字廣告合法性檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您的關鍵字廣告屬於哪種類型？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">競爭對手商標關鍵字</option>
+<option value="prosecution">比較廣告</option>
+<option value="detention">元標記使用</option>
+<option value="trial">通用詞彙廣告</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為可能面臨哪些法律風險？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">商標侵害風險</option>
+<option value="lawyer">不公平競爭風險</option>
+<option value="evidence">廣告不實風險</option>
+<option value="procedure">商業誹謗風險</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">您的產業類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">電子商務</option>
+<option value="serious">金融服務</option>
+<option value="economic">醫療健康</option>
+<option value="drug">教育培訓</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測法律風險</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>風險管理建議：無論採用何種關鍵字廣告策略，進行商標檢索、明確標示廣告商身份、避免混淆性表述、保存廣告審核記錄是降低法律風險的四大關鍵。切勿因追求點擊率而忽略潛在法律責任。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>合理使用與比較廣告界線</h2>
+<h3>合理使用要件</h3>
+<p>關鍵字廣告可能主張合理使用需符合以下要件：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">描述性合理使用</div>
+<div class="step-desc">以符合商業誠實慣例方法使用他人商標，描述自己商品或服務</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">指示性合理使用</div>
+<div class="step-desc">為指示自己商品或服務的用途而必要使用他人商標</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">非作為商標使用</div>
+<div class="step-desc">使用方式並非作為指示商品或服務來源的標識</div>
+</div>
+</div>
+</div>
+<h3>比較廣告合法性要件</h3>
+<p>合法的比較廣告應符合以下要件：</p>
+<ul>
+<li>比較內容客觀真實且可驗證</li>
+<li>比較項目與條件公平合理</li>
+<li>不貶低或不當影響競爭者商譽</li>
+<li>不引起消費者混淆誤認</li>
+<li>符合市場競爭的誠實慣例</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：比較廣告的合法性</div>
+<div class="case-content">實務判決確立了比較廣告的合法性標準，明確指出「比較廣告雖為商業言論之一種，受憲法言論自由之保障，但仍應受真實原則及公平競爭原則之規範，不得有虛偽不實或引人錯誤之表示」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>關鍵字廣告是現代企業不可或缺的行銷工具，但同時也伴隨著商標侵害、不公平競爭等法律風險。了解並遵守相關法律規範，不僅能有效降低法律風險，更能建立品牌的長期價值與市場信任。</p>
+<p>進行關鍵字廣告時，建議進行商標檢索與風險評估、明確標示廣告商身份、避免混淆性表述、保存廣告審核記錄，並在必要時尋求專業法律意見，以確保廣告活動的合法性與合規性。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您正在進行或規劃關鍵字廣告活動，應尋求專業智慧財產律師協助，進行商標檢索與廣告內容審查，確保廣告策略合法合規，避免潛在法律糾紛。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「未顯示商標＝不侵權」：關鍵字購買即使未顯示，仍可能構成商標使用。</li><li>認為「事實陳述＝完全免責」：比較廣告仍需符合公平原則與真實性要求。</li><li>忽略「混淆可能性」判斷：消費者混淆與否是侵權判斷關鍵因素。</li><li>把「合理使用」當萬用牌：合理使用有嚴格要件，非任意使用皆可免責。</li><li>錯把「行業通用詞」當自有：行業通用詞彙也可能受商標法保護。</li></ul></div>
+
+<div class="rights-card">
+  <h3>關鍵字廣告合法性檢查表</h3>
+  <p>快速勾選目前情況，立即檢視廣告活動是否有法律風險，並取得改善建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="使用競爭對手商標">
+      <span>是否使用<strong>競爭對手商標</strong>作為關鍵字？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="廣告內容未明確標示">
+      <span>廣告內容是否未明確標示<strong>廣告商身份</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="比較廣告未註明來源">
+      <span>比較廣告是否未註明<strong>數據來源</strong>與比較條件？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未進行商標檢索">
+      <span>是否尚未進行<strong>商標檢索</strong>與風險評估？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未保存廣告記錄">
+      <span>是否未保存<strong>廣告審核與修改記錄</strong>？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要關鍵字廣告法律諮詢？</h2>
+<p>我們的專業智慧財產律師團隊擁有豐富經驗，能為您提供商標檢索、廣告內容審查、風險評估與合規建議等全方位法律服務，確保您的數位行銷活動合法安全。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 使用競爭對手商標作為關鍵字是否一定構成侵權？</div>
+<div class="faq-answer">A: 不一定。關鍵在於是否導致消費者混淆誤認。如果廣告內容明確區分不同來源，且不會導致消費者對商品或服務來源產生混淆，可能不構成侵權。但此判斷需綜合考量多項因素，建議進行專業評估。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 比較廣告需要注意哪些法律問題？</div>
+<div class="faq-answer">A: 比較廣告必須符合真實性、客觀性與公平性原則。具體而言，比較內容應基於可驗證的事實、比較項目與條件應公平合理、不應貶低競爭者商譽，且不應引起消費者混淆。同時應註明數據來源與比較條件。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 如何降低關鍵字廣告的法律風險？</div>
+<div class="faq-answer">A: 可採取以下措施降低風險：進行商標檢索與風險評估、明確標示廣告商身份、避免使用可能導致混淆的表述、保存廣告審核與修改記錄、定期審查廣告內容合法性，並在必要時尋求專業法律意見。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 元標記（Meta Tags）中使用他人商標是否構成侵權？</div>
+  <div class="faq-answer">A: 是的，在元標記中使用他人商標可能構成商標侵害。法院見解認為，元標記作為網站內容的一部分，其使用他人商標可能導致初始興趣混淆，即使消費者最終能區分不同來源，仍可能構成侵權。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 關鍵字廣告的合理使用如何主張？</div>
+  <div class="faq-answer">A: 主張合理使用需符合以下要件：使用方式符合商業誠實慣例、為描述商品或服務特性所必要、非作為商標使用，且不會導致消費者混淆。具體個案是否構成合理使用，需由法院綜合考量相關事證判斷。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 收到關鍵字廣告侵權警告函該如何處理？</div>
+  <div class="faq-answer">A: 收到警告函應冷靜處理：首先保存相關證據（廣告內容、關鍵字記錄等），其次評估對方主張的合理性，必要時暫停可能侵權的廣告活動，最後尋求專業律師協助，擬定回應策略與後續處理方案。</div>
+</div>
+
+</div>
+
+<script>
+        // 關鍵字廣告合法性檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '立即進行商標檢索與風險評估';
+                    explanation = '您使用競爭對手商標作為關鍵字且面臨商標侵害風險，建議立即進行商標檢索與混淆可能性評估，並審查廣告內容是否明確區分不同來源。';
+                } else {
+                    recommendation = '審查廣告內容與標示';
+                    explanation = '競爭對手商標關鍵字廣告是法律風險較高的行銷方式，建議審查廣告內容是否明確標示廣告商身份，避免任何可能導致消費者混淆的表述。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '確保比較內容真實客觀';
+                explanation = '比較廣告必須基於可驗證的事實與公平的比較條件。建議審查所有比較聲明的真實性與客觀性，並註明數據來源與比較條件。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '避免元標記不當使用';
+                explanation = '元標記中使用他人商標可能構成商標侵害。建議審查網站元標記內容，避免使用他人商標作為吸引流量的工具，除非符合合理使用要件。';
+            } else {
+                recommendation = '確認詞彙的商標狀態';
+                explanation = '通用詞彙廣告雖風險較低，但仍需確認該詞彙是否已被他人註冊為商標。建議進行商標檢索，並確保廣告內容不會導致消費者混淆。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<p>${explanation}</p><p><strong>建議行動：${recommendation}</strong></p>`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 權利檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const count = checkboxes.length;
+            let advice = '';
+            
+            if (count === 0) {
+                advice = '您的關鍵字廣告策略目前看來較為安全，但仍建議定期進行商標檢索與廣告內容審查，以確保持續合規。';
+            } else if (count <= 2) {
+                advice = '您的關鍵字廣告存在中度法律風險。建議針對勾選項目進行改善，特別是明確標示廣告商身份與進行商標檢索，以降低潛在法律責任。';
+            } else {
+                advice = '您的關鍵字廣告存在高度法律風險。建議立即尋求專業法律意見，全面審查廣告策略與內容，並採取必要改善措施，避免潛在的法律糾紛與商譽損害。';
+            }
+            
+            document.getElementById('checklist-text').innerHTML = advice;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

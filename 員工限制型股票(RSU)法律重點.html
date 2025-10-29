@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>員工限制型股票(RSU)法律重點 | 專業法律資訊平台</title>
+<meta content="詳細解析RSU歸屬條件、解職影響與競業條款等關鍵議題，保障員工權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 員工限制型股票(RSU)法律重點
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">勞動權益</span>
+<h1 class="article-title">員工限制型股票(RSU)法律重點</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="員工限制型股票(RSU)法律重點解析" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>限制型股票單位(RSU)是現代企業常見的員工激勵工具，但其中涉及的法律問題與權益保障您了解多少？本文將詳細解析RSU的歸屬條件、解職影響、競業條款與稅務規劃等關鍵法律議題，幫助您了解如何保障自身權益，避免因不了解相關規定而蒙受損失。</p>
+<div class="highlight-box">
+<p>RSU是企業吸引與留住人才的重要工具，但員工必須清楚了解相關權利義務，才能在職涯變動時做出最佳決策，保障自身權益。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>RSU基本法律解析</h2>
+<h3>歸屬條件與時程</h3>
+<p>RSU的歸屬通常有以下幾種模式：</p>
+<ol>
+<li>服務年限歸屬：按在職時間逐步解鎖</li>
+<li>績效條件歸屬：達成特定業績目標後歸屬</li>
+<li>混合型歸屬：結合服務年限與績效條件</li>
+<li>里程碑歸屬：完成特定專案或里程碑後歸屬</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：歸屬條件爭議</div>
+<div class="case-content">曾有員工因公司調整組織架構導致職務變更，公司主張其不再符合原RSU歸屬條件。法院判決認為，若非員工自願離職且公司單方面變更職務內容，應視為已滿足歸屬條件。</div>
+</div>
+<h3>解職對RSU的影響</h3>
+<p>不同離職情況對RSU權益的影響：</p>
+<ul>
+<li>自願離職：通常喪失未歸屬部分，已歸屬部分依協議處理</li>
+<li>非自願離職：可能加速部分未歸屬RSU的歸屬</li>
+<li>退休：可能享有更優惠的歸屬條件</li>
+<li>因故解職：通常完全喪失所有未歸屬RSU</li>
+</ul>
+<div class="warning-box">
+<p>注意：RSU協議中常包含「因故解職」的寬泛定義，可能包括績效不佳、違反公司政策等情況，員工應仔細審閱相關條款。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>RSU權利保障對照表</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>權益項目</th>
+<th>主要內容</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>歸屬權利</td>
+<td>服務年限、績效條件達成後的股票取得權</td>
+<td>勞動基準法、公司規章</td>
+<td>民事訴訟、勞資爭議調解</td>
+</tr>
+<tr>
+<td>解職影響</td>
+<td>不同離職情況對未歸屬RSU的處理</td>
+<td>勞動契約、RSU協議</td>
+<td>確認之訴、損害賠償</td>
+</tr>
+<tr>
+<td>競業限制</td>
+<td>離職後競業禁止與RSU權益的關聯</td>
+<td>營業秘密法、勞基法第9-1條</td>
+<td>確認條款無效、損害賠償</td>
+</tr>
+<tr>
+<td>稅務規劃</td>
+<td>歸屬時點、出售時點的稅負計算與規劃</td>
+<td>所得稅法、相關稅務法令</td>
+<td>稅務申報、行政救濟</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">RSU權益保障檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個職涯階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="employment">在職中</option>
+<option value="considering">考慮離職</option>
+<option value="terminated">已離職</option>
+<option value="disputed">權益爭議中</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些RSU權益可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="vesting">歸屬條件爭議</option>
+<option value="termination">解職影響權益</option>
+<option value="noncompete">競業條款限制</option>
+<option value="tax">稅務規劃問題</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">公司類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="listed">上市公司</option>
+<option value="preipo">Pre-IPO公司</option>
+<option value="foreign">外商公司</option>
+<option value="local">本土企業</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權益保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權益保障建議：無論處於何種職涯階段，仔細審閱RSU協議、了解歸屬條件、尋求專業法律與稅務建議是保障自身權益的三大關鍵。切勿因不了解相關規定而蒙受損失。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>競業條款與RSU權益</h2>
+<h3>競業禁止有效性要件</h3>
+<p>有效的競業禁止條款必須符合以下要件：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">合理補償</div>
+<div class="step-desc">雇主應提供合理補償，通常不低於離職時月薪的50%</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">合理期間</div>
+<div class="step-desc">競業禁止期間最長不得超過二年</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">合理區域</div>
+<div class="step-desc">競業禁止區域應以雇主實際營業活動範圍為限</div>
+</div>
+</div>
+</div>
+<h3>RSU與競業禁止的關聯</h3>
+<p>RSU協議中常見的競業相關條款：</p>
+<ul>
+<li>違反競業條款可能導致已歸屬但未發放的RSU被沒收</li>
+<li>部分公司以加速RSU歸屬作為競業禁止的補償</li>
+<li>競業禁止期間的長短可能影響RSU的歸屬時程</li>
+<li>違反競業條款可能引發民事賠償責任</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：競業條款與股權獎勵</div>
+<div class="case-content">實務判決確立了競業禁止條款與股權獎勵的關聯性，明確指出「雇主以員工違反競業禁止條款為由，沒收其已歸屬之RSU，應審酌該沒收是否與員工可能造成之損害相當，避免過度懲罰」。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>RSU是現代職場重要的薪酬組成部分，了解相關法律規定與權益保障機制，對於職涯規劃與財務安全至關重要。員工應主動了解RSU協議內容，特別關注歸屬條件、解職影響與競業條款等關鍵議題。</p>
+<p>面對職涯變動時，建議仔細評估RSU權益影響、尋求專業法律與財務建議，並在必要時透過合法途徑保障自身權益，避免因不了解相關規定而蒙受損失。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您對RSU權益有疑問或面臨相關爭議，應立即尋求專業勞動法律師協助，確保自身權益獲得完整保障，做出最有利的職涯決策。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「離職＝全數喪失」：不同離職情況對RSU影響不同。</li><li>忽略歸屬條件細節：績效條件與服務年限需同時滿足。</li><li>未審閱競業條款：違反競業可能影響已歸屬RSU。</li><li>低估稅務影響：歸屬與出售時點稅負計算不同。</li><li>錯過行使期限：已歸屬RSU可能有特定行使期限。</li></ul></div>
+
+<div class="rights-card">
+  <h3>RSU權益自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權益可能受影響，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未清楚歸屬條件">
+      <span>是否未完全了解RSU的<strong>歸屬條件與時程</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="解職影響不明">
+      <span>是否不清楚<strong>離職對RSU權益</strong>的具體影響？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="競業條款限制">
+      <span>RSU協議中是否包含<strong>競業禁止條款</strong>，且不了解其效力？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="稅務規劃不足">
+      <span>是否尚未進行RSU<strong>稅務規劃</strong>，可能面臨高額稅負？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="協議內容存疑">
+      <span>是否對RSU協議部分條款<strong>存有疑慮</strong>，但尚未尋求專業意見？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要RSU法律諮詢？</h2>
+<p>我們的專業勞動法律師團隊擁有豐富經驗，能為您提供RSU協議審閱、權益保障、離職規劃與競業條款分析等全方位法律服務，確保您的RSU權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果公司以績效不佳為由拒絕RSU歸屬，該怎麼辦？</div>
+<div class="faq-answer">A: 若公司以績效不佳為由拒絕RSU歸屬，您應先檢視RSU協議中對績效條件的具體規定。如認為公司評估不公或程序不當，可請求公司提供具體評估標準與結果，必要時尋求法律途徑救濟。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 離職時哪些情況下可以保留未歸屬的RSU？</div>
+<div class="faq-answer">A: 離職時保留未歸屬RSU的情況包括：協議明確規定的特殊情況（如退休、特定原因離職）、公司合併或收購時的權益保障條款、或因公司違反勞動契約導致您被迫離職等。具體情況需視協議內容而定。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: RSU歸屬後多久必須行使？過期會怎樣？</div>
+<div class="faq-answer">A: RSU歸屬後通常會直接發放股票至您的證券帳戶，無需另行「行使」。但部分公司可能設定出售限制期，或要求在一定期限內處理稅務事宜。過期未處理可能導致股票被出售以支付稅款，或喪失相關權益。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 競業禁止期間公司是否應對RSU權益提供補償？</div>
+  <div class="faq-answer">A: 競業禁止期間公司應提供合理補償，此補償可能以多種形式呈現，包括現金補償、加速RSU歸屬或其他權益保障。若公司僅以已歸屬RSU作為競業禁止補償，應審酌其合理性是否符合法律規定。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: RSU與認股權證(Stock Options)有何主要區別？</div>
+  <div class="faq-answer">A: 主要區別在於：RSU歸屬後即直接取得股票，無需支付行使價格；認股權證則需支付約定價格才能取得股票。此外，兩者在稅務處理、價值變動風險與權利行使方式上也有顯著差異。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 境外公司發放的RSU在台灣如何課稅？</div>
+  <div class="faq-answer">A: 境外公司發放的RSU，於歸屬時點應計入基本所得額課稅（最低稅負制）。實際出售時產生的差價則屬財產交易所得。建議保留相關文件供申報使用，並考慮尋求專業稅務顧問協助規劃。</div>
+</div>
+
+</div>
+
+<script>
+        // RSU權益保障檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'employment') {
+                if (rightsViolation === 'vesting') {
+                    recommendation = '釐清歸屬條件';
+                    explanation = '您處於在職階段且對歸屬條件有疑慮，建議仔細審閱RSU協議，必要時向人資部門請求說明，並考慮尋求專業法律意見以確保權益。';
+                } else {
+                    recommendation = '預先規劃權益';
+                    explanation = '在職階段是了解與規劃RSU權益的最佳時機，建議全面了解歸屬條件、離職影響與稅務規劃，為可能的職涯變動做好準備。';
+                }
+            } else if (procedureStage === 'considering') {
+                recommendation = '評估離職影響';
+                explanation = '考慮離職階段，應仔細評估離職對RSU權益的具體影響，包括未歸屬部分的處理方式、已歸屬部分的行使期限，以及競業條款的限制。';
+            } else if (procedureStage === 'terminated') {
+                if (rightsViolation === 'termination') {
+                    recommendation = '確認解職影響';
+                    explanation = '已離職且對解職影響有疑慮，應立即檢視RSU協議與離職文件，確認公司處理方式是否符合協議約定，必要時尋求法律救濟。';
+                } else {
+                    recommendation = '檢視權益狀態';
+                    explanation = '已離職階段，應全面檢視RSU權益狀態，包括已歸屬部分的處理、未歸屬部分的喪失情況，以及競業條款的適用性。';
+                }
+            } else if (procedureStage === 'disputed') {
+                recommendation = '尋求法律協助';
+                explanation = '處於權益爭議中，建議立即尋求專業勞動法律師協助，評估爭議焦點與救濟途徑，確保自身權益獲得保障。';
+            }
+
+            // 根據公司類型調整建議
+            if (caseType === 'preipo') {
+                explanation += ' 特別注意：Pre-IPO公司的RSU價值評估與流動性可能與上市公司不同，需特別關注相關風險。';
+            } else if (caseType === 'foreign') {
+                explanation += ' 特別注意：外商公司的RSU協議可能適用外國法律，需確認管轄法院與準據法，評估在台灣的執行效力。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = explanation;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const issues = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (issues.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '您目前似乎對RSU權益有基本了解，建議定期檢視協議內容與相關法規變動，確保權益持續獲得保障。';
+            } else {
+                let advice = '根據您的勾選情況，我們建議：<ul style="margin-top:8px;margin-left:20px;">';
+                
+                if (issues.includes('未清楚歸屬條件')) {
+                    advice += '<li>仔細審閱RSU協議中的歸屬條件，必要時尋求專業解釋</li>';
+                }
+                if (issues.includes('解職影響不明')) {
+                    advice += '<li>了解不同離職情況對RSU的具體影響，做好職涯規劃</li>';
+                }
+                if (issues.includes('競業條款限制')) {
+                    advice += '<li>確認競業條款的合法性與影響範圍，評估離職後選擇</li>';
+                }
+                if (issues.includes('稅務規劃不足')) {
+                    advice += '<li>尋求專業稅務建議，規劃RSU歸屬與出售的稅務策略</li>';
+                }
+                if (issues.includes('協議內容存疑')) {
+                    advice += '<li>對存疑條款尋求專業法律意見，必要時與公司協商修改</li>';
+                }
+                
+                advice += '</ul>建議儘快採取行動，避免權益受損。';
+                document.getElementById('checklist-text').innerHTML = advice;
+            }
+            
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
