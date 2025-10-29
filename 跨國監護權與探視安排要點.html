@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>跨國監護權與探視安排要點 | 專業法律資訊平台</title>
+<meta content="詳細解析跨境監護權、探視安排與子女返還等關鍵議題，保障跨國家庭權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 跨國監護權與探視安排要點
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">家事法律</span>
+<h1 class="article-title">跨國監護權與探視安排要點</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="跨國監護權與探視安排要點專業解析" src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>隨著全球化發展，跨國婚姻與家庭日益增多，當跨國婚姻破裂時，子女監護權與探視安排成為複雜的法律議題。本文將詳細解析跨國監護權的管轄權問題、海牙公約的適用、子女最佳利益原則，以及跨國探視安排的實務操作，幫助您了解在跨國家庭爭議中如何保障子女權益與父母權利。</p>
+<div class="highlight-box">
+<p>跨國監護權爭議涉及不同國家的法律體系與文化差異，了解國際公約與各國法律規定，是保障子女權益與父母探視權利的關鍵。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>跨國監護權基本原則</h2>
+<h3>子女最佳利益原則</h3>
+<p>各國法院在決定跨國監護權時，均以「子女最佳利益」為最高指導原則，考量因素包括：</p>
+<ol>
+<li>子女的年齡、性別、健康狀況及意願</li>
+<li>父母與子女間的情感聯繫與互動關係</li>
+<li>父母照顧子女的能力與意願</li>
+<li>子女的生活環境穩定性與教育資源</li>
+<li>文化、語言與宗教背景的延續性</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：子女最佳利益的判斷</div>
+<div class="case-content">在跨國監護權案件中，法院通常會委請專業機構進行家庭評估，考量子女與父母雙方的親子關係、照顧能力，以及子女在現有環境中的適應狀況，以決定最符合子女利益的監護安排。</div>
+</div>
+<h3>管轄權與準據法</h3>
+<p>跨國監護權案件首先需確定哪個國家的法院有管轄權：</p>
+<ul>
+<li>慣居地原則：子女慣常居住地法院通常有管轄權</li>
+<li>國籍原則：部分國家以子女國籍作為管轄依據</li>
+<li>海牙公約：1980年《國際兒童誘拐民事方面公約》與1996年《關於父母責任和兒童保護措施的公約》</li>
+<li>準據法：通常適用法院地法或子女慣居地法</li>
+</ul>
+<div class="warning-box">
+<p>注意：未經他方同意擅自將子女帶離慣居地國家，可能構成國際兒童誘拐，違反海牙公約規定，導致民事及刑事責任。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>跨國監護權與探視安排</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>程序階段</th>
+<th>主要權利</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>監護權決定</td>
+<td>共同監護、單獨監護、主要居住權</td>
+<td>海牙公約、各國家庭法</td>
+<td>上訴、國際司法協助</td>
+</tr>
+<tr>
+<td>探視安排</td>
+<td>定期探視、長假期探視、遠距探視</td>
+<td>各國家庭法、法院命令</td>
+<td>強制執行、違反探視權訴訟</td>
+</tr>
+<tr>
+<td>子女返還</td>
+<td>海牙公約返還程序、緊急措施</td>
+<td>1980年海牙公約</td>
+<td>中央機關申請、法院訴訟</td>
+</tr>
+<tr>
+<td>跨國執行</td>
+<td>判決承認與執行、司法互助</td>
+<td>國際公約、雙邊協定</td>
+<td>外國判決承認程序</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">跨國監護權情況檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您目前處於哪個程序階段？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="planning">計劃分居或離婚</option>
+<option value="negotiation">監護權協商中</option>
+<option value="litigation">法院訴訟中</option>
+<option value="enforcement">判決執行階段</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您面臨的主要問題？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="jurisdiction">管轄權爭議</option>
+<option value="abduction">子女被帶離國家</option>
+<option value="visitation">探視權受阻</option>
+<option value="enforcement">判決無法執行</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">涉及國家為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="asia">亞洲國家</option>
+<option value="europe">歐洲國家</option>
+<option value="america">美洲國家</option>
+<option value="others">其他地區</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測權利保障</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種程序階段，保持冷靜、了解各國法律差異、尋求專業國際家事律師協助是保障子女權益與父母權利的三大關鍵。切勿因情緒而採取可能損害子女利益的行動。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>海牙公約與子女返還程序</h2>
+<h3>海牙公約適用要件</h3>
+<p>1980年海牙《國際兒童誘拐民事方面公約》適用於以下情況：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">管轄範圍</div>
+<div class="step-desc">締約國之間16歲以下兒童被非法帶離或留置</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">非法行為</div>
+<div class="step-desc">違反監護權人權利，將兒童帶離其慣居地國家</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">時間要素</div>
+<div class="step-desc">自非法帶離或留置之日起一年內提出申請</div>
+</div>
+</div>
+</div>
+<h3>返還程序與例外情況</h3>
+<p>海牙公約返還程序的主要流程與例外：</p>
+<ul>
+<li>中央機關申請：透過締約國中央機關提出返還申請</li>
+<li>司法程序：被請求國法院應在6週內作出決定</li>
+<li>返還命令：原則上應命令返還兒童至慣居地國家</li>
+<li>例外情況：重大傷害風險、兒童反對、申請人同意或默許等</li>
+<li>安全措施：法院可命令採取保護兒童安全的措施</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：海牙公約的適用</div>
+<div class="case-content">實務判決確立了海牙公約的適用標準，明確指出「非法帶離或留置」的判斷應以帶離行為發生時兒童的慣居地為準，且返還程序的目的在於恢復帶離前的狀態，而非決定監護權歸屬。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>跨國監護權與探視安排是複雜的法律領域，涉及不同國家的法律體系、文化差異與國際公約。了解並善用相關法律機制，不僅能有效保障子女最佳利益，也能維護父母的合法權利。</p>
+<p>面對跨國家庭爭議時，建議保持理性溝通、了解各國法律規定、及時尋求專業國際家事律師協助，並在每個程序階段積極行使法律賦予的權利，以維護子女權益與家庭和諧。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您或親友面臨跨國監護權或探視權爭議，應立即尋求專業國際家事律師協助，確保程序權利獲得完整保障，維護子女最佳利益與家庭權益。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「子女國籍決定監護權」：慣居地通常比國籍更重要。</li><li>認為「單方帶離子女無法律後果」：可能構成國際兒童誘拐。</li><li>忽略「海牙公約時效」：返還申請需在一年內提出。</li><li>把「探視權當作次要權利」：探視權是子女與父母的基本權利。</li><li>錯把「外國判決自動生效」：需經當地法院承認程序。</li></ul></div>
+
+<div class="rights-card">
+  <h3>跨國監護權自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視是否有權利可能遭到忽略，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="子女被帶離慣居地">
+      <span>子女是否被<strong>未經同意帶離</strong>慣居地國家？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="探視權受阻">
+      <span>是否<strong>探視權遭拒絕</strong>或受到不當限制？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="管轄權爭議">
+      <span>是否面臨<strong>哪國法院有管轄權</strong>的爭議？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="判決執行困難">
+      <span>外國監護權或探視權<strong>判決無法執行</strong>？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="未了解海牙公約">
+      <span>是否尚未了解<strong>海牙公約</strong>對您情況的適用性？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要跨國監護權協助？</h2>
+<p>我們的專業國際家事法律團隊擁有豐富經驗，能為您提供跨國監護權協商、海牙公約申請、外國判決承認與執行等全方位法律服務，確保您的子女權益與父母權利獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果對方未經同意將子女帶離國家，該怎麼辦？</div>
+<div class="faq-answer">A: 若對方未經同意將子女帶離慣居地國家，可能構成國際兒童誘拐。您應立即聯繫當地中央機關（在台灣為司法院），依據海牙公約申請子女返還，並尋求專業國際家事律師協助。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 海牙公約返還程序的時效是多久？</div>
+<div class="faq-answer">A: 海牙公約規定，自子女被非法帶離或留置之日起一年內提出返還申請。超過一年後仍可申請，但法院可能考量子女是否已在新環境安定下來而決定是否命令返還。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 跨國監護權判決如何在其他國家執行？</div>
+<div class="faq-answer">A: 跨國監護權判決需經執行地國家的法院承認程序。各國承認外國判決的條件不同，通常需符合程序正義、不違反公共秩序等要件。有些國家間有互惠關係或國際公約可簡化此程序。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 在跨國監護權案件中，子女的意願如何考量？</div>
+  <div class="faq-answer">A: 各國法院通常會根據子女的年齡與成熟度適當考量其意願。年齡較大的子女意見通常會被賦予較大權重，但最終仍以子女最佳利益為最高指導原則。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 如何確保跨國探視權的執行？</div>
+  <div class="faq-answer">A: 可透過詳細的探視計劃、法院命令明確化、擔保措施（如護照保管）、以及兩國間的司法互助機制來確保跨國探視權的執行。專業律師可協助設計可行的探視安排。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 非海牙公約締約國間的監護權爭議如何處理？</div>
+  <div class="faq-answer">A: 在非締約國情況下，需依賴各國國內法、國際私法原則及可能的雙邊協定。這類案件更為複雜，強烈建議尋求專業國際家事律師協助，透過外交途徑或司法互助解決。</div>
+</div>
+
+</div>
+
+<script>
+        // 跨國監護權情況檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'planning') {
+                if (rightsViolation === 'abduction') {
+                    recommendation = '預防性法律措施';
+                    explanation = '您處於計劃分居階段且擔心子女被帶離國家，建議立即採取預防性法律措施，如護照管控、法院禁止令等，並諮詢專業國際家事律師制定保護計劃。';
+                } else {
+                    recommendation = '協商監護安排';
+                    explanation = '計劃分居階段是建立合作監護安排的最佳時機，建議尋求專業調解或律師協助，制定詳細的監護權與探視權計劃，避免未來爭議。';
+                }
+            } else if (procedureStage === 'negotiation') {
+                recommendation = '專業協商與調解';
+                explanation = '監護權協商階段，建議透過專業調解員或律師協助協商，制定符合子女最佳利益的詳細計劃，並考慮跨國執行的可行性。';
+            } else if (procedureStage === 'litigation') {
+                if (rightsViolation === 'abduction') {
+                    recommendation = '海牙公約申請';
+                    explanation = '訴訟期間子女被帶離國家，建議立即啟動海牙公約返還程序，同時繼續進行監護權訴訟，確保子女權益與程序權利。';
+                } else {
+                    recommendation = '積極訴訟策略';
+                    explanation = '訴訟階段需制定積極的訴訟策略，包括證據收集、專家證人準備，並考慮各國法律差異對判決的影響。';
+                }
+            } else if (procedureStage === 'enforcement') {
+                recommendation = '判決執行策略';
+                explanation = '判決執行階段，需了解執行地國家的法律程序，必要時尋求司法互助或啟動外國判決承認程序，確保權利獲得實現。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = `<strong>${recommendation}</strong><br>${explanation}`;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (selectedValues.length === 0) {
+                document.getElementById('checklist-text').innerHTML = '您目前未勾選任何項目，建議了解跨國監護權相關權利，預防潛在法律風險。';
+            } else {
+                let checklistText = '根據您的情況，建議：<ul style="margin-left:1.2rem; margin-top:6px;">';
+                
+                if (selectedValues.includes('子女被帶離慣居地')) {
+                    checklistText += '<li>立即啟動海牙公約返還程序或相關法律救濟</li>';
+                }
+                if (selectedValues.includes('探視權受阻')) {
+                    checklistText += '<li>透過法院命令確保探視權執行，必要時申請強制執行</li>';
+                }
+                if (selectedValues.includes('管轄權爭議')) {
+                    checklistText += '<li>釐清管轄權問題，必要時提出管轄權異議或確認之訴</li>';
+                }
+                if (selectedValues.includes('判決執行困難')) {
+                    checklistText += '<li>啟動外國判決承認程序或尋求司法互助</li>';
+                }
+                if (selectedValues.includes('未了解海牙公約')) {
+                    checklistText += '<li>立即了解海牙公約對您情況的適用性與時效</li>';
+                }
+                
+                checklistText += '<li>尋求專業國際家事律師協助，制定完整法律策略</li></ul>';
+                document.getElementById('checklist-text').innerHTML = checklistText;
+            }
+            
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

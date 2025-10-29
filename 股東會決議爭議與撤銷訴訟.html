@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>股東會決議爭議與撤銷訴訟 | 專業法律資訊平台</title>
+<meta content="詳細解析股東會召集程序、表決瑕疵與決議撤銷訴訟等關鍵議題，保障公司治理與股東權益" name="description"/>
+<style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2d4a8a;
+            --accent-color: #d4af37;
+            --accent-light: #f7e7b2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHeui', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 頂部導航 */
+        .header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            min-height: 44px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 文章標題區域 */
+        .article-header {
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文章內容區域 */
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .main-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #742a2a;
+        }
+
+        .tip-box {
+            background-color: #c6f6d5;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #22543d;
+        }
+
+        /* 表格樣式 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* 流程圖樣式 */
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 權利檢測器樣式 */
+        .rights-checker {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .checker-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .checker-question {
+            margin-bottom: 15px;
+        }
+
+        .checker-question label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .checker-question select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .checker-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .checker-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .checker-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        /* 案例框樣式 */
+        .case-example {
+            background-color: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .case-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 10px;
+        }
+
+        .case-content {
+            color: #234e52;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .author-card, .related-articles, .cta-sidebar, .rights-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .author-card h3, .related-articles h3, .cta-sidebar h3, .rights-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .rights-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rights-list li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+        }
+
+        .related-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .related-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-article img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+        }
+
+        .related-article-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .related-article-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .cta-line {
+            background-color: #06c755;
+            color: white;
+        }
+
+        .cta-appointment {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 文章底部CTA */
+        .article-cta {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .article-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* FAQ 區域 */
+        .faq-section {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .cta-buttons-horizontal {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th, 
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+
+        .rights-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 12px; }
+
+</style></head>
+<body>
+<!-- 頂部導航 -->
+<header class="header">
+<div class="container">
+<nav class="nav">
+<a class="back-link" href="index.html">
+<span>← 返回首頁</span>
+</a>
+<div class="breadcrumb">
+<a href="index.html">首頁</a> ＞ <a href="最新法律觀點_page1.html">最新法律觀點</a> ＞ 股東會決議爭議與撤銷訴訟
+                </div>
+</nav>
+</div>
+</header>
+<!-- 文章標題區域 -->
+<section class="article-header">
+<div class="container">
+<span class="article-category">公司治理</span>
+<h1 class="article-title">股東會決議爭議與撤銷訴訟</h1>
+<div class="article-meta">
+<span>閱讀時間：6 分鐘</span>
+
+</div>
+<div class="article-image">
+<img alt="股東會決議爭議與撤銷訴訟專業解析" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"/>
+</div>
+</div>
+</section>
+<!-- 文章內容區域 -->
+<div class="container">
+<div class="article-content">
+<!-- 主要內容 -->
+<main class="main-content">
+<div class="content-section">
+<h2>摘要引言</h2>
+<p>股東會是公司最高意思決定機關，其決議效力攸關公司經營與股東權益保障。然而，實務上常見因召集程序或決議方法違反法令或章程，導致決議效力產生爭議。本文將詳細解析股東會召集程序瑕疵、表決方式不合法、決議內容違法等常見爭議類型，以及相關撤銷訴訟與救濟途徑，協助股東與公司保障自身權益。</p>
+<div class="highlight-box">
+<p>股東會決議的合法性是公司治理的基石，了解決議瑕疵類型與救濟方式，不僅是保護股東權益的重要手段，更是維護公司正常經營的關鍵。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>股東會決議瑕疵類型解析</h2>
+<h3>召集程序瑕疵</h3>
+<p>根據公司法第172條規定，股東常會之召集，應於二十日前通知各股東，臨時會應於十日前通知：</p>
+<ol>
+<li>未依法定期限通知股東</li>
+<li>通知內容未載明召集事由或記載不完整</li>
+<li>未向部分股東發出開會通知</li>
+<li>召集通知未依法送達</li>
+</ol>
+<div class="case-example">
+<div class="case-title">實務案例：召集程序瑕疵</div>
+<div class="case-content">在實務判決中，法院明確指出，若公司未依法定期限通知股東，該次股東會所作成之決議，得依公司法第189條規定訴請法院撤銷。此案例確立了程序保障的重要性。</div>
+</div>
+<h3>決議方法瑕疵</h3>
+<p>股東會進行中常見的決議方法瑕疵：</p>
+<ul>
+<li>主席不當限制股東發言或表決權行使</li>
+<li>未達法定出席門逕而行表決</li>
+<li>表決權計算錯誤或違反規定</li>
+<li>利害關係股東未迴避表決</li>
+<li>委託書行使有瑕疵</li>
+</ul>
+<div class="warning-box">
+<p>注意：若股東會決議方法違反法令或章程，股東得自決議之日起三十日內，訴請法院撤銷其決議。此為法定不變期間，逾期將喪失撤銷權。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>股東會決議瑕疵與救濟途徑</h2>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>瑕疵類型</th>
+<th>主要特徵</th>
+<th>法律依據</th>
+<th>救濟方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>召集程序瑕疵</td>
+<td>未依法通知、通知不完整、未送達</td>
+<td>公司法第172條</td>
+<td>決議撤銷訴訟</td>
+</tr>
+<tr>
+<td>決議方法瑕疵</td>
+<td>表決權計算錯誤、主席不當行為</td>
+<td>公司法第174、177條</td>
+<td>決議撤銷訴訟</td>
+</tr>
+<tr>
+<td>決議內容違法</td>
+<td>違反強制禁止規定、違反公序良俗</td>
+<td>公司法第191條</td>
+<td>決議無效訴訟</td>
+</tr>
+<tr>
+<td>決議不存在</td>
+<td>根本未召開會議、無決議事實</td>
+<td>民事訴訟法第247條</td>
+<td>確認決議不存在</td>
+</tr>
+</tbody>
+</table>
+<!-- 權利檢測器 -->
+<div class="rights-checker">
+<div class="checker-title">股東會決議瑕疵檢測</div>
+<div class="checker-question">
+<label for="procedure-stage">您關心的股東會程序為何？</label>
+<select id="procedure-stage">
+<option value="">請選擇</option>
+<option value="investigation">召集程序問題</option>
+<option value="prosecution">會議進行瑕疵</option>
+<option value="detention">表決方法爭議</option>
+<option value="trial">決議內容違法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="rights-violation">您認為哪些權利可能受到影響？</label>
+<select id="rights-violation">
+<option value="">請選擇</option>
+<option value="silence">表決權受限制</option>
+<option value="lawyer">發言權遭不當剝奪</option>
+<option value="evidence">議事錄記載不實</option>
+<option value="procedure">程序明顯違法</option>
+</select>
+</div>
+<div class="checker-question">
+<label for="case-type">公司類型為何？</label>
+<select id="case-type">
+<option value="">請選擇</option>
+<option value="general">股份有限公司</option>
+<option value="serious">閉鎖性股份有限公司</option>
+<option value="economic">有限公司</option>
+<option value="drug">公開發行公司</option>
+</select>
+</div>
+<button class="checker-button" onclick="checkRights()">檢測決議效力</button>
+<div class="checker-result" id="rights-result">
+<strong>檢測結果：</strong>
+<div id="rights-recommendation"></div>
+</div>
+</div>
+<div class="tip-box">
+<p>權利行使建議：無論處於何種程序階段，確認決議瑕疵類型、掌握法定救濟期間、尋求專業律師協助是保障自身權益的三大關鍵。切勿因猶豫而錯失法定救濟期間。</p>
+</div>
+</div>
+<div class="content-section">
+<h2>決議撤銷訴訟要件與流程</h2>
+<h3>撤銷訴訟要件</h3>
+<p>提起股東會決議撤銷訴訟必須具備以下要件：</p>
+<div class="process-flow">
+<div class="process-step">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-title">原告適格</div>
+<div class="step-desc">原告必須是股東且於決議時具有股東身份</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-title">程序瑕疵</div>
+<div class="step-desc">決議有召集程序或決議方法違反法令或章程</div>
+</div>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-title">法定期間</div>
+<div class="step-desc">自決議之日起三十日內提起</div>
+</div>
+</div>
+</div>
+<h3>撤銷訴訟效果</h3>
+<p>法院撤銷股東會決議之判決確定後，該決議溯及失效：</p>
+<ul>
+<li>決議溯及自始無效</li>
+<li>依該決議所為之行為可能受影響</li>
+<li>公司應依法重新召開股東會</li>
+<li>善意第三人權利可能受保護</li>
+</ul>
+<div class="case-example">
+<div class="case-title">重要判例：撤銷訴訟效力</div>
+<div class="case-content">實務判決確立了股東會決議撤銷之效力，明確指出「股東會決議經判決撤銷確定者，除法律別有規定外，溯及於決議時成為無效」。但為保障交易安全，撤銷判決對於決議後與善意第三人所為之法律行為，不影響其效力。</div>
+</div>
+</div>
+<div class="content-section">
+<h2>小結與行動建議</h2>
+<p>股東會決議的合法性是公司治理與股東權益保障的核心。了解決議瑕疵類型、掌握法定救濟期間與程序，不僅能有效維護股東權益，更能確保公司經營的合法性與穩定性。</p>
+<p>面對有瑕疵的股東會決議時，建議立即確認瑕疵類型、掌握三十日法定期間、及時尋求專業律師協助，並在法定期間內提起適當訴訟，以維護自身權益與公司正常經營。</p>
+<div class="highlight-box">
+<p>立即採取行動：若您認為股東會決議有瑕疵，應立即尋求專業公司法律師協助，確認瑕疵類型與救濟方式，並於法定期間內採取適當法律行動，確保權益獲得完整保障。</p>
+</div>
+</div>
+</main>
+<!-- 側邊欄 -->
+<aside class="sidebar">
+<div class="author-card">
+<h3>常見誤區 TOP5</h3>
+
+<ul style="margin-left:1.2rem;"><li>以為「程序小瑕疵不影響決議效力」：程序瑕疵不論大小均可能影響決議效力</li><li>認為「已出席會議即不得異議」：縱已出席會議，仍得對程序瑕疵提出異議</li><li>忽略「三十日法定期間」：撤銷訴訟應於決議日起30日內提起</li><li>誤解「決議無效與得撤銷區別」：內容違法為無效，程序瑕疵為得撤銷</li><li>錯過「異議時機」：對程序瑕疵應於當時異議，否則可能喪失撤銷權</li></ul></div>
+
+<div class="rights-card">
+  <h3>股東會決議自我檢查表</h3>
+  <p>快速勾選目前情況，立即檢視股東會決議是否有瑕疵，並取得行動建議。</p>
+  <ul class="rights-list" style="margin-top:8px;">
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="召集程序瑕疵">
+      <span>股東會<strong>召集通知</strong>是否未依法定期限送達或內容不完整？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="表決權行使受限">
+      <span>是否曾要求<strong>發言或表決</strong>但遭不當限制或拒絕？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="議事錄記載不實">
+      <span>股東會<strong>議事錄</strong>記載是否與實際開會情況不符？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="決議方法違法">
+      <span>表決權計算、主席裁決等<strong>決議方法</strong>是否存有疑義？</span>
+    </label></li>
+    <li><label style="display:flex; gap:8px; align-items:flex-start;">
+      <input type="checkbox" class="chk-right" value="決議內容違法">
+      <span>股東會<strong>決議內容</strong>是否違反法令或公司章程？</span>
+    </label></li>
+  </ul>
+  <button id="btn-checklist" class="checker-button" style="margin-top:12px; width:100%;">產生建議</button>
+  <div id="checklist-result" class="checker-result" style="display:none;">
+    <strong>初步建議：</strong>
+    <div id="checklist-text" style="margin-top:6px;"></div>
+  </div>
+  <div class="cta-buttons-horizontal" style="margin-top:12px;">
+    <a href="https://line.me/R/ti/p/@621sbqlu" class="cta-button cta-line" style="flex:1;text-decoration:none;">LINE 專人協助</a>
+    <a class="cta-button cta-appointment" href="lawreserve.html">預約諮詢</a>
+  </div>
+</div>
+</div></div></div></div>
+
+</aside>
+</div>
+<!-- 文章底部CTA -->
+<div class="article-cta">
+<h2>需要股東會決議法律協助？</h2>
+<p>我們的專業公司法律師團隊擁有豐富經驗，能為您提供股東會程序審查、決議效力評估、撤銷訴訟代理等全方位法律服務，確保您的股東權益獲得完整保障。</p>
+<div class="cta-buttons-horizontal">
+<a class="cta-button cta-line" href="https://line.me/R/ti/p/@621sbqlu">加入 LINE 諮詢</a>
+<a class="cta-button cta-appointment" href="lawreserve.html">預約律師諮詢</a>
+</div>
+</div>
+<!-- FAQ 區域 -->
+<div class="faq-section">
+<h2>常見問題</h2>
+<div class="faq-item">
+<div class="faq-question">Q: 如果股東會召集通知未依法定期限送達，該怎麼辦？</div>
+<div class="faq-answer">A: 若股東會召集通知未依法定期限送達，該次股東會所作成之決議存有程序瑕疵。您應自決議之日起三十日內，訴請法院撤銷該決議，並應保留未依法送達之證據。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 什麼情況下可以提起決議無效訴訟？</div>
+<div class="faq-answer">A: 當股東會決議內容違反法令或章程時，即可提起決議無效訴訟。常見情況包括：決議內容違反強制禁止規定、違反公序良俗、侵害股東固有權等。無效訴訟不受三十日法定期間限制。</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Q: 已出席股東會並參與表決，事後還可以提起撤銷訴訟嗎？</div>
+<div class="faq-answer">A: 原則上可以，但需視情況而定。若您於會議當時已對程序瑕疵表示異議，事後當然可以提起撤銷訴訟；若未當場異議，則需視瑕疵是否重大及是否影響權益行使而定，建議尋求專業律師評估。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 股東會主席不當限制股東發言，該如何救濟？</div>
+  <div class="faq-answer">A: 應於會議當時提出異議並要求記載於議事錄。若主席仍不當限制，該次股東會決議方法即有瑕疵，得於決議日起30日內訴請法院撤銷決議。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 委託書行使有瑕疵，會影響決議效力嗎？</div>
+  <div class="faq-answer">A: 若委託書之授權不合法或行使方式有瑕疵，該表決權應不予計算。如因該瑕疵表決權之計算影響決議結果，該決議即有方法瑕疵，得訴請撤銷。</div>
+</div>
+<div class="faq-item">
+  <div class="faq-question">Q: 決議撤銷訴訟的三十日期間如何計算？</div>
+  <div class="faq-answer">A: 自股東會決議之日起算三十日，此為法定不變期間，逾期將喪失撤銷權。如決議日為假日，仍應於期間內提起訴訟，建議儘早準備以避免逾期。</div>
+</div>
+
+</div>
+
+<script>
+        // 股東會決議瑕疵檢測功能
+        function checkRights() {
+            const procedureStage = document.getElementById('procedure-stage').value;
+            const rightsViolation = document.getElementById('rights-violation').value;
+            const caseType = document.getElementById('case-type').value;
+
+            if (!procedureStage || !rightsViolation || !caseType) {
+                alert('請回答所有問題');
+                return;
+            }
+
+            let recommendation = '';
+            let explanation = '';
+
+            // 檢測邏輯
+            if (procedureStage === 'investigation') {
+                if (rightsViolation === 'silence') {
+                    recommendation = '確認召集程序合法性';
+                    explanation = '您關心的召集程序可能存有瑕疵，建議立即確認召集通知是否依法送達、內容是否完整。如有瑕疵，應於決議日起三十日內提起撤銷訴訟。';
+                } else {
+                    recommendation = '審查召集程序';
+                    explanation = '召集程序是股東會決議合法性的基礎，建議立即審查召集通知期限、內容與送達方式，確認是否符合公司法規定。';
+                }
+            } else if (procedureStage === 'prosecution') {
+                recommendation = '審查會議進行程序';
+                explanation = '會議進行階段的程序瑕疵可能影響決議效力，建議確認主席權限行使、股東發言與表決權保障等程序是否合法。';
+            } else if (procedureStage === 'detention') {
+                recommendation = '檢視表決方法合法性';
+                explanation = '表決方法瑕疵是常見決議撤銷事由，建議確認表決權計算、利害關係人迴避、委託書行使等是否符合規定。';
+            } else {
+                recommendation = '審查決議內容合法性';
+                explanation = '決議內容違法是決議無效事由，建議確認決議內容是否違反法令或章程，並評估提起無效訴訟之必要性。';
+            }
+
+            document.getElementById('rights-recommendation').innerHTML = explanation;
+            document.getElementById('rights-result').style.display = 'block';
+        }
+
+        // 自我檢查表功能
+        document.getElementById('btn-checklist').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.chk-right:checked');
+            if (checkboxes.length === 0) {
+                alert('請至少勾選一項您認為可能存在的問題');
+                return;
+            }
+
+            let issues = [];
+            checkboxes.forEach(cb => {
+                issues.push(cb.value);
+            });
+
+            let advice = '';
+            if (issues.includes('召集程序瑕疵')) {
+                advice += '<p>• 召集程序瑕疵可能導致決議得撤銷，建議確認召集通知是否依法定程序送達。</p>';
+            }
+            if (issues.includes('表決權行使受限')) {
+                advice += '<p>• 表決權行使受限屬決議方法瑕疵，建議確認當時是否提出異議並記載於議事錄。</p>';
+            }
+            if (issues.includes('議事錄記載不實')) {
+                advice += '<p>• 議事錄記載不實可能影響決議效力，建議比對實際開會情況與議事錄記載。</p>';
+            }
+            if (issues.includes('決議方法違法')) {
+                advice += '<p>• 決議方法違法可能導致決議得撤銷，建議確認表決權計算與主席裁決是否合法。</p>';
+            }
+            if (issues.includes('決議內容違法')) {
+                advice += '<p>• 決議內容違法將導致決議無效，建議立即尋求專業律師評估決議內容合法性。</p>';
+            }
+
+            if (issues.length > 2) {
+                advice += '<p style="margin-top:10px;color:#e53e3e;font-weight:bold;">您的情況涉及多項程序瑕疵，建議立即尋求專業公司法律師協助，評估提起撤銷訴訟或無效訴訟之可行性。</p>';
+            } else {
+                advice += '<p style="margin-top:10px;color:#2d3748;">建議您整理相關事證，尋求專業律師評估，確認瑕疵是否影響決議效力及後續救濟方式。</p>';
+            }
+
+            document.getElementById('checklist-text').innerHTML = advice;
+            document.getElementById('checklist-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
