@@ -1,0 +1,4310 @@
+
+<style id="footer-logo-restore-212">
+/* Footer logo size reset to match original index.html (height:212px; width:auto; display:block) */
+footer .footer-logo img,
+footer img.brand-logo {
+  height: 212px !important;
+  width: auto !important;
+  max-height: 212px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+</style>
+<!-- ==== LawAI FAQ fixes (RWD + a11y + unit consistency) — 2025-10-28 ==== -->
+<style id="lawai-faq-rwd-fixes-20251028">
+  /* Scope to FAQ to avoid collateral effects */
+  #faq-lawai { position: relative; }
+
+  /* Consolidated, final definition for arrow controls */
+  #faq-lawai .faq-controls{
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: calc(50% + clamp(8px, 2.8vw, 22px)) !important; /* no cm; responsive offset */
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-inline: clamp(12px, 4vw, 16px) !important;   /* inward shift on mobile */
+    pointer-events: none !important;                     /* container doesn't eat taps */
+    z-index: 10 !important;
+  }
+  #faq-lawai .faq-controls > *{ pointer-events: auto !important; }
+
+  /* Arrow buttons: fixed square → perfect circle, no padding tricks */
+  #faq-lawai .faq-prev,
+  #faq-lawai .faq-next{
+    position: relative !important;
+    width: clamp(44px, 9vw, 56px) !important;            /* 44px+ touch target */
+    aspect-ratio: 1 / 1 !important;                      /* enforce circle */
+    padding: 0 !important;                               /* kill "capsule" padding */
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12) !important;
+    cursor: pointer !important;
+    transition: box-shadow .2s ease !important;
+  }
+  #faq-lawai .faq-prev:hover,
+  #faq-lawai .faq-next:hover{
+    box-shadow: 0 4px 14px rgba(0,0,0,.16) !important;
+  }
+
+  /* Common icon (chevron) inside arrow buttons */
+  #faq-lawai .faq-prev i,
+  #faq-lawai .faq-next i,
+  #faq-lawai .faq-prev .material-icons,
+  #faq-lawai .faq-next .material-icons,
+  #faq-lawai .faq-prev svg,
+  #faq-lawai .faq-next svg{
+    font-size: clamp(18px, 3.8vw, 24px) !important;
+    line-height: 1 !important;
+    color: #1C2A4D !important;
+    width: auto !important; height: auto !important;
+  }
+
+  /* Keyboard / assistive tech */
+  #faq-lawai .faq-prev:focus-visible,
+  #faq-lawai .faq-next:focus-visible{
+    outline: 3px solid rgba(212,175,55,.6) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Dots/pagination: single source of truth; centered under FAQ list */
+  #faq-lawai .faq-dots,
+  #faq-lawai .swiper-pagination,
+  #faq-lawai .swiper-pagination-bullets{
+    position: relative !important;
+    top: 0 !important;                                   /* remove cm push */
+    margin: clamp(10px, 3.5vw, 16px) auto 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: clamp(6px, 1.8vw, 10px) !important;
+  }
+  #faq-lawai .swiper-pagination-bullet{
+    width: 8px !important; height: 8px !important; border-radius: 50% !important;
+    background: rgba(28,42,77,.25) !important;
+    opacity: 1 !important;
+  }
+  #faq-lawai .swiper-pagination-bullet-active{ background:#1C2A4D !important; }
+
+  /* Make sure arrows aren’t clipped by an ancestor overflow */
+  #faq-lawai, #faq-lawai .faq-grid-2col, #faq-lawai .faq-controls{
+    overflow: visible !important;
+  }
+
+  /* Reduce/disable heavy animations on low-power devices */
+  @media (prefers-reduced-motion: reduce){
+    .feature-card, .stats-item, .main-ai-btn, .logo-orbit-wrapper, .cube, .nav-cube{
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Bottom fixed nav: include iOS safe area so it doesn’t cover FAQ dots */
+  @media (max-width: 768px){
+    body{
+      padding-bottom: calc(56px + env(safe-area-inset-bottom)) !important;
+    }
+  }
+</style>
+<script id="lawai-faq-hardening-20251028">
+  // Final hardening in case legacy CSS re-applies padding or non-square arrows
+  document.addEventListener('DOMContentLoaded', () => {
+    const sel = ['#faq-lawai .faq-prev', '#faq-lawai .faq-next'];
+    sel.forEach(s => {
+      document.querySelectorAll(s).forEach(el => {
+        el.style.padding = '0';
+        el.style.width = 'clamp(44px, 9vw, 56px)';
+        el.style.aspectRatio = '1 / 1';
+        el.style.borderRadius = '50%';
+      });
+    });
+  });
+</script>
+<!-- LawAI: Mobile Drawer Close Button style (2025-10-27) -->
+<style id="lawai-mh-close-style-20251027">
+@media (max-width:768px){
+  .lawai-mh-header{ position: relative !important; }
+  .lawai-mh-close{
+    position:absolute; top:10px; right:14px;
+    background:none; border:none;
+    font-size:28px; font-weight:900;
+    color:#FFFFFF; line-height:1;
+    cursor:pointer;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .lawai-mh-close:hover{ transform: scale(1.08); opacity: .85; }
+  .lawai-mh-close:active{ transform: scale(.96); opacity: 1; }
+}
+</style>
+<!-- LawAI slim green drawer — 2025-10-27 -->
+<style id="lawai-mh-drawer-compact-20251027">
+  /* Mobile only overrides */
+  @media (max-width: 768px){
+    /* Soften the backdrop so it doesn't feel heavy */
+    .lawai-mh-mask{
+      background: rgba(0,0,0,0.15) !important;
+      backdrop-filter: blur(1.5px) !important;
+    }
+    /* Make the drawer narrower (only a little bit of the screen) */
+    .lawai-mh-drawer{
+      width: 36vw !important;         /* was 60vw; a slim panel */
+      max-width: 300px !important;     /* cap size */
+      min-width: 220px !important;     /* keep tap targets usable */
+      background: #56B3C1 !important;  /* LawAI 綠 */
+      color: #FFFFFF !important;
+      box-shadow: -8px 0 20px rgba(0,0,0,.12) !important;
+    }
+    /* Drawer header/title styling */
+    .lawai-mh-header{
+      padding: 14px 16px !important;
+      border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+      background: linear-gradient(0deg, rgba(0,0,0,0.06), rgba(0,0,0,0.00)) !important;
+    }
+    .lawai-mh-title{
+      color: #FFFFFF !important;
+      letter-spacing: .3px !important;
+    }
+    /* Links: high contrast on green */
+    .lawai-mh-links a{
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255,255,255,0.28) !important;
+      background: rgba(0,0,0,0.06) !important;
+    }
+    .lawai-mh-links a:active{ background: rgba(255,255,255,0.16) !important; }
+    .lawai-mh-links a:hover{ background: rgba(255,255,255,0.12) !important; }
+
+    /* Keep the hamburger icon in brand green (already #274A48 in base) */
+    .lawai-mh-icon span{ background:#274A48 !important; }
+  }
+</style>
+<style id="mobile-hide-topnav-cluster-20251026-strict">
+/* 強制：手機介面只留漢堡按鈕，隱藏頂部導覽列的所有圓形圖標與按鈕群 */
+@media (max-width: 768px){
+  header.brand-header nav.nav-cluster,
+  .brand-header .nav-cluster,
+  .brand-header .nav-cluster *{
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+</style>
+<style id="lawai-mobile-hamburger-20251026">
+/* ===== LawAI Mobile Hamburger (scoped) — 20251026 ===== */
+:root { --lawai-mask-bg: rgba(0,0,0,.25); }
+/* Only show on mobile */
+@media (max-width: 768px){
+  .lawai-mh-btn{ background: transparent !important; border: none !important; border-radius: 0 !important;
+    position:absolute;
+    top:50%;
+    right:12px;
+    transform:translateY(-50%);
+    width:42px; height:42px;
+    
+    
+    
+    display:grid; place-items:center;
+    cursor:pointer;
+    z-index: 120; /* above header content */
+  }
+  .lawai-mh-btn:focus{ outline:2px solid #D4AF37; outline-offset:2px; }
+  .lawai-mh-icon{
+    width:22px; height:16px; display:block; position:relative;
+  }
+  .lawai-mh-icon span{ height: 2px; background: #274A48;
+    position:absolute; left:0; right:0; height: 2px; background: #274A48; border-radius:2px;
+  }
+  .lawai-mh-icon span:nth-child(1){ top:0; }
+  .lawai-mh-icon span:nth-child(2){ top:7px; }
+  .lawai-mh-icon span:nth-child(3){ top:14px; }
+
+  /* Drawer + mask */
+  .lawai-mh-mask{
+    position:fixed; inset:0; background:var(--lawai-mask-bg);
+    backdrop-filter: blur(2px);
+    opacity:0; visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+    z-index: 110;
+  }
+  .lawai-mh-drawer{
+    position:fixed; top:0; right:0; height:100vh;
+    width:60vw; max-width:360px; min-width:280px;
+    background:#fff; box-shadow: -8px 0 24px rgba(0,0,0,.12);
+    transform:translateX(100%);
+    transition: transform .28s ease;
+    z-index: 130;
+    display:flex; flex-direction:column;
+  }
+  .lawai-mh-header{ padding:16px 18px; border-bottom:1px solid rgba(0,0,0,.06); }
+  .lawai-mh-title{ font-weight:800; color:#1C2A4D; font-size:18px; }
+  .lawai-mh-links{ display:flex; flex-direction:column; padding:12px 8px; gap:6px; }
+  .lawai-mh-links a{
+    display:block; padding:14px 14px; border-radius:10px;
+    color:#1C2A4D; text-decoration:none; font-weight:700;
+    border:1px solid rgba(28,42,77,.08);
+  }
+  .lawai-mh-links a:active{ background:rgba(212,175,55,.08); }
+
+  /* Open state */
+  .lw-open .lawai-mh-mask{ opacity:1; visibility:visible; }
+  .lw-open .lawai-mh-drawer{ transform:translateX(0); }
+}
+/* Hide hamburger button on desktop */
+@media (min-width: 769px){
+  .lawai-mh-btn, .lawai-mh-mask, .lawai-mh-drawer { display:none !important; }
+}
+</style>
+<style id="nav-right-buttons-shrink-10">
+/* === Shrink the three top-right nav buttons by 10% (desktop only) === */
+@media (min-width: 769px){
+  .brand-header .nav-cluster .nav-card{
+    /* reduce padding ~10% to keep click area balanced */
+    padding: 0.56rem 1.125rem !important; /* was 0.625rem 1.25rem */
+    font-size: 90% !important;
+    gap: 0.45rem !important; /* slightly tighter */
+  }
+  .brand-header .nav-cluster .nav-card .material-icons{
+    font-size: 1.125rem !important; /* was 1.25rem */
+  }
+}
+</style>
+<style id="nav-logo-maxsize-shifted0_2cm-20251025">
+/* === Logo maxsize + shifted right by 0.2cm — 2025-10-25 === */
+.brand-header .logo-container {
+  transform: scale(1.45) translateX(0.2cm) !important;
+  transform-origin: left center !important;
+}
+@media (max-width: 1024px){
+  .brand-header .logo-container { transform: scale(1.35) translateX(0.2cm) !important; }
+}
+@media (max-width: 768px){
+  .brand-header .logo-container { transform: scale(1.25) translateX(0.2cm) !important; }
+}
+</style>
+<style id="nav-logo-maxsize-shifted-20251025">
+/* === Logo maxsize + shifted right by 0.1cm — 2025-10-25 === */
+.brand-header .logo-container {
+  transform: scale(1.45) translateX(0.1cm) !important;
+  transform-origin: left center !important;
+}
+@media (max-width: 1024px){
+  .brand-header .logo-container { transform: scale(1.35) translateX(0.1cm) !important; }
+}
+@media (max-width: 768px){
+  .brand-header .logo-container { transform: scale(1.25) translateX(0.1cm) !important; }
+}
+</style>
+<style id="nav-logo-maxsize-20251025">
+/* === Logo maximum enlargement (navbar height fixed) — 2025-10-25 === */
+.brand-header .logo-container {
+  transform: scale(1.45) !important;
+  transform-origin: left center !important;
+  margin-left: 0 !important;
+}
+.brand-header .brand-logo {
+  height: auto !important;
+  max-height: 100% !important;
+}
+@media (max-width: 1024px){
+  .brand-header .logo-container { transform: scale(1.35) !important; }
+}
+@media (max-width: 768px){
+  .brand-header .logo-container { transform: scale(1.25) !important; }
+}
+</style>
+<style id="nav-ultra-tight-logo-fixed-20251025">
+/* === Ultra-tight top navbar (logo size retained) — 2025-10-25 === */
+.brand-header{
+  padding: 0.2rem 1rem !important;
+  align-items: center !important;
+  min-height: unset !important;
+}
+.brand-header *{ line-height: 1.05 !important; }
+
+/* Logo stays same size but trims vertical padding */
+.brand-header .logo-container{
+  margin-top: -2px !important;
+  margin-bottom: -2px !important;
+  transform: none !important;
+}
+
+/* Buttons & spacing */
+.brand-header .nav-cluster{ gap: 0.45rem !important; }
+.brand-header .nav-cluster .nav-card{
+  padding: 0.35rem 0.8rem !important;
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .brand-header{ padding: 0.32rem 0.9rem !important; }
+  .brand-header .nav-cluster{ gap: 0.4rem !important; }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .brand-header{ padding: 0.25rem 0.6rem !important; }
+  .brand-header .nav-cluster{ gap: 0.3rem !important; }
+  .brand-header .nav-cluster .nav-card{
+    width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+  }
+}
+</style>
+<style id="nav-desktop-hover-light">
+/* === Desktop-only: extremely soft hover style for top nav buttons === */
+@media (min-width: 769px){
+  .brand-header .nav-cluster .nav-card a,
+  .brand-header .nav-cluster .nav-card button {
+    transition: all 0.3s ease !important;
+  }
+  .brand-header .nav-cluster .nav-card a:hover,
+  .brand-header .nav-cluster .nav-card button:hover {
+    background: rgba(212,175,55,0.05) !important; /* extremely light gold tint */
+    color: inherit !important; /* keep text color unchanged */
+    font-weight: 500 !important; /* subtle emphasis */
+    border-radius: 8px !important;
+  }
+}
+</style><style id="nav-desktop-hover-soft">
+/* === Desktop-only: soften hover style for top nav buttons === */
+@media (min-width: 769px){
+  .brand-header .nav-cluster .nav-card a,
+  .brand-header .nav-cluster .nav-card button {
+    transition: all 0.3s ease !important;
+  }
+  .brand-header .nav-cluster .nav-card a:hover,
+  .brand-header .nav-cluster .nav-card button:hover {
+    background: linear-gradient(90deg, rgba(212,175,55,0.12) 0%, rgba(255,255,255,0) 100%) !important;
+    color: #1C2A4D !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+  }
+}
+</style><style id="nav-desktop-enlarge-text">
+/* === Desktop-only: enlarge top nav button text by 10% === */
+@media (min-width: 769px){
+  .brand-header .nav-cluster .nav-card span,
+  .brand-header .nav-cluster .nav-card a,
+  .brand-header .nav-cluster .nav-card button {
+    font-size: 110% !important;
+  }
+}
+</style><style id="nav-desktop-hide-icons">
+/* === Desktop-only: remove icons from top nav buttons, keep text === */
+@media (min-width: 769px){
+  .brand-header .nav-cluster .nav-card .material-icons,
+  .brand-header .nav-cluster .nav-card i,
+  .brand-header .nav-cluster .nav-card svg,
+  .brand-header .nav-cluster .nav-card .icon {
+    display: none !important;
+  }
+  /* Ensure text label is visible even if previous CSS hid it */
+  .brand-header .nav-cluster .nav-card span:not(.material-icons){
+    display: inline !important;
+  }
+  /* Remove any leftover spacing from hidden icons */
+  .brand-header .nav-cluster .nav-card{
+    gap: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+</style>
+<!-- === LawAI: Logo -20% & Ultra-Compressed Navbar (2025-10-24) === -->
+<style id="nav-tight-and-logo-80">
+/* 左上角 LOGO 整體縮小 20%（不破壞內部結構） */
+.brand-header .logo-container{
+  transform: scale(0.8) !important;
+  transform-origin: left center !important;
+}
+
+/* 導航列上下 padding 壓到極限，但不裁切字體與圖像 */
+.brand-header{
+  padding: 0.35rem 1.5rem !important;
+  align-items: center !important;
+}
+
+/* 桌面：導航按鈕更薄 */
+.nav-cluster .nav-card{
+  padding: 0.45rem 0.9rem !important;
+}
+
+/* 文字行高略收斂，避免溢出被裁切 */
+.brand-header *{
+  line-height: 1.1 !important;
+}
+
+/* 標誌文字微縮，配合高度壓縮（避免卡字） */
+.logo-text{ font-size: 1.6rem !important; }
+.logo-subtext{ font-size: 1.68rem !important; }
+
+/* 手機：維持最小可讀與可點擊尺寸，同時壓縮高度 */
+@media (max-width: 768px){
+  .brand-header{ padding: 0.3rem 0.9rem !important; }
+  .nav-cluster .nav-card{ padding: 0.42rem 0.7rem !important; }
+  .brand-header *{ line-height: 1.1 !important; }
+}
+
+/* === Logo Right Shift (Desktop only) === */
+@media (min-width: 1025px) {
+  .logo-container img,
+  .navbar-brand img,
+  .brand-header .logo img {
+    margin-left: 0.4cm !important;
+  }
+}
+
+</style>
+<style id="why-choose-lawai-roundlarger30">
+:root{
+  --lawai-navy:#1C2A4D;
+  --lawai-softgold:#EBDCA8;
+  --lawai-softgold2:#F6EFCB;
+  --lawai-card:#FFFFFF;
+  --lawai-muted:#606A79;
+  --radius-xl:1.25rem;
+}
+
+.features-grid{
+  position: relative;
+  isolation:isolate;
+  row-gap: 14px !important;
+}
+.features-grid::before{ display:none; }
+
+.features-grid .feature-card{
+  position: relative;
+  background: var(--lawai-card) !important;
+  border-radius: var(--radius-xl) !important;
+  border: 1px solid rgba(28,42,77,0.08) !important;
+  box-shadow: 0 1px 2px rgba(28,42,77,0.04), 0 6px 14px rgba(28,42,77,0.05) !important;
+  padding: clamp(16px, 2.4vw, 26px) !important;
+  transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease !important;
+  animation: none !important;
+}
+
+/* 圓形圖標外框加大 15% (總比原始大約30%) */
+.features-grid .feature-card .feature-icon{
+  width: clamp(78px, 7.6vw, 88px) !important;
+  height: clamp(78px, 7.6vw, 88px) !important;
+  border-radius: 50% !important;
+  display:grid; place-items:center;
+  background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, #F7F9FC 90%) !important;
+  border: 1px solid rgba(28,42,77,0.08) !important;
+  box-shadow: 0 1px 3px rgba(28,42,77,0.06), 0 8px 16px rgba(28,42,77,0.06) !important;
+  transition: all .25s ease !important;
+}
+
+.features-grid .feature-card .feature-icon i,
+.features-grid .feature-card .feature-icon .material-icons,
+.features-grid .feature-card .feature-icon svg{
+  font-size: clamp(32px, 3.8vw, 40px) !important;
+  color: var(--lawai-navy) !important;
+  fill: var(--lawai-navy) !important;
+  transition: transform .25s ease, color .25s ease, fill .25s ease !important;
+}
+
+.features-grid .feature-card .feature-title{
+  margin-top: 14px !important;
+  font-weight: 700 !important;
+  color: var(--lawai-navy) !important;
+}
+.features-grid .feature-card .feature-desc{
+  margin-top: 6px !important;
+  color: var(--lawai-muted) !important;
+  line-height: 1.6 !important;
+}
+
+/* hover 效果維持柔金調，符合整體色系 */
+.features-grid .feature-card:hover,
+.features-grid .feature-card:focus-within{
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%) !important;
+  border-color: rgba(235,220,168,0.5) !important;
+  box-shadow: 0 6px 20px rgba(28,42,77,0.08) !important;
+  transform: translateY(-1.5px) !important;
+}
+
+.features-grid .feature-card:hover .feature-icon,
+.features-grid .feature-card:focus-within .feature-icon{
+  background: radial-gradient(circle at 30% 30%, var(--lawai-softgold2) 0%, var(--lawai-softgold) 100%) !important;
+  border-color: rgba(235,220,168,0.45) !important;
+  box-shadow: 0 4px 16px rgba(235,220,168,0.22) !important;
+  transform: scale(1.08) !important;
+}
+.features-grid .feature-card:hover .feature-icon i,
+.features-grid .feature-card:hover .feature-icon .material-icons,
+.features-grid .feature-card:hover .feature-icon svg,
+.features-grid .feature-card:focus-within .feature-icon i,
+.features-grid .feature-card:focus-within .feature-icon .material-icons,
+.features-grid .feature-card:focus-within .feature-icon svg{
+  color: var(--lawai-navy) !important;
+  fill: var(--lawai-navy) !important;
+  transform: translateY(-0.5px) scale(1.04) !important;
+}
+
+.features-grid .feature-card:focus-visible{
+  outline: 3px solid rgba(235,220,168,0.4) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--radius-xl) !important;
+}
+</style>
+<!-- ===== Final arrow upward adjustment: from 2cm to 1cm ===== -->
+<style>
+  #faq-lawai .faq-controls {
+    top: calc(50% + 1cm) !important;
+  }
+</style>
+<!-- ===== Adjust dots and arrow positions: dots up 3cm, arrows up 1cm ===== -->
+<style>
+  /* Move the dots upward by 3cm */
+  #faq-lawai .faq-dots,
+  #faq-lawai .swiper-pagination,
+  #faq-lawai .swiper-pagination-bullets {
+    position: relative !important;
+    top: -3cm !important;
+  }
+
+  /* Move the left/right arrow controls upward by 1cm */
+  #faq-lawai .faq-controls {
+    top: calc(50% + 2cm) !important; /* originally 50% + 3cm, now up by 1cm */
+  }
+</style>
+<!-- ===== FAQ controls precise placement per user's red-circled request ===== -->
+<style>
+  /* Scope to FAQ section only */
+  #faq-lawai { position: relative; }
+  /* Center the 3 dots/pagination */
+  #faq-lawai .faq-dots,
+  #faq-lawai .swiper-pagination,
+  #faq-lawai .swiper-pagination-bullets {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+  }
+
+  /* Place the left/right buttons exactly at the middle line between the two rows of questions,
+     shifted downward about 3cm from the visual center, and keep them fixed (no animations). */
+  #faq-lawai .faq-controls {
+    position: absolute !important;
+    top: calc(50% + 3cm) !important; /* move ~3cm downward from center */
+    left: 0 !important;
+    right: 0 !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 8px !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+  }
+  #faq-lawai .faq-controls > * {
+    pointer-events: auto !important;
+  }
+
+  /* Fixed-looking buttons, hugging the inner edges of the FAQ card group */
+  #faq-lawai .faq-controls .faq-prev,
+  #faq-lawai .faq-controls .faq-next {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    background: #fff !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15) !important;
+    /* remove animations/hover effects */
+    transition: none !important;
+  }
+  #faq-lawai .faq-controls .faq-prev { left: -20px !important; }
+  #faq-lawai .faq-controls .faq-next { right: -20px !important; }
+
+  #faq-lawai .faq-controls .faq-prev:hover,
+  #faq-lawai .faq-controls .faq-next:hover {
+    transform: translateY(-50%) !important; /* keep fixed (no hover scaling) */
+  }
+
+  @media (max-width: 768px) {
+    #faq-lawai .faq-controls { top: calc(50% + 2cm) !important; }
+    #faq-lawai .faq-controls .faq-prev { left: -10px !important; }
+    #faq-lawai .faq-controls .faq-next { right: -10px !important; }
+  }
+</style>
+<style>
+/* === FAQ 4-at-a-time carousel (two rows x two cols) === */
+#faq-lawai .faq-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  #faq-lawai .faq-grid-2col {
+    grid-template-columns: 1fr 1fr; /* two columns */
+  }
+}
+#faq-lawai .faq-controls .faq-next{
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,75,107,.25);
+  background: linear-gradient(135deg, #E0F2FF, #FFFFFF);
+  color: #004B6B;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#faq-lawai .faq-controls .faq-next:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "LawAI法詢",
+  "image": "https://www.lawfavor.com/法詢.png",
+  "url": "https://www.lawfavor.com",
+  "telephone": "+886-2-2700-0677",
+  "faxNumber": "+886-2-2700-0119",
+  "email": "lawaiadvisor@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "敦化南路一段294號4樓之3",
+    "addressLocality": "大安區",
+    "addressRegion": "臺北市",
+    "postalCode": "106",
+    "addressCountry": "TW"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "areaServed": "Taiwan",
+  "description": "提供免費AI法律諮詢與專業律師線上服務，解答離婚、車禍、債務、租賃等法律問題。",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61580937020161",
+    "https://www.instagram.com/yourprofile",
+    "https://line.me/R/ti/p/@621sbqlu"
+  ]
+}
+</script>
+<style>
+/* FAQ unified style with hover effect */
+.faq-grid-2col{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+}
+@media (min-width:900px){
+  .faq-grid-2col{grid-template-columns:1fr 1fr;}
+}
+.faq-item{
+  border:1px solid #D4AF37;
+  border-radius:12px;
+  padding:20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.faq-item:hover{
+  box-shadow: 0 0 12px 2px rgba(212,175,55,0.8);
+  transform: translateY(-2px);
+}
+.faq-q{ font-weight:700; color:#D4AF37; }
+.faq-a{ color:#333333; line-height:1.6; }
+</style><style>
+.faq-grid-2col{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+}
+@media (min-width:900px){
+  .faq-grid-2col{grid-template-columns:1fr 1fr;}
+}
+</style><!DOCTYPE html>
+
+<html lang="zh-TW">
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-17535200500">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17535200500');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LawAI法詢 | AI驅動的法律科技平台</title>
+<meta content="AI科技與法律的完美結合，智能法律諮詢、文件生成與案例分析" name="description"/>
+<link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary: #004B6B;
+        --primary-light: #0077A3;
+        --primary-dark: #002D42;
+        --secondary: #E0F2FF;
+        --accent: #F3F9FC;
+        --bg-light: #FFFFFF;
+        --bg-dark: #1F2937;
+        --text-light: #111827;
+        --text-muted: #6B7280;
+        --text-dark: #F9FAFB;
+        --highlight: #A5D8FC;
+        --success: #10B981;
+        --warning: #F59E0B;
+        --error: #EF4444;
+        --neon-blue: #00B4D8;
+        --neon-purple: #48CAE4;
+        --neon-pink: #FF6B9E;
+        --neon-green: #00C49A;
+        --gold: #90E0EF;
+        --shadow: 0 6px 16px rgba(0,0,0,0.08);
+        --shadow-hover: 0 8px 24px rgba(0, 75, 107, 0.2);
+        --shadow-large: 0 12px 28px rgba(0,0,0,0.12);
+        --glow: 0 0 15px rgba(0, 75, 107, 0.6);
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-xl: 32px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: var(--bg-light);
+        color: var(--text-light);
+        font-family: 'Noto Sans TC', sans-serif;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* 科技感背景元素 */
+    .tech-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.15;
+        background: 
+            radial-gradient(circle at 20% 30%, var(--neon-blue), transparent 40%),
+            radial-gradient(circle at 80% 70%, var(--neon-purple), transparent 40%);
+        animation: float 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-5%, 5%); }
+        100% { transform: translate(5%, -5%); }
+    }
+
+    /* 品牌頭部 - 科技感強化 */
+    .brand-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .brand-header.transparent {
+        background: rgba(255, 255, 255, 0);
+        box-shadow: none;
+        border-bottom: 1px solid rgba(0,0,0,0);
+        backdrop-filter: none;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transform: scale(0.9);
+        transform-origin: left center;
+    }
+
+    .logo-wrapper {
+        position: relative;
+        width: 72px;
+        height: 72px;
+    }
+
+    .logo-circle {
+        width: 100%;
+        height: 100%;
+        border: 4px solid var(--primary);
+        border-radius: 50%;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .logo-scale {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 36px;
+        height: 45px;
+        transform: translate(-50%, -50%);
+    }
+
+    .logo-scale::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 5px;
+        height: 100%;
+        background: var(--primary);
+        transform: translateX(-50%);
+        border-radius: 3px;
+    }
+
+    .logo-scale::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--primary);
+        border-radius: 3px;
+    }
+
+    .logo-arc-left {
+        position: absolute;
+        left: -18px;
+        top: 4px;
+        width: 36px;
+        height: 36px;
+        border: 5px solid var(--primary);
+        border-radius: 50%;
+        border-right: none;
+        border-top: none;
+        background: transparent;
+    }
+
+    .logo-weight {
+        position: absolute;
+        top: 20px;
+        right: -11px;
+        width: 0;
+        height: 0;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-top: 14px solid var(--primary);
+        border-radius: 0 0 4px 4px;
+    }
+
+    .logo-satellite-orbit {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    .logo-satellite-dot {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        background-color: var(--gold);
+        border-radius: 50%;
+    }
+
+    .logo-orbit-wrapper {
+        position: absolute;
+        width: 81px;
+        height: 81px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: rotateOrbit 10s linear infinite;
+        transform-origin: center center;
+    }
+
+    .logo-orbit-wrapper:nth-child(1) { animation-delay: 0s; }
+    .logo-orbit-wrapper:nth-child(2) { animation-delay: -2s; }
+    .logo-orbit-wrapper:nth-child(3) { animation-delay: -4s; }
+    .logo-orbit-wrapper:nth-child(4) { animation-delay: -6s; }
+    .logo-orbit-wrapper:nth-child(5) { animation-delay: -8s; }
+
+    @keyframes rotateOrbit {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(720deg); }
+    }
+
+    .logo-text-container {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+    }
+
+    .logo-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 1.8rem;
+        color: var(--primary);
+        transition: var(--transition);
+        line-height: 1;
+    }
+
+    .logo-subtext {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 1.89rem;
+        background: linear-gradient(to right, var(--primary), var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* 導航集群 - 科技感按鈕 */
+    .nav-cluster {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .nav-card {
+        padding: 0.625rem 1.25rem;
+        border-radius: var(--radius-sm);
+        background: rgba(0, 75, 107, 0.1);
+        color: var(--primary);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
+        transition: all 0.5s ease;
+    }
+
+    .nav-card:hover::before {
+        left: 100%;
+    }
+
+    .nav-card:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary);
+    }
+
+    .nav-card .material-icons {
+        font-size: 1.25rem;
+    }
+
+    /* 主標語區 */
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 6rem 1.25rem 4rem;
+        position: relative;
+        overflow: hidden;
+    
+    margin-top: -37px;
+}
+
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(236, 248, 255, 0.8), rgba(255, 255, 255, 0.9));
+        z-index: -1;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        position: relative;
+        line-height: 1.2;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+        font-size: 1.215rem; /* 原始尺寸的90% */
+        text-align: center;
+        color: var(--text-muted);
+        max-width: 800px;
+        margin-bottom: 3rem;
+        position: relative;
+        animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-subtitle::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(to right, var(--primary), var(--neon-blue));
+        margin: 1.5rem auto 0;
+        border-radius: 3px;
+        animation: widthGrow 1.5s ease-out;
+    }
+
+    @keyframes widthGrow {
+        0% { width: 0; opacity: 0; }
+        100% { width: 100px; opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* AI核心按鈕 - 科技感強化 */
+    .main-ai-btn {
+        padding: 1.5rem 2.5rem;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        box-shadow: var(--shadow-large), var(--glow);
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        max-width: 500px;
+        margin-bottom: 3rem;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        animation: pulseScale 2s infinite alternate;
+    
+    margin-top: -1rem;
+}
+
+    @keyframes pulseScale {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.02); }
+    }
+
+    .main-ai-btn::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            to bottom right,
+            rgba(255,255,255,0.3) 0%,
+            rgba(255,255,255,0) 60%
+        );
+        transform: rotate(30deg);
+        transition: var(--transition);
+        z-index: -1;
+    }
+
+    .main-ai-btn:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: var(--shadow-hover), 0 0 25px rgba(0, 75, 107, 0.8);
+        animation: none;
+    }
+
+    .main-ai-btn:hover::before {
+        left: 100%;
+    }
+
+    .main-ai-btn .btn-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .cube {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCube 12s infinite linear;
+    }
+
+    .cube-face {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border: 2px solid rgba(255,255,255,0.8);
+        background: rgba(0, 75, 107, 0.7);
+        box-shadow: inset 0 0 15px rgba(0, 180, 216, 0.5),
+                    0 0 10px rgba(0, 180, 216, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .front  { transform: rotateY(0deg) translateZ(30px); }
+    .back   { transform: rotateY(180deg) translateZ(30px); }
+    .right  { transform: rotateY(90deg) translateZ(30px); }
+    .left   { transform: rotateY(-90deg) translateZ(30px); }
+    .top    { transform: rotateX(90deg) translateZ(30px); }
+    .bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+    .cube-face.ai-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: white;
+        text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    }
+
+    .cube-face.scale-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: white;
+        text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    }
+
+
+    @keyframes rotateCube {
+        from { transform: rotateX(0) rotateY(0) rotateZ(0); }
+        to { transform: rotateX(360deg) rotateY(720deg) rotateZ(0); }
+    }
+
+    .main-ai-btn .btn-subtext {
+        font-size: 1.1rem;
+        font-weight: normal;
+        opacity: 0.9;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .click-hint {
+        position: relative;
+        background: white;
+        color: var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        animation: floatHint 2s infinite ease-in-out;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-top: 0.5rem;
+    }
+
+    .click-hint::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #FFB627;
+    }
+
+    @keyframes floatHint {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-5px) scale(1.05); }
+    }
+
+    /* 漂浮的科技元素 */
+    .floating-tech {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .tech-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        opacity: 0.15;
+    }
+
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--neon-blue);
+        top: 20%;
+        left: 10%;
+        animation: float-circle 25s infinite alternate ease-in-out;
+    }
+
+    .circle-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--neon-purple);
+        bottom: 10%;
+        right: 10%;
+        animation: float-circle 30s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float-circle {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(-50px, 50px) rotate(180deg); }
+        100% { transform: translate(50px, -50px) rotate(360deg); }
+    }
+
+    /* 中間內容區塊 - 科技感強化 */
+    .content-section {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        position: relative;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--primary);
+        position: relative;
+        font-weight: 900;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--neon-blue));
+        margin: 1.5rem auto 0;
+        border-radius: 2px;
+        animation: widthGrow 1.5s ease-out;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 2.5rem;
+        border-radius: var(--radius-md);
+        box-shadow: none;
+        transition: var(--transition);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 75, 107, 0.1);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 0;
+        background: linear-gradient(to bottom, var(--neon-blue), var(--primary));
+        transition: height 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .feature-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, var(--secondary), white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 75, 107, 0.1);
+        position: relative;
+    }
+
+    .feature-icon::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 102, 255, 0.3);
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    .feature-card:hover .feature-icon::after {
+        opacity: 0.3;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .feature-icon .material-icons {
+        font-size: 3rem;
+        background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .feature-desc {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        line-height: 1.7;
+    }
+
+    .feature-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: auto;
+        position: relative;
+    }
+
+    .feature-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+    }
+
+    .feature-link:hover::after {
+        width: 100%;
+    }
+
+    .feature-link:hover .material-icons {
+        transform: translateX(5px);
+    }
+
+    .feature-link .material-icons {
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+    }
+
+    /* 團隊介紹區塊 */
+    .team-section {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        position: relative;
+        background: rgba(224, 242, 255, 0.3);
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .team-member:nth-child(1) { animation-delay: 0.1s; }
+    .team-member:nth-child(2) { animation-delay: 0.2s; }
+    .team-member:nth-child(3) { animation-delay: 0.3s; }
+    .team-member:nth-child(4) { animation-delay: 0.4s; }
+    .team-member:nth-child(5) { animation-delay: 0.5s; }
+    .team-member:nth-child(6) { animation-delay: 0.6s; }
+    .team-member:nth-child(7) { animation-delay: 0.7s; }
+    .team-member:nth-child(8) { animation-delay: 0.8s; }
+    .team-member:nth-child(9) { animation-delay: 0.9s; }
+    .team-member:nth-child(10) { animation-delay: 1s; }
+
+    .member-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--secondary), white);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(0, 75, 107, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .member-avatar::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 102, 255, 0.3);
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    .team-member:hover .member-avatar::after {
+        opacity: 0.3;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .member-avatar .material-icons {
+        font-size: 3rem;
+        background: linear-gradient(to right, var(--primary), var(--primary-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .member-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .member-title {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    /* 數據展示區 - 科技感強化 */
+    .stats-container {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stats-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(0, 180, 216, 0.1), transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(72, 202, 228, 0.1), transparent 40%);
+    }
+
+    .stats-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        font-weight: 700;
+        position: relative;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .stat-item {
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .stat-item:nth-child(1) { animation-delay: 0.2s; }
+    .stat-item:nth-child(2) { animation-delay: 0.4s; }
+    .stat-item:nth-child(3) { animation-delay: 0.6s; }
+    .stat-item:nth-child(4) { animation-delay: 0.8s; }
+
+    .stat-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0)
+        );
+        z-index: -1;
+    }
+
+    .stat-item:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        background: linear-gradient(to right, white, #E0F2FF);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .stat-label {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .stat-slogan {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .stat-slogan::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .stat-desc {
+        font-size: 1rem;
+        opacity: 0.8;
+        line-height: 1.6;
+    }
+
+    /* 導航銀河 - 科技感強化 */
+    .nav-galaxy {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+        display: none; /* Hidden by default, shown on mobile */
+        justify-content: space-around;
+        background: linear-gradient(135deg, rgba(0, 75, 107, 0.9), rgba(0, 42, 66, 0.9));
+        padding: 0.8rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+    }
+
+    .nav-planet {
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0.5rem;
+        border-radius: var(--radius-sm);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        min-width: 60px;
+        position: relative;
+        opacity: 0.8;
+    }
+
+    .nav-planet.active,
+    .nav-planet:hover {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+
+    .nav-planet::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    .nav-planet:hover::after,
+    .nav-planet.active::after {
+        width: 50%;
+    }
+
+    .nav-planet .material-icons {
+        font-size: 1.4rem; /* Reduced by 10% */
+    }
+
+    /* 底部導航AI方塊 */
+    .nav-cube {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCube 12s infinite linear;
+    }
+
+    .nav-cube-face {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba(255,255,255,0.8);
+        background: rgba(0, 75, 107, 0.7);
+        box-shadow: inset 0 0 6px rgba(0, 180, 216, 0.5),
+                    0 0 4px rgba(0, 180, 216, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-front  { transform: rotateY(0deg) translateZ(10px); }
+    .nav-back   { transform: rotateY(180deg) translateZ(10px); }
+    .nav-right  { transform: rotateY(90deg) translateZ(10px); }
+    .nav-left   { transform: rotateY(-90deg) translateZ(10px); }
+    .nav-top    { transform: rotateX(90deg) translateZ(10px); }
+    .nav-bottom { transform: rotateX(-90deg) translateZ(10px); }
+
+    .nav-cube-face.ai-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 0.5rem;
+        color: white;
+        text-shadow: 0 0 2px rgba(255,255,255,0.8);
+    }
+
+    .nav-cube-face.scale-text {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 900;
+        font-size: 0.5rem;
+        color: white;
+        text-shadow: 0 0 2px rgba(255,255,255,0.8);
+    }
+
+    .nav-scale-text::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3v18h18'/%3E%3Cpath d='M18 7v10'/%3E%3Cpath d='M14 11v6'/%3E%3Cpath d='M10 9v10'/%3E%3Cpath d='M6 13v4'/%3E%3Cpath d='M3 21h18'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 1024px) {
+        .team-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .brand-header {
+            padding: 1rem;
+        }
+        
+        .nav-cluster {
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        
+        .nav-card {
+            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .nav-card span:not(.material-icons) {
+            display: none;
+        }
+        
+        .nav-card .material-icons {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+        
+        .main-ai-btn {
+            padding: 1rem 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .main-ai-btn .btn-icon {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .cube {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .cube-face {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .front  { transform: rotateY(0deg) translateZ(25px); }
+        .back   { transform: rotateY(180deg) translateZ(25px); }
+        .right  { transform: rotateY(90deg) translateZ(25px); }
+        .left   { transform: rotateY(-90deg) translateZ(25px); }
+        .top    { transform: rotateX(90deg) translateZ(25px); }
+        .bottom { transform: rotateX(-90deg) translateZ(25px); }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1rem;
+        }
+        
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .nav-galaxy {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+            display: flex;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .brand-header {
+            padding: 0.8rem;
+        }
+        
+        .logo-container img {
+            height: 48px;
+        }
+        
+        .hero-title {
+            font-size: 1.8rem;
+        }
+        
+        .hero-section {
+            padding: 4rem 1rem 3rem;
+        }
+        
+        .main-ai-btn {
+            padding: 0.8rem 1.2rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .main-ai-btn .btn-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cube {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .cube-face {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .front  { transform: rotateY(0deg) translateZ(20px); }
+        .back   { transform: rotateY(180deg) translateZ(20px); }
+        .right  { transform: rotateY(90deg) translateZ(20px); }
+        .left   { transform: rotateY(-90deg) translateZ(20px); }
+        .top    { transform: rotateX(90deg) translateZ(20px); }
+        .bottom { transform: rotateX(-90deg) translateZ(20px); }
+        
+        .content-section, .team-section, .stats-container {
+            padding: 3rem 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+        }
+        
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .member-name {
+            font-size: 1rem;
+        }
+        
+        .member-title {
+            font-size: 0.8rem;
+        }
+        
+        .nav-galaxy {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+            padding: 0.5rem;
+        }
+        
+        .nav-planet {
+            min-width: 45px;
+            padding: 0.2rem;
+            font-size: 0.7rem;
+            gap: 0.2rem;
+        }
+        
+        .nav-planet .material-icons {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* 輔助類 */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    @media (min-width: 769px) {
+        .nav-galaxy {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+            display: none !important;
+        }
+    }
+
+/* 統計卡圖標顏色與字體換成新薑黃色 */
+.stat-item .stat-icon {
+    color: #FFB627 !important;
+}
+
+.stat-item .stat-label {
+    color: #FFB627 !important;
+}
+</style>
+<style>
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 55px;
+    }
+}
+
+/* 統計卡圖標顏色與字體換成新薑黃色 */
+.stat-item .stat-icon {
+    color: #FFB627 !important;
+}
+
+.stat-item .stat-label {
+    color: #FFB627 !important;
+}
+
+</style>
+<style>
+@keyframes glowFloat {
+    0% { transform: translateY(0px); box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+    50% { transform: translateY(-5px); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+    100% { transform: translateY(0px); box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+}
+.feature-card {
+    animation: glowFloat 5s ease-in-out infinite;
+}
+
+/* 新增的樣式 - 解決底部留白和對齊問題 */
+.footer-content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    font-size: 16px;
+    text-align: left; /* 確保文字左對齊 */
+}
+
+.footer-logo {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.footer-info {
+    flex: 1 1 auto;
+    color: #fff;
+    font-size: 16px;
+    line-height: 2;
+    text-align: left; /* 確保文字左對齊 */
+    padding-left: 0; /* 移除左邊距 */
+    margin-left: 0; /* 移除左邊距 */
+}
+
+.footer-social {
+    flex: 0 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* 確保導航列不會造成留白 */
+.nav-galaxy {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* 移除不必要的transform */
+.footer-info div {
+    transform: none !important;
+}
+
+/* 確保footer logo左對齊 */
+.footer-logo img {
+    display: block;
+    margin-left: 0;
+}
+</style>
+<style>
+/* 調整 stats-container 與 footer 的交疊 */
+.stats-container {
+    margin-bottom: -1%;
+}
+footer {
+    margin-top: -1%;
+}
+
+/* 👉 桌面版專用智能客服浮動按鈕（AI放大粗體） */
+@media (min-width: 769px) {
+  .smart-assistant-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #0a3768 0%, #4f6c87 50%, #56b3c1 100%);
+    color: #ffffff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    z-index: 999;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    padding: 0;
+    position: fixed;
+  }
+
+  .smart-assistant-btn:hover {
+    transform: scale(1.07);
+  }
+
+  .smart-assistant-btn .ai-text {
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    line-height: 1;
+  }
+
+  .smart-assistant-btn .label-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .smart-assistant-btn {
+    display: none !important;
+  }
+}
+</style>
+<style>
+.avatar-link, .name-link { text-decoration: none; }
+.avatar-link:hover .member-avatar::after { opacity: 0.3; }
+.name-link:hover .member-name { text-decoration: underline; }
+</style>
+<style>
+/* ===== Carousel (Cards) – LawAI brand blue x light-blue gradient x white ===== */
+.carousel-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+}
+
+.carousel-shell {
+  --cards-per-view: 3; /* default desktop */
+  background: inherit;
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  padding: 0; /* create room for arrows */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.5s ease;
+  will-change: transform;
+
+  z-index: 1;
+}
+
+.carousel-card { overflow: hidden;
+  flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * 1rem) / var(--cards-per-view));
+  background: inherit;
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 9:16 media box */
+.carousel-card .media {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 4 / 3; overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
+
+  box-sizing: border-box;
+  
+  
+
+  background: #FFFFFF;
+  overflow: hidden;
+  padding: 0; background: transparent; /* 左右各 1 公分，讓邊框更貼合圖片 */
+
+  overflow: hidden;
+  padding: 0 1cm;
+}
+
+.carousel-card .media img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 等比例縮小完整顯示，不裁切 */
+  display: block;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 102, 255, 0.3); /* 加粗 100% */
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Arrow buttons */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  z-index: 50;
+
+  pointer-events: auto;
+}
+.carousel-arrow[disabled] { opacity: 0.5; }
+.carousel-arrow.left { left: 10px; }
+.carousel-arrow.right { right: 10px; }
+
+/* Dots / indicators */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(0, 75, 107, 0.25);
+  border: 1px solid rgba(0, 75, 107, 0.35);
+  transition: transform .2s ease, background .2s ease;
+}
+.carousel-dot.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  transform: scale(1.2);
+}
+
+/* Match feature-card visual rhythm by spacing */
+.carousel-head {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.carousel-head .section-title {
+  margin-bottom: .5rem;
+}
+
+/* Responsive: per-view counts (桌機 3, 平板 2, 手機 1) */
+@media (max-width: 1024px) {
+  .carousel-shell { --cards-per-view: 2; }
+}
+@media (max-width: 600px) {
+  .carousel-shell { --cards-per-view: 1; padding: 0; }
+}
+
+/* Touch swipe visual hint (optional subtle border change) */
+.carousel-shell.swiping .carousel-card { overflow: hidden;
+  border-color: rgba(0, 119, 163, 0.45);
+}
+</style>
+<!-- Added LINE button styles from Line_line.html -->
+<style>
+/* 👉 手機/小視窗專用：LINE 浮動按鈕（上：LINE；下：立即回覆，確保不超出範圍） */
+@media (max-width: 768px) {
+  a.line-float-btn {
+    position: fixed;
+    bottom: calc(86px - 0.7cm);
+    right: calc(18px - 0.2cm);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #06C755;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    z-index: 1001;
+    transition: transform .2s ease;
+    text-align: center;
+    overflow: hidden;
+  }
+  a.line-float-btn:hover { transform: translateY(-2px); }
+
+  a.line-float-btn .line-text {
+    font-weight: 900 !important;
+    font-size: 14px !important;
+    color: #FFFFFF !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  a.line-float-btn .line-sub {
+    font-weight: 700 !important;
+    font-size: 10px !important;
+    color: #FFFFFF !important;
+    line-height: 1.2 !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* 桌面隱藏 LINE 浮動按鈕 */
+@media (min-width: 769px) {
+  a.line-float-btn { display: none !important; }
+}
+</style>
+<!-- Added AI (mobile) button styles -->
+<style>
+/* 👉 手機/小視窗專用：AI 智能客服浮動按鈕（尺寸與 LINE 相同，置於其上方） */
+@media (max-width: 768px) {
+  a.ai-float-btn {
+    position: fixed;
+    /* 置於 LINE 按鈕上方：LINE 的 bottom 為 calc(86px - 0.7cm)，再加上 64px 高度與 12px 間距 */
+    bottom: calc(86px - 0.7cm + 68px);
+    right: calc(18px - 0.2cm);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0a3768 0%, #4f6c87 50%, #56b3c1 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+  a.ai-float-btn:hover { transform: scale(1.04); }
+
+  /* 兩行字樣，對齊桌面版 smart-assistant-btn 的樣式精神但縮到 64px */
+  a.ai-float-btn .ai-text {
+    font-size: 23px;
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.35);
+  }
+  a.ai-float-btn .label-text {
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.35);
+  }
+}
+
+/* 桌面隱藏 AI（mobile）浮動按鈕；改用原本的 .smart-assistant-btn（桌面版） */
+@media (min-width: 769px) {
+  a.ai-float-btn { display: none !important; }
+}
+</style>
+<body>
+<h1 class="seo-sr-only" style="display:none !important;">LawAI法詢｜AI 驅動的免費法律諮詢與律師預約網站（台北、新北、全台在地服務）</h1>
+<!-- ===== Move subtitle downward by 0.5cm (2025-10-09) ===== -->
+<style id="faq-subtitle-move">
+  .faq-subtitle,
+  h2.subtitle,
+  .section-subtitle {
+    margin-top: 0.5cm !important;
+    display: block;
+  }
+</style>
+<!-- ===== Remove FAQ swiper pagination dots (2025-10-09) ===== -->
+<style id="faq-remove-dots">
+  /* Hide pagination/dots strictly within the FAQ section */
+  #faq-lawai .swiper-pagination,
+  #faq-lawai .swiper-pagination-bullets,
+  #faq-lawai .faq-dots,
+  #faq-lawai .carousel-dots {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+</style>
+<style>
+#articles-lawai .section-desc{
+  text-align: center !important;
+}
+#articles-lawai .section-title{
+  text-align: center !important;
+}
+</style><style>
+#faq-lawai .faq-title-wrapper{
+  gap: .25rem !important; /* 更緊湊 */
+  margin-bottom: 1rem !important;
+}
+#faq-lawai .section-title{
+  margin-bottom: 0 !important;
+}
+#faq-lawai .section-subtitle{
+  margin-top: 0 !important;
+}
+</style><style>
+/* 最新法律觀點（移植自 FAQ.html，套用本站色系） */
+#articles-lawai{ background: var(--bg-light, #f7f8f9); padding: clamp(48px, 8vw, 88px) 0; }
+#articles-lawai .section-title{ color: var(--primary); margin:0 0 10px; }
+#articles-lawai .section-desc{ color: var(--text-muted); margin:0 0 22px; }
+#articles-lawai .art-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+@media (max-width:1000px){ #articles-lawai .art-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ #articles-lawai .art-grid{ grid-template-columns:1fr; } }
+#articles-lawai .card.article{ background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:20px; 
+  box-shadow: 0 8px 22px rgba(0,0,0,.06); transition:.25s ease; }
+#articles-lawai .card.article:hover{ transform: translateY(-2px); box-shadow: 0 16px 34px rgba(0,0,0,.1); }
+#articles-lawai .thumb{ height:160px;border-radius:14px;background:
+   linear-gradient(135deg, rgba(0,75,107,.08), rgba(0,158,199,.18)),
+   repeating-linear-gradient(45deg, rgba(0,75,107,.08) 0 6px, transparent 6px 12px);
+   border:1px solid rgba(0,0,0,.08); margin-bottom:12px;}
+#articles-lawai h3{ color: var(--primary); margin:6px 0 8px; font-size:18px; }
+#articles-lawai p{ margin:0 0 10px; color: var(--text-light, #44515a); }
+#articles-lawai a.more{ color: var(--primary); font-weight:700; }
+</style><style>
+/* FAQ 標題置中與裝飾線（保留藍色風格） */
+#faq-lawai .faq-title-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:.75rem;
+  margin-bottom: 1.5rem;
+}
+#faq-lawai .section-title{ 
+  text-align:center; 
+  margin: 0;
+}
+#faq-lawai .section-subtitle{ 
+  text-align:center;
+  margin: 0;
+  color: var(--text-muted);
+}
+  width:180px;
+  height:6px;
+  border-radius:999px;
+  background: var(--primary-light);
+}
+/* 右側控制鈕維持貼齊右邊；在小尺寸置中 */
+#faq-lawai .faq-controls{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top: 0; 
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 768px){
+  #faq-lawai .faq-controls{ justify-content:center; }
+}</style><style>
+#faq-lawai .section-title {
+  text-align: center;
+}
+#faq-lawai .section-subtitle {
+  text-align: center;
+}
+#faq-lawai .faq-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: -2.5rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 600px) {
+  #faq-lawai .faq-controls {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}
+</style>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-WJGKKVC7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- 科技感背景元素 -->
+<div class="tech-bg"></div>
+<div class="floating-tech">
+<div class="tech-circle circle-1"></div>
+<div class="tech-circle circle-2"></div>
+</div>
+<header class="brand-header">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJGKKVC7');</script>
+<!-- End Google Tag Manager -->
+<a class="logo-container" href="/" id="logo">
+<img alt="LawAI Logo" src="05-(綠金)法詢_首頁2-02.png" style="height: 64px;"/>
+</a>
+<nav class="nav-cluster" style="margin-left: auto; justify-content: flex-end; gap: 0.4rem;">
+<a class="nav-card" href="服務說明.html" style="padding: 0.3rem 0.6rem; min-width: auto;">
+<span aria-hidden="true" class="material-icons">list_alt</span>
+<span>服務說明</span>
+</a>
+<a class="nav-card" href="團隊成員版面.html" style="padding: 0.3rem 0.6rem; min-width: auto;">
+<span aria-hidden="true" class="material-icons">groups</span>
+<span>團隊介紹</span>
+</a>
+<a class="nav-card" href="lawreserve.html" style="padding: 0.3rem 0.6rem; min-width: auto;"><span aria-hidden="true" class="material-icons">contact_mail</span><span>聯繫我們</span></a><a class="nav-card" href="最新法律觀點_page1.html"><span class="material-icons">gavel</span><span>法律觀點</span></a></nav>
+<!-- LawAI Mobile Hamburger Button (20251026) -->
+<button aria-controls="lawai-mh-drawer" aria-expanded="false" aria-label="開啟選單" class="lawai-mh-btn" id="lawai-mh-btn">
+<span aria-hidden="true" class="lawai-mh-icon">
+<span></span><span></span><span></span>
+</span>
+</button>
+</header>
+<!-- LawAI Mobile Drawer + Mask (20251026) -->
+<div class="lawai-mh-mask" id="lawai-mh-mask"></div>
+<aside aria-labelledby="lawai-mh-title" aria-modal="true" class="lawai-mh-drawer" id="lawai-mh-drawer" role="dialog">
+<div class="lawai-mh-header">
+<div class="lawai-mh-title" id="lawai-mh-title">快速導覽
+    <button aria-label="關閉選單" class="lawai-mh-close" id="lawai-mh-close">×</button>
+</div>
+</div>
+<nav class="lawai-mh-links" id="lawai-mh-links">
+<a href="#contact" id="lawai-mh-link-contact">聯繫我們</a>
+<a href="#team" id="lawai-mh-link-team">團隊介紹</a>
+<a href="最新法律觀點_page1.html" id="lawai-mh-link-legal">法律觀點</a>
+<a href="#service" id="lawai-mh-link-service">服務說明</a>
+</nav>
+</aside>
+<div style="margin: 0; padding: 0;">
+<img src="法詢.png" style="display: block; width: 100%; margin: 0; padding: 0;"/>
+</div>
+<!-- 主標語區 - 新增 -->
+<section class="hero-section">
+<div class="hero-bg"></div>
+<h1 class="hero-title">AI 科技與法律的智能溝通</h1>
+<p class="hero-subtitle">LawAI 法詢｜24小時AI法律諮詢與律師線上預約平台，提供免費法律服務與智能法律分析。</p>
+<a href="aireport.html" style="text-decoration: none;"><button class="main-ai-btn">
+<div class="btn-icon">
+<div class="cube">
+<div class="cube-face front ai-text" style="font-size: 1.65rem;">AI</div>
+<div class="cube-face back scale-text" style="font-size: 1.2rem;">LAW</div>
+<div class="cube-face right"></div>
+<div class="cube-face left"></div>
+<div class="cube-face top"></div>
+<div class="cube-face bottom"></div>
+</div>
+</div>
+            AI 免費法律諮詢
+            <span class="btn-subtext">
+                智能分析 · 精準解答 · 24小時服務
+                <span class="click-hint" style="background: #FFB627; color: white;">開始免費諮詢</span>
+</span>
+</button></a><!-- LawAI collapsible block (added) -->
+<style>
+.lawai-collapsible{max-width:880px;margin:0 auto 0.5rem auto}
+.collapsible-toggle{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.1rem;border-radius:999px;border:1px solid rgba(0,75,107,.25);
+  background:linear-gradient(135deg,#E0F2FF,#FFFFFF);color:#004B6B;
+  font-weight:800;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.collapsible-toggle:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.08);}
+.collapsible-toggle .icon{display:inline-block;transition:transform .2s ease;}
+.collapsible-toggle[aria-expanded="true"] .icon{transform:rotate(180deg);}
+
+.collapsible-content[hidden]{display:none !important;}
+.collapsible-content{
+  margin-top:1rem;background:#fff;border:1px solid rgba(0,75,107,.12);
+  border-radius:16px;padding:18px 18px 16px;line-height:1.75;box-shadow:0 8px 22px rgba(0,0,0,.06);
+}
+.collapsible-content h3,.collapsible-content h4{color:#004B6B;margin:.25rem 0 .5rem;font-weight:900}
+.collapsible-content h3{font-size:1.15rem}
+.collapsible-content h4{font-size:1.02rem}
+.collapsible-content p{color:#374151;margin:.25rem 0 .5rem}
+@media (max-width:600px){
+  .lawai-collapsible{padding:0 .5rem}
+  .collapsible-toggle{width:100%;justify-content:center}
+}
+</style>
+<div class="lawai-collapsible">
+<button aria-controls="lawaiMore" aria-expanded="false" class="collapsible-toggle" type="button">
+    了解更多整合流程
+    <span aria-hidden="true" class="icon">▾</span>
+</button>
+<div class="collapsible-content" hidden="" id="lawaiMore">
+<h3>LawAI 法詢的整合流程</h3>
+<p>LawAI 法詢是結合人工智慧與專業律師團隊的法律輔助平台，提供全天候、24 小時免費法律諮詢。系統首先透過 AI 技術理解使用者問題的脈絡，釐清事實與重點，再將內容轉化為摘要紀錄，由律師團隊接續分析、提出具體且可行的法律方案。無論您面臨離婚協議、車禍賠償、債務重整、租賃糾紛、消費爭議或民事訴訟等狀況，LawAI 法詢都能協助您快速掌握法律方向與行動策略。</p>
+<h4>一、AI 法律諮詢的運作邏輯（精準理解與銜接）</h4>
+<p>LawAI 法詢的 AI 系統不只是回答問題，而是先理解事實、再建構法律脈絡。使用者輸入問題後，AI 會自動分析五個關鍵要素：事件時間、發生地點、角色關係、金額與請求目的，並依此建立案件的時間軸與爭點摘要。這樣的流程大幅減少律師整理資料的時間，讓專業判斷能更快進入核心。</p>
+<ol>
+<li><strong>即時理解：</strong>AI 透過自然語言處理技術辨識問題性質，例如離婚、車禍、債務、消費爭議等，初步鎖定法律類型。</li>
+<li><strong>重點紀錄：</strong>AI 將使用者的敘述歸納成「當事人立場、事件經過與主要爭點」三大摘要，使資訊更具邏輯。</li>
+<li><strong>專業接續：</strong>AI 整理好的摘要可一鍵轉交律師，律師能迅速掌握全貌，提出具體建議、擬定策略或起草法律文件。</li>
+</ol>
+<h4>二、AI 法律諮詢常見領域與熱門案例</h4>
+<p>LawAI 法詢每天處理數以千計的諮詢，內容橫跨各類法律議題，包含：離婚與監護權、車禍賠償與交通事故、債務協商與重整、租賃糾紛、房屋買賣、消費爭議、勞資糾紛、遺產繼承、智慧財產權保護、個資與隱私、合約爭議以及詐騙與金錢糾紛等。</p>
+<p>提問時若能清楚說明發生的時間、地點、雙方關係、金額與目前進展，AI 便能準確辨識案件類型與法律關聯，並快速提供初步方向；接續由律師針對具體事實進行分析與法律適用，提出行動建議，例如協商、調解、聲請或訴訟。</p>
+<p><em>「AI 理解 → 律師判斷 → 專業行動」</em>的流程，使每一次諮詢都能在最短時間內獲得最具價值的回覆。</p>
+<h4>三、你可以先準備的資料（加速分析與行動）</h4>
+<ol>
+<li>對話紀錄（LINE、簡訊、Email）或通訊往來。</li>
+<li>契約、收據、切結書、匯款紀錄與交易明細等文件。</li>
+<li>現場照片、影片、監視器截圖或車禍示意圖等影像資料。</li>
+<li>醫療單據、保險往來紀錄、報案文件或警方筆錄。</li>
+</ol>
+<p>AI 會根據這些資料自動生成爭點摘要，並建立案件架構；律師則依據摘要擬定具體法律策略，包括協商、調解、保全、聲請或訴訟等方式，協助當事人有效維護自身權益。</p>
+<h4>四、AI 與律師的協作關係（人機整合與專業信任）</h4>
+<p>LawAI 法詢的核心理念是「AI 協助理解事實，律師專責法律判斷」。AI 快速蒐集與整理資訊，確保案件以明確、條理化方式呈現；律師根據結構化資訊進行法律分析與風險評估，給予具體可行的法律方案。</p>
+<p>這種人機整合模式，讓使用者即獲即時指引，並確保最終的法律意見具備專業性、正確性與可執行性。LawAI 法詢以科技與專業並行，協助每位當事人更有信心地面對問題。</p>
+<h4>五、常見問答（FAQ）</h4>
+<div class="faq-grid-2col">
+<div class="faq-item">
+<div class="faq-q">問：LawAI 法詢能處理哪些法律問題？</div>
+<div class="faq-a">答：涵蓋離婚、交通事故、債務協商、租賃糾紛、消費爭議、勞資爭議、遺產繼承等領域。AI 先釐清事實，律師再提供專業分析與具體方案。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">問：AI 與律師的分工方式為何？</div>
+<div class="faq-a">答：AI 負責蒐集與歸納事實、生成初步摘要；律師負責法律適用、風險評估與策略建議，並可協助協商或提告。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">問：如何讓諮詢更有效率？</div>
+<div class="faq-a">答：建議提前準備通訊紀錄、契約文件、金流明細、照片影片或保險資料，並描述事件時間、地點與雙方關係，以便 AI 更快理解並分類問題。</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  const btn = document.querySelector('.lawai-collapsible .collapsible-toggle');
+  const panel = document.getElementById('lawaiMore');
+  if(btn && panel){
+    btn.addEventListener('click', function(){
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      if(expanded){ panel.setAttribute('hidden', ''); }
+      else { panel.removeAttribute('hidden'); }
+    });
+  }
+})();
+</script>
+</section>
+<!-- 中間內容區塊 -->
+<!-- 社群邀請區塊 -->
+<section class="content-section" style="padding: 2rem 1rem 1.5rem; text-align: center;">
+<h2 class="section-title" style="margin-bottom: 0.8rem;">歡迎加入我們的社群平台</h2>
+<p class="section-subtitle" style="margin-bottom: 1.2rem;">
+        即時互動、免費解惑、法律新知不漏接，與我們一起在線交流。
+    </p>
+<div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; align-items: center; margin-top: 0.5rem;">
+<a href="https://line.me/R/ti/p/@621sbqlu" style="text-decoration: none;" target="_blank">
+<img alt="LINE" src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" style="width: 60px; height: 60px;"/>
+</a>
+<a href="https://www.facebook.com/profile.php?id=61580937020161" style="text-decoration: none;" target="_blank">
+<img alt="Facebook" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" style="width: 60px; height: 60px;"/>
+</a>
+<a href="https://www.instagram.com/yourprofile" style="text-decoration: none;" target="_blank">
+<img alt="Instagram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="width: 60px; height: 60px;"/>
+</a>
+</div>
+<p style="font-size: 0.9rem; color: #555; margin-top: 0.6rem; font-weight: 500;">
+        👉 點擊圖標即可立即加入我們的 LINE 或 Facebook 社群
+    </p>
+</section>
+<section class="content-section">
+<h2 class="section-title">為什麼選擇 LawAI法詢？</h2>
+<p class="section-subtitle">我們將人工智慧與法律專業完美融合，創造前所未有的法律服務體驗</p>
+<div class="features-grid"><article class="feature-card" style="background: linear-gradient(135deg, #E0F7FA 0%, #CFD9FF 100%); box-shadow: 0 0 25px rgba(207,217,255,0.35); color: #1E2F4B;">
+<a href="lawmap.html" style="text-decoration: none; color: inherit; display: block;"><div class="feature-icon">
+<span class="material-icons" style="font-size: 64px;">psychology</span>
+</div></a>
+<a href="lawmap.html" style="text-decoration: none; color: inherit; display: block;"><h3 class="feature-title" onclick="window.location.href='lawmap.html'" style="cursor: pointer;cursor: pointer;">智圖法律分析</h3></a>
+<p class="feature-desc">運用自然語言處理技術，解析複雜法律條文，提供易懂的解釋與實際應用案例，讓法律不再難以理解</p>
+<a class="feature-link" href="#" onclick="window.location.href='lawmap.html'" style="cursor: pointer;cursor: pointer;">
+                    探索技術
+                    <span class="material-icons" onclick="window.location.href='lawmap.html'" style="cursor: pointer;cursor: pointer;">arrow_forward</span>
+</a>
+</article><article class="feature-card" style="background: linear-gradient(135deg, #E0F7FA 0%, #CFD9FF 100%); box-shadow: 0 0 25px rgba(207,217,255,0.35); color: #1E2F4B; margin: 0 auto;">
+<a href="airobot.html" style="text-decoration: none; color: inherit; display: block;">
+<div class="feature-icon">
+<span class="material-icons">support_agent</span>
+</div>
+</a>
+<a href="airobot.html" style="text-decoration: none; color: inherit; display: block;">
+<h3 class="feature-title" onclick="window.location.href='airobt.html'" style="cursor: pointer;">法詢智能客服</h3>
+</a>
+<p class="feature-desc">輸入法律問題，就像聊天一樣簡單。智能客服即時理解並提供清晰建議，協助您快速掌握應對方向。</p>
+<a class="feature-link" href="airobot.html">
+  馬上對話
+  <span class="material-icons">arrow_forward</span>
+</a>
+</article><article class="feature-card" style="background: linear-gradient(135deg, #E0F7FA 0%, #CFD9FF 100%); box-shadow: 0 0 25px rgba(207,217,255,0.35); color: #1E2F4B;">
+<a href="任務輸入頁版面.html" style="text-decoration: none; color: inherit; display: block;"><div class="feature-icon">
+<span class="material-icons">assignment</span>
+</div></a>
+<a href="任務輸入頁版面.html" style="text-decoration: none; color: inherit;"><h3 class="feature-title">任務發佈區</h3></a>
+<p class="feature-desc">填寫您的法律需求與案件說明，系統將即時發佈任務給專業律師，協助您迅速取得回應與後續建議。</p>
+<a class="feature-link" href="任務輸入頁版面.html">
+                    立即發布
+                    <span class="material-icons">arrow_forward</span>
+</a>
+</article>
+</div>
+</section>
+<!-- 團隊介紹區塊 -->
+<!-- ===== 圖片卡片式輪播（藍 × 淺藍漸層 × 白色） START ===== -->
+<section aria-label="案例圖片輪播" class="carousel-section">
+<div class="carousel-head">
+<h2 class="section-title">智圖互動導覽</h2>
+<p class="section-subtitle">提供案件處理流程之視覺化呈現，輔以風險評估、賠償計算與文件範本支援。</p>
+</div>
+<div class="carousel-shell" id="lawai-carousel">
+<button aria-label="上一張" class="carousel-arrow left" data-dir="-1">
+<span class="material-icons">chevron_left</span>
+</button>
+<div class="carousel-track">
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="扶養費追討法律互動圖解" loading="lazy" src="扶養費輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="交通事故損害賠償法律互動圖解" loading="lazy" src="車禍輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="不動產買賣瑕疵爭議法律互動圖解" loading="lazy" src="房屋輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="租賃押金返還法律互動圖解" loading="lazy" src="押租金輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="毒品案件法律互動圖解" loading="lazy" src="毒品輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="土地界址爭議法律互動圖解" loading="lazy" src="界址輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="不動產借名登記返還請求法律互動圖解" loading="lazy" src="借名輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="民間借貸糾紛法律互動圖解" loading="lazy" src="借款輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="帳戶涉詐法律風險互動分析" loading="lazy" src="人頭戶輪圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="未成年子女親權歸屬及探視安排法律互動圖解" loading="lazy" src="子女親權輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="本票請求權法律互動圖解" loading="lazy" src="本票輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="家庭暴力保護令聲請法律互動圖解" loading="lazy" src="家暴輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="配偶權侵害法律互動圖解" loading="lazy" src="配偶權輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="債務清理法律互動圖解" loading="lazy" src="債清輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="妨害電腦使用罪法律互動圖解" loading="lazy" src="電腦使用輪播圖.png"/></a></div></div>
+<button aria-label="下一張" class="carousel-arrow right" data-dir="1">
+<span class="material-icons">chevron_right</span>
+</button>
+</div>
+<div aria-hidden="false" class="carousel-dots" id="carousel-dots"></div>
+</section>
+<!-- ===== 圖片卡片式輪播 END ===== -->
+<div id="team-section" style="padding-top: 30px"><section class="team-section">
+<h2 class="section-title">團隊介紹</h2>
+<p class="section-subtitle">專業律師團隊，為您提供最優質的法律服務</p>
+<div class="team-grid"><div class="team-member">
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img src="./劉添錫律師.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"/></div></a>
+<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">劉添錫律師</h3></a>
+</div><div class="team-member">
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img src="./張育銜律師.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"/></div></a>
+<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">張育銜律師</h3></a>
+</div><div class="team-member">
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img src="./李欣庭律師.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"/></div></a>
+<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">李欣庭律師</h3></a>
+</div><div class="team-member">
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img src="./廖婉茹律師.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"/></div></a>
+<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">廖婉茹律師</h3></a>
+</div><div class="team-member">
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img src="./林原弘律師.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"/></div></a>
+<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">林原弘律師</h3></a>
+</div></div>
+</section></div>
+<!-- 數據展示區 - 從新版.html複製過來 -->
+<style>
+/* Scoped FAQ styles (match index (26) palette) */
+#faq-lawai { background: var(--bg-light); }
+#faq-lawai .section-title { color: var(--primary); text-align: left; }
+#faq-lawai .section-subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
+#faq-lawai .faq-grid-2col{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+}
+@media (min-width:900px){
+  #faq-lawai .faq-grid-2col{grid-template-columns:1fr 1fr;}
+}
+#faq-lawai .faq-item{
+  border:1px solid var(--primary);
+  border-radius:12px;
+  padding:18px;
+  background:#fff;
+  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+}
+#faq-lawai .faq-item:hover{
+  box-shadow: 0 8px 24px rgba(0,75,107,0.15);
+  transform: translateY(-2px);
+  border-color: var(--primary-light);
+}
+#faq-lawai .faq-q{
+  font-weight: 800;
+  color: var(--primary);
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+#faq-lawai summary::-webkit-details-marker{ display:none; }
+#faq-lawai .faq-item p{ color: var(--text-light); margin: .75rem 0 0; }
+#faq-lawai .qmark{
+  width:22px;height:22px;border-radius:6px;background:var(--secondary);
+  display:inline-grid;place-items:center;color:var(--primary);font-weight:800;flex:0 0 22px;
+}
+#faq-lawai .faq-controls .btn{ padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--primary);color:var(--primary);font-weight:700 }
+#faq-lawai .faq-controls .btn:hover{ background:var(--primary);color:#fff }
+</style>
+<section class="articles-section" id="articles-lawai"><div class="container"><h2 class="section-title">最新法律觀點</h2><p class="section-desc">以實用、可操作的內容累積信任，吸引精準搜尋流量。</p><div class="art-grid"><article class="card article">
+<img alt="離婚程序與監護權一次看懂" src="離婚程序與監護權一次看懂.png" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:cover;"/>
+<h3>離婚程序與監護權一次看懂</h3><p>協議離婚與裁判離婚差異，監護權判定與實務見解。</p><a class="more" href="離婚程序與監護權一次看懂.html">閱讀更多 →</a></article><article class="card article">
+<img alt="遺產繼承程序與稅務規劃" src="遺產繼承程序與稅務規劃.png" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:cover;"/>
+<h3>遺產繼承程序與稅務規劃</h3><p>遺產稅申報、特留分與遺囑。</p><a class="more" href="遺產繼承程序與稅務規劃.html">閱讀更多 →</a></article><article class="card article">
+<img alt="租賃契約常見陷阱與防範" src="租賃契約常見陷阱與防範.png" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:cover;"/>
+<h3>租賃契約常見陷阱與防範</h3><p>押金、修繕與條款檢核。</p><a class="more" href="租賃契約常見陷阱與防範.html">閱讀更多 →</a></article></div></div></section><section class="content-section" id="faq-lawai"><div class="faq-title-wrapper"><h2 class="section-title">常見問題（FAQ）</h2><p class="section-desc section-subtitle"><span class="faq-subtitle">快速了解服務範圍、資料安全與預約流程。</span></p></div><section class="faq" id="faq">
+<div class="container">
+<div class="faq-header">
+<div>
+</div>
+</div>
+</div>
+</section><div class="faq-controls"><button aria-label="上一組" class="faq-prev" type="button">←</button><div class="faq-dots"></div><button aria-label="下一組" class="faq-next" type="button">→</button></div><div class="faq-slider" data-perpage="4"><div class="faq-track"><div class="faq-slide"><div class="faq-grid-2x2"><details class="faq-item"><summary class="faq-q">Q：免費 AI 法律諮詢可以解決哪些問題？</summary><div class="faq-a">適合釐清初步爭點、蒐集事實、列出可行解法與需準備的資料。涉時效或高風險時會建議轉接律師。</div></details><details class="faq-item"><summary class="faq-q">Q：什麼時候應該改由律師處理？</summary><div class="faq-a">出現法定期間、高金額、對方已委任律師、或需談判與訴訟策略時，建議立即改由律師處理。</div></details><details class="faq-item"><summary class="faq-q">Q：資料安全如何保障？</summary><div class="faq-a">採 TLS 加密與最小存取原則；僅在提供服務必要範圍使用，可依需求匿名化或刪除對話。</div></details><details class="faq-item"><summary class="faq-q">Q：是否提供文件範本與自動產生？</summary><div class="faq-a">提供常見狀紙／申請範本，AI 協助帶入重點並提示附件；律師可複核與調整。</div></details></div></div><div class="faq-slide"><div class="faq-grid-2x2"><details class="faq-item"><summary class="faq-q">Q：如何預約律師，費用怎麼算？</summary><div class="faq-a">點「立即諮詢」或加入 LINE 由專人說明與試算，實際費用依案件複雜度與工作量而定。</div></details><details class="faq-item"><summary class="faq-q">Q：AI 回覆是否等同法律意見？</summary><div class="faq-a">AI 回覆屬一般性資訊，非個別化法律意見；複雜或高風險案件須由律師提供正式意見。</div></details><details class="faq-item"><summary class="faq-q">Q：開始前我需要準備哪些資料？</summary><div class="faq-a">基本事實時間線、對方資料、往來紀錄（LINE/Email）、契約或單據、金額與訴求方向。</div></details><details class="faq-item"><summary class="faq-q">Q：是否可以上傳照片、錄音與合約檔案？</summary><div class="faq-a">可以，上傳後由 AI 協助摘要重點並標記疑點，必要時轉請律師複核。</div></details></div></div><div class="faq-slide"><div class="faq-grid-2x2"><details class="faq-item"><summary class="faq-q">Q：轉接律師後多久會回覆？</summary><div class="faq-a">一般於工作日 24–48 小時內聯繫；急件可於留言時註明以便加速安排。</div></details><details class="faq-item"><summary class="faq-q">Q：是否支援線上視訊與外縣市案件？</summary><div class="faq-a">支援線上諮詢與遠距文件審閱；跨區案件可配對適合律師或安排線上會議。</div></details><details class="faq-item"><summary class="faq-q">Q：我可以要求刪除對話與個資嗎？</summary><div class="faq-a">可以，於聯絡頁或 LINE 留下需求與識別資訊，我們將完成刪除後回覆通知。</div></details><details class="faq-item"><summary class="faq-q">Q：如何最快速免費諮詢律師？</summary><div class="faq-a">立即加入官方LINE，能在最快10分鐘、最多6小時內取得律師協助。</div></details></div></div></div></div></section><section class="stats-container" style="background: linear-gradient(135deg, #274060, #1B2735); color: #ffffff; padding: 60px 20px 160px 20px; text-align: center; font-family: 'Noto Sans TC', sans-serif; margin-bottom: -2%;">
+<h2 class="stats-title">
+    LawAI法詢 改變法律服務的方式
+   </h2>
+<div class="stats-grid">
+<div class="stat-item">
+<span class="material-icons stat-icon">
+      verified_user
+     </span>
+<h3 class="stat-label">
+      資深律師團隊
+     </h3>
+<p class="stat-slogan">35年律師執業經驗，為您爭取每一分正義。</p>
+<p class="stat-desc">專業律師團隊，實戰經驗豐富，提供台灣律師線上諮詢，處理各類法律難題。</p>
+</div>
+<div class="stat-item">
+<span class="material-icons stat-icon">
+      insights
+     </span>
+<h3 class="stat-label">
+      智圖法律分析
+     </h3>
+<p class="stat-slogan">AI 大數據 × 法學資料搜尋，從案件到解方一步到位。</p>
+<p class="stat-desc">結合資料與判例圖譜，快速定位爭點，支援一站式處理流程與法學資料搜尋。</p>
+</div>
+<div class="stat-item">
+<span class="material-icons stat-icon">
+      support_agent
+     </span>
+<h3 class="stat-label">
+      智能 AI 諮詢
+     </h3>
+<p class="stat-slogan">AI 免費法律諮詢，24小時線上即時回覆。</p>
+<p class="stat-desc">由 AI 法律顧問回應，提供明確建議；支援官方 LINE 免費法律諮詢與快速接駁律師。</p>
+</div>
+<div class="stat-item">
+<span class="material-icons stat-icon">
+      assignment_turned_in
+     </span>
+<h3 class="stat-label">
+      任務發布系統
+     </h3>
+<p class="stat-slogan">一鍵發布法律需求，AI 協助整理重點，專業團隊即時接洽。</p>
+<p class="stat-desc">填寫任務表單，快速媒合律師團隊，串接 AI 法律意見書與一站式處理流程。</p>
+</div>
+</div>
+</section>
+<!-- Footer - 從新版.html複製過來 -->
+<footer style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #ffffff; padding: 48px 20px 20px; text-align: center; font-size: 14px; font-family: 'Noto Sans TC', sans-serif; position: relative; box-shadow: 0 -4px 12px rgba(0,0,0,0.2); transform: translateY(1%); margin-bottom: -1%;">
+<div class="footer-content-container">
+<div class="footer-logo">
+<img alt="LawAI Footer Logo" src="footerlogo.png" style="height: 212px; width: auto; display: block;"/>
+</div>
+<div class="footer-info" style="; margin-top: 1cm;">
+<div style="font-weight: 900 !important; font-size: 32px; letter-spacing: 1.5px; color: #A5A58D; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 1px 1px 4px rgba(255, 255, 255, 0.2); font-family: 'Merriweather', serif !important; font-size: 38.72px;font-weight: 900 !important; text-shadow: 3px 3px 6px rgba(0,0,0,0.5), -1px -1px 2px rgba(255,255,255,0.3) !important;; font-family: 'Merriweather', serif !important;; font-size: 42.6px; text-shadow: 2px 2px 4px rgba(0,0,0,0.6), -1px -1px 2px rgba(255,255,255,0.3), 0 0 8px rgba(255,255,255,0.2); font-weight: 900">
+      LawAI法詢
+     </div>
+<div style="font-family: Merriweather, serif; font-weight: 400; font-size: 17.56px; color: #f1f1f1; letter-spacing: 0.4px; line-height: 1.7;">
+      地址：臺北市大安區敦化南路一段294號4樓之3
+     </div>
+<div style="font-family: Merriweather, serif; font-weight: 400; font-size: 17.56px; color: #f1f1f1; letter-spacing: 0.4px; line-height: 1.7;">
+      電話：（02）2700-0677
+     </div>
+<div style="font-family: Merriweather, serif; font-weight: 400; font-size: 17.56px; color: #f1f1f1; letter-spacing: 0.4px; line-height: 1.7;">傳真：（02）2700-0119</div>
+<div style="font-family: Merriweather, serif; font-weight: 400; font-size: 17.56px; color: #f1f1f1; letter-spacing: 0.4px; line-height: 1.7; margin-bottom: 24px;">Email：
+      <a href="mailto:lawaiadvisor@gmail.com" style="color: #ffffff; text-decoration: none;">
+       lawaiadvisor@gmail.com
+      </a>
+</div>
+</div>
+<div class="footer-social">
+<div style="display: flex; gap: 16px; justify-content: center;">
+<a href="https://line.me/R/ti/p/@621sbqlu" target="_blank" title="加入LINE社群">
+<img alt="LINE Logo" src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" style="width: 36px; height: 36px;"/>
+</a>
+<a href="https://www.facebook.com/profile.php?id=61580937020161" target="_blank" title="造訪Facebook粉專">
+<img alt="Facebook Logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" style="width: 36px; height: 36px;"/>
+</a>
+<a href="https://www.instagram.com/yourprofile" target="_blank" title="造訪Instagram">
+<img alt="Instagram Logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="width: 36px; height: 36px;"/>
+</a>
+</div>
+<div style="font-size: 14px; color: #ffffff; margin-top: 4px;">追蹤我們，獲得最新法律資訊</div>
+</div>
+</div>
+<div style="text-align: center; padding: 12px 20px 0px; margin-top: 30px; font-size: 13px; color: #ffffff; margin-top: 30px; bottom: 10px; width: 100%; left: 0;">
+<div class="footer-links" style="margin: 16px 0 10px 0; font-size: 0.95em;">
+<a href="使用者條款.html" style="color:#D4AF37; text-decoration:none;">使用者協議</a>
+<span style="color:#D4AF37; margin:0 8px;">|</span>
+<a href="使用者條款.html" style="color:#D4AF37; text-decoration:none;">隱私權政策</a>
+<span style="color:#D4AF37; margin:0 8px;">|</span>
+<a href="使用者條款.html" style="color:#D4AF37; text-decoration:none;">免責聲明</a>
+</div>
+版權所有 Copyright © 2025 理然全球法律事務所 本網站所提供之 AI 法律建議僅供參考。
+   </div>
+</footer>
+<!-- 原始導航列 - 保留在最後 -->
+<div style="margin:0;padding:0;"><footer class="nav-galaxy" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #ffffff; padding: 48px 20px 20px; text-align: center; font-size: 14px; font-family: 'Noto Sans TC', sans-serif; position: relative; box-shadow: 0 -4px 12px rgba(0,0,0,0.2); transform: translateY(1%); margin-bottom: -1%;">
+<div class="nav-planet" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" role="button" tabindex="0">
+<span class="material-icons">home</span>
+            首頁
+        </div>
+<div class="nav-planet" onclick="window.location.href='lawmap.html'" role="button" tabindex="0">
+<span class="material-icons" style="font-size: 160%;">psychology</span>智圖分析</div>
+<div class="nav-planet" onclick="window.location.href='aireport.html'" role="button" tabindex="0">
+<div class="nav-cube">
+<div class="nav-cube-face nav-front ai-text">AI</div>
+<div class="nav-cube-face nav-back scale-text">LAW</div>
+<div class="nav-cube-face nav-right"></div>
+<div class="nav-cube-face nav-left"></div>
+<div class="nav-cube-face nav-top"></div>
+<div class="nav-cube-face nav-bottom"></div>
+</div>
+            AI 法律諮詢
+        </div><div class="nav-planet" onclick="window.location.href='airobot.html'" role="button" tabindex="0"><span class="material-icons">support_agent</span>智能客服</div>
+<div class="nav-planet" onclick="window.location.href='任務輸入頁版面.html'" role="button" tabindex="0">
+<span class="material-icons">assignment</span>
+            任務發佈
+        </div>
+</footer></div>
+<script>
+    // Logo交互效果
+    const logo = document.getElementById('logo');
+    logo.addEventListener('mouseenter', () => {
+        logo.querySelector('.logo-text').style.textShadow = '0 0 10px rgba(0, 75, 107, 0.3)';
+        logo.querySelector('.logo-subtext').style.textShadow = '0 0 10px rgba(0, 75, 107, 0.3)';
+    });
+    
+    logo.addEventListener('mouseleave', () => {
+        logo.querySelector('.logo-text').style.textShadow = 'none';
+        logo.querySelector('.logo-subtext').style.textShadow = 'none';
+    });
+    
+    // 魔方懸停效果
+    const aiBtn = document.querySelector('.main-ai-btn');
+    if(aiBtn) {
+        aiBtn.addEventListener('mouseenter', () => {
+            const cube = aiBtn.querySelector('.cube');
+            cube.style.animationDuration = '3s';
+        });
+        
+        aiBtn.addEventListener('mouseleave', () => {
+            const cube = aiBtn.querySelector('.cube');
+            cube.style.animationDuration = '12s';
+        });
+    }
+    
+    // 滾動動畫
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.feature-card, .stat-item, .section-title, .section-subtitle, .team-member');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if(elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // 導航欄透明度變化
+    const header = document.querySelector('.brand-header');
+    window.addEventListener('scroll', () => {
+        animateOnScroll();
+        
+        if(window.scrollY > 50) {
+            header.classList.add('transparent');
+        } else {
+            header.classList.remove('transparent');
+        }
+    });
+    
+    window.addEventListener('load', animateOnScroll);
+    
+    // 底部導航交互
+    const navPlanets = document.querySelectorAll('.nav-planet');
+    navPlanets.forEach(planet => {
+        planet.addEventListener('click', function() {
+            navPlanets.forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    </script>
+<a class="smart-assistant-btn" href="airobot.html">
+<div class="ai-text">AI</div>
+<div class="label-text">智能客服</div>
+</a>
+<script>
+(function(){
+  const shell = document.getElementById('lawai-carousel');
+  if(!shell) return;
+  const track = shell.querySelector('.carousel-track');
+  const leftBtn = shell.querySelector('.carousel-arrow.left');
+  const rightBtn = shell.querySelector('.carousel-arrow.right');
+  const dotsWrap = document.getElementById('carousel-dots');
+  const cards = Array.from(track.children);
+  const total = cards.length;
+  let perView = 3;
+  let index = 0;
+
+  function computePerView(){
+    const w = window.innerWidth;
+    perView = (w <= 600) ? 1 : (w <= 1024 ? 2 : 3);
+    shell.style.setProperty('--cards-per-view', perView);
+  }
+  function pageCount(){ return Math.ceil(total / perView); }
+
+  function updateDots(){
+    const pc = pageCount();
+    dotsWrap.innerHTML = '';
+    for(let i=0;i<pc;i++){
+      const d = document.createElement('div');
+      d.className = 'carousel-dot' + (i===index ? ' active' : '');
+      d.setAttribute('role','button');
+      d.setAttribute('tabindex','0');
+      d.addEventListener('click', ()=> goTo(i));
+      dotsWrap.appendChild(d);
+    }
+  }
+  function updateDotsActive(){
+    const ds = dotsWrap.children;
+    for(let i=0;i<ds.length;i++){
+      ds[i].classList.toggle('active', i===index);
+    }
+  }
+  function pageWidth(){
+    const csTrack = getComputedStyle(track);
+    const gapStr = csTrack.gap || csTrack.columnGap || "16px";
+    const gap = parseFloat(gapStr);
+    const card = track.children[0];
+    const cardW = card ? card.getBoundingClientRect().width : 0;
+    // Step size must move by one full card *plus its trailing gap* per card in view.
+    // This fixes mobile where only cardW was used and the gap accumulated, causing partial slides.
+    return (cardW + gap) * perView;
+}
+  function apply(){
+    track.style.transform = 'translateX(' + (-index * pageWidth()) + 'px)';
+    updateDotsActive();
+  }
+  function goTo(i){
+    const pc = pageCount();
+    index = (i + pc) % pc;
+    apply();
+  }
+  function next(){ goTo(index + 1); }
+  function prev(){ goTo(index - 1); }
+
+  rightBtn.addEventListener('click', (e)=>{ e.preventDefault(); next(); });
+  leftBtn.addEventListener('click', (e)=>{ e.preventDefault(); prev(); });
+
+  // Touch swipe (manual only)
+  let startX = null;
+  track.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', (e)=>{
+    if(startX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const dx = endX - startX;
+    const threshold = shell.clientWidth / 8;
+    if(dx < -threshold) next();
+    else if(dx > threshold) prev();
+    startX = null;
+  }, {passive:true});
+
+  window.addEventListener('resize', ()=>{
+    const old = perView;
+    computePerView();
+    if(perView !== old){
+      index = 0;
+      updateDots();
+      apply();
+    } else {
+      apply();
+    }
+  });
+
+  // Init
+  computePerView();
+  updateDots();
+  apply();
+  leftBtn.removeAttribute('disabled');
+  rightBtn.removeAttribute('disabled');
+})();
+</script>
+<!-- LINE floating button from Line_line.html -->
+<a aria-label="AI 智能客服" class="ai-float-btn" href="airobot.html">
+<span class="ai-text">AI</span>
+<span class="label-text">智能客服</span>
+</a>
+<a aria-label="LINE 立即回覆" class="line-float-btn" href="https://line.me/R/ti/p/@621sbqlu" target="_blank">
+<span class="line-text">LINE</span>
+<span class="line-sub">立即回覆</span>
+</a>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const expandBtn = document.querySelector('#faq-lawai .expand-all-btn');
+  const collapseBtn = document.querySelector('#faq-lawai .collapse-all-btn');
+  if(expandBtn){
+    expandBtn.addEventListener('click', ()=>{
+      document.querySelectorAll('#faq-lawai details').forEach(d=>d.open=true);
+    });
+  }
+  if(collapseBtn){
+    collapseBtn.addEventListener('click', ()=>{
+      document.querySelectorAll('#faq-lawai details').forEach(d=>d.open=false);
+    });
+  }
+});
+</script><script>
+(function(){
+  const root = document.getElementById('faq-lawai');
+  if(!root) return;
+  const grid = root.querySelector('.faq-grid-2col') || root.querySelector('.faq-grid') || root;
+  const items = Array.from(grid.querySelectorAll('.faq-item'));
+  if(items.length === 0) return;
+  const perPage = 4;
+  let start = 0;
+
+  function render() {
+    items.forEach((el, idx) => {
+      el.style.display = 'none';
+      el.setAttribute('aria-hidden', 'true');
+    });
+    for (let i = 0; i < perPage; i++) {
+      const idx = (start + i) % items.length;
+      const el = items[idx];
+      el.style.display = '';
+      el.removeAttribute('aria-hidden');
+    }
+  }
+
+  render();
+
+  const nextBtn = root.querySelector('.faq-controls .faq-next');
+  if(nextBtn){
+    nextBtn.addEventListener('click', ()=>{
+      start = (start + perPage) % items.length;
+      render();
+    });
+  }
+
+  // Swipe support for touch (rightward to advance as requested)
+  let touchStartX = null;
+  grid.addEventListener('touchstart', (e)=>{
+    touchStartX = e.touches[0].clientX;
+  }, {passive:true});
+  grid.addEventListener('touchend', (e)=>{
+    if(touchStartX == null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(dx < -30){ // swipe left => show next group
+      start = (start + perPage) % items.length;
+      render();
+    }
+    touchStartX = null;
+  }, {passive:true});
+})();
+</script><script>
+// FAQ manual slider (no autoplay), 4 items per slide (2x2)
+(function(){
+  const sec = document.getElementById('faq-lawai');
+  if(!sec) return;
+  const slider = sec.querySelector('.faq-slider');
+  const track = slider?.querySelector('.faq-track');
+  const slides = Array.from(track?.children || []);
+  if(slides.length===0) return;
+  const dotsWrap = sec.querySelector('.faq-dots');
+  const btnPrev = sec.querySelector('.faq-prev');
+  const btnNext = sec.querySelector('.faq-next');
+  let idx = 0;
+
+  function update(){
+    track.style.transform = `translateX(${-idx*100}%)`;
+    dotsWrap.querySelectorAll('.faq-dot').forEach((d,i)=>{
+      d.classList.toggle('is-active', i===idx);
+      d.setAttribute('aria-selected', i===idx ? 'true':'false');
+    });
+  }
+
+  // Build dots
+  dotsWrap.innerHTML='';
+  slides.forEach((_,i)=>{
+    const b=document.createElement('button');
+    b.className='faq-dot'; b.type='button';
+    b.setAttribute('aria-label', `第 ${i+1} 組`);
+    b.addEventListener('click', ()=>{ idx=i; update(); });
+    dotsWrap.appendChild(b);
+  });
+
+  btnPrev?.addEventListener('click', ()=>{ idx=(idx-1+slides.length)%slides.length; update(); });
+  btnNext?.addEventListener('click', ()=>{ idx=(idx+1)%slides.length; update(); });
+
+  // Drag/Swipe
+  let startX=0, curX=0, dragging=false, moved=false;
+  function start(x){ dragging=true; moved=false; startX=x; curX=x; track.style.transition='none'; }
+  function move(x){ if(!dragging) return; curX=x; const dx=curX-startX; if(Math.abs(dx)>2) moved=true;
+    const pct = dx/slider.clientWidth*100; track.style.transform=`translateX(${-(idx*100)+pct}%)`; }
+  function end(){ if(!dragging) return; track.style.transition='transform .35s ease';
+    const dx=curX-startX, thr=slider.clientWidth*0.18;
+    if(dx<-thr) idx=Math.min(idx+1, slides.length-1);
+    else if(dx>thr) idx=Math.max(idx-1, 0);
+    update(); dragging=false; }
+
+  slider.addEventListener('mousedown', e=>start(e.clientX));
+  window.addEventListener('mousemove', e=>move(e.clientX));
+  window.addEventListener('mouseup', end);
+  slider.addEventListener('touchstart', e=>start(e.touches[0].clientX), {passive:true});
+  slider.addEventListener('touchmove', e=>move(e.touches[0].clientX), {passive:true});
+  slider.addEventListener('touchend', end, {passive:true});
+  slider.addEventListener('click', e=>{ if(moved) e.preventDefault(); });
+
+  update();
+})();
+</script>
+<style>
+/* --- FAQ controls shared style (prev/next) --- */
+#faq-lawai .faq-controls .faq-prev,
+#faq-lawai .faq-controls .faq-next{
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,75,107,.25);
+  background: linear-gradient(135deg, #E0F2FF, #FFFFFF);
+  color: #004B6B;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+#faq-lawai .faq-controls .faq-prev:hover,
+#faq-lawai .faq-controls .faq-next:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+#faq-lawai .faq-controls .faq-prev[disabled],
+#faq-lawai .faq-controls .faq-next[disabled]{
+  opacity: .45;
+  cursor: not-allowed;
+}
+</style>
+<script>
+// === Resilient 4-at-a-time FAQ pager for #faq-lawai ===
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.querySelector('#faq-lawai');
+  if (!root) return;
+
+  // 1) Find items using common selectors, fallback to children with .faq-q or summary tags
+  const selectors = ['.faq-item', '.accordion-item', 'details.faq-item', 'details', '.faq-card', '.faq-entry', '.qa-item'];
+  let items = [];
+  for (const sel of selectors) {
+    items = Array.from(root.querySelectorAll(sel));
+    if (items.length) break;
+  }
+  if (!items.length) {
+    // Try to infer: any element that contains .faq-q or summary
+    const candidates = Array.from(root.querySelectorAll('*'));
+    items = candidates.filter(el => el.querySelector && (el.querySelector('.faq-q, summary')));
+  }
+  // Filter out controls container if any sneaks in
+  items = items.filter(el => !el.closest('.faq-controls'));
+
+  if (!items.length) return; // nothing to paginate
+
+  // 2) Ensure a controls bar exists
+  let controls = root.querySelector('.faq-controls');
+  if (!controls) {
+    controls = document.createElement('div');
+    controls.className = 'faq-controls';
+    // try to place after title/subtitle if present
+    const titleWrap = root.querySelector('.faq-title-wrapper') || root.querySelector('.section-title') || root;
+    titleWrap.insertAdjacentElement('afterend', controls);
+  }
+  let prevBtn = controls.querySelector('.faq-prev');
+  let nextBtn = controls.querySelector('.faq-next');
+  if (!prevBtn) {
+    prevBtn = document.createElement('button');
+    prevBtn.type = 'button';
+    prevBtn.className = 'faq-prev';
+    prevBtn.textContent = '← 上一頁';
+    controls.prepend(prevBtn);
+  }
+  if (!nextBtn) {
+    nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.className = 'faq-next';
+    nextBtn.textContent = '下一頁 →';
+    controls.append(nextBtn);
+  }
+
+  // 3) Paging: show 4 at a time (2x2)
+  const PER_PAGE = 4;
+  let page = 0;
+  const totalPages = Math.ceil(items.length / PER_PAGE);
+
+  function render() {
+    items.forEach((el, idx) => {
+      const onPage = Math.floor(idx / PER_PAGE) === page;
+      // Use display block to preserve grid; parent grid will handle positioning
+      el.style.display = onPage ? '' : 'none';
+    });
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = page >= totalPages - 1;
+    prevBtn.setAttribute('aria-disabled', prevBtn.disabled ? 'true' : 'false');
+    nextBtn.setAttribute('aria-disabled', nextBtn.disabled ? 'true' : 'false');
+  }
+
+  function go(delta) {
+    const newPage = Math.min(Math.max(page + delta, 0), totalPages - 1);
+    if (newPage !== page) {
+      page = newPage;
+      render();
+    }
+  }
+
+  prevBtn.addEventListener('click', () => go(-1));
+  nextBtn.addEventListener('click', () => go(1));
+
+  // Optional: keyboard arrows when focus within #faq-lawai
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { go(-1); }
+    if (e.key === 'ArrowRight') { go(1); }
+  });
+  root.tabIndex = root.tabIndex || 0; // make focusable for arrow keys
+
+  // Initial paint
+  render();
+});
+</script>
+<script>
+// === LawAI FAQ pager (scoped) – 3 pages, 4 per page, loop ===
+(function(){
+  const root = document.getElementById('faq-lawai');
+  if(!root) return;
+  const grid = root.querySelector('.faq-grid-2col') || root;
+  let items = Array.from(grid.querySelectorAll('.faq-item'));
+  if(items.length === 0) return;
+
+  // Force exactly 3 pages × 4 = 12 entries; clone within the same grid to fill
+  const perPage = 4;
+  const totalPages = 3;
+  const desiredTotal = perPage * totalPages;
+  if (items.length < desiredTotal) {
+    const need = desiredTotal - items.length;
+    for(let i=0;i<need;i++){
+      const src = items[i % items.length];
+      const clone = src.cloneNode(true);
+      clone.setAttribute('data-clone','true');
+      // Avoid duplicate IDs
+      clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+      grid.appendChild(clone);
+    }
+    items = Array.from(grid.querySelectorAll('.faq-item'));
+  }
+
+  // Controls: reuse if exist; otherwise create inside .faq-controls
+  const controls = root.querySelector('.faq-controls') || (function(){
+    const c = document.createElement('div');
+    c.className = 'faq-controls';
+    root.insertBefore(c, grid);
+    return c;
+  })();
+  let prevBtn = controls.querySelector('.faq-prev');
+  let nextBtn = controls.querySelector('.faq-next');
+  function makeBtn(cls,label){ const b=document.createElement('button'); b.type='button'; b.className='faq-btn '+cls; b.textContent=label; return b; }
+  if(!prevBtn){ prevBtn = makeBtn('faq-prev','上一頁'); controls.appendChild(prevBtn); }
+  if(!nextBtn){ nextBtn = makeBtn('faq-next','下一頁'); controls.appendChild(nextBtn); }
+
+  // Dots
+  let dotsWrap = root.querySelector('.faq-dots');
+  if(!dotsWrap){ dotsWrap = document.createElement('div'); dotsWrap.className='faq-dots'; controls.after(dotsWrap); }
+  dotsWrap.innerHTML = '';
+  const dots = [];
+  for(let i=0;i<totalPages;i++){ const d=document.createElement('span'); d.className='dot'+(i===0?' active':''); d.addEventListener('click',()=>{ page=i; render(); }); dotsWrap.appendChild(d); dots.push(d); }
+
+  // Pager state
+  let page = 0;
+  function render(){
+    items.forEach(el => el.setAttribute('hidden',''));
+    const start = page * perPage;
+    const end = Math.min(items.length, start + perPage);
+    for(let i=start;i<end;i++){ items[i].removeAttribute('hidden'); }
+    dots.forEach((d,idx)=> d.classList.toggle('active', idx===page));
+    // arrows always visible since we have fixed totalPages=3
+    prevBtn.style.display = '';
+    nextBtn.style.display = '';
+  }
+  function next(){ page = (page + 1) % totalPages; render(); }
+  function prev(){ page = (page - 1 + totalPages) % totalPages; render(); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Keyboard left/right when section is in viewport
+  document.addEventListener('keydown', (e)=>{
+    if(e.key!=='ArrowLeft' && e.key!=='ArrowRight') return;
+    const r = root.getBoundingClientRect();
+    if(r.bottom <= 0 || r.top >= window.innerHeight) return;
+    if(e.key==='ArrowRight') next(); else prev();
+  });
+
+  // Touch swipe
+  let sx=0, sy=0, swiping=false;
+  const threshold = 40;
+  root.addEventListener('touchstart', (e)=>{ const t=e.touches[0]; sx=t.clientX; sy=t.clientY; swiping=true; }, {passive:true});
+  root.addEventListener('touchmove', (e)=>{
+    if(!swiping) return;
+    const t=e.touches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy;
+    if(Math.abs(dy) > Math.abs(dx)) return; // vertical scroll: ignore
+    e.preventDefault();
+  }, {passive:false});
+  root.addEventListener('touchend', (e)=>{
+    if(!swiping) return;
+    const t=e.changedTouches[0]; const dx=t.clientX-sx;
+    if(Math.abs(dx) >= threshold){ if(dx<0) next(); else prev(); }
+    swiping=false;
+  }, {passive:true});
+
+  // Initial paint
+  render();
+})();
+</script>
+<!-- === LAWAI: FAQ arrows fine-tune (up 0.5cm; outward 1cm each side) === -->
+<style>
+  /* Scope strictly to the FAQ section */
+  #faq-lawai .faq-controls {
+    /* Move the whole controls bar upward by 0.5cm from its current position without changing layout elsewhere */
+    margin-top: -0.5cm !important;
+  }
+
+  /* Push the left arrow 1cm farther outward */
+  #faq-lawai .faq-controls .faq-prev {
+    /* Keep vertical centering and add a -1cm horizontal shift */
+    transform: translate(-1cm, -50%) !important;
+  }
+
+  /* Push the right arrow 1cm farther outward */
+  #faq-lawai .faq-controls .faq-next {
+    /* Keep vertical centering and add a +1cm horizontal shift */
+    transform: translate(1cm, -50%) !important;
+  }
+
+  /* Ensure hover states do not override the fixed positioning */
+  #faq-lawai .faq-controls .faq-prev:hover,
+  #faq-lawai .faq-controls .faq-next:hover {
+    transform: inherit !important;
+  }
+</style>
+<!-- === LAWAI: FAQ arrow position fixed + keep color on edges === -->
+<style>
+  #faq-lawai .faq-controls .faq-prev,
+  #faq-lawai .faq-controls .faq-next {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    transition: none !important; /* prevent any movement */
+    opacity: 1 !important;       /* always full color */
+    pointer-events: auto !important;
+  }
+
+  /* Ensure arrows do not fade at first/last slide */
+  #faq-lawai .faq-controls .faq-prev[disabled],
+  #faq-lawai .faq-controls .faq-next[disabled] {
+    opacity: 1 !important;
+    cursor: pointer !important;
+  }
+
+  /* Remove any hover transform that might move them */
+  #faq-lawai .faq-controls .faq-prev:hover,
+  #faq-lawai .faq-controls .faq-next:hover {
+    transform: translateY(-50%) !important;
+  }
+</style>
+<!-- === LAWAI: FAQ arrows shift outward by 1cm === -->
+<style>
+  #faq-lawai .faq-controls .faq-prev {
+    left: -1cm !important;
+  }
+  #faq-lawai .faq-controls .faq-next {
+    right: -1cm !important;
+  }
+</style>
+<!-- === LawAI: Navbar compress 5% (runtime, preserves readability) === -->
+<script id="nav-compress-5">
+(function(){
+  function shrinkNavPadding(){
+    try{
+      var el = document.querySelector('.brand-header');
+      if(!el) return;
+      var cs = getComputedStyle(el);
+      // Only set once per call, based on current computed values (works across breakpoints)
+      var pt = parseFloat(cs.paddingTop) || 0;
+      var pb = parseFloat(cs.paddingBottom) || 0;
+      if(pt>0) el.style.paddingTop = (pt * 0.95).toFixed(2) + 'px';
+      if(pb>0) el.style.paddingBottom = (pb * 0.95).toFixed(2) + 'px';
+      // Optional: tighten inner line-height slightly for safety without clipping
+      el.style.setProperty('--nav-line-height', '1.1');
+    }catch(e){ /* noop */ }
+  }
+  // Run on load and when resizing (to follow responsive breakpoints)
+  document.addEventListener('DOMContentLoaded', shrinkNavPadding);
+  window.addEventListener('resize', shrinkNavPadding, {passive:true});
+})();
+</script>
+<a aria-label="LINE 立即回覆" class="line-float-btn" href="https://line.me/R/ti/p/@621sbqlu" target="_blank">
+<span class="line-text">LINE</span>
+<span class="line-sub">立即回覆</span>
+</a>
+<a class="smart-assistant-btn" href="airobot.html">
+<div class="ai-text">AI</div>
+<div class="label-text">智能客服</div>
+</a>
+<script id="lawai-mobile-hamburger-js-20251026">
+(function(){'use strict';
+  const btn = document.getElementById('lawai-mh-btn');
+  const mask = document.getElementById('lawai-mh-mask');
+  const drawer = document.getElementById('lawai-mh-drawer');
+  const linksWrap = document.getElementById('lawai-mh-links');
+  if(!btn || !mask || !drawer || !linksWrap) return;
+
+  // Try to adopt hrefs from existing nav (keep fixed order)
+  const labelMap = [
+    { id:'lawai-mh-link-contact', text:'聯繫我們' },
+    { id:'lawai-mh-link-team', text:'團隊介紹' },
+    { id:'lawai-mh-link-legal', text:'法律觀點' },
+    { id:'lawai-mh-link-service', text:'服務說明' }
+  ];
+  try {
+    const navRoot = document.querySelector('.nav-cluster') || document.querySelector('nav') || document;
+    const anchors = Array.from(navRoot.querySelectorAll('a[href]'));
+    function normalize(t){ return (t||'').replace(/\s+/g,'').trim(); }
+    labelMap.forEach(m => {
+      const a = document.getElementById(m.id);
+      if(!a) return;
+      const found = anchors.find(x => normalize(x.textContent).includes(normalize(m.text)));
+      if(found) a.setAttribute('href', found.getAttribute('href'));
+    });
+  } catch(e) { /* silent */ }
+
+  const open = () => {
+    document.documentElement.classList.add('lw-open');
+    btn.setAttribute('aria-expanded','true');
+    // focus first link for accessibility
+    const first = linksWrap.querySelector('a'); if(first) first.focus({preventScroll:true});
+  };
+  const close = () => {
+    document.documentElement.classList.remove('lw-open');
+    btn.setAttribute('aria-expanded','false');
+    btn.focus({preventScroll:true});
+  };
+
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    expanded ? close() : open();
+  });
+  mask.addEventListener('click', close);
+  linksWrap.addEventListener('click', (e) => {
+    const t = e.target;
+    if(t && t.tagName === 'A') close();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+
+})();
+</script>
+<!-- LawAI: Mobile Drawer Close Button script (2025-10-27) -->
+<script id="lawai-mh-close-js-20251027">
+(function(){
+  function wireClose(){
+    var btn = document.getElementById('lawai-mh-btn');
+    var closeBtn = document.getElementById('lawai-mh-close');
+    if(!closeBtn) return;
+    closeBtn.addEventListener('click', function(){
+      // mirror existing close() behavior: remove class, update aria, focus trigger
+      document.documentElement.classList.remove('lw-open');
+      if(btn) { btn.setAttribute('aria-expanded','false'); try{ btn.focus({preventScroll:true}); }catch(e){} }
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', wireClose);
+  } else { wireClose(); }
+})();
+</script>
+<style id="faq-arrow-circle-fix-unified">
+#faq-lawai .faq-controls button.faq-prev,
+#faq-lawai .faq-controls button.faq-next,
+#faq-lawai .faq-controls .faq-prev,
+#faq-lawai .faq-controls .faq-next {
+  width: 19px !important;
+  height: 19px !important;
+  min-width: 19px !important;
+  min-height: 19px !important;
+  aspect-ratio: 1 / 1 !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  box-sizing: content-box !important;
+}
+#faq-lawai .faq-controls .faq-prev .material-icons,
+#faq-lawai .faq-controls .faq-next .material-icons {
+  font-size: 22px !important;
+  line-height: 1 !important;
+}
+</style>
+<script id="faq-arrow-inline-enforcer-unified">
+document.addEventListener('DOMContentLoaded', function(){
+  var faq = document.querySelector('#faq-lawai');
+  if(!faq) return;
+  ['.faq-prev','.faq-next'].forEach(function(sel){
+    var el = faq.querySelector('.faq-controls ' + sel);
+    if(el){
+      ['width','height','minWidth','minHeight'].forEach(function(p){ el.style[p] = '19px'; });
+      el.style.borderRadius = '50%';
+      el.style.padding = '0';
+      el.style.aspectRatio = '1 / 1';
+      el.style.display = 'inline-flex';
+      el.style.alignItems = 'center';
+      el.style.justifyContent = 'center';
+      el.style.lineHeight = '1';
+      var icon = el.querySelector('.material-icons, i, svg');
+      if(icon && icon.style){ icon.style.fontSize = '22px'; icon.style.lineHeight = '1'; }
+    }
+  });
+});
+</script>
+<style id="faq-arrow-circle-fix-v2">
+/* 更新尺寸：圓球 39px，白色箭頭 43px */
+#faq-lawai .faq-controls button.faq-prev,
+#faq-lawai .faq-controls button.faq-next,
+#faq-lawai .faq-controls .faq-prev,
+#faq-lawai .faq-controls .faq-next {
+  width: 39px !important;
+  height: 39px !important;
+  min-width: 39px !important;
+  min-height: 39px !important;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  box-sizing: content-box !important;
+}
+#faq-lawai .faq-controls .faq-prev .material-icons,
+#faq-lawai .faq-controls .faq-next .material-icons {
+  font-size: 43px !important;
+  line-height: 1 !important;
+}
+</style>
+<script id="faq-arrow-inline-enforcer-v2">
+document.addEventListener('DOMContentLoaded', function(){
+  var faq = document.querySelector('#faq-lawai');
+  if(!faq) return;
+  ['.faq-prev','.faq-next'].forEach(function(sel){
+    var el = faq.querySelector('.faq-controls ' + sel);
+    if(el){
+      ['width','height','minWidth','minHeight'].forEach(function(p){ el.style[p] = '39px'; });
+      el.style.borderRadius = '50%';
+      el.style.padding = '0';
+      el.style.aspectRatio = '1 / 1';
+      el.style.display = 'inline-flex';
+      el.style.alignItems = 'center';
+      el.style.justifyContent = 'center';
+      el.style.lineHeight = '1';
+      var icon = el.querySelector('.material-icons, i, svg');
+      if(icon && icon.style){ icon.style.fontSize = '43px'; icon.style.lineHeight = '1'; }
+    }
+  });
+});
+</script>
+<script id="seo-auto-alt">
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('img:not([alt]), img[alt=""]').forEach(function(img){
+    img.setAttribute('alt','LawAI法詢 AI法律諮詢 律師預約 台北 新北');
+  });
+});
+</script>
+</body>
+<style id="faq-rwd-fix-20251028-v7-gradient-mobile-only">
+  /* ===== Mobile-only blue gradient extension behind the FAQ arrows ===== */
+  @media (max-width: 768px){
+    /* Keep prior mobile tweaks from v6 (boxes narrower + arrows inward + vertical offset) */
+    #faq-lawai {
+      max-width: calc(100% - 4cm) !important;  /* total 4cm narrower */
+      margin: 0 auto !important;
+    }
+    #faq-lawai .faq-grid-2col {
+      position: relative !important;            /* needed for ::before gradient layer */
+      padding-left: 2cm !important;             /* inner boxes narrower on both sides */
+      padding-right: 2cm !important;
+      z-index: 1 !important;                    /* sit above gradient layer */
+    }
+    /* Blue gradient layer: extends upward behind the arrow controls */
+    #faq-lawai .faq-grid-2col::before {
+      content: "" !important;
+      position: absolute !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: -3cm !important;                     /* extend ~3cm above the top edge */
+      height: 4cm !important;                   /* cover arrow zone comfortably */
+      background: linear-gradient(180deg, #1C2A4D 0%, rgba(28,42,77,0.65) 40%, rgba(28,42,77,0.0) 100%) !important;
+      border-top-left-radius: 12px !important;
+      border-top-right-radius: 12px !important;
+      z-index: 0 !important;                    /* behind cards & arrows */
+      pointer-events: none !important;
+    }
+
+    /* Arrow controls position and layering */
+    #faq-lawai .faq-controls{
+      position: absolute !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: calc(50% + 2cm) !important;          /* place between rows, shifted downward ~2cm */
+      transform: translateY(-50%) !important;
+      width: 100% !important;
+      pointer-events: none !important;
+      z-index: 2 !important;                    /* above gradient */
+    }
+    #faq-lawai .faq-controls > *{ pointer-events: auto !important; }
+
+    /* Keep round shape; ensure arrows sit above gradient */
+    #faq-lawai .faq-prev,
+    #faq-lawai .faq-next{
+      width: 44px !important;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 50% !important;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: #FFFFFF !important;
+      border: 1px solid rgba(0,0,0,0.08) !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12) !important;
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      z-index: 3 !important;                    /* above everything */
+    }
+
+    /* Move arrows further inward as requested: now 2.5cm (2cm + 0.5cm) */
+    #faq-lawai .faq-controls .faq-prev { left: 2.5cm !important; }
+    #faq-lawai .faq-controls .faq-next { right: 2.5cm !important; }
+  }
+</style>
+</html><style>
+/* === FAQ slider (drag/swipe, no autoplay) === */
+#faq-lawai .faq-slider { position: relative; overflow: hidden; }
+#faq-lawai .faq-track { display: flex; transition: transform .35s ease; will-change: transform; }
+#faq-lawai .faq-slide { min-width: 100%; padding: 8px 0; box-sizing: border-box; }
+#faq-lawai .faq-grid-2x2 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) {
+  #faq-lawai .faq-grid-2x2 { grid-template-columns: 1fr 1fr; }
+}
+#faq-lawai .faq-controls { display:flex; align-items:center; justify-content:center; gap:.5rem; margin:8px 0 16px; }
+#faq-lawai .faq-prev, #faq-lawai .faq-next {
+  width: 40px; height: 40px; border-radius: 999px; border:1px solid rgba(0,0,0,.1);
+  background:#fff; cursor:pointer; font-weight:700;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+#faq-lawai .faq-prev:hover, #faq-lawai .faq-next:hover { transform: translateY(-1px); }
+#faq-lawai .faq-dots { display:flex; gap:8px; align-items:center; }
+#faq-lawai .faq-dot { width:8px; height:8px; border-radius:50%; background:#cfd8dc; cursor:pointer; }
+#faq-lawai .faq-dot.is-active { background:#004B6B; }
+</style><style>
+/* === FAQ slider & accordion === */
+#faq-lawai .faq-slider { position: relative; overflow: hidden; }
+#faq-lawai .faq-track { display:flex; transition:transform .35s ease; will-change:transform; }
+#faq-lawai .faq-slide { min-width:100%; padding:8px 0; box-sizing:border-box; }
+#faq-lawai .faq-grid-2x2 { display:grid; grid-template-columns:1fr; gap:16px; }
+@media (min-width:768px){ #faq-lawai .faq-grid-2x2 { grid-template-columns:1fr 1fr; } }
+#faq-lawai details.faq-item{ border:1px solid rgba(0,75,107,.2); border-radius:12px; padding:12px 14px; background:#fff; }
+#faq-lawai details.faq-item[open]{ box-shadow:0 8px 20px rgba(0,0,0,.05); }
+#faq-lawai details.faq-item summary{ cursor:pointer; list-style:none; font-weight:700; outline:none; }
+#faq-lawai details.faq-item summary::-webkit-details-marker{ display:none; }
+#faq-lawai .faq-answer{ margin-top:8px; line-height:1.6; color:#333; }
+
+#faq-lawai .faq-controls{ display:flex; align-items:center; justify-content:center; gap:.75rem; margin:8px 0 12px; }
+#faq-lawai .faq-prev,#faq-lawai .faq-next{ width:36px; height:36px; border-radius:999px; border:1px solid rgba(0,0,0,.12); background:#fff; cursor:pointer; font-weight:700; box-shadow:0 3px 10px rgba(0,0,0,.08); }
+#faq-lawai .faq-prev:hover,#faq-lawai .faq-next:hover{ transform:translateY(-1px); }
+#faq-lawai .faq-dots{ display:flex; gap:8px; align-items:center; }
+#faq-lawai .faq-dot{ width:8px; height:8px; border-radius:50%; background:#cfd8dc; border:none; cursor:pointer; }
+#faq-lawai .faq-dot.is-active{ background:#004B6B; }
+</style><style>
+/* === FAQ (restored LawAI gold style) === */
+#faq-lawai .faq-grid-2x2 { display:grid; grid-template-columns:1fr; gap:16px; }
+@media (min-width:768px){ #faq-lawai .faq-grid-2x2 { grid-template-columns:1fr 1fr; } }
+#faq-lawai details.faq-item{
+  border:1px solid #D4AF37; border-radius:12px; padding:16px 18px; background:#fff;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+#faq-lawai details.faq-item:hover{ 
+  box-shadow: 0 0 12px 2px rgba(212,175,55,0.5); transform: translateY(-1px);
+}
+#faq-lawai .faq-q{ font-weight:800; color:#D4AF37; cursor:pointer; list-style:none; }
+#faq-lawai .faq-q::-webkit-details-marker{ display:none; }
+#faq-lawai .faq-a{ margin-top:8px; color:#333; line-height:1.7; }
+
+/* Slider shell */
+#faq-lawai .faq-slider{ position:relative; overflow:hidden; }
+#faq-lawai .faq-track{ display:flex; transition:transform .35s ease; will-change:transform; }
+#faq-lawai .faq-slide{ min-width:100%; padding:8px 0; box-sizing:border-box; }
+
+/* Controls: small arrows + dots */
+#faq-lawai .faq-controls{ display:flex; align-items:center; justify-content:center; gap:.6rem; margin: .25rem 0 1rem; }
+#faq-lawai .faq-prev, #faq-lawai .faq-next{
+  width:32px; height:32px; border-radius:999px; border:1px solid rgba(0,0,0,.12);
+  background:#fff; cursor:pointer; font-weight:800; line-height:1; box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+#faq-lawai .faq-dots{ display:flex; gap:8px; align-items:center; }
+#faq-lawai .faq-dot{ width:8px; height:8px; border-radius:50%; background:#cfd8dc; border:none; cursor:pointer; }
+#faq-lawai .faq-dot.is-active{ background:#004B6B; }
+</style><style>
+/* === LawAI FAQ: blue paper + tighter layout (scoped to #faq-lawai) === */
+#faq-lawai { --lawai-blue: var(--primary, #004B6B); --lawai-ink: #0E2C3A; }
+
+/* Tighten section container */
+#faq-lawai, #faq-lawai .faq-container, #faq-lawai .faq-wrap, #faq-lawai section {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: 12px;
+}
+
+/* Keep two-column grid; compact gaps */
+#faq-lawai .faq-grid-2col { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 768px){ #faq-lawai .faq-grid-2col { grid-template-columns: 1fr 1fr; } }
+
+/* Blue paper cards (replace any gold look) */
+#faq-lawai .faq-item {
+  background: linear-gradient(180deg, #F2F9FF 0%, #FFFFFF 100%) !important;
+  border: 1px solid var(--lawai-blue) !important;
+  color: var(--lawai-ink);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+#faq-lawai .faq-item:hover { box-shadow: 0 8px 22px rgba(0,0,0,.10); transform: translateY(-1px); }
+#faq-lawai .faq-q, #faq-lawai .section-title, #faq-lawai .section-subtitle strong { color: var(--lawai-blue) !important; }
+
+/* Controls style (if present or created) */
+#faq-lawai .faq-controls { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; }
+#faq-lawai .faq-btn {
+  appearance:none; border:1px solid rgba(0,75,107,.35); background:linear-gradient(135deg,#EAF6FF,#FFFFFF);
+  color:var(--lawai-blue); padding:.45rem .8rem; border-radius:999px; font-weight:700; cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+#faq-lawai .faq-btn:hover{ transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.10); }
+#faq-lawai .faq-btn[disabled]{ opacity:.35; pointer-events:none; }
+
+/* Dots (if present) */
+#faq-lawai .faq-dots{ display:flex; justify-content:center; gap:8px; margin-top:8px; }
+#faq-lawai .faq-dots .dot{ width:9px; height:9px; border-radius:50%; background:rgba(0,75,107,.20); border:1px solid rgba(0,75,107,.35); }
+#faq-lawai .faq-dots .dot.active{ background:var(--lawai-blue); transform:scale(1.15); }
+
+/* Hide paged-out items cleanly */
+#faq-lawai .faq-item[hidden]{ display:none !important; }
+</style><style>
+/* === LawAI FAQ background blend (scoped) === */
+#faq-lawai{
+  /* Subtle extension of site blue into the FAQ section */
+  background:
+    radial-gradient(70% 120% at -10% 0%, rgba(0,75,107,.08) 0%, rgba(0,75,107,0) 70%),
+    radial-gradient(70% 120% at 110% 0%, rgba(0,75,107,.08) 0%, rgba(0,75,107,0) 70%),
+    linear-gradient(180deg, rgba(0,75,107,.06) 0%, rgba(0,75,107,.04) 35%, rgba(0,75,107,.02) 60%, rgba(0,75,107,0) 100%);
+}
+</style><style>
+/* === Match FAQ background to team-section === */
+#faq-lawai{ background: rgba(224, 242, 255, 0.3) !important; }
+</style>
+<style>
+  /* ===== LAWAI: Make FAQ arrows match the '智圖法律分析' carousel arrows ===== */
+  /* Base visual borrowed from .carousel-arrow */
+  #faq-lawai .faq-controls .faq-prev,
+  #faq-lawai .faq-controls .faq-next {
+    width: 39px !important;          /* keep user's 30% shrink (was 42px) */
+    height: 59px !important;
+    min-width: 39px !important;
+    min-height: 59px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light)) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.6) !important;
+    box-shadow: none !important;
+    display: grid !important;
+    place-items: center !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    transition: none !important; /* no hover animation */
+  }
+  /* Position (already handled by .faq-controls top calc) */
+  #faq-lawai .faq-controls .faq-prev { left: 10px !important; }
+  #faq-lawai .faq-controls .faq-next { right: 10px !important; }
+
+  /* Ensure we don't double-render older pseudo chevrons or SVGs */
+  #faq-lawai .faq-controls .faq-prev::before,
+  #faq-lawai .faq-controls .faq-prev::after,
+  #faq-lawai .faq-controls .faq-next::before,
+  #faq-lawai .faq-controls .faq-next::after {
+    content: none !important;
+  }
+  #faq-lawai .faq-controls .faq-prev svg,
+  #faq-lawai .faq-controls .faq-next svg {
+    display: none !important;
+  }
+
+  /* Material Icons inside FAQ arrows — match carousel look */
+  #faq-lawai .faq-controls .faq-prev .material-icons,
+  #faq-lawai .faq-controls .faq-next .material-icons {
+    font-size: 22px !important;  /* proportionate to 39px circle */
+    line-height: 1 !important;
+    color: #ffffff !important;
+    display: block !important;
+    pointer-events: none !important;
+  }
+</style>
+<script>
+// Move material chevrons into the FAQ arrow buttons to mirror the carousel arrows.
+document.addEventListener('DOMContentLoaded', function () {
+  var faq = document.querySelector('#faq-lawai');
+  if (!faq) return;
+  var prev = faq.querySelector('.faq-controls .faq-prev');
+  var next = faq.querySelector('.faq-controls .faq-next');
+  if (prev && !prev.querySelector('.material-icons')) {
+    var s = document.createElement('span');
+    s.className = 'material-icons';
+    s.textContent = 'chevron_left';
+    prev.textContent = '';
+    prev.appendChild(s);
+  }
+  if (next && !next.querySelector('.material-icons')) {
+    var s2 = document.createElement('span');
+    s2.className = 'material-icons';
+    s2.textContent = 'chevron_right';
+    next.textContent = '';
+    next.appendChild(s2);
+  }
+});
+</script>
+<!-- === LAWAI FINAL OVERRIDE: FAQ arrows fixed + outward by 1cm (highest priority) === -->
+<style>
+  #faq-lawai { position: relative !important; }
+
+  /* Make the arrow buttons absolute so they don't get centered by flex */
+  #faq-lawai .faq-controls .faq-prev,
+  #faq-lawai .faq-controls .faq-next {
+    position: absolute !important;
+    top: 50% !important;
+    transition: none !important;
+    opacity: 1 !important;     /* keep original color; no fading */
+    pointer-events: auto !important;
+  }
+
+  /* Left arrow: anchor to left edge and push outward by 1cm */
+  #faq-lawai .faq-controls .faq-prev {
+    left: 0 !important;
+    transform: translate(-1cm, -50%) !important;
+  }
+
+  /* Right arrow: anchor to right edge and push outward by 1cm */
+  #faq-lawai .faq-controls .faq-next {
+    right: 0 !important;
+    transform: translate(1cm, -50%) !important;
+  }
+
+  /* Keep the same transform on hover to prevent any jitter */
+  #faq-lawai .faq-controls .faq-prev:hover {
+    transform: translate(-1cm, -50%) !important;
+  }
+  #faq-lawai .faq-controls .faq-next:hover {
+    transform: translate(1cm, -50%) !important;
+  }
+
+  /* Do not dim on disabled edges */
+  #faq-lawai .faq-controls .faq-prev[disabled],
+  #faq-lawai .faq-controls .faq-next[disabled] {
+    opacity: 1 !important;
+    cursor: pointer !important;
+  }
+</style>
+<!-- === LawAI: Ultra-Compressed Navbar Overrides (final) === -->
+<style id="nav-ultra-compress">
+/* 1) 全域移除不必要的邊距，避免多餘留白 */
+html, body, header { margin:0 !important; }
+
+/* 2) 導航列壓到極限：上下 padding 幾乎為零；設定最小高度避免字被切 */
+.brand-header,
+header.navbar,
+.navbar.brand-header {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  padding-left: clamp(8px, 1.4vw, 18px) !important;
+  padding-right: clamp(8px, 1.4vw, 18px) !important;
+  min-height: 40px !important;   /* 建議極限 40–44px */
+  height: auto !important;
+  line-height: 1.1 !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+/* 3) LOGO 統一高度：桌機 28px / 平板 26px / 手機 22px */
+.logo-container img,
+.navbar-brand img,
+.brand-header .logo img,
+.brand-header .logo-container img,
+.brand-header .logo-wrapper img {
+  height: 64px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* 若 LOGO 不是 <img> 而是向量容器，限制其外框高度 */
+.logo-container,
+.navbar-brand,
+.brand-header .logo,
+.brand-header .logo-container,
+.brand-header .logo-wrapper {
+  max-height: 64px !important;
+  align-items: center !important;
+}
+
+/* 視覺再壓 2px：讓整列更貼近頁頂 */
+.brand-header { position: sticky; top: 0; }
+.brand-header { transform: translateY(-1px); }
+
+/* 4) 導航按鈕與文字：縮小內距，保可點擊性 */
+.nav-cluster .nav-card,
+.navbar .nav-item > a,
+.navbar-nav > li > a,
+.navbar a.nav-link {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  line-height: 1.1 !important;
+  font-size: 15px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: .35rem !important;
+}
+
+/* 5) 文字區域不撐高：行高略收斂 */
+.brand-header * { line-height: 1.1 !important; }
+
+/* 6) 如果有品牌文字，微縮以免撐高 */
+.logo-text { font-size: 1.55rem !important; }
+.logo-subtext { font-size: 1.64rem !important; }
+
+/* 7) 手機與平板的 LOGO 更小一點點，確保極限緊湊 */
+@media (max-width: 1024px){
+  .logo-container img,
+  .navbar-brand img,
+  .brand-header .logo img { height: 59px !important; }
+}
+@media (max-width: 768px){
+  .logo-container img,
+  .navbar-brand img,
+  .brand-header .logo img { height: 49px !important; }
+  .brand-header,
+  header.navbar,
+  .navbar.brand-header {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    min-height: 40px !important;
+  }
+  /* 手機上的圖標式按鈕保留圓底，避免 hover 變白看不見 */
+  .nav-card,
+  .navbar a.nav-link {
+    border-radius: 999px !important;
+  }
+}
+
+/* 8) 英雄區與主視覺向上貼：避免導覽列變薄後出現多餘上邊距 */
+.hero-section { margin-top: -10px !important; }
+</style>
+<!-- ===== LawAI Mobile RWD Patch (2025-10-26) ===== -->
+<style id="lawai-mobile-rwd-patch-20251026">
+  /* Global safety: prevent horizontal scroll on small screens */
+  @media (max-width: 768px){
+    html, body { overflow-x: hidden !important; }
+
+    /* Header & logo compact settings (mirror index mobile feel) */
+    header.brand-header,
+    .brand-header {
+      padding: 0.6rem 0.9rem !important;
+      min-height: unset !important;
+      border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+      box-shadow: none !important;
+      gap: .6rem !important;
+    }
+    .brand-header * { line-height: 1.1 !important; }
+
+    .brand-header .logo-container{
+      transform: scale(0.78) !important;
+      transform-origin: left center !important;
+      margin: 0 !important;
+    }
+
+    /* Top-right buttons: wrap into 2 rows when needed, keep text-only */
+    .brand-header .nav-cluster{
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: .5rem !important;
+      justify-content: flex-end !important;
+      max-width: 70vw !important;
+    }
+    .brand-header .nav-cluster .nav-card{
+      padding: .48rem .75rem !important;
+      border-radius: 999px !important;
+      background: rgba(0,75,107,.08) !important;
+      box-shadow: none !important;
+      border: 1px solid rgba(0,75,107,.08) !important;
+      gap: .4rem !important;
+      font-weight: 700 !important;
+    }
+    .brand-header .nav-cluster .nav-card .material-icons,
+    .brand-header .nav-cluster .nav-card i,
+    .brand-header .nav-cluster .nav-card svg{
+      display: none !important;
+    }
+    .brand-header .nav-cluster .nav-card span{
+      display: inline !important;
+      font-size: .98rem !important;
+    }
+
+    /* Hero spacing & typography */
+    .hero-section{
+      padding: 4.5rem 1rem 2.5rem !important;
+      margin-top: 0 !important;
+    }
+    .hero-title{ font-size: 2rem !important; }
+    .hero-subtitle{ font-size: 1rem !important; max-width: 92vw !important; }
+
+    /* Grid & cards collapse */
+    .features-grid{
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem !important;
+    }
+    .feature-card{ padding: 1.25rem !important; }
+
+    /* FAQ two-column -> one-column */
+    .faq-grid-2col{ grid-template-columns: 1fr !important; gap: 14px !important; }
+
+    /* Images responsive */
+    img, video{ max-width: 100% !important; height: auto !important; }
+
+    /* Remove heavy floating backgrounds on mobile */
+    .tech-bg, .floating-tech{ display: none !important; }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 360px){
+    .brand-header .nav-cluster{ max-width: 64vw !important; gap: .4rem !important; }
+    .brand-header .nav-cluster .nav-card{ padding: .42rem .6rem !important; }
+    .hero-title{ font-size: 1.85rem !important; }
+  }
+</style>
+
+<style id="logo-bg-white-20251105-v2">
+/* === Header/Logo area: force pure white background & stop any animations within === */
+header.brand-header,
+.brand-header{
+  background: #ffffff !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+/* Keep "transparent" variant from removing the white background */
+.brand-header.transparent{
+  background: #ffffff !important;
+  background-image: none !important;
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+  backdrop-filter: none !important;
+}
+
+/* Ensure the immediate logo region has no decorative bg and stays white */
+.brand-header .logo-container,
+.brand-header .logo-wrapper,
+.brand-header .logo-circle,
+.brand-header .logo-scale,
+.brand-header .logo-arc-left{
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Disable any animations/effects within the header region only */
+.brand-header *{
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Remove header before/after decorative layers if any */
+.brand-header::before,
+.brand-header::after{
+  content: none !important;
+  display: none !important;
+}
+</style>
