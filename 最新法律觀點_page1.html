@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<link href="https://www.lawfavor.com/%E6%9C%80%E6%96%B0%E6%B3%95%E5%BE%8B%E8%A7%80%E9%BB%9E_page1.html" rel="canonical"/>
+<meta content="收錄律師專業文章與時事法律觀點，涵蓋離婚、交通、勞資、繼承、消費爭議等熱門主題。" name="description"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>最新法律觀點 | 第 1 頁</title>
+<style>
+/* styles omitted for brevity but complete */
+:root{--primary-color:#1a365d;--primary-light:#2d4a8a;--accent-color:#d4af37;--accent-light:#f7e7b2;--text-dark:#2d3748;--text-light:#718096;--bg-light:#f7fafc;--bg-white:#ffffff;--border-radius:8px;--shadow:0 4px 6px rgba(0,0,0,.1);--shadow-hover:0 10px 15px rgba(0,0,0,.15);--transition:all .3s ease}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif}
+body{background-color:var(--bg-light);color:var(--text-dark);line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.header{background-color:var(--bg-white);box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
+.back-link{display:flex;align-items:center;color:var(--primary-color);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px}
+.back-link:hover{text-decoration:underline}
+.breadcrumb{font-size:14px;color:var(--text-light);margin-left:20px}
+.breadcrumb a{color:var(--primary-color);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:60px 0 40px;text-align:center;background:linear-gradient(135deg,var(--bg-white) 0%,var(--bg-light) 100%);border-bottom:1px solid rgba(0,0,0,.05)}
+.hero h1{font-size:2.5rem;font-weight:700;color:var(--primary-color);margin-bottom:15px}
+.hero p{font-size:1.2rem;color:var(--text-light);max-width:600px;margin:0 auto 30px}
+.filters{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;margin-bottom:40px;gap:20px}
+.search-box{flex:1;min-width:300px;position:relative;max-width:720px}
+.search-box input{width:100%;padding:12px 20px;border:1px solid #e2e8f0;border-radius:var(--border-radius);font-size:16px;transition:var(--transition)}
+.search-box input:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(26,54,93,.1)}
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:40px}
+.card{background-color:var(--bg-white);border-radius:var(--border-radius);overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);height:100%;display:flex;flex-direction:column}
+.card.hide{display:none!important}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+.card-image{height:180px;overflow:hidden;background:linear-gradient(135deg,#e2e8f0,#cbd5e0);display:flex;align-items:center;justify-content:center;position:relative}
+.card-image img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
+.card:hover .card-image img{transform:scale(1.05)}
+.card-content{padding:20px;flex-grow:1;display:flex;flex-direction:column}
+.card-category{display:inline-block;background-color:var(--accent-light);color:var(--primary-color);font-size:12px;font-weight:600;padding:4px 10px;border-radius:12px;margin-bottom:12px}
+.card-title{font-size:1.25rem;font-weight:700;line-height:1.4;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--primary-color)}
+.card-excerpt{color:var(--text-light);margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex-grow:1}
+.card-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--text-light);margin-top:auto}
+.card-cta{display:inline-block;background-color:var(--primary-color);color:#fff;text-align:center;padding:10px 0;border-radius:var(--border-radius);text-decoration:none;font-weight:500;margin-top:15px;transition:var(--transition)}
+.card-cta:hover{background-color:var(--primary-light)}
+.pagination{display:flex;justify-content:center;gap:8px;padding:20px 0 80px;align-items:center;flex-wrap:wrap}
+.pagination a,.pagination span{display:inline-block;min-width:40px;padding:8px 12px;text-align:center;border-radius:6px;text-decoration:none;border:1px solid #e2e8f0;color:var(--primary-color);background:var(--bg-white)}
+.pagination a:hover{background:#eef2f7}
+.pagination .current{background:var(--primary-color);color:#fff;border-color:var(--primary-color);pointer-events:none}
+.pagination .disabled{color:#a0aec0;background:#f1f5f9;border-color:#e2e8f0;pointer-events:none}
+.floating-line{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background-color:#06c755;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:1000;cursor:pointer;transition:var(--transition)}
+.floating-line:hover{transform:scale(1.1)}
+.floating-line img{width:32px;height:32px}
+.empty-state{display:none;text-align:center;color:var(--text-light);padding:40px 0 20px}
+.empty-state.show{display:block}
+.empty-state .title{color:var(--primary-color);font-weight:700;margin-bottom:8px}
+.empty-state .hint{font-size:14px}
+mark{background:#fff3bf;padding:0 2px;border-radius:2px}
+@media (max-width:1024px){.content-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:768px){.hero h1{font-size:2rem}.hero p{font-size:1rem}.filters{flex-direction:column;align-items:stretch}.search-box{min-width:100%}.content-grid{grid-template-columns:1fr}.floating-line{bottom:20px;right:20px;width:50px;height:50px}.floating-line img{width:28px;height:28px}}
+</style>
+</meta>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1C2A4D" name="theme-color"/>
+<link href="/footerlogo_192.png" rel="apple-touch-icon"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+
+<meta name="apple-mobile-web-app-status-bar-style" content="default"></head>
+<body>
+<header class="header"><div class="container"><nav class="nav">
+<a class="back-link" href="index.html"><span>← 返回首頁</span></a>
+<div class="breadcrumb"><a href="index.html">首頁</a> ＞ 最新法律觀點（第 1 / 6 頁）</div>
+</nav></div></header>
+<section class="hero"><div class="container"><h1>最新法律觀點</h1><p>專業解析各類法律議題，提供實用指引</p>
+<div class="filters"><div class="search-box"><input id="searchInput" placeholder="輸入關鍵字（例：監護權、酒駕、租賃）" type="text"/></div></div>
+</div></section>
+<main class="container">
+<div class="content-grid" id="grid">
+<article class="card"><div class="card-image"><img alt="離婚法律程序與監護權" src="https://images.unsplash.com/photo-1585128792020-803d29415281?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">離婚/家事</span><h2 class="card-title">離婚程序與監護權一次看懂</h2><p class="card-excerpt">協議離婚與裁判離婚差異，監護權判定與實務見解。</p><div class="card-meta"><span>2025-10-15</span><span>5 分鐘閱讀</span></div><a class="card-cta" href="離婚程序與監護權一次看懂.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="刑事辯護" src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">刑事辯護</span><h2 class="card-title">刑事辯護權利與程序保障</h2><p class="card-excerpt">緘默權、律師在場權與證據能力。</p><div class="card-meta"><span>2025-09-30</span><span>6 分鐘閱讀</span></div><a class="card-cta" href="刑事辯護權利與程序保障.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="勞資爭議" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-content"><span class="card-category">勞資爭議</span><h2 class="card-title">勞資爭議處理與權益保障</h2><p class="card-excerpt">不當解僱、加班費與霸凌救濟。</p><div class="card-meta"><span>2025-10-10</span><span>6 分鐘閱讀</span></div><a class="card-cta" href="勞資爭議處理與權益保障.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="租賃契約" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">房屋租賃</span><h2 class="card-title">租賃契約常見陷阱與防範</h2><p class="card-excerpt">押金、修繕與條款檢核。</p><div class="card-meta"><span>2025-10-08</span><span>5 分鐘閱讀</span></div><a class="card-cta" href="租賃契約常見陷阱與防範.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="債務協商" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">債務協商</span><h2 class="card-title">債務協商程序與注意事項</h2><p class="card-excerpt">前置協商、更生與清算比較。</p><div class="card-meta"><span>2025-10-05</span><span>7 分鐘閱讀</span></div><a class="card-cta" href="債務協商程序與注意事項.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="智財權" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">智慧財產</span><h2 class="card-title">商標註冊與智慧財產保護</h2><p class="card-excerpt">商標、專利與著作權保護策略。</p><div class="card-meta"><span>2025-10-03</span><span>5 分鐘閱讀</span></div><a class="card-cta" href="商標註冊與智慧財產保護.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="車禍賠償" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/></div><div class="card-content"><span class="card-category">車禍賠償</span><h2 class="card-title">車禍賠償責任與求償指南</h2><p class="card-excerpt">過失認定、賠償項目與理賠。</p><div class="card-meta"><span>2025-10-12</span><span>4 分鐘閱讀</span></div><a class="card-cta" href="車禍賠償責任與求償指南.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="遺產繼承" src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">繼承/家事</span><h2 class="card-title">遺產繼承程序與稅務規劃</h2><p class="card-excerpt">遺產稅申報、特留分與遺囑。</p><div class="card-meta"><span>2025-09-28</span><span>5 分鐘閱讀</span></div><a class="card-cta" href="遺產繼承程序與稅務規劃.html">閱讀全文</a></div></article>
+<article class="card"><div class="card-image"><img alt="消費糾紛" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/></div><div class="card-content"><span class="card-category">消費糾紛</span><h2 class="card-title">網路購物消費糾紛處理</h2><p class="card-excerpt">七日鑑賞期、退貨退款與申訴。</p><div class="card-meta"><span>2025-09-25</span><span>4 分鐘閱讀</span></div><a class="card-cta" href="網路購物消費糾紛處理.html">閱讀全文</a></div></article>
+</div>
+<div aria-live="polite" class="empty-state" id="emptyState"><div class="title">查無相關結果</div><div class="hint">請試試其他關鍵字，或輸入常見詞：<em>離婚</em>、<em>車禍</em>、<em>租賃</em>、<em>勞資</em>。</div></div>
+<nav aria-label="分頁導覽" class="pagination"><span class="disabled">« 上一頁</span><span aria-current="page" class="current">1</span><a aria-label="第 2 頁" href="最新法律觀點_page2.html">2</a><a aria-label="第 3 頁" href="最新法律觀點_page3.html">3</a><a aria-label="第 4 頁" href="最新法律觀點_page4.html">4</a><a aria-label="第 5 頁" href="最新法律觀點_page5.html">5</a><a aria-label="第 6 頁" href="最新法律觀點_page6.html">6</a><a href="最新法律觀點_page2.html">下一頁 »</a></nav>
+</main>
+<script>
+function restoreOriginal(el){ if(el.dataset.original!==undefined){ el.innerHTML=el.dataset.original; } else { el.dataset.original=el.innerHTML; } }
+function escapeRegExp(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function highlight(el,kw){ restoreOriginal(el); if(!kw)return; el.innerHTML = el.innerHTML.replace(new RegExp('('+escapeRegExp(kw)+')','gi'),'<mark>$1</mark>'); }
+document.addEventListener('DOMContentLoaded',function(){
+  const input=document.getElementById('searchInput');
+  const cards=Array.from(document.querySelectorAll('.card'));
+  const empty=document.getElementById('emptyState');
+  cards.forEach(c=>{['.card-title','.card-excerpt','.card-category'].forEach(sel=>{const el=c.querySelector(sel); if(el) restoreOriginal(el);});});
+  function norm(s){return (s||'').toString().toLowerCase().trim();}
+  function match(c,kw){
+    if(!kw) return true;
+    const toks=kw.split(/\s+/).filter(Boolean);
+    const t=norm(c.querySelector('.card-title')?.textContent);
+    const e=norm(c.querySelector('.card-excerpt')?.textContent);
+    const cat=norm(c.querySelector('.card-category')?.textContent);
+    return toks.every(x=>t.includes(x)||e.includes(x)||cat.includes(x));
+  }
+  function apply(){
+    const kw=norm(input.value); let any=false;
+    cards.forEach(c=>{
+      const ok=match(c,kw);
+      c.classList.toggle('hide',!ok);
+      if(ok){ any=true; ['.card-title','.card-excerpt','.card-category'].forEach(sel=>{const el=c.querySelector(sel); if(el) highlight(el,kw);}); }
+      else { ['.card-title','.card-excerpt','.card-category'].forEach(sel=>{const el=c.querySelector(sel); if(el) restoreOriginal(el);}); }
+    });
+    empty.classList.toggle('show',!any);
+  }
+  input.addEventListener('input',apply);
+  const fl=document.querySelector('.floating-line'); if(fl) fl.addEventListener('click',()=>alert('加入 LINE 諮詢功能'));
+});
+</script>
+
+<script>if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered', reg.scope))
+      .catch(err => console.warn('SW failed', err));
+  });
+}</script>
+</body>
+</html>
