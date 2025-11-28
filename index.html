@@ -662,6 +662,20 @@ LawAI 法詢提供免費 AI 法律諮詢與律師預約服務，協助處理協�
   if(rightBtn) rightBtn.addEventListener('click', ()=> next(1));
 })();
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function (reg) {
+        console.log('Service Worker registered:', reg.scope);
+      })
+      .catch(function (err) {
+        console.error('Service Worker registration failed:', err);
+      });
+  });
+}
+</script>
+
 </body>
 </html>
 
