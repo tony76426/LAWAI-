@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 預設設定圓餅圖按鈕為非active狀態
     document.getElementById('showPieChartBtn').classList.remove('btn-active');
     // 自動聚焦到搜尋輸入框
-    document.getElementById('searchInput').focus();
+    // document.getElementById('searchInput').focus(); // removed to avoid auto-focus
     
     // 添加搜索框事件监听
     const searchInput = document.getElementById('searchInput');
@@ -492,7 +492,7 @@ document.getElementById('showSearchBtn').addEventListener('click', function(e) {
     document.getElementById('showPieChartBtn').classList.remove('btn-active');
     // 將搜尋框滾動到可視區域並聚焦
     document.getElementById('searchInput').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    document.getElementById('searchInput').focus();
+    // document.getElementById('searchInput').focus(); // removed to avoid auto-focus
 });
 
 document.getElementById('backToSearchBtn').addEventListener('click', function(e) {
@@ -503,7 +503,7 @@ document.getElementById('backToSearchBtn').addEventListener('click', function(e)
     document.getElementById('showPieChartBtn').classList.remove('btn-active');
     // 將搜尋框滾動到可視區域並聚焦
     document.getElementById('searchInput').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    document.getElementById('searchInput').focus();
+    // document.getElementById('searchInput').focus(); // removed to avoid auto-focus
 });
 
 // 圓餅圖點擊功能
