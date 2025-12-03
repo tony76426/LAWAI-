@@ -1,0 +1,36 @@
+{
+  "name": "LawAI 法詢｜AI 免費法律諮詢・法律分析網站",
+  "short_name": "LawAI 法詢",
+  "description": "LawAI 法詢提供 AI 免費法律諮詢、案件分析、法律文件生成與律師預約，支援離婚、車禍、債務、租賃等法律問題。",
+  "lang": "zh-TW",
+  "dir": "ltr",
+
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+
+  "display": "standalone",
+  "orientation": "portrait",
+
+  "theme_color": "transparent",
+  "background_color": "#FFFFFF",
+
+  "categories": ["productivity", "utilities", "business"],
+
+  "icons": [
+    {
+      "src": "/footerlogo_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/footerlogo_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "prefer_related_applications": false
+}
