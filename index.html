@@ -18,7 +18,7 @@
 <!-- ✅ 最佳化後的 <meta> 區塊 -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="LawAI 法詢提供 24 小時 AI 免費法律諮詢、律師預約與即時法律分析，協助處理離婚、車禍、債務、租賃、消費爭議與民刑事問題。以 AI 整理事實、律師提供專業建議，快速掌握爭點並獲得專業協助，適用台北、新北、桃園、新竹與全台民眾。" name="description"/>
+<meta content="LawAI 法詢提供 24 小時 AI 免費法律諮詢、律師預約與即時法律分析，協助處理離婚、車禍、債務、租賃、消費爭議與民刑事問題。以 AI 整理事實、律師提供專業建議，快速掌握爭點並獲得專業協助，適用台北、新北、桃園、台中與全台民眾。" name="description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="origin-when-cross-origin" name="referrer"/>
 <meta content="transparent" name="theme-color"/>
@@ -260,7 +260,7 @@ LawAI 法詢提供免費 AI 法律諮詢與律師預約服務，協助處理協�
 <div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="土地界址爭議互動圖解－土地界線不清怎麼解決" loading="lazy" src="界址輪播圖.png"/></a></div>
 <div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="不動產借名登記返還請求互動圖解－借名登記返還訴訟流程" loading="lazy" src="借名輪播圖.png"/></a></div>
 <div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="民間借貸糾紛互動圖解－借據、本票與借款不還怎麼處理" loading="lazy" src="借款輪播圖.png"/></a></div>
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="帳戶涉詐風險互動分析－被詐騙帳戶凍結怎麼辦" loading="lazy" src="人頭戶輪圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="帳戶涉詐風險互動分析－被詐騙帳戶凍結怎麼辦" loading="lazy" src="人頭戶輪播圖.png"/></a></div>
 <div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="未成年子女親權及探視互動圖解－監護權如何判定與探視安排" loading="lazy" src="子女親權輪播圖.png"/></a></div>
 <div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="本票請求權互動圖解－本票強制執行與抗辯方式" loading="lazy" src="本票輪播圖.png"/></a></div>
 <div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="家庭暴力保護令聲請互動圖解－家暴保護令申請流程與證據準備" loading="lazy" src="家暴輪播圖.png"/></a></div>
@@ -667,7 +667,10 @@ LawAI 法詢提供免費 AI 法律諮詢與律師預約服務，協助處理協�
   var mobileLink = document.getElementById('installNavMobile');
   if (!mobileLink) return;
 
-  // 有安裝事件時：顯示「安裝 APP」連結
+  // 初始狀態隱藏（保險起見）
+  mobileLink.hidden = true;
+
+  // 有 beforeinstallprompt 時：顯示「安裝 APP」按鈕
   window.addEventListener('beforeinstallprompt', function(e){
     e.preventDefault();
     deferredPrompt = e;
@@ -676,18 +679,37 @@ LawAI 法詢提供免費 AI 法律諮詢與律師預約服務，協助處理協�
 
   // 使用者點選「安裝 APP」
   mobileLink.addEventListener('click', async function(){
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      mobileLink.hidden = true;
+      return;
+    }
     var promptEvent = deferredPrompt;
     deferredPrompt = null;
     try {
       await promptEvent.prompt();
-      // 可視需要檢查 promptEvent.userChoice 以追蹤成效
+      // 等待使用者選擇結果
+      var choiceResult = await promptEvent.userChoice;
+      // 不論接受或拒絕，都隱藏按鈕
+      mobileLink.hidden = true;
+      console.log('PWA 安裝結果：', choiceResult.outcome);
     } catch (err) {
+      // 若出錯，同樣隱藏按鈕，避免殘留
+      mobileLink.hidden = true;
       console.error('PWA 安裝提示失敗：', err);
     }
   });
+
+  // 若透過其他方式完成安裝（例如瀏覽器內建功能），也隱藏按鈕
+  window.addEventListener('appinstalled', function(){
+    deferredPrompt = null;
+    if (mobileLink) {
+      mobileLink.hidden = true;
+    }
+    console.log('PWA 已安裝完成');
+  });
 })();
 </script>
+
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
