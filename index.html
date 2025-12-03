@@ -61,8 +61,29 @@
   }
 }
 </style>
+
+<style id="install-banner-style">
+  #installBanner.install-banner,
+  #installBanner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    padding: 12px 16px;
+    background: rgba(28, 42, 77, 0.96);
+    color: #fff;
+    font-family: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+</style>
+
 </head>
 <body>
+<div id="installBanner" class="install-banner" hidden>安裝 LawAI 法詢</div>
 <h1 class="seo-sr-only u-inline-0001">LawAI法詢｜AI 驅動的免費法律諮詢與律師預約網站（台北、新北、全台在地服務）</h1>
 <p class="seo-sr-only u-inline-0001">
 LawAI 法詢提供免費 AI 法律諮詢與律師預約服務，協助處理協議離婚流程怎麼做、裁判離婚怎麼判、監護權如何判定、家暴保護令申請方式、車禍賠償金額計算與車禍肇責怎麼判、民間借貸糾紛怎麼處理、本票強制執行流程、債務協商怎麼談、租屋押金不退怎麼辦、不動產買賣瑕疵怎麼處理、土地界址糾紛怎麼解決、被詐騙帳戶凍結怎麼辦、妨害電腦使用罪要件、刑事偵查程序怎麼走、遺產繼承流程一次看懂、卡費繳不出來怎麼辦、台北免費法律諮詢、線上律師預約推薦、24小時免費 AI 法律諮詢等問題。
@@ -658,6 +679,36 @@ LawAI 法詢提供免費 AI 法律諮詢與律師預約服務，協助處理協�
   if(rightBtn) rightBtn.addEventListener('click', ()=> next(1));
 })();
 </script>
+
+<script id="pwa-install-banner-js">
+(function(){
+  var deferredPrompt = null;
+  var banner = document.getElementById('installBanner');
+  if (!banner) return;
+
+  // 等待瀏覽器觸發 PWA 安裝事件
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredPrompt = e;
+    banner.removeAttribute('hidden');
+  });
+
+  // 使用者點擊「安裝 LawAI 法詢」Banner 後才呼叫 prompt()
+  banner.addEventListener('click', async function(){
+    if (!deferredPrompt) return;
+    banner.setAttribute('hidden', '');
+    var promptEvent = deferredPrompt;
+    deferredPrompt = null;
+    try {
+      await promptEvent.prompt();
+      // 可依需要檢查 promptEvent.userChoice 進一步追蹤成效
+    } catch (err) {
+      console.error('PWA 安裝提示失敗：', err);
+    }
+  });
+})();
+</script>
+
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
