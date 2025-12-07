@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
 <html lang="zh-TW">
 <head>
-<link href="https://www.lawfavor.com/%E6%9C%8D%E5%8B%99%E8%AA%AA%E6%98%8E.html" rel="canonical"/>
-<meta content="說明LawAI法詢網站提供之主要功能與法律服務範圍，包括AI諮詢、法律分析、律師預約與專案服務介紹。" name="description"/>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+i+dl;f.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WJGKKVC7');</script>
 <!-- End Google Tag Manager -->
-<meta charset="utf-8">
+
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>關於 LawAI 法詢｜平台介紹</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -90,7 +88,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--muted);
       padding: 2rem 1rem;
     }
-  
+
 .section h2 {
   font-size: 2.2rem !important;
 }
@@ -127,6 +125,132 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .section h3 {
   font-size: 1.6rem !important;
 }
+
+
+
+
+/* FAQ 白底＋淡藍外框（政府公告風）＋律師法槌印章 ICON */
+.faq-section {
+  margin-top: 3rem;
+  padding: 2.6rem 1.8rem 2.2rem;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 2px solid #0b254b; /* 淡藍外框 */
+  box-shadow: 0px 8px 22px rgba(15,23,42,0.05);
+}
+
+.faq-section h2 {
+  color: #0b254b;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  border-left: 6px solid #9bb3d1;
+  padding-left: 0.6rem;
+}
+
+.faq-kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+}
+
+.faq-intro {
+  font-size: 1.05rem;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+/* FAQ 列表 */
+.faq-section ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* 卡片本體 */
+.faq-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem 1.2rem 3.2rem;
+  position: relative;
+  border: 1px solid #dce1e7;
+  border-left: 5px solid #D4AF37; /* 淡金左框線 */
+  box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+}
+
+/* 問題（問）字樣：+20%、深藍 */
+.faq-item strong {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #0b254b;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* 答案（答）字樣：+20% */
+.faq-item .faq-label {
+  color: #B88B1E;
+  font-weight: 700;
+  font-size: 1.16rem;
+}
+
+.faq-item {
+  color: #374151;
+  font-size: 1.16rem;
+  line-height: 1.7;
+}
+
+/* 左側問號 ICON（深藍系） */
+.faq-item::before {
+  content: "?";
+  position: absolute;
+  left: 0.85rem;
+  top: 1.20rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  border: 1px solid #9bb3d1;
+  background: radial-gradient(circle at 30% 20%, #f8fbff 0, #e0eaff 40%, #cfdbf1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0b254b;
+}
+
+/* 右側律師「法槌」印章 ICON */
+.faq-item::after { content: ""; display: none; }
+
+/* 桌機雙欄 */
+@media (min-width: 720px) {
+  .faq-section ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 手機版 FAQ 一行一題 */
+@media (max-width: 768px) {
+  .faq-section ul {
+    grid-template-columns: 1fr !important;
+  }
+}
+.faq-section ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 手機邊緣微貼齊，保留白底感覺 */
+@media (max-width: 480px) {
+  .faq-section {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    border-radius: 0;
+  }
+}
 </style>
 <style>
 @media (min-width: 768px) {
@@ -134,16 +258,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transform: scale(1.2);
   }
 }
-</style></meta>
-<link href="/manifest.json" rel="manifest"/>
-<meta content="transparent" name="theme-color"/>
-<link href="/footerlogo_192.png" rel="apple-touch-icon"/>
-<meta content="yes" name="apple-mobile-web-app-capable"/>
-<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
-</head>
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-WJGKKVC7" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJGKKVC7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a href="index.html" style="position: absolute; top: 20px; left: 20px; background: #004B6B; color: white; padding: 6px 10px; border: 1px solid white; border-radius: 5px; font-size: 0.9rem; font-weight: 600; text-decoration: none; line-height: 1.2; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 999;">← 返回首頁</a>
 <div class="hero">
@@ -173,6 +292,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 style="color: black; font-size: 1.3rem; margin-top: 1.5rem; font-weight: bold;">任務發布系統</h3>
 <p>點選「任務發布區」後，填寫您的案件需求與聯繫方式，平台將自動媒合律師協助，快速取得法律支援。</p>
 </div>
+
 <div class="section">
 <h2>我們的理念與願景</h2>
 <p>LawAI 法詢致力於提供透明、即時、智慧的法律輔助。我們相信，科技能降低法律的門檻，讓每個人都能以合理成本，取得清楚且具行動性的法律建議。</p>
@@ -204,16 +324,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2>我們相信</h2>
 <p>科技可以讓法律更可近、更平等、更即時。我們希望，透過 LawAI 法詢，讓每一位需要幫助的使用者，都能安心做出法律決策。</p>
 </div>
-<div class="footer">
-    LawAI 法詢科技平台 © 2025. All rights reserved.
-  </div>
+<div class="section">
+  <h2>LawAI 法詢的整合流程</h2>
+  <p>LawAI 法詢結合人工智慧與專業律師團隊，提供 24 小時的免費法律諮詢與初步分析。系統會先透過 AI 技術理解您的問題脈絡，釐清事實與重點，再將內容轉化為摘要紀錄，由律師團隊接續分析、提出具體且可行的法律方案。</p>
+  <h3>一、AI 法律諮詢的運作邏輯</h3>
+  <p>當您輸入問題與情境後，AI 並非只回覆一段答案，而是會依序整理關鍵資訊，包含事件時間、發生地點、人物關係、金額數字與您的主要訴求，進一步建立案件的時間軸與爭點摘要，協助律師更快進入核心。</p>
+  <ol>
+    <li class="faq-item"><strong>即時理解：</strong>AI 透過自然語言處理技術辨識問題性質，例如離婚、車禍、債務、租賃、消費爭議等，初步鎖定法律領域。</li>
+    <li class="faq-item"><strong>重點歸納：</strong>AI 將您的敘述整理成「當事人立場、事件經過與主要爭點」三大區塊，讓資訊更有條理。</li>
+    <li class="faq-item"><strong>專業接續：</strong>整理完成的摘要可一鍵交由律師延伸分析，提出具體建議、擬定策略或起草法律文件。</li>
+  </ol>
+  <h3>二、AI 法律諮詢適用的常見情境</h3>
+  <p>只要是日常生活中會遇到的法律問題，多數都可以先透過 AI 進行前期整理與風險初步判斷，例如：</p>
+  <ul>
+    <li>婚姻、離婚協議與監護權爭議</li>
+    <li>交通事故賠償、修車費與責任劃分</li>
+    <li>卡費繳不出來、債務協商與還款安排</li>
+    <li>租賃糾紛、押金返還與房屋修繕爭議</li>
+    <li>網路購物、裝潢、補習班等消費爭議</li>
+    <li>遺產分配、贈與與家族財產爭議</li>
+  </ul>
+  <p>在這些情境中，AI 能先協助釐清現況與選項，讓您在與律師正式談話之前，就已經有基本方向與初步判斷。</p>
+  <h3>三、開始前你可以先準備的資料</h3>
+  <p>為了讓分析更精準、律師更快掌握重點，建議您在使用 LawAI 法詢前，先準備下列資訊或文件：</p>
+  <ol>
+    <li>通訊與對話紀錄（例：LINE、簡訊、Email、社群截圖）。</li>
+    <li>契約、收據、切結書、匯款明細或其他金流相關文件。</li>
+    <li>現場照片、影片、監視器畫面、車禍示意圖等可佐證的影像。</li>
+    <li>醫療單據、保險往來紀錄、報案三聯單、警方筆錄等。</li>
+  </ol>
+  <p>AI 會依據這些資料自動生成爭點摘要並建立案件架構，律師則在此基礎上擬定具體法律策略，包括協商、調解、保全證據、提出聲請或訴訟等步驟。</p>
+  <h3>四、AI 與律師的協作關係</h3>
+  <p>LawAI 法詢的核心理念是「AI 協助理解事實，律師專責法律判斷」。AI 擅長在短時間內閱讀大量資訊、整理重點與建立結構；律師則基於這些整理成果，判斷法律適用、研判勝負風險並提出可執行的行動方案。</p>
+  <p>透過人機整合，您可以先獲得即時指引與案件架構，再由律師提供具備專業性與可行性的法律意見，使每一次諮詢都更有效率、更有方向。</p>
+</div>
 
-<script>if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('SW registered', reg.scope))
-      .catch(err => console.warn('SW failed', err));
-  });
-}</script>
+<div class="section faq-section">
+<h2>常見問答 FAQ</h2>
+<p class="faq-kicker">FAQ ・ AI 法律諮詢與律師協作說明</p>
+<p class="faq-intro">以下整理常見疑問，說明 AI 與律師如何分工、何時適合先用 AI、何時應立即與律師直接討論，以及資料安全與後續委任流程。</p>
+<ul>
+<li class="faq-item"><strong>問：LawAI 法詢主要能協助哪些法律問題？</strong><br/><span class="faq-label">答：</span>涵蓋家事（離婚、監護權、家暴）、民事（車禍、債務、租賃、消費爭議）、遺產繼承與部分刑事爭議等日常常見案件，適合作為前期釐清方向與風險的工具。</li>
+<li class="faq-item"><strong>問：AI 給的回覆可以直接當成法律意見或法院主張使用嗎？</strong><br/><span class="faq-label">答：</span>AI 回覆屬於一般性法律資訊與方向建議，不能取代律師正式法律意見，也不構成委任關係。若涉及重大權益或即將進入訴訟，仍應由律師審查與修改。</li>
+<li class="faq-item"><strong>問：什麼情況下，只用 AI 就足夠？什麼時候一定要找律師？</strong><br/><span class="faq-label">答：</span>單純資訊查詢、初步評估風險、整理事實與文件，多半可先由 AI 協助；若金額較大、對方已找律師、收到法院或檢察署公文、或需簽署重要契約，即應盡速與律師直接討論。</li>
+<li class="faq-item"><strong>問：使用 LawAI 法詢時，我提供的內容會不會外流？</strong><br/><span class="faq-label">答：</span>系統會依據隱私政策與資訊安全標準處理資料，僅在必要範圍內用於生成回覆或協助律師了解案件，不會任意公開個人身份資訊。敏感資料仍建議在與律師一對一溝通時再補充。</li>
+<li class="faq-item"><strong>問：我沒有整理好文件，也可以先使用嗎？</strong><br/><span class="faq-label">答：</span>可以。AI 會先引導你用文字描述狀況，再根據回答提醒你應該補充哪些文件與證據。若能事先準備對話紀錄、契約或照片等，AI 與律師在後續分析時會更精準。</li>
+<li class="faq-item"><strong>問：透過 AI 諮詢之後，還能再把同一案件交由律師處理嗎？</strong><br/><span class="faq-label">答：</span>可以。AI 產製的時間線與爭點摘要，可作為律師閱讀案件的起點，減少你重複敘述時間，也讓律師更快掌握重點並提出適合的行動方案。</li>
+<li class="faq-item"><strong>問：LawAI 法詢是否會幫我自動分配或媒合律師？</strong><br/><span class="faq-label">答：</span>若你在諮詢過程中選擇進一步聯繫律師，可透過任務發布或預約功能，由系統協助整理案件重點並轉交合作律師，實際委任關係仍以你與律師之間的約定為準。</li>
+<li class="faq-item"><strong>問：使用 AI 法律諮詢需要付費嗎？之後找律師又怎麼計費？</strong><br/><span class="faq-label">答：</span>AI 諮詢部分以免費輔助為原則，讓你先掌握方向；若進入律師諮詢或委任程序，費用將由律師依案件性質、工作範圍與約定方式另行說明，平台不會擅自代為收費。</li>
+<li class="faq-item"><strong>問：如果是很急的案件（例如警方偵詢、法院開庭在即），還適合先用 AI 嗎？</strong><br/><span class="faq-label">答：</span>AI 可以協助你先釐清案件背景與關鍵時間點，但若已接獲傳票、通知或期限在即，建議同時盡快與律師直接聯繫，避免因時間不足而錯失重要程序與救濟機會。</li>
+</ul>
+</div>
+<div class="footer">
+    版權所有 Copyright © 2025 理然全球法律事務所
+  </div>
 </body>
 </html>
