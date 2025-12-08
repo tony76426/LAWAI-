@@ -587,35 +587,49 @@ LawAI 法詢整合 AI 法律分析與律師協作，是一個提供免費線上�
     perView = (w <= 600) ? 1 : (w <= 1024 ? 2 : 3);
     shell.style.setProperty('--cards-per-view', perView);
   }
-  function pageCount(){ return Math.ceil(total / perView); }
+
+  function pageCount(){
+    return Math.ceil(total / perView);
+  }
 
   function updateDots(){
     const pc = pageCount();
     dotsWrap.innerHTML = '';
-    for(let i=0;i<pc;i++){
+    for(let i = 0; i < pc; i++){
       const d = document.createElement('div');
-      d.className = 'carousel-dot' + (i===index ? ' active' : '');
+      d.className = 'carousel-dot' + (i === index ? ' active' : '');
       d.setAttribute('role','button');
       d.setAttribute('tabindex','0');
       d.addEventListener('click', ()=> goTo(i));
       dotsWrap.appendChild(d);
     }
   }
+
   function updateDotsActive(){
     const ds = dotsWrap.children;
-    for(let i=0;i<ds.length;i++){
-      ds[i].classList.toggle('active', i===index);
+    for(let i = 0; i < ds.length; i++){
+      ds[i].classList.toggle('active', i === index);
     }
   }
+
+  // 計算每一「頁」實際要移動的距離：
+  // 直接抓第 1 個頁面與第 2 個頁面的起點差（第 1 張卡片 vs 第 perView+1 張卡片）
+  // 可避免 gap / padding / RWD 帶來的累積誤差
   function pageWidth(){
-    const csTrack = getComputedStyle(track);
-    const gapStr = csTrack.gap || csTrack.columnGap || "16px";
-    const gap = parseFloat(gapStr);
-    const card = track.children[0];
-    const cardW = card ? card.getBoundingClientRect().width : 0;
-    const step = cardW * perView + gap * (perView - 1);
-    return step;
+    const shellWidth = shell.getBoundingClientRect().width;
+    if (total <= perView){
+      return shellWidth;
+    }
+    const first = cards[0];
+    const nextIndex = perView;
+    const next = cards[nextIndex];
+    if (first && next){
+      const offset = next.offsetLeft - first.offsetLeft;
+      return offset || shellWidth;
+    }
+    return shellWidth;
   }
+
   function goTo(i){
     const pc = pageCount();
     if(i < 0) i = 0;
@@ -654,6 +668,7 @@ LawAI 法詢整合 AI 法律分析與律師協作，是一個提供免費線上�
   if(rightBtn) rightBtn.addEventListener('click', ()=> next(1));
 })();
 </script>
+
 <script id="pwa-install-mobile-nav-js">
 (function(){
   var deferredPrompt = null;
