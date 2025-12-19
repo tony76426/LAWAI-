@@ -53,13 +53,22 @@
 <link href="lawai_contral.css" rel="stylesheet"/>
 
 <style id="hero-title-spacing-fix">
-/* Fix: restore original visual gap between hero title and subtitle (h1 vs h2 default margin difference) */
+/* Fix: restore original visual gap between hero title and subtitle */
 .hero-section .hero-title{ margin-bottom: 20px; }
+
+/* 手機版設定 (螢幕寬度小於 768px) */
 @media (max-width: 768px){
-  .hero-section .hero-title{ margin-bottom: 16px; }
+  .hero-section .hero-title{ 
+    margin-bottom: 16px; 
+    margin-top: -40px;
+    padding-top: 0;
+  }
+  .hero-section {
+    padding-top: 100px;
+  }
 }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.lawfavor.com/#org","name":"LawAI法詢","url":"https://www.lawfavor.com","logo":"https://www.lawfavor.com/ogimage.png","description":"LawAI 法詢為理然全球法律事務所打造的 AI 免費法律諮詢與法律分析網站，整合 AI 與律師團隊協助民眾處理離婚、車禍、債務、租賃等法律問題。","email":"lawaiadvisor@gmail.com","telephone":"+886-2-2700-0677","sameAs":["https://www.facebook.com/profile.php?id=61580937020161","https://line.me/R/ti/p/@621sbqlu"]},{"@type":"WebSite","@id":"https://www.lawfavor.com/#website","url":"https://www.lawfavor.com","name":"LawAI法詢","description":"LawAI 法詢是一個 AI 免費法律諮詢與法律分析網站，提供 24 小時智能諮詢、律師預約與法律意見整理服務。","publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","potentialAction":{"@type":"SearchAction","target":"https://www.lawfavor.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://www.lawfavor.com/#webpage","url":"https://www.lawfavor.com/","name":"LawAI法詢｜AI免費法律諮詢・法律分析網站｜理然全球法律事務所・律師預約","headline":"LawAI法詢｜AI 與法律的免費諮詢服務","isPartOf":{"@id":"https://www.lawfavor.com/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://www.lawfavor.com/ogimage.png"},"description":"LawAI 法詢提供 24 小時 AI 免費法律諮詢、律師預約與即時法律分析，協助處理離婚、車禍、債務、租賃、消費爭議與民刑事問題。以 AI 整理事實、律師提供專業建議，快速掌握爭點並獲得專業協助，適用台北、新北、桃園、台中與全台民眾。","inLanguage":"zh-TW"},{"@type":["LegalService","LocalBusiness"],"@id":"https://www.lawfavor.com/#legalservice","name":"LawAI法詢","url":"https://www.lawfavor.com","image":"https://www.lawfavor.com/lawai-main.png","telephone":"+886-2-2700-0677","faxNumber":"+886-2-2700-0119","email":"lawaiadvisor@gmail.com","areaServed":["Taiwan","Taipei City","New Taipei City","Taoyuan City","Hsinchu City","Hsinchu County","Taichung City"],"address":{"@type":"PostalAddress","streetAddress":"敦化南路一段294號4樓之3","addressLocality":"大安區","addressRegion":"臺北市","postalCode":"106","addressCountry":"TW"},"openingHours":"Mo-Fr 09:00-18:00","priceRange":"$$","geo":{"@type":"GeoCoordinates","latitude":25.026,"longitude":121.549},"hasMap":"https://maps.google.com/?q=台北市大安區敦化南路一段294號4樓之3","description":"免費 AI 法律諮詢與法律分析網站，結合 AI 理解事實與專業律師判斷，協助處理離婚、車禍、債務、租賃等法律問題。","parentOrganization":{"@id":"https://www.lawfavor.com/#org"}},{"@type":"BreadcrumbList","@id":"https://www.lawfavor.com/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"AI 免費法律諮詢","item":"https://www.lawfavor.com/aireport.html"}]},{"@type":"Service","@id":"https://www.lawfavor.com/#service-ai-consult","serviceType":"AI免費法律諮詢","provider":{"@id":"https://www.lawfavor.com/#legalservice"},"areaServed":["Taiwan","Taipei City","New Taipei City","Taoyuan City","Hsinchu City","Hsinchu County","Taichung City"],"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.lawfavor.com/airobot.html"}},{"@type":"Service","@id":"https://www.lawfavor.com/#service-lawyer-booking","serviceType":"律師預約與案件評估","provider":{"@id":"https://www.lawfavor.com/#legalservice"},"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.lawfavor.com/#contact"}},{"@type":"Service","@id":"https://www.lawfavor.com/#service-lawmap","serviceType":"智圖法律分析","provider":{"@id":"https://www.lawfavor.com/#legalservice"},"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.lawfavor.com/lawmap.html"}},{"@type":"FAQPage","@id":"https://www.lawfavor.com/#faq","mainEntity":[{"@type":"Question","name":"AI 可以協助哪些法律問題整理？","acceptedAnswer":{"@type":"Answer","text":"AI 會先協助整理你的事實敘述，區分時間軸、當事人與爭點，初步比對可能涉及的法律領域，例如離婚、車禍、債務、租賃與勞資等，讓後續與律師討論更有結構。"}},{"@type":"Question","name":"什麼情況需要由律師出手？","acceptedAnswer":{"@type":"Answer","text":"只要已收到法院或檢察署公文、對方已找律師、金額較大或權益受損風險高時，就應儘早由律師正式介入，由律師負責擬定策略、撰寫法律文件與出庭。"}},{"@type":"Question","name":"AI 諮詢後如何銜接真人律師？","acceptedAnswer":{"@type":"Answer","text":"AI 會先整理你的敘述與重點問題，你可以再透過網站上的聯繫方式預約律師。律師在閱讀 AI 整理的摘要後，更快了解案情，諮詢時間就能聚焦在關鍵風險與解決方案。"}},{"@type":"Question","name":"我的資料是否會被保存？","acceptedAnswer":{"@type":"Answer","text":"我們僅在提供服務所必要的範圍內處理你提供的資訊，並依網站隱私權政策與資料保護規範進行管理。若你有特別顧慮，也可以在後續與律師聯繫時主動說明希望限制紀錄方式。"}},{"@type":"Question","name":"預約律師流程與費用如何運作？","acceptedAnswer":{"@type":"Answer","text":"完成 AI 初步諮詢後，你可以透過聯繫我們、任務發佈或 LINE 等方式預約律師。實際費用會由律師依案件複雜度與工作內容事先說明，你可以評估後再決定是否進一步委任。"}},{"@type":"Question","name":"提交問題前要準備什麼？","acceptedAnswer":{"@type":"Answer","text":"建議先整理：發生時間、主要當事人、已簽署或收到的文件、與對方往來紀錄，以及你目前最在意的問題與目標。資訊越清楚，AI 與律師越能快速給出精準建議。"}}]},{"@type":"Article","@id":"https://www.lawfavor.com/離婚程序與監護權一次看懂.html#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lawfavor.com/離婚程序與監護權一次看懂.html"},"headline":"離婚程序與監護權一次看懂","name":"離婚程序與監護權一次看懂","description":"協議離婚與裁判離婚差異，監護權判定與實務見解，適合正在思考離婚程序與監護權爭取方向的民眾。","image":"https://www.lawfavor.com/離婚程序與監護權一次看懂.png","author":{"@type":"Organization","@id":"https://www.lawfavor.com/#org"},"publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#webpage"}},{"@type":"Article","@id":"https://www.lawfavor.com/遺產繼承程序與稅務規劃.html#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lawfavor.com/遺產繼承程序與稅務規劃.html"},"headline":"遺產繼承程序與稅務規劃","name":"遺產繼承程序與稅務規劃","description":"遺產稅申報、特留分與遺囑等重點，協助規劃完整的遺產繼承流程與稅務風險。","image":"https://www.lawfavor.com/遺產繼承程序與稅務規劃.png","author":{"@type":"Organization","@id":"https://www.lawfavor.com/#org"},"publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#webpage"}},{"@type":"Article","@id":"https://www.lawfavor.com/租賃契約常見陷阱與防範.html#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lawfavor.com/租賃契約常見陷阱與防範.html"},"headline":"租賃契約常見陷阱與防範","name":"租賃契約常見陷阱與防範","description":"押金、修繕與條款檢核重點，避免租屋押金不退與常見租賃糾紛。","image":"https://www.lawfavor.com/租賃契約常見陷阱與防範.png","author":{"@type":"Organization","@id":"https://www.lawfavor.com/#org"},"publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#webpage"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.lawfavor.com/#org","name":"LawAI法詢","url":"https://www.lawfavor.com","logo":"https://www.lawfavor.com/ogimage.png","description":"LawAI 法詢為理然全球法律事務所打造的 AI 免費法律諮詢與法律分析網站，整合 AI 與律師團隊協助民眾處理離婚、車禍、債務、租賃等法律問題。","email":"lawaiadvisor@gmail.com","telephone":"+886-2-2700-0677","sameAs":["https://www.facebook.com/profile.php?id=61580937020161","https://line.me/R/ti/p/@621sbqlu"]},{"@type":"WebSite","@id":"https://www.lawfavor.com/#website","url":"https://www.lawfavor.com","name":"LawAI法詢","description":"LawAI 法詢是一個 AI 免費法律諮詢與法律分析網站，提供 24 小時智能諮詢、律師預約與法律意見整理服務。","publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","potentialAction":{"@type":"SearchAction","target":"https://www.lawfavor.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://www.lawfavor.com/#webpage","url":"https://www.lawfavor.com/","name":"LawAI法詢｜AI免費法律諮詢・法律分析網站｜理然全球法律事務所・律師預約","headline":"LawAI法詢｜AI 與法律的免費諮詢服務","isPartOf":{"@id":"https://www.lawfavor.com/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://www.lawfavor.com/ogimage.png"},"description":"LawAI 法詢提供 24 小時 AI 免費法律諮詢、律師預約與即時法律分析，協助處理離婚、車禍、債務、租賃、消費爭議與民刑事問題。以 AI 整理事實、律師提供專業建議，快速掌握爭點並獲得專業協助，適用台北、新北、桃園、台中與全台民眾。","inLanguage":"zh-TW"},{"@type":["LegalService","LocalBusiness"],"@id":"https://www.lawfavor.com/#legalservice","name":"LawAI法詢","url":"https://www.lawfavor.com","image":"https://www.lawfavor.com/lawai-main.png","telephone":"+886-2-2700-0677","faxNumber":"+886-2-2700-0119","email":"lawaiadvisor@gmail.com","areaServed":["Taiwan","Taipei City","New Taipei City","Taoyuan City","Hsinchu City","Hsinchu County","Taichung City"],"address":{"@type":"PostalAddress","streetAddress":"敦化南路一段294號4樓之3","addressLocality":"大安區","addressRegion":"臺北市","postalCode":"106","addressCountry":"TW"},"openingHours":"Mo-Fr 09:00-18:00","priceRange":"$$","geo":{"@type":"GeoCoordinates","latitude":25.026,"longitude":121.549},"hasMap":"https://maps.google.com/?q=台北市大安區敦化南路一段294號4樓之3","description":"免費 AI 法律諮詢與法律分析網站，結合 AI 理解事實與專業律師判斷，協助處理離婚、車禍、債務、租賃等法律問題。","parentOrganization":{"@id":"https://www.lawfavor.com/#org"}},{"@type":"BreadcrumbList","@id":"https://www.lawfavor.com/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"AI 免費法律諮詢","item":"https://www.lawfavor.com/aireport.html"}]},{"@type":"Service","@id":"https://www.lawfavor.com/#service-ai-consult","serviceType":"AI免費法律諮詢","provider":{"@id":"https://www.lawfavor.com/#legalservice"},"areaServed":["Taiwan","Taipei City","New Taipei City","Taoyuan City","Hsinchu City","Hsinchu County","Taichung City"],"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.lawfavor.com/airobot.html"}},{"@type":"Service","@id":"https://www.lawfavor.com/#service-lawyer-booking","serviceType":"律師預約與案件評估","provider":{"@id":"https://www.lawfavor.com/#legalservice"},"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.lawfavor.com/#contact"}},{"@type":"Service","@id":"https://www.lawfavor.com/#service-lawmap","serviceType":"智圖法律分析","provider":{"@id":"https://www.lawfavor.com/#legalservice"},"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.lawfavor.com/lawmap.html"}},{"@type":"FAQPage","@id":"https://www.lawfavor.com/#faq","mainEntity":[{"@type":"Question","name":"我已經收到法院通知，現在來得及處理嗎？","acceptedAnswer":{"@type":"Answer","text":"多數情況都還來得及，但務必先確認公文上的期限（如答辯、補正、開庭日期）。建議先整理收到的通知、對方主張與相關契約／對話紀錄，讓 AI 協助釐清時間軸與爭點；若已進入訴訟或期限緊迫，越早由律師介入越能避免錯過權利主張。"}},{"@type":"Question","name":"想先問狀況，還不確定要找律師，可以嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。你可以先用 AI 把事實敘述整理成重點，先掌握可能風險、需要補哪些資料與下一步方向；待你確認案件重要性、金額或時間壓力後，再決定是否預約律師，諮詢也會更有效率。"}},{"@type":"Question","name":"AI 可以協助哪些法律問題整理？","acceptedAnswer":{"@type":"Answer","text":"AI 會先協助整理你的事實敘述，區分時間軸、當事人與爭點，初步比對可能涉及的法律領域，例如離婚、車禍、債務、租賃與勞資等，讓後續與律師討論更有結構。"}},{"@type":"Question","name":"什麼情況需要由律師出手？","acceptedAnswer":{"@type":"Answer","text":"只要已收到法院或檢察署公文、對方已找律師、金額較大或權益受損風險高時，就應儘早由律師正式介入，由律師負責擬定策略、撰寫法律文件與出庭。"}},{"@type":"Question","name":"AI 諮詢後如何銜接真人律師？","acceptedAnswer":{"@type":"Answer","text":"AI 會先整理你的敘述與重點問題，你可以再透過網站上的聯繫方式預約律師。律師在閱讀 AI 整理的摘要後，更快了解案情，諮詢時間就能聚焦在關鍵風險與解決方案。"}},{"@type":"Question","name":"我的資料是否會被保存？","acceptedAnswer":{"@type":"Answer","text":"我們僅在提供服務所必要的範圍內處理你提供的資訊，並依網站隱私權政策與資料保護規範進行管理。若你有特別顧慮，也可以在後續與律師聯繫時主動說明希望限制紀錄方式。"}},{"@type":"Question","name":"預約律師流程與費用如何運作？","acceptedAnswer":{"@type":"Answer","text":"完成 AI 初步諮詢後，你可以透過聯繫我們、任務發佈或 LINE 等方式預約律師。實際費用會由律師依案件複雜度與工作內容事先說明，你可以評估後再決定是否進一步委任。"}},{"@type":"Question","name":"提交問題前要準備什麼？","acceptedAnswer":{"@type":"Answer","text":"建議先整理：發生時間、主要當事人、已簽署或收到的文件、與對方往來紀錄，以及你目前最在意的問題與目標。資訊越清楚，AI 與律師越能快速給出精準建議。"}}]},{"@type":"Article","@id":"https://www.lawfavor.com/離婚程序與監護權一次看懂.html#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lawfavor.com/離婚程序與監護權一次看懂.html"},"headline":"離婚程序與監護權一次看懂","name":"離婚程序與監護權一次看懂","description":"協議離婚與裁判離婚差異，監護權判定與實務見解，適合正在思考離婚程序與監護權爭取方向的民眾。","image":"https://www.lawfavor.com/離婚程序與監護權一次看懂.png","author":{"@type":"Organization","@id":"https://www.lawfavor.com/#org"},"publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#webpage"}},{"@type":"Article","@id":"https://www.lawfavor.com/遺產繼承程序與稅務規劃.html#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lawfavor.com/遺產繼承程序與稅務規劃.html"},"headline":"遺產繼承程序與稅務規劃","name":"遺產繼承程序與稅務規劃","description":"遺產稅申報、特留分與遺囑等重點，協助規劃完整的遺產繼承流程與稅務風險。","image":"https://www.lawfavor.com/遺產繼承程序與稅務規劃.png","author":{"@type":"Organization","@id":"https://www.lawfavor.com/#org"},"publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#webpage"}},{"@type":"Article","@id":"https://www.lawfavor.com/租賃契約常見陷阱與防範.html#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lawfavor.com/租賃契約常見陷阱與防範.html"},"headline":"租賃契約常見陷阱與防範","name":"租賃契約常見陷阱與防範","description":"押金、修繕與條款檢核重點，避免租屋押金不退與常見租賃糾紛。","image":"https://www.lawfavor.com/租賃契約常見陷阱與防範.png","author":{"@type":"Organization","@id":"https://www.lawfavor.com/#org"},"publisher":{"@id":"https://www.lawfavor.com/#org"},"inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#webpage"}}]}</script>
 <style id="mobile-law-cube-fix">
 /* LAW text on rotating cube — mobile-only 20% reduction to fit within button */
 @media (max-width: 768px){
@@ -108,16 +117,16 @@
 <img alt="LawAI法詢首頁Logo－免費法律諮詢與法律分析網站" class="u-inline-0003" src="/homelogo.png"/>
 </a>
 <nav class="nav-cluster u-inline-0004">
-<a class="nav-card u-inline-0005" href="服務說明.html">
+<a class="nav-card u-inline-0005" href="/服務說明.html">
 <span aria-hidden="true" class="material-icons">list_alt</span>
 <span>服務說明</span>
 </a>
-<a class="nav-card u-inline-0005" href="團隊成員版面.html">
+<a class="nav-card u-inline-0005" href="/團隊成員版面.html">
 <span aria-hidden="true" class="material-icons">groups</span>
 <span>團隊介紹</span>
 </a>
-<a class="nav-card u-inline-0005" href="lawreserve.html"><span aria-hidden="true" class="material-icons">contact_mail</span><span>聯繫我們</span></a>
-<a class="nav-card" href="最新法律觀點_page1.html"><span aria-hidden="true" class="material-icons">gavel</span><span>法律觀點</span></a></nav>
+<a class="nav-card u-inline-0005" href="/lawreserve.html"><span aria-hidden="true" class="material-icons">contact_mail</span><span>聯繫我們</span></a>
+<a class="nav-card" href="/最新法律觀點_page1.html"><span aria-hidden="true" class="material-icons">gavel</span><span>法律觀點</span></a></nav>
 <button aria-controls="lawai-mh-drawer" aria-expanded="false" aria-haspopup="true" aria-label="開啟選單" class="lawai-mh-btn" id="lawai-mh-btn" type="button">
 <span aria-hidden="true" class="lawai-mh-icon">
 <span></span><span></span><span></span>
@@ -132,22 +141,22 @@
 </div>
 </div>
 <nav class="lawai-mh-links" id="lawai-mh-links">
-<a href="lawreserve.html" id="lawai-mh-link-contact-m">聯繫我們</a>
-<a href="團隊成員版面.html" id="lawai-mh-link-team-m">團隊介紹</a>
-<a href="最新法律觀點_page1.html" id="lawai-mh-link-legal-m">法律觀點</a>
-<a href="服務說明.html" id="lawai-mh-link-service-m">服務說明</a>
+<a href="/lawreserve.html" id="lawai-mh-link-contact-m">聯繫我們</a>
+<a href="/團隊成員版面.html" id="lawai-mh-link-team-m">團隊介紹</a>
+<a href="/最新法律觀點_page1.html" id="lawai-mh-link-legal-m">法律觀點</a>
+<a href="/服務說明.html" id="lawai-mh-link-service-m">服務說明</a>
 <a hidden="" href="javascript:void(0)" id="installNavMobile">安裝 APP</a>
 </nav>
 </aside>
 <main id="main-content" role="main">
 <div class="u-inline-0006">
-<img alt="LawAI法詢主圖" class="u-inline-0007" src="lawai-main.png"/>
+<img alt="LawAI法詢主圖" class="u-inline-0007" src="/lawai-main.png"/>
 </div>
 <section aria-label="LawAI法詢首頁主視覺與AI免費法律諮詢介紹" class="hero-section">
 <div class="hero-bg"></div>
 <h1 class="hero-title">AI 與法律的免費諮詢</h1>
 <p class="hero-subtitle">LawAI 法詢｜24小時 AI 法律諮詢與律師線上預約的法律網站，提供線上免費法律諮詢與分析。</p>
-<a class="main-ai-btn u-inline-0008" href="aireport.html" role="button">
+<a class="main-ai-btn u-inline-0008" href="/aireport.html" role="button">
 <div class="btn-icon">
 <div class="cube">
 <div class="cube-face front ai-text u-inline-0009">AI</div>
@@ -189,36 +198,36 @@
 <h2 class="section-title">為什麼選擇 LawAI法詢？</h2>
 <p class="section-subtitle">我們將人工智慧與法律專業完美融合，創造前所未有的法律服務體驗</p>
 <div class="features-grid"><article class="feature-card u-inline-0018">
-<a class="u-inline-0019" href="lawmap.html"><div class="feature-icon">
+<a class="u-inline-0019" href="/lawmap.html"><div class="feature-icon">
 <span aria-hidden="true" class="material-icons u-inline-0020">psychology</span>
 </div></a>
-<a class="u-inline-0019" href="lawmap.html"><h3 class="feature-title u-inline-0021">智圖法律分析</h3></a>
+<a class="u-inline-0019" href="/lawmap.html"><h3 class="feature-title u-inline-0021">智圖法律分析</h3></a>
 <p class="feature-desc">透過結構化整理與視覺化方式，呈現常見案件處理流程與風險節點。使用者能透過<strong>智圖導覽</strong>，快速掌握<strong>法律爭點</strong>並找到解決方案。</p>
-<a class="feature-link u-inline-0021" href="lawmap.html">
+<a class="feature-link u-inline-0021" href="/lawmap.html">
                     探索技術
                     <span aria-hidden="true" class="material-icons u-inline-0021">arrow_forward</span>
 </a>
 </article><article class="feature-card u-inline-0022">
-<a class="u-inline-0019" href="airobot.html">
+<a class="u-inline-0019" href="/airobot.html">
 <div class="feature-icon">
 <span aria-hidden="true" class="material-icons">support_agent</span>
 </div>
 </a>
-<a class="u-inline-0019" href="airobot.html">
+<a class="u-inline-0019" href="/airobot.html">
 <h3 class="feature-title u-inline-0021">法詢智能客服</h3>
 </a>
 <p class="feature-desc">24 小時線上智能客服，即時解答您的<strong>離婚</strong>、<strong>車禍</strong>、<strong>租賃</strong>、<strong>繼承</strong>等生活<strong>常見法律問題</strong>。像聊天般輸入案情，AI 顧問立即提供<strong>初步法律建議</strong>與方向指引。</p>
-<a class="feature-link" href="airobot.html">
+<a class="feature-link" href="/airobot.html">
   馬上對話
   <span aria-hidden="true" class="material-icons">arrow_forward</span>
 </a>
 </article><article class="feature-card u-inline-0018">
-<a class="u-inline-0019" href="任務輸入頁版面.html"><div class="feature-icon">
+<a class="u-inline-0019" href="/任務輸入頁版面.html"><div class="feature-icon">
 <span aria-hidden="true" class="material-icons">assignment</span>
 </div></a>
-<a class="u-inline-0023" href="任務輸入頁版面.html"><h3 class="feature-title">任務發佈區</h3></a>
+<a class="u-inline-0023" href="/任務輸入頁版面.html"><h3 class="feature-title">任務發佈區</h3></a>
 <p class="feature-desc">一站式<strong>律師委任媒合</strong>系統。您只需填寫法律需求表單，AI 即可協助整理<strong>事實摘要</strong>，並將任務發佈給<strong>專精領域律師</strong>，快速取得<strong>個案報價</strong>與專業接洽服務。</p>
-<a class="feature-link" href="任務輸入頁版面.html">
+<a class="feature-link" href="/任務輸入頁版面.html">
                     立即發布
                     <span aria-hidden="true" class="material-icons">arrow_forward</span>
 </a>
@@ -235,12 +244,12 @@
 <span aria-hidden="true" class="material-icons">chevron_left</span>
 </button>
 <div class="carousel-track">
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="交通事故損害賠償互動圖解－車禍賠償金額計算與肇責判定" loading="lazy" src="車禍輪播圖.png"/></a></div>
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="不動產買賣瑕疵爭議互動圖解－房屋買賣瑕疵與價金減少請求" loading="lazy" src="房屋輪播圖.png"/></a></div>
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="帳戶涉詐風險互動分析－被詐騙帳戶凍結怎麼辦" loading="lazy" src="人頭戶輪播圖.png"/></a></div>
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="家庭暴力保護令聲請互動圖解－家暴保護令申請流程與證據準備" loading="lazy" src="家暴輪播圖.png"/></a></div>
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="配偶權侵害互動圖解－外遇蒐證與配偶權侵害求償" loading="lazy" src="配偶權輪播圖.png"/></a></div>
-<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="lawmap.html"><img alt="債務清理互動圖解－卡費繳不出來與債務協商怎麼談" loading="lazy" src="債清輪播圖.png"/></a></div></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="/lawmap.html"><img alt="交通事故損害賠償互動圖解－車禍賠償金額計算與肇責判定" loading="lazy" src="/車禍輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="/lawmap.html"><img alt="不動產買賣瑕疵爭議互動圖解－房屋買賣瑕疵與價金減少請求" loading="lazy" src="/房屋輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="/lawmap.html"><img alt="帳戶涉詐風險互動分析－被詐騙帳戶凍結怎麼辦" loading="lazy" src="/人頭戶輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="/lawmap.html"><img alt="家庭暴力保護令聲請互動圖解－家暴保護令申請流程與證據準備" loading="lazy" src="/家暴輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="/lawmap.html"><img alt="配偶權侵害互動圖解－外遇蒐證與配偶權侵害求償" loading="lazy" src="/配偶權輪播圖.png"/></a></div>
+<div class="carousel-card"><a aria-label="前往智圖法律分析（lawmap）" class="media" href="/lawmap.html"><img alt="債務清理互動圖解－卡費繳不出來與債務協商怎麼談" loading="lazy" src="/債清輪播圖.png"/></a></div></div>
 <button aria-label="下一張" class="carousel-arrow right" data-dir="1">
 <span aria-hidden="true" class="material-icons">chevron_right</span>
 </button>
@@ -251,20 +260,20 @@
 <h2 class="section-title">團隊介紹</h2>
 <p class="section-subtitle">專業律師團隊，為您提供最優質的法律服務</p>
 <div class="team-grid"><div class="team-member">
-<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img alt="劉添錫律師照片" class="u-inline-0025" loading="lazy" src="./劉添錫律師.jpg"/></div></a>
-<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">劉添錫律師</h3></a>
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="/團隊成員版面.html"><div class="member-avatar"><img alt="劉添錫律師照片" class="u-inline-0025" loading="lazy" src="/劉添錫律師.jpg"/></div></a>
+<a class="name-link" href="/團隊成員版面.html"><h3 class="member-name">劉添錫律師</h3></a>
 </div><div class="team-member">
-<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img alt="張育銜律師照片" class="u-inline-0025" loading="lazy" src="./張育銜律師.jpg"/></div></a>
-<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">張育銜律師</h3></a>
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="/團隊成員版面.html"><div class="member-avatar"><img alt="張育銜律師照片" class="u-inline-0025" loading="lazy" src="/張育銜律師.jpg"/></div></a>
+<a class="name-link" href="/團隊成員版面.html"><h3 class="member-name">張育銜律師</h3></a>
 </div><div class="team-member">
-<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img alt="李欣庭律師照片" class="u-inline-0025" loading="lazy" src="./李欣庭律師.jpg"/></div></a>
-<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">李欣庭律師</h3></a>
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="/團隊成員版面.html"><div class="member-avatar"><img alt="李欣庭律師照片" class="u-inline-0025" loading="lazy" src="/李欣庭律師.jpg"/></div></a>
+<a class="name-link" href="/團隊成員版面.html"><h3 class="member-name">李欣庭律師</h3></a>
 </div><div class="team-member">
-<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img alt="廖婉茹律師照片" class="u-inline-0025" loading="lazy" src="./廖婉茹律師.jpg"/></div></a>
-<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">廖婉茹律師</h3></a>
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="/團隊成員版面.html"><div class="member-avatar"><img alt="廖婉茹律師照片" class="u-inline-0025" loading="lazy" src="/廖婉茹律師.jpg"/></div></a>
+<a class="name-link" href="/團隊成員版面.html"><h3 class="member-name">廖婉茹律師</h3></a>
 </div><div class="team-member">
-<a aria-label="前往團隊成員頁面" class="avatar-link" href="團隊成員版面.html"><div class="member-avatar"><img alt="林原弘律師照片" class="u-inline-0025" loading="lazy" src="./林原弘律師.jpg"/></div></a>
-<a class="name-link" href="團隊成員版面.html"><h3 class="member-name">林原弘律師</h3></a>
+<a aria-label="前往團隊成員頁面" class="avatar-link" href="/團隊成員版面.html"><div class="member-avatar"><img alt="林原弘律師照片" class="u-inline-0025" loading="lazy" src="/林原弘律師.jpg"/></div></a>
+<a class="name-link" href="/團隊成員版面.html"><h3 class="member-name">林原弘律師</h3></a>
 </div></div>
 </section></div>
 
@@ -277,81 +286,95 @@
     </p>
   </div>
 </section>
-<section aria-label="最新法律觀點與文章列表" class="articles-section" id="articles-lawai"><div class="container"><h2 class="section-title"><a class="section-title-link" href="最新法律觀點_page1.html">最新法律觀點</a></h2><p class="section-desc">
+<section aria-label="最新法律觀點與文章列表" class="articles-section" id="articles-lawai"><div class="container"><h2 class="section-title"><a class="section-title-link" href="/最新法律觀點_page1.html">最新法律觀點</a></h2><p class="section-desc">
   以實用、可操作的內容累積信任，說明離婚監護權、遺產繼承流程、租屋押金不退怎麼辦等常見問題，吸引精準搜尋流量。
-  <a aria-label="閱讀更多最新法律觀點" class="more inline-view-more" href="最新法律觀點_page1.html">閱讀更多 →</a>
+  <a aria-label="閱讀更多最新法律觀點" class="more inline-view-more" href="/最新法律觀點_page1.html">閱讀更多 →</a>
 </p><div class="art-grid"><article class="card article">
-<img alt="離婚程序與監護權一次看懂－協議離婚與裁判離婚差異" class="u-inline-0026" loading="lazy" src="離婚程序與監護權一次看懂.png"/>
-<h3>離婚程序與監護權一次看懂</h3><p>協議離婚與裁判離婚差異，監護權判定與實務見解，適合正在思考離婚程序與監護權爭取方向的民眾。</p><a class="more" href="離婚程序與監護權一次看懂.html">閱讀更多 →</a></article><article class="card article">
-<img alt="遺產繼承程序與稅務規劃－遺產稅申報與特留分爭議" class="u-inline-0026" loading="lazy" src="遺產繼承程序與稅務規劃.png"/>
-<h3>遺產繼承程序與稅務規劃</h3><p>遺產稅申報、特留分與遺囑等重點，協助規劃完整的遺產繼承流程與稅務風險。</p><a class="more" href="遺產繼承程序與稅務規劃.html">閱讀更多 →</a></article><article class="card article">
-<img alt="租賃契約常見陷阱與防範－押金、修繕與租屋糾紛重點" class="u-inline-0026" loading="lazy" src="租賃契約常見陷阱與防範.png"/>
-<h3>租賃契約常見陷阱與防範</h3><p>押金、修繕與條款檢核重點，避免租屋押金不退與常見租賃糾紛。</p><a class="more" href="租賃契約常見陷阱與防範.html">閱讀更多 →</a></article></div></div></section><section aria-label="常見問題與服務說明" class="faq-section">
+<img alt="離婚程序與監護權一次看懂－協議離婚與裁判離婚差異" class="u-inline-0026" loading="lazy" src="/離婚程序與監護權一次看懂.png"/>
+<h3>離婚程序與監護權一次看懂</h3><p>協議離婚與裁判離婚差異，監護權判定與實務見解，適合正在思考離婚程序與監護權爭取方向的民眾。</p><a class="more" href="/離婚程序與監護權一次看懂.html">閱讀更多 →</a></article><article class="card article">
+<img alt="遺產繼承程序與稅務規劃－遺產稅申報與特留分爭議" class="u-inline-0026" loading="lazy" src="/遺產繼承程序與稅務規劃.png"/>
+<h3>遺產繼承程序與稅務規劃</h3><p>遺產稅申報、特留分與遺囑等重點，協助規劃完整的遺產繼承流程與稅務風險。</p><a class="more" href="/遺產繼承程序與稅務規劃.html">閱讀更多 →</a></article><article class="card article">
+<img alt="租賃契約常見陷阱與防範－押金、修繕與租屋糾紛重點" class="u-inline-0026" loading="lazy" src="/租賃契約常見陷阱與防範.png"/>
+<h3>租賃契約常見陷阱與防範</h3><p>押金、修繕與條款檢核重點，避免租屋押金不退與常見租賃糾紛。</p><a class="more" href="/租賃契約常見陷阱與防範.html">閱讀更多 →</a></article></div></div></section><section aria-label="常見問題與服務說明" class="faq-section">
   <div class="container">
     <h2 class="section-title faq-title">常見問題（FAQ）</h2>
     <p class="section-subtitle faq-subtitle">快速了解服務範圍、資料安全與預約流程。</p>
     <div class="faq-grid">
       <div class="faq-column">
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">
+<div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-q-text">Q：我已經收到法院通知，現在來得及處理嗎？</span>
+            <span class="faq-arrow" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" aria-hidden="true">
+            <p>多數情況都還來得及，但務必先確認公文上的期限（如答辯、補正、開庭日期）。建議先把「收到的通知、對方主張、相關契約／對話紀錄」整理出來，讓 AI 協助你釐清時間軸與爭點；若已進入訴訟或程序期限緊迫，越早由律師介入越能避免錯過權利主張。</p>
+          </div>
+        </div>
+<div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-q-text">Q：想先問狀況，還不確定要找律師，可以嗎？</span>
+            <span class="faq-arrow" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" aria-hidden="true">
+            <p>可以。你可以先用 AI 把事實講清楚、把問題拆成可判斷的重點，先掌握「可能風險、需要補哪些資料、下一步該怎麼走」。當你確認案件重要性、金額或時間壓力後，再決定是否預約律師，諮詢也會更有效率。</p>
+          </div>
+        </div>
+<div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
             <span class="faq-q-text">Q：AI 可以協助哪些法律問題整理？</span>
             <span class="faq-arrow" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
+          <div class="faq-answer" aria-hidden="true">
             <p>AI 會先協助整理你的事實敘述，區分時間軸、當事人與爭點，初步比對可能涉及的法律領域，例如離婚、車禍、債務、租賃與勞資等，讓後續與律師討論更有結構。</p>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">
+<div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
             <span class="faq-q-text">Q：什麼情況需要由律師出手？</span>
             <span class="faq-arrow" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
+          <div class="faq-answer" aria-hidden="true">
             <p>只要已收到法院或檢察署公文、對方已找律師、金額較大或權益受損風險高時，就應儘早由律師正式介入，由律師負責擬定策略、撰寫法律文件與出庭。</p>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">
+</div><div class="faq-column">
+<div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
             <span class="faq-q-text">Q：AI 諮詢後如何銜接真人律師？</span>
             <span class="faq-arrow" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
+          <div class="faq-answer" aria-hidden="true">
             <p>AI 會先整理你的敘述與重點問題，你可以再透過網站上的聯繫方式預約律師。律師在閱讀 AI 整理的摘要後，更快了解案情，諮詢時間就能聚焦在關鍵風險與解決方案。</p>
           </div>
         </div>
-      </div>
-      <div class="faq-column">
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+<div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
             <span class="faq-q-text">Q：我的資料是否會被保存？</span>
             <span class="faq-arrow" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
+          <div class="faq-answer" aria-hidden="true">
             <p>我們僅在提供服務所必要的範圍內處理你提供的資訊，並依網站隱私權政策與資料保護規範進行管理。若你有特別顧慮，也可以在後續與律師聯繫時主動說明希望限制紀錄方式。</p>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5">
+<div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
             <span class="faq-q-text">Q：預約律師流程與費用如何運作？</span>
             <span class="faq-arrow" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer" id="faq-answer-5" aria-hidden="true">
+          <div class="faq-answer" aria-hidden="true">
             <p>完成 AI 初步諮詢後，你可以透過聯繫我們、任務發佈或 LINE 等方式預約律師。實際費用會由律師依案件複雜度與工作內容事先說明，你可以評估後再決定是否進一步委任。</p>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-6">
+<div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
             <span class="faq-q-text">Q：提交問題前要準備什麼？</span>
             <span class="faq-arrow" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer" id="faq-answer-6" aria-hidden="true">
+          <div class="faq-answer" aria-hidden="true">
             <p>建議先整理：發生時間、主要當事人、已簽署或收到的文件、與對方往來紀錄，以及你目前最在意的問題與目標。資訊越清楚，AI 與律師越能快速給出精準建議。</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+</div></section>
 <section aria-label="LawAI法詢服務優勢與統計說明" class="stats-container u-inline-0027">
 <h2 class="stats-title">
     LawAI法詢 改變法律服務的方式
@@ -403,7 +426,7 @@
 <footer class="u-inline-0028">
 <div class="footer-content-container">
 <div class="footer-logo">
-<img alt="LawAI 法詢 Footer Logo－AI 免費法律諮詢與律師預約網站" class="u-inline-0029" loading="lazy" src="footerlogo.png"/>
+<img alt="LawAI 法詢 Footer Logo－AI 免費法律諮詢與律師預約網站" class="u-inline-0029" loading="lazy" src="/footerlogo.png"/>
 </div>
 <div class="footer-info u-inline-0030">
 <div class="u-inline-0031">
@@ -439,11 +462,11 @@
 </div>
 <div class="u-inline-0038">
 <div class="footer-links u-inline-0039">
-<a class="u-inline-0040" href="使用者條款.html">使用者協議</a>
+<a class="u-inline-0040" href="/使用者條款.html">使用者協議</a>
 <span class="u-inline-0041">|</span>
-<a class="u-inline-0040" href="使用者條款.html">隱私權政策</a>
+<a class="u-inline-0040" href="/使用者條款.html">隱私權政策</a>
 <span class="u-inline-0041">|</span>
-<a class="u-inline-0040" href="使用者條款.html">免責聲明</a>
+<a class="u-inline-0040" href="/使用者條款.html">免責聲明</a>
 </div>
 版權所有 Copyright © 2025 理然全球法律事務所 本網站所提供之 AI 法律建議僅供參考。
    </div>
@@ -453,9 +476,9 @@
 <span aria-hidden="true" class="material-icons">home</span>
             首頁
         </div>
-<div class="nav-planet" onclick="window.location.href='lawmap.html'" role="button" tabindex="0">
+<div class="nav-planet" onclick="window.location.href='/lawmap.html'" role="button" tabindex="0">
 <span aria-hidden="true" class="material-icons u-inline-0042">psychology</span>智圖分析</div>
-<div class="nav-planet" onclick="window.location.href='aireport.html'" role="button" tabindex="0">
+<div class="nav-planet" onclick="window.location.href='/aireport.html'" role="button" tabindex="0">
 <div class="nav-cube">
 <div class="nav-cube-face nav-front ai-text">AI</div>
 <div class="nav-cube-face nav-back scale-text">LAW</div>
@@ -465,17 +488,17 @@
 <div class="nav-cube-face nav-bottom"></div>
 </div>
             AI 法律諮詢
-        </div><div class="nav-planet" onclick="window.location.href='airobot.html'" role="button" tabindex="0"><span aria-hidden="true" class="material-icons">support_agent</span>智能客服</div>
-<div class="nav-planet" onclick="window.location.href='任務輸入頁版面.html'" role="button" tabindex="0">
+        </div><div class="nav-planet" onclick="window.location.href='/airobot.html'" role="button" tabindex="0"><span aria-hidden="true" class="material-icons">support_agent</span>智能客服</div>
+<div class="nav-planet" onclick="window.location.href='/任務輸入頁版面.html'" role="button" tabindex="0">
 <span aria-hidden="true" class="material-icons">assignment</span>
             任務發佈
         </div>
 </nav></div>
-<a aria-label="AI 智能客服（桌面版）" class="smart-assistant-btn" href="airobot.html">
+<a aria-label="AI 智能客服（桌面版）" class="smart-assistant-btn" href="/airobot.html">
 <div class="ai-text">AI</div>
 <div class="label-text">智能客服</div>
 </a>
-<a aria-label="AI 智能客服" class="ai-float-btn" href="airobot.html">
+<a aria-label="AI 智能客服" class="ai-float-btn" href="/airobot.html">
 <span class="ai-text">AI</span>
 <span class="label-text">智能客服</span>
 </a>
