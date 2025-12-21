@@ -14,13 +14,27 @@
   white-space: nowrap !important;
 }
 </style>
+<style>
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+</style>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="LawAI 法詢提供 24 小時 AI 免費法律諮詢、律師預約與即時法律分析，協助處理離婚、車禍、債務、租賃、消費爭議與民刑事問題。以 AI 整理事實、律師提供專業建議，快速掌握爭點並獲得專業協助，適用台北、新北、桃園、台中與全台民眾。" name="description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="origin-when-cross-origin" name="referrer"/>
 <meta content="transparent" name="theme-color"/>
-<meta name="mobile-web-app-capable" content="yes"/>
+<meta content="yes" name="mobile-web-app-capable"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <title>LawAI法詢｜AI免費法律諮詢・法律分析網站｜理然全球法律事務所・律師預約</title>
@@ -34,7 +48,7 @@
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <link href="https://www.lawfavor.com/" rel="canonical"/>
-<link rel="sitemap" type="application/xml" href="https://www.lawfavor.com/sitemap.xml"/>
+<link href="https://www.lawfavor.com/sitemap.xml" rel="sitemap" type="application/xml"/>
 <link href="https://www.lawfavor.com/" hreflang="zh-TW" rel="alternate"/>
 <link href="/manifest.json" rel="manifest"/>
 <link href="/footerlogo_192.png" rel="apple-touch-icon"/>
@@ -48,10 +62,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
 <noscript><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/></noscript>
-<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/></noscript>
 <link href="lawai_contral.css" rel="stylesheet"/>
-
 <style id="hero-title-spacing-fix">
 /* Fix: restore original visual gap between hero title and subtitle */
 .hero-section .hero-title{ margin-bottom: 20px; }
@@ -154,7 +167,7 @@
 </div>
 <section aria-label="LawAI法詢首頁主視覺與AI免費法律諮詢介紹" class="hero-section">
 <div class="hero-bg"></div>
-<h1 class="hero-title">AI 與法律的免費諮詢</h1>
+<h1 class="hero-title"><span class="visually-hidden">LawAI：</span> AI 與法律的免費諮詢</h1>
 <p class="hero-subtitle">LawAI 法詢｜24小時 AI 法律諮詢與律師線上預約的法律網站，提供線上免費法律諮詢與分析。</p>
 <a class="main-ai-btn u-inline-0008" href="/aireport.html" role="button">
 <div class="btn-icon">
@@ -276,15 +289,14 @@
 <a class="name-link" href="/團隊成員版面.html"><h3 class="member-name">林原弘律師</h3></a>
 </div></div>
 </section></div>
-
 <section aria-label="LawAI法詢背後專業支持與AI技術原理" class="content-section-depth">
-  <div class="container">
-    <h2 class="section-title">⚖️ 專業後盾：理然全球法律事務所</h2>
-    <p class="section-subtitle">LawAI 法詢由理然全球法律事務所的資深律師團隊共同創建，確保科技的便捷性與法律專業度完美結合。</p>
-    <p>
+<div class="container">
+<h2 class="section-title">⚖️ 專業後盾：理然全球法律事務所</h2>
+<p class="section-subtitle">LawAI 法詢由理然全球法律事務所的資深律師團隊共同創建，確保科技的便捷性與法律專業度完美結合。</p>
+<p>
       本所律師擁有超過 35 年的實戰經驗，專精於民事訴訟（如<strong>不動產糾紛</strong>、<strong>債務清理</strong>）、刑事辯護（如<strong>詐欺案件</strong>、<strong>妨害名譽</strong>）及家事法（如<strong>離婚監護權</strong>、<strong>遺產繼承</strong>）。LawAI 法詢以 AI 作為「事實整理與問題聚焦工具」，協助使用者釐清案情脈絡；實際法律適用、判例評估與策略判斷，則由具台灣實務經驗的專業律師負責完成。LawAI 不僅是一個工具，更是理然法律團隊對<strong>數位法律服務</strong>的具體實踐。
     </p>
-  </div>
+</div>
 </section>
 <section aria-label="最新法律觀點與文章列表" class="articles-section" id="articles-lawai"><div class="container"><h2 class="section-title"><a class="section-title-link" href="/最新法律觀點_page1.html">最新法律觀點</a></h2><p class="section-desc">
   以實用、可操作的內容累積信任，說明離婚監護權、遺產繼承流程、租屋押金不退怎麼辦等常見問題，吸引精準搜尋流量。
@@ -296,85 +308,85 @@
 <h3>遺產繼承程序與稅務規劃</h3><p>遺產稅申報、特留分與遺囑等重點，協助規劃完整的遺產繼承流程與稅務風險。</p><a class="more" href="/遺產繼承程序與稅務規劃.html">閱讀更多 →</a></article><article class="card article">
 <img alt="租賃契約常見陷阱與防範－押金、修繕與租屋糾紛重點" class="u-inline-0026" loading="lazy" src="/租賃契約常見陷阱與防範.png"/>
 <h3>租賃契約常見陷阱與防範</h3><p>押金、修繕與條款檢核重點，避免租屋押金不退與常見租賃糾紛。</p><a class="more" href="/租賃契約常見陷阱與防範.html">閱讀更多 →</a></article></div></div></section><section aria-label="常見問題與服務說明" class="faq-section">
-  <div class="container">
-    <h2 class="section-title faq-title">常見問題（FAQ）</h2>
-    <p class="section-subtitle faq-subtitle">快速了解服務範圍、資料安全與預約流程。</p>
-    <div class="faq-grid">
-      <div class="faq-column">
+<div class="container">
+<h2 class="section-title faq-title">常見問題（FAQ）</h2>
+<p class="section-subtitle faq-subtitle">快速了解服務範圍、資料安全與預約流程。</p>
+<div class="faq-grid">
+<div class="faq-column">
 <div class="faq-item">
-          <button class="faq-question" type="button">
-            <span class="faq-q-text">Q：我已經收到法院通知，現在來得及處理嗎？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>多數情況都還來得及，但務必先確認公文上的期限（如答辯、補正、開庭日期）。建議先把「收到的通知、對方主張、相關契約／對話紀錄」整理出來，讓 AI 協助你釐清時間軸與爭點；若已進入訴訟或程序期限緊迫，越早由律師介入越能避免錯過權利主張。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-1" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：我已經收到法院通知，現在來得及處理嗎？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-1">
+<p>多數情況都還來得及，但務必先確認公文上的期限（如答辯、補正、開庭日期）。建議先把「收到的通知、對方主張、相關契約／對話紀錄」整理出來，讓 AI 協助你釐清時間軸與爭點；若已進入訴訟或程序期限緊迫，越早由律師介入越能避免錯過權利主張。</p>
+</div>
+</div>
 <div class="faq-item">
-          <button class="faq-question" type="button">
-            <span class="faq-q-text">Q：想先問狀況，還不確定要找律師，可以嗎？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>可以。你可以先用 AI 把事實講清楚、把問題拆成可判斷的重點，先掌握「可能風險、需要補哪些資料、下一步該怎麼走」。當你確認案件重要性、金額或時間壓力後，再決定是否預約律師，諮詢也會更有效率。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-2" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：想先問狀況，還不確定要找律師，可以嗎？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-2">
+<p>可以。你可以先用 AI 把事實講清楚、把問題拆成可判斷的重點，先掌握「可能風險、需要補哪些資料、下一步該怎麼走」。當你確認案件重要性、金額或時間壓力後，再決定是否預約律師，諮詢也會更有效率。</p>
+</div>
+</div>
 <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span class="faq-q-text">Q：AI 可以協助哪些法律問題整理？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>AI 會先協助整理你的事實敘述，區分時間軸、當事人與爭點，初步比對可能涉及的法律領域，例如離婚、車禍、債務、租賃與勞資等，讓後續與律師討論更有結構。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-3" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：AI 可以協助哪些法律問題整理？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-3">
+<p>AI 會先協助整理你的事實敘述，區分時間軸、當事人與爭點，初步比對可能涉及的法律領域，例如離婚、車禍、債務、租賃與勞資等，讓後續與律師討論更有結構。</p>
+</div>
+</div>
 <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span class="faq-q-text">Q：什麼情況需要由律師出手？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>只要已收到法院或檢察署公文、對方已找律師、金額較大或權益受損風險高時，就應儘早由律師正式介入，由律師負責擬定策略、撰寫法律文件與出庭。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-4" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：什麼情況需要由律師出手？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-4">
+<p>只要已收到法院或檢察署公文、對方已找律師、金額較大或權益受損風險高時，就應儘早由律師正式介入，由律師負責擬定策略、撰寫法律文件與出庭。</p>
+</div>
+</div>
 </div><div class="faq-column">
 <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span class="faq-q-text">Q：AI 諮詢後如何銜接真人律師？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>AI 會先整理你的敘述與重點問題，你可以再透過網站上的聯繫方式預約律師。律師在閱讀 AI 整理的摘要後，更快了解案情，諮詢時間就能聚焦在關鍵風險與解決方案。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-5" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：AI 諮詢後如何銜接真人律師？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-5">
+<p>AI 會先整理你的敘述與重點問題，你可以再透過網站上的聯繫方式預約律師。律師在閱讀 AI 整理的摘要後，更快了解案情，諮詢時間就能聚焦在關鍵風險與解決方案。</p>
+</div>
+</div>
 <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span class="faq-q-text">Q：我的資料是否會被保存？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>我們僅在提供服務所必要的範圍內處理你提供的資訊，並依網站隱私權政策與資料保護規範進行管理。若你有特別顧慮，也可以在後續與律師聯繫時主動說明希望限制紀錄方式。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-6" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：我的資料是否會被保存？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-6">
+<p>我們僅在提供服務所必要的範圍內處理你提供的資訊，並依網站隱私權政策與資料保護規範進行管理。若你有特別顧慮，也可以在後續與律師聯繫時主動說明希望限制紀錄方式。</p>
+</div>
+</div>
 <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span class="faq-q-text">Q：預約律師流程與費用如何運作？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>完成 AI 初步諮詢後，你可以透過聯繫我們、任務發佈或 LINE 等方式預約律師。實際費用會由律師依案件複雜度與工作內容事先說明，你可以評估後再決定是否進一步委任。</p>
-          </div>
-        </div>
+<button aria-controls="faq-answer-7" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：預約律師流程與費用如何運作？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-7">
+<p>完成 AI 初步諮詢後，你可以透過聯繫我們、任務發佈或 LINE 等方式預約律師。實際費用會由律師依案件複雜度與工作內容事先說明，你可以評估後再決定是否進一步委任。</p>
+</div>
+</div>
 <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span class="faq-q-text">Q：提交問題前要準備什麼？</span>
-            <span class="faq-arrow" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer" aria-hidden="true">
-            <p>建議先整理：發生時間、主要當事人、已簽署或收到的文件、與對方往來紀錄，以及你目前最在意的問題與目標。資訊越清楚，AI 與律師越能快速給出精準建議。</p>
-          </div>
-        </div>
-</div></section>
+<button aria-controls="faq-answer-8" aria-expanded="false" class="faq-question" type="button">
+<span class="faq-q-text">Q：提交問題前要準備什麼？</span>
+<span aria-hidden="true" class="faq-arrow"></span>
+</button>
+<div aria-hidden="true" class="faq-answer" id="faq-answer-8">
+<p>建議先整理：發生時間、主要當事人、已簽署或收到的文件、與對方往來紀錄，以及你目前最在意的問題與目標。資訊越清楚，AI 與律師越能快速給出精準建議。</p>
+</div>
+</div>
+</div></div></div></section>
 <section aria-label="LawAI法詢服務優勢與統計說明" class="stats-container u-inline-0027">
 <h2 class="stats-title">
     LawAI法詢 改變法律服務的方式
@@ -727,7 +739,6 @@
   if(rightBtn) rightBtn.addEventListener('click', ()=> next(1));
 })();
 </script>
-
 <script id="pwa-install-mobile-nav-js">
 (function(){
   var deferredPrompt = null;
@@ -789,7 +800,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var faqItems = document.querySelectorAll('.faq-item');
@@ -836,6 +846,5 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-
 </body>
 </html>
