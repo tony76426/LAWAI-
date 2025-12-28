@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<!-- Google Tag Manager -->
+<script>
+  // Avoid console noise when opening as file:// during local testing
+  if (location.protocol !== 'file:') {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WJGKKVC7');
+  }
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+<script>
+  // Avoid console noise when opening as file:// during local testing
+  if (location.protocol !== 'file:') {
+    var _gtagScript = document.createElement('script');
+    _gtagScript.async = true;
+    _gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17535200500';
+    document.head.appendChild(_gtagScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17535200500');
+  }
+</script>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI 法律諮詢與意見書生成｜免費模擬法律意見書 – LawAI 法詢</title>
+<meta name="description" content="LawAI 法詢提供免費 AI 法律諮詢工具，先協助整理案件事實與法律重點，模擬生成法律意見書，協助評估是否需要律師介入，適用借貸、車禍、離婚、房屋糾紛等案件。"/>
+<link rel="canonical" href="https://www.lawfavor.com/aireport.html"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="aireport_style.css"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI 法律諮詢與意見書生成",
+  "description": "LawAI 法詢提供免費 AI 法律諮詢工具，先協助整理案件事實與法律重點，模擬生成法律意見書，協助評估是否需要律師介入。",
+  "url": "https://www.lawfavor.com/aireport.html",
+  "inLanguage": "zh-Hant",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "LawAI 法詢",
+    "url": "https://www.lawfavor.com/"
+  }
+}
+</script>
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJGKKVC7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="tech-bg"></div>
+<div class="back-container">
+<a class="back-btn" href="index.html">
+<span class="material-icons">arrow_back</span><span>返回首頁</span>
+</a>
+<a class="help-btn" href="服務說明.html#如何開始使用">
+<span class="material-icons">help_outline</span><span>使用說明</span>
+</a>
+</div>
+<div class="wrapper" id="pdfContent">
+<div class="card">
+<h1><span class="material-icons">auto_awesome</span> AI 法律諮詢與意見書生成</h1>
+<p class="subtitle">先幫你釐清方向，再決定要不要生成正式意見書</p>
+
+<div id="caseSummaryPanel" style="display:none; margin:18px 0 6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(0,75,107,.14); background:linear-gradient(90deg, rgba(0,75,107,.06), rgba(0,119,163,.04));">
+  <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+    <span class="material-icons" style="font-size:20px;">description</span>
+    <div style="font-weight:900; color:var(--primary); letter-spacing:.2px;">案件摘要句（自動生成）</div>
+  </div>
+  <div id="caseSummaryText" style="color:var(--text-color); line-height:1.8; font-size:16px;"></div>
+  <div style="margin-top:8px; font-size:13px; color:var(--text-muted);">提示：你可隨時改選或在「補充」欄位補上時間、金額、地點與證據關鍵字。</div>
+  <div style="margin-top:6px; font-size:13px; color:var(--text-muted);">如果有不精確的地方，後面可以再改。</div>
+</div>
+
+<div id="step-container"></div>
+<div class="progress-container">
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+<div class="encouragement" id="encouragement"></div>
+</div>
+</div>
+</div>
+
+<!-- 彈出式表單 Modal -->
+<div id="lawyerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:1000;">
+<div style="background:white; width:90%; max-width:400px; margin:6% auto; padding:24px; border-radius:16px; box-shadow:0 6px 16px rgba(0,0,0,0.3); position:relative;">
+<h2 style="margin-top:0; color:#004B6B;">📨 填寫聯絡資訊</h2>
+<div id="contactHint" style="margin:8px 0 14px; padding:10px 12px; background:#F3F9FC; color:#004B6B; border:1px solid rgba(0,75,107,.15); border-radius:10px; font-size:14px;">
+  必填：<strong>稱呼</strong> ＋ <strong>（聯絡電話 或 LINE ID 擇一）</strong>
+</div>
+<label>您怎麼稱呼？ <span class="hint-30">（姓或暱稱）</span></label><input id="userName" style="width:100%; padding:8px; margin-bottom:12px;" type="text"/>
+<label>聯絡電話： <span class="hint-30">（或與 LINE 擇一）</span></label><input id="userPhone" style="width:100%; padding:8px; margin-bottom:12px;" type="text"/>
+<label>LINE ID： <span class="hint-30">（或與電話擇一）</span></label><input id="userLine" style="width:100%; padding:8px; margin-bottom:16px;" type="text"/>
+<div style="text-align:right;">
+<button onclick="closeModal()" style="background:#ccc; color:#333; margin-right:8px;">取消</button>
+<button onclick="submitToLawyer()">確認送出</button>
+</div>
+</div>
+</div>
+
+<div id="submitStatus" style="display:none;position:fixed;bottom:20px;right:20px;background:#e0f7fa;padding:10px 20px;border-radius:10px;box-shadow:0 0 5px #999;font-weight:bold;z-index:9999;">
+📨 發送中，請稍候...
+</div>
+
+<!-- AI Disclaimer Modal -->
+<div id="aiDisclaimerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
+  <div style="background:white; width:90%; max-width:460px; margin:6% auto; padding:24px; border-radius:16px; box-shadow:0 6px 16px rgba(0,0,0,0.3); position:relative; font-family:'Noto Sans TC', sans-serif;">
+    <h2 style="color:#004B6B; margin-top:0;">⚖️ 使用警語提醒</h2>
+    <p style="white-space: pre-wrap; line-height: 1.6; font-size:16px;">
+您即將進入 AI 法律建議模擬階段。
+請留意，本網站所提供之法律資訊，係由人工智慧系統 根據您的輸入自動生成，僅供模擬參考之用，並不構成法律意見、法律諮詢或法律代理建議。
+
+回覆內容可能存在事實錯誤或不適用之情形，請勿直接依據行動。
+若您需具體法律協助，建議<strong>立即預約<strong style='color:#004B6B;'>理然全球法律事務所</strong>律師諮詢</strong>，以獲得真正具體可行的法律建議與協助。
+    </p>
+    <div style="text-align:right; margin-top:20px;">
+      <button onclick="document.getElementById('aiDisclaimerModal').style.display='none'" style="padding:8px 16px; background:#ccc; color:#333; border:none; border-radius:8px; font-weight:bold;">取消</button>
+      <button onclick="proceedToGenerateOpinion()" style="padding:8px 16px; background:#004B6B; color:white; border:none; border-radius:8px; font-weight:bold;">確認繼續</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Non-legal question modal -->
+<div id="nonLegalOverlay" role="dialog" aria-modal="true" aria-labelledby="nonLegalTitle">
+  <div id="nonLegalModal">
+    <div id="nonLegalModalHeader">
+      <div class="brand">
+        
+        <span id="nonLegalTitle">LawAI 法詢</span>
+      </div>
+      <button id="nonLegalClose" aria-label="關閉彈窗" onclick="closeNonLegalModal()">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+    <div id="nonLegalModalBody">
+      <p>此問題與法律無關，已為您停止流程。</p>
+      <p class="tip">請改以<strong>法律主題</strong>提問，例如：租賃、買賣、契約糾紛、交通事故、勞資爭議等。</p>
+    </div>
+    <div id="nonLegalModalActions">
+      <button class="nl-btn secondary" onclick="focusFirstInput()">改寫問題</button>
+      <button class="nl-btn primary" onclick="closeNonLegalModal()">知道了</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- LINE 綁定 Modal（加入 LINE 後才可開始分析） -->
+<div id="lineBindOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:10001; backdrop-filter:blur(2px);">
+  <div style="background:#fff; width:90%; max-width:420px; margin:10% auto; padding:24px; border-radius:16px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.2); border:1px solid rgba(0,75,107,.12);">
+    <h2 style="color:#004B6B; margin-top:0;">📲 加入 LINE 才能開始分析</h2>
+    <p style="line-height:1.8; font-size:16px; color:#333; margin: 10px 0 0;">
+      為了讓我們能持續追蹤您的案件進度，並在有律師回覆時通知您，請先加入官方 LINE！
+    </p>
+    <a id="lineAddLink" href="https://line.me/R/ti/p/@621sbqlu" target="_blank" rel="noopener"
+       style="display:block; margin:18px auto; padding:12px; background:#00c300; color:#fff; font-weight:bold; border-radius:10px; text-decoration:none; width:84%;">
+       立即加入 LINE
+    </a>
+<div style="font-size:13px; color:#6B7280; margin-top:8px;">（電腦請用手機掃描加入，或點擊上方按鈕於手機中開啟）</div>
+    <div style="margin-top:18px;">
+      <button onclick="proceedAfterLine()" style="padding:10px 18px; background:#004B6B; color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">
+        ✅ 我已加入，開始分析
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 法律路徑選擇 Overlay（用於「外遇/不忠」等可能同時涉及離婚與侵害配偶權的情境） -->
+<div id="legalPathOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:10002; backdrop-filter:blur(2px);">
+  <div style="background:#fff; width:92%; max-width:720px; margin:7% auto; padding:22px 22px 18px; border-radius:18px; box-shadow:0 10px 28px rgba(0,0,0,0.22); border:1px solid rgba(0,75,107,0.14);">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+      <h2 style="margin:0; color:#004B6B; font-size:20px; letter-spacing:.3px;">🧭 先選你現在想了解的法律方向</h2>
+      <button onclick="closeLegalPathOverlay()" style="background:transparent; border:none; cursor:pointer; padding:6px; border-radius:10px;">
+        <span class="material-icons" style="color:#6b7280; font-size:22px;">close</span>
+      </button>
+    </div>
+    <p style="margin:10px 0 14px; color:#333; font-size:15.5px; line-height:1.8;"><span id="legalPathHint">你輸入的內容<strong>同時可能涉及「離婚」與「侵害配偶權（精神賠償）」</strong>兩條路徑。為避免系統一開始就把方向鎖死，先選擇你現在最想聚焦的方向（後續仍可再切換）。</span></p>
+
+    <div id="legalPathCards" style="display:grid; grid-template-columns
+      <!-- dynamic cards injected by JS -->
+    路徑。
+        </div>
+      </button>
+    </div>
+
+    <div id="legalPathExplain" style="display:none; margin-top:14px; padding:12px 14px; border-radius:14px; border:1px solid rgba(0,0,0,0.08); background:#f8fafc; color:#334155; line-height:1.85; font-size:14.5px;">
+      <div style="font-weight:900; color:#0f172a; margin-bottom:6px;">快速差別說明</div>
+      <div style="margin-bottom:8px;">
+        <strong>離婚</strong>：重點在婚姻是否破裂、能否離、程序（調解/訴訟）、子女監護/探視、財產分配等。
+      </div>
+      <div style="margin-bottom:10px;">
+        <strong>侵害配偶權</strong>：重點在第三人介入與不法侵害婚姻共同生活的證明與精神結論賠償（不必然以離婚為前提）。
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+        <button class="nl-btn secondary" onclick="selectLegalPath('離婚')">我想看離婚</button>
+        <button class="nl-btn primary" onclick="selectLegalPath('侵害配偶權')">我想看侵害配偶權</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="aireport_app.js"></script>
+</body>
+</html>
