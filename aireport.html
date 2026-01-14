@@ -247,7 +247,7 @@
 <span class="material-icons" style="color:#6b7280; font-size:22px;">close</span>
 </button>
 </div>
-<p style="margin:10px 0 14px; color:#333; font-size:15.5px; line-height:1.8;"><span id="legalPathHint">你輸入的內容<strong>同時可能涉及「離婚」與「侵害配偶權（精神賠償）」</strong>兩條路徑。為避免系統一開始就把方向鎖死，先選擇你現在最想聚焦的方向（後續仍可再切換）。</span></p>
+<p style="margin:10px 0 14px; color:#333; font-size:15.5px; line-height:1.8;"><span id="legalPathHint">你輸入的內容<strong>同時可能涉及「離婚」與「侵害配偶權（精神賠償）」</strong>兩條路徑。為避免系統一開始就把方向鎖死，先選擇你現在最想釐清的方向（後續仍可再切換）。</span></p>
 <div id="legalPathCards" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:10px;">
 <!-- dynamic cards injected by JS -->
 </div>
@@ -267,16 +267,5 @@
 </div>
 </div>
 <script src="aireport_app.js"></script>
-<script>
-// FAQ：僅在「情境式聚焦」時顯示
-window.showContextFaq = function () {
-  var el = document.getElementById("contextFaqBlock");
-  if (el) el.style.display = "block";
-};
-window.hideContextFaq = function () {
-  var el = document.getElementById("contextFaqBlock");
-  if (el) el.style.display = "none";
-};
-</script>
 </body>
 </html>
