@@ -1,6 +1,6 @@
 
     
-let currentStep = -1;           // -1: initial input, 0: scenario focus, 1-3: followup questions
+let currentStep = -1;           // -1: initial input, 1-3: followup questions
 let detectedCaseType = '';
 let initialQuestionText = '';
 
@@ -299,9 +299,8 @@ function initFirstStep() {
 }
 
 function setProgress(stepNum, text) {
-  // stepNum: 0..4
-  const pct = Math.max(0, Math.min(100, (stepNum / 4) * 100));
-  const prog = document.getElementById("progress");
+  // stepNum: 0..3
+  const pct = Math.max(0, Math.min(100, (stepNum / 3) * 100));const prog = document.getElementById("progress");
   if (prog) prog.style.width = pct + "%";
   const encour = document.getElementById("encouragement");
   if (encour) encour.innerText = text || "";
@@ -316,7 +315,7 @@ function hideHeroHighlights(){
 }
 
 // === Low-interference instant feedback: show a soft hint after user starts typing ===
-let __typingHintTimer = null;
+var __typingHintTimer = null;
 function attachInitialTypingHint(){
   try {
     const inputEl = document.getElementById("initialQuestion");
@@ -359,111 +358,9 @@ async function actuallySubmitInitialQuestion() {
   }
   initialQuestionText = input;
 
-  // 可能存在「多路徑」的案件：先讓使用者選擇聚焦方向，避免一開始被單一路徑鎖死
-  const mp = detectMultiPathConfig(input);
-  if (mp && mp.paths && mp.paths.length > 1 && !window.__legalPath){
-    hideLoading();
-    openLegalPathOverlay(mp);
-    return;
-  }
-
-
-  showLoading("AI 正在生成常見情境，請稍候...");
-  try {
-    const forced = (window.__forcedCaseType || '').trim();
-    const prompt = `你是一名台灣法律諮詢助理。
-${forced ? ("\n【使用者已選擇法律路徑】請以「" + forced + "」作為案件類型與追問方向，不要改成其他類型。\n") : ""}
-請你「嚴格依據使用者原始輸入內容」，執行以下任務：
-
-一、案件類型判斷
-請依使用者描述之實際事件，判斷最可能的案件類型。
-
-二、情境選項生成（極重要）
-請產生 3 個「情境選項」，每一個選項都必須：
-1. 明確保留使用者輸入中至少 2 個具體事實元素（例如：人物身分、行為、爭議物、金額、地點、目前狀態等），且至少有 1 個關鍵名詞或片語需與使用者原始輸入「完全同字出現」，不得只用概括詞替代（如僅寫成「糾紛」「問題」）。
-2. 不得加入使用者未提及的新情節、角色或行為；不得假設、延伸或重構成典型案例，亦不得更換爭議主體、主要行為或權利義務對象，只能在同一事件框架下細化描述。
-3. 三個選項必須是「同一事件的不同聚焦角度」，而非三種不同類型的案例；每個選項都要清楚點出自己聚焦的面向（例如：事前說明、契約文字、事後處理與溝通過程等）。
-4. 語意必須與原始輸入高度相似；不可改寫為抽象或教科書式描述，避免只剩下空泛的法律名詞或模板句（例如僅寫成「產生權益受損的糾紛」等）。
-5. 每個選項為完整敘事句，字數需落在 80～100 字之間，且盡量接近 100 字，不可少於 80、不可超過 100，內容要盡量詳盡但保持自然可讀
-6. 不得出現具體的年月日或精確時間（例如「2023 年 5 月」「晚上 8 點」），如有需要僅可使用「之前」「近期」「這段時間」等相對描述
-
-三、禁止事項
-- 不得使用「常見情況」「通常」「一般來說」等概括語
-- 不得改變事件主體或時間順序
-- 不得加入使用者未說明的責任或法律評價
-
-四、輸出格式
-只輸出 JSON，不得加任何多餘文字、說明或程式碼圍欄：
-
-{
-  "status": "法律問題" | "非法律問題",
-  "caseType": "案件類型",
-  "scenarios": ["情境選項一","情境選項二","情境選項三"]
-}
-
-使用者原始輸入如下：
-「${input}」
-`;
-
-    const res = await fetch("https://flask-law-ai.onrender.com/airobot/api/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "gpt-4o",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.2
-      })
-    });
-
-    const data = await res.json();
-    if (!data.choices || !data.choices[0]?.message?.content) {
-      throw new Error("AI 回傳格式錯誤：" + JSON.stringify(data));
-    }
-
-    const content = data.choices[0].message.content.trim();
-    let jsonText = content;
-
-    const fenceMatch = content.match(/```(?:json)?\s*([\s\S]*?)```/i);
-    if (fenceMatch) jsonText = fenceMatch[1].trim();
-    if (!/^\s*[\{\[]/.test(jsonText)) {
-      const start = jsonText.indexOf('{');
-      const end = jsonText.lastIndexOf('}');
-      if (start >= 0 && end > start) jsonText = jsonText.slice(start, end + 1);
-    }
-
-    let payload;
-    try { payload = JSON.parse(jsonText); }
-    catch (e) {
-      console.error("原始內容：", content);
-      console.error("解析內容：", jsonText);
-      throw new Error("AI 回傳非 JSON。");
-    }
-
-    if (payload.status === "非法律問題") {
-      openNonLegalModal();
-      if (inputEl) inputEl.value = "";
-      setProgress(0, "");
-      initFirstStep();
-      return;
-    }
-
-    if (payload.status === "法律問題" && Array.isArray(payload.scenarios) && payload.scenarios.length === 3) {
-      detectedCaseType = (payload.caseType && String(payload.caseType)) || '';
-
-      // 若使用者已先選擇法律路徑（例如：外遇情境），以使用者選擇為準，避免被模型單一路徑鎖死
-      if (window.__forcedCaseType){
-        detectedCaseType = window.__forcedCaseType;
-      }
-
-      scenarioOptions = enforceOptionLengths(payload.scenarios || []);
-      renderScenarioStep();
-    } else {
-      showError("AI 回傳格式異常，請重新嘗試。");
-    }
-  } catch (err) {
-    showError("生成情境時發生錯誤，請重新嘗試。");
-    console.error(err);
-  }
+  // ✅ 已完全取消「情境聚焦」：第一段輸入後直接進入三題釐清問題
+  // 由第二階段原本的指令（confirmScenarioAndBuildFollowups）負責生成追問
+  await confirmScenarioAndBuildFollowups(true);
 }
 
 function submitInitialQuestion() {
@@ -481,22 +378,13 @@ function submitInitialQuestion() {
 function showLoading(message) {
   if (!stepContainer) return;
 
-  // 決定讀秒長度：
-  // 1）「生成常見情境」：第一次讀秒 3 秒
-  // 2）「後續 3 題情境式選項」：第二次讀秒 15 秒
-  // 3）「法律意見書生成」：第三次讀秒 10 秒
-  // 4）其他情況：預設 8 秒
+  // 讀秒規則：生成釐清問題 15 秒、生成法律意見書 18 秒；其他預設 8 秒
   let sec = 8;
-  if (typeof message === "string") {
-    if (message.includes("生成常見情境")) {
-      sec = 5;
-    } else if (message.includes("後續 3 題情境式選項")) {
-      sec = 15;
-    } else if (message.includes("法律意見書")) {
-      sec = 18;
-    } else {
-      sec = 8;
-    }
+  const msg = String(message || "");
+  if (msg.includes("釐清問題")) {
+    sec = 15;
+  } else if (msg.includes("法律意見書")) {
+    sec = 18;
   }
 
   // 清理舊的讀秒計時器（若有的話）
@@ -505,26 +393,24 @@ function showLoading(message) {
       clearInterval(window.__loadingCountdownTimer);
       window.__loadingCountdownTimer = null;
     }
-  } catch (e) {
-    console.warn("clear loading timer error", e);
-  }
+  } catch (e) {}
 
   stepContainer.innerHTML = `
     <div class="loading">
-      <div class="loading-title">${message}</div>
+      <div class="loading-title">${escapeHtml(msg)}</div>
       <div class="loading-subtitle">
-        系統正在整理你剛剛輸入的內容，並替你設計最接近真實案件經過的情境與問題，讓後續回答更聚焦。
+        為了讓後續建議更精準，正在整理你提供的重點。
       </div>
       <ul class="loading-steps">
         <li>① 讀取並理解你的敘述重點</li>
-        <li>② 自動歸類案件類型與情境</li>
-        <li>③ 準備後續要回答的重點問題</li>
+        <li>② 彙整需要確認的關鍵細節</li>
+        <li>③ 生成下一步要回答的重點問題</li>
       </ul>
       <div id="loadingCountdown" class="loading-countdown" aria-live="polite"></div>
     </div>
   `;
 
-    const countdownEl = document.getElementById("loadingCountdown");
+  const countdownEl = document.getElementById("loadingCountdown");
   if (!countdownEl) return;
 
   function updateCountdown() {
@@ -533,7 +419,7 @@ function showLoading(message) {
       countdownEl.textContent = `約 ${sec} 秒內完成分析，請稍候…`;
       sec -= 1;
     } else {
-      countdownEl.textContent = "快好了，正在為你整理情境與問題…";
+      countdownEl.textContent = "快好了，正在為你整理內容…";
       try {
         if (window.__loadingCountdownTimer) {
           clearInterval(window.__loadingCountdownTimer);
@@ -546,6 +432,7 @@ function showLoading(message) {
   updateCountdown();
   window.__loadingCountdownTimer = setInterval(updateCountdown, 1000);
 }
+
 
 function hideLoading() {
   // 用於「顯示 overlay 前」避免 loading 狀態卡死（例如：外遇/不忠多路徑選擇）
@@ -586,7 +473,7 @@ function renderScenarioStep() {
   hideHeroHighlights();
 
   currentStep = 0;
-  setProgress(1, "第 1 步／4：正在釐清案件核心，通常只需要幾秒鐘");
+  setProgress(1, "第 1 步／3：正在釐清案件核心，通常只需要幾秒鐘");
 
   const cards = (scenarioOptions.length ? scenarioOptions : ["（情境A）", "（情境B）", "（情境C）"])
     .map((s, idx) => `
@@ -644,15 +531,21 @@ function pickScenario(index){
   persistMeta();
 }
 
-async function confirmScenarioAndBuildFollowups() {
-  const cs = document.getElementById("customScenario");
-  customScenario = (cs ? cs.value.trim() : "");
-  const chosen = (selectedScenario || customScenario).trim();
-  renderCaseSummary();
+async function confirmScenarioAndBuildFollowups(directFromInitial) {
+  let chosen = "";
+  if (directFromInitial) {
+    // 直接用使用者第一段原始輸入當作「主要情境」占位，維持第二階段 prompt 不變
+    chosen = (initialQuestionText || "").trim();
+    customScenario = "";
+  } else {
+    const cs = document.getElementById("customScenario");
+    customScenario = (cs ? cs.value.trim() : "");
+    chosen = (selectedScenario || customScenario).trim();
+  }
+renderCaseSummary();
   persistMeta();
-
   if (!chosen) {
-    alert("⚠️ 請先選一個情境，或在下方自行補充一句。");
+    alert("⚠️ 請先輸入問題後再繼續。");
     return;
   }
 
@@ -661,7 +554,7 @@ async function confirmScenarioAndBuildFollowups() {
   // 一律改由 AI 依照指令動態生成「3 題複合式追問＋情境式選項」，
   // 讓題目內容不受固定類型限制（可通用於各種案件）。
 
-  showLoading("AI 正在生成後續 3 題情境式選項，請稍候...");
+  showLoading("AI 正在生成 3 題釐清問題，請稍候...");
   try {
     const prompt = `你是一位熟悉台灣法律的「執業律師助理」。你的任務是像律師問話一樣，把事實問清楚，暫時不要下任何法律結論。
 
@@ -776,15 +669,14 @@ async function confirmScenarioAndBuildFollowups() {
 function renderFollowupStep() {
   const idx = currentStep - 1; // 0..2
   const item = followups[idx] || { q: "", options: [] };
-  const meta = answersMeta[idx] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(i) };
+  const meta = answersMeta[idx] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(idx) };
 
-  setProgress(2 + idx, [
-    "第 2 步／4：已掌握重點，接下來確認責任與影響",
-    "第 3 步／4：快完成了，這會影響後續建議精準度",
-    "第 4 步／4：快完成了，這會影響後續建議精準度"
+  setProgress(1 + idx, [
+    "第 1 步／3：先把事實與背景問清楚（越具體越好）",
+    "第 2 步／3：再確認責任歸屬與關鍵爭點",
+    "第 3 步／3：最後補齊損害、證據與目前處理進度"
   ][idx] || "");
-
-  const opts = (item.options.length ? item.options : ["（選項1）","（選項2）","（選項3）"]).map((t, i) => {
+const opts = (item.options.length ? item.options : ["（選項1）","（選項2）","（選項3）"]).map((t, i) => {
     const selected = meta.selectedIndex === i;
     const layerKey = getLayerForFollowup(idx);
     const badgeClass = layerKey === "fact" ? "fact" : (layerKey === "resp" ? "resp" : "dmg");
@@ -843,7 +735,7 @@ function pickFollowupOption(qIndex, optIndex){
   const item = followups[qIndex];
   if (!item) return;
   const text = (item.options && item.options[optIndex]) ? item.options[optIndex] : "";
-  answersMeta[qIndex] = answersMeta[qIndex] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(i) };
+  answersMeta[qIndex] = answersMeta[qIndex] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(idx) };
   answersMeta[qIndex].selectedIndex = optIndex;
   answersMeta[qIndex].selectedText = text;
 
@@ -854,13 +746,8 @@ function pickFollowupOption(qIndex, optIndex){
 }
 
 function nextStep() {
-  if (currentStep === 0) {
-    // scenario step uses confirmScenarioAndBuildFollowups()
-    confirmScenarioAndBuildFollowups();
-    return;
-  }
-
-  const idx = currentStep - 1;
+  // ✅ 已取消「情境聚焦」：不再存在 currentStep === 0
+const idx = currentStep - 1;
   const ta = document.getElementById("customAnswer");
   const custom = (ta ? ta.value.trim() : "");
   if (answersMeta[idx]) answersMeta[idx].customText = custom;
@@ -880,18 +767,18 @@ function nextStep() {
     renderFollowupStep();
   } else {
     // all done
-    setProgress(4, "第 4 步／4：快完成了，這會影響後續建議精準度");
+    setProgress(3, "第 3 步／3：快完成了，這會影響後續建議精準度");
     showDisclaimerThenGenerate();
   }
 }
 
 function prevStep() {
   if (currentStep === 1) {
-    // back to scenario step
-    renderScenarioStep();
+    // 回到第一步（重新輸入）
+    initFirstStep();
     return;
   }
-  if (currentStep > 1) {
+if (currentStep > 1) {
     currentStep--;
     renderFollowupStep();
   }
@@ -958,7 +845,7 @@ async function generateFinalOpinion() {
       </div>
     `;
 
-    setProgress(4, "✅ 法律意見書已完成！");
+    setProgress(3, "✅ 法律意見書已完成！");
     armSuggestAfterOpinion();
   } catch (err) {
     showError("生成法律意見書時發生錯誤，請重新嘗試。");
