@@ -223,17 +223,21 @@
 <!-- LINE 綁定 Modal（加入 LINE 後才可開始分析） -->
 <div id="lineBindOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:10001; backdrop-filter:blur(2px);">
 <div style="background:#fff; width:90%; max-width:420px; margin:10% auto; padding:24px; border-radius:16px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.2); border:1px solid rgba(0,75,107,.12);">
-<h2 style="color:#004B6B; margin-top:0;">📲 加入 LINE 才能開始分析</h2>
-<p style="line-height:1.8; font-size:16px; color:#333; margin: 10px 0 0;">
-      為了讓我們能持續追蹤您的案件進度，並在有律師回覆時通知您，請先加入官方 LINE！
+<div style="display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:999px; background:rgba(0,75,107,.08); color:#004B6B; font-size:13px; font-weight:800; margin-bottom:12px;">案件整理完成</div>
+<h2 style="color:#004B6B; margin-top:0; margin-bottom:10px; line-height:1.45;">📲 已完成案件整理</h2>
+<p style="line-height:1.85; font-size:16px; color:#333; margin: 0 0 8px; font-weight:700;">
+      下一步：讓律師可以即時通知你案件結果
     </p>
-<a href="https://line.me/R/ti/p/@621sbqlu" id="lineAddLink" rel="noopener" style="display:block; margin:18px auto; padding:12px; background:#00c300; color:#fff; font-weight:bold; border-radius:10px; text-decoration:none; width:84%;" target="_blank">
+<p style="line-height:1.8; font-size:15px; color:#4B5563; margin: 0 0 2px;">
+      請先加入官方 LINE，後續若有案件回覆、補件提醒或律師通知，你會更快收到消息。
+    </p>
+<a href="https://line.me/R/ti/p/@621sbqlu" id="lineAddLink" rel="noopener" style="display:block; margin:18px auto; padding:13px 12px; background:#00c300; color:#fff; font-weight:bold; border-radius:12px; text-decoration:none; width:84%; box-shadow:0 8px 18px rgba(0,195,0,.18);" target="_blank">
        立即加入 LINE
     </a>
-<div style="font-size:13px; color:#6B7280; margin-top:8px;">（電腦請用手機掃描加入，或點擊上方按鈕於手機中開啟）</div>
+<div style="font-size:13px; color:#6B7280; margin-top:8px; line-height:1.7;">（電腦請用手機掃描加入，或點擊上方按鈕於手機中開啟）</div>
 <div style="margin-top:18px;">
-<button onclick="proceedAfterLine()" style="padding:10px 18px; background:#004B6B; color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">
-        ✅ 我已加入，開始分析
+<button onclick="proceedAfterLine()" style="padding:10px 18px; background:#004B6B; color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; min-width:180px;">
+        ✅ 我已加入，繼續查看
       </button>
 </div>
 </div>
