@@ -371,7 +371,14 @@ function submitInitialQuestion() {
     return;
   }
   // 顯示 LINE 綁定提醒，確保加入後再開始 AI 分析
-  showLineBindModal();
+  
+if(window.__pendingOpinionGeneration){
+  window.__pendingOpinionGeneration = false;
+  continueGenerateOpinionAfterLine();
+}else{
+  actuallySubmitInitialQuestion();
+}
+
 }
 
 
@@ -794,7 +801,16 @@ function escapeHtml(str){
     .replaceAll("'", "&#039;");
 }
 
+
 async function generateFinalOpinion() {
+  // 新流程：先要求加入 LINE，再生成法律意見書
+  window.__pendingOpinionGeneration = true;
+  showLineBindModal();
+  return;
+}
+
+async function continueGenerateOpinionAfterLine(){
+
   showLoading("AI 正在產生法律意見書中...");
   const encourEl = document.getElementById("encouragement");
   encourEl.innerText = "⛔本服務僅提供一般性資訊，內容並未涵蓋台灣法律之所有條文與適用，僅供參考。";
@@ -1179,7 +1195,14 @@ function proceedAfterLine(){
   var ov = document.getElementById("lineBindOverlay");
   if (ov) ov.style.display = "none";
   // 回到原始的分析流程
+  
+if(window.__pendingOpinionGeneration){
+  window.__pendingOpinionGeneration = false;
+  continueGenerateOpinionAfterLine();
+}else{
   actuallySubmitInitialQuestion();
+}
+
 }
 
 // === Multi-path guard（多路徑導流）：避免一開始被單一路徑鎖死 ===
@@ -1307,7 +1330,24 @@ function selectLegalPath(pathLabel, forcedKey, group){
 
   closeLegalPathOverlay();
   // 回到原流程：繼續送出分析（此時 __forcedCaseType 已存在，不會再跳出 overlay）
+  
+if(window.__pendingOpinionGeneration){
+  window.__pendingOpinionGeneration = false;
+  continueGenerateOpinionAfterLine();
+}else{
   actuallySubmitInitialQuestion();
 }
 
+}
 
+
+
+
+function showDisclaimerAfterOpinion(){
+  var m=document.getElementById("aiDisclaimerModal");
+  if(m){m.style.display="block";}
+}
+function confirmDisclaimer(){
+  var m=document.getElementById("aiDisclaimerModal");
+  if(m){m.style.display="none";}
+}
