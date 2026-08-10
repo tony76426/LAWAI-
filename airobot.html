@@ -1652,16 +1652,42 @@ window.LawAI_LAWYER_INTENT_KEYWORDS = [
     "林原弘 律師": "林原弘律師"
   };
 
-  function normalize(s){ return String(s||"").replace(/\s+/g,"").replace(/\u3000/g,""); }
+  function normalize(s){
+    return String(s || "")
+      .replace(/\s+/g, "")
+      .replace(/\u3000/g, "")
+      .replace(/[（）()【】\[\]「」『』<>《》*_`~，。！？、,.!?：:；;\-—–]/g, "");
+  }
   function matchLawyerKey(input){
     const q = normalize(input);
-    for(const key of Object.keys(LAWYER_MEDIA)){
-      if(q.includes(normalize(key))) return key;
+    let bestKey = null;
+    let bestIndex = Infinity;
+
+    // 依文字中「實際最先出現」的本所律師姓名判斷，
+    // 並同時接受「姓名」「姓名律師」及含空格／括號等常見格式。
+    for (const key of Object.keys(LAWYER_MEDIA)) {
+      const bareName = key.replace(/律師$/, "");
+      const candidates = [normalize(key), normalize(bareName)];
+      for (const candidate of candidates) {
+        if (!candidate) continue;
+        const idx = q.indexOf(candidate);
+        if (idx !== -1 && idx < bestIndex) {
+          bestIndex = idx;
+          bestKey = key;
+        }
+      }
     }
-    for(const [alias, key] of Object.entries(NAME_ALIASES)){
-      if(q.includes(normalize(alias))) return key;
+
+    if (bestKey) return bestKey;
+
+    for (const [alias, key] of Object.entries(NAME_ALIASES)) {
+      const idx = q.indexOf(normalize(alias));
+      if (idx !== -1 && idx < bestIndex) {
+        bestIndex = idx;
+        bestKey = key;
+      }
     }
-    return null;
+    return bestKey;
   }
 
   function recommendationNames(caseType, fullText){
