@@ -1615,18 +1615,21 @@ window.LawAI_LAWYER_INTENT_KEYWORDS = [
 <style>
 .lawyer-photo-card{
   display:inline-block;
+  max-width:100%;
   border-radius:14px;
   overflow:hidden;
   border:1px solid rgba(0,75,107,.12);
   box-shadow:0 4px 12px rgba(0,0,0,.06);
   transition:transform .18s ease, box-shadow .18s ease;
+  box-sizing:border-box;
 }
 .lawyer-photo-card:hover{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.12); }
 .lawyer-photo-card img{
-  display:block; width:280px; max-width:80vw; height:auto;
+  display:block; width:280px; max-width:100%; height:auto;
 }
 @media (max-width:480px){
-  .lawyer-photo-card img{ width:84vw; }
+  .lawyer-photo-card{ display:block; width:100%; max-width:100%; }
+  .lawyer-photo-card img{ width:100%; max-width:100%; height:auto; }
 }
 </style>
 <script>
