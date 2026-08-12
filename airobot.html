@@ -1550,6 +1550,7 @@ document.addEventListener('DOMContentLoaded', function () {
         recognition.interimResults = false;
         recognition.onresult = event => {
             userInput.value = event.results[0][0].transcript;
+            userInput.focus();
         };
         recognition.onstart = () => { micOverlay.style.display = 'block'; };
         recognition.onend = () => { micOverlay.style.display = 'none'; };
