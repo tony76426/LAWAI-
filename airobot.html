@@ -495,11 +495,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* 更強化的響應式設計調整 */
 @media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        min-height: 100%;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        align-items: stretch;
+        overflow-x: hidden;
+    }
+
     .chatbot-container {
         height: 100vh;
-        width: 100vw;
-        max-width: 100vw;
+        height: 100dvh;
+        width: 100%;
+        max-width: none;
         border-radius: 0;
+        border-left: 0;
+        border-right: 0;
         margin: 0;
         box-shadow: none;
     }
@@ -573,10 +588,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 /* ✅ 外框整體圓角 */
-.chatbot-container {
-    border-radius: 18px !important;
-    overflow: hidden;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+@media (min-width: 769px) {
+    .chatbot-container {
+        border-radius: 18px !important;
+        overflow: hidden;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
 }
 
 /* ✅ 輸入框改為多行＋加大 */
@@ -619,6 +636,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         flex-direction: row;
         font-size: 1.1rem;
         padding: 12px 16px !important;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 
     .chat-input-area {
@@ -1531,7 +1550,6 @@ document.addEventListener('DOMContentLoaded', function () {
         recognition.interimResults = false;
         recognition.onresult = event => {
             userInput.value = event.results[0][0].transcript;
-            userInput.focus();
         };
         recognition.onstart = () => { micOverlay.style.display = 'block'; };
         recognition.onend = () => { micOverlay.style.display = 'none'; };
@@ -1566,7 +1584,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     lockUIIfNeeded();
-    userInput.focus();
     window.LawAIApp = { handleSendMessage, lockUIIfNeeded, classifyCase, isDeadlineSensitive };
 });
 </script>
