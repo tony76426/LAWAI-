@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>預約律師版面</title>
+<title>聯繫我們與律師預約｜LawAI 法詢</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
 <link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
@@ -820,7 +820,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 
 <meta name="theme-color" content="#1C2A4D">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="透過 LawAI 法詢預約律師諮詢，選擇法律問題並填寫聯絡資料及案件需求，方便後續安排專業律師聯繫與評估。"/>
+<link rel="canonical" href="https://www.lawfavor.com/lawreserve.html"/>
+<meta property="og:title" content="聯繫我們與律師預約｜LawAI 法詢"/>
+<meta property="og:description" content="透過 LawAI 法詢預約律師諮詢，選擇法律問題並填寫聯絡資料及案件需求，方便後續安排專業律師聯繫與評估。"/>
+<meta property="og:url" content="https://www.lawfavor.com/lawreserve.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="LawAI 法詢"/>
+<meta property="og:image" content="https://www.lawfavor.com/ogimage.png"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.lawfavor.com/lawreserve.html#page","url":"https://www.lawfavor.com/lawreserve.html","name":"聯繫我們與律師預約｜LawAI 法詢","description":"透過 LawAI 法詢預約律師諮詢，選擇法律問題並填寫聯絡資料及案件需求，方便後續安排專業律師聯繫與評估。","inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"聯絡我們 LawAI法詢","item":"https://www.lawfavor.com/lawreserve.html"}]}]}</script>
+<script src="lawai_runtime.js" defer data-page="p007"></script>
+</head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5J84329"
@@ -889,7 +903,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="contact-card">
 <h3>💬 加入 LINE 好友</h3>
 <div class="qr-code-container">
-<a href="https://line.me/R/ti/p/@621sbqlu" target="_blank">
+<a href="https://line.me/R/ti/p/@621sbqlu" target="_blank" rel="noopener">
 <img alt="LINE QR Code" src="line_qr_resized_v2.png"/>
 </a>
 </div>
@@ -976,8 +990,10 @@ function closeModal(id) {
     // 提交表單
     
     
+let appointmentPending = false;
 async function submitForm(event) {
     event.preventDefault();
+    if (appointmentPending) return;
 
     const name = document.getElementById("name").value.trim();
     const phone = document.getElementById("phone").value.trim();
@@ -994,11 +1010,12 @@ async function submitForm(event) {
     }
 
     // 顯示質感 Loading 彈窗
+    appointmentPending = true;
     showModal('modalLoading');
     const start = Date.now();
 
     try {
-        const response = await fetch("https://lawyer-booking-api.onrender.com/submit-appointment", {
+        const response = await window.LawAIRuntime.request("https://lawyer-booking-api.onrender.com/submit-appointment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, phone, email, message })
@@ -1019,6 +1036,7 @@ async function submitForm(event) {
         if (response.ok && result && (result.success === true || result.status === "ok")) {
             // 成功：顯示成功彈窗
             showModal('modalSuccess');
+            window.LawAIRuntime.track('appointment_success', 'appointment');
             // 重置表單與驗證碼
             document.getElementById("appointmentForm").reset();
             generateCaptcha();
@@ -1037,6 +1055,8 @@ async function submitForm(event) {
         closeModal('modalLoading');
         document.getElementById("errorMessage").textContent = "網路錯誤，請稍後再試！";
         showModal('modalError');
+    } finally {
+        appointmentPending = false;
     }
 }
     
@@ -1096,7 +1116,7 @@ async function submitForm(event) {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 999;
   animation: shake 2s infinite ease-in-out;
-" target="_blank">
+" target="_blank" rel="noopener">
 <div style="font-size: 15.6px; font-weight: 900;">LINE</div>
 <div style="font-family: 'Merriweather', serif; font-size: 14.4px; font-weight: bold;">立即回覆</div>
 </a>

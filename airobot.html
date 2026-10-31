@@ -952,6 +952,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 </style>
+
+<meta name="description" content="LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。"/>
+<link rel="canonical" href="https://www.lawfavor.com/airobot.html"/>
+<meta property="og:title" content="⚖️ LawAI法詢 客服平台"/>
+<meta property="og:description" content="LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。"/>
+<meta property="og:url" content="https://www.lawfavor.com/airobot.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="LawAI 法詢"/>
+<meta property="og:image" content="https://www.lawfavor.com/ogimage.png"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.lawfavor.com/airobot.html#page","url":"https://www.lawfavor.com/airobot.html","name":"⚖️ LawAI法詢 客服平台","description":"LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。","inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"⚖️ LawAI法詢 客服平台","item":"https://www.lawfavor.com/airobot.html"}]}]}</script>
+<script src="lawai_runtime.js" defer data-page="p003"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1014,10 +1028,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <strong>LawAI法詢</strong> 用最清楚的語言，幫你分析最真實的情境。<br/><br/>
   💡 <em>AI助理解析事實，律師專責適用法律。</em><br/>
   從事實分析到法律行動，我們幫你把路鋪好、把人找對。<br/><br/>
-  🔍 <a href="https://www.lawfavor.com/lawmap.html" style="color:#004B6B; font-weight:600;" target="_blank">立即造訪 ⚖️智圖法律分析：lawfavor.com/lawmap.html</a><br/>
+  🔍 <a href="https://www.lawfavor.com/lawmap.html" style="color:#004B6B; font-weight:600;" target="_blank" rel="noopener">立即造訪 ⚖️智圖法律分析：lawfavor.com/lawmap.html</a><br/>
   🔹 支援30+法律情境類型｜🔹 統整最常見法律提問｜🔹 支援手機直接操作<br/><br/>
   📱 <strong>現在就打開 LawAI法詢，讓法律變得簡單而可信。</strong><br/>
-  📍 <a href="https://www.lawfavor.com/" style="color:#004B6B;" target="_blank">https://www.lawfavor.com/</a>
+  📍 <a href="https://www.lawfavor.com/" style="color:#004B6B;" target="_blank" rel="noopener">https://www.lawfavor.com/</a>
 </div>
 </div>
 <div class="chat-input-area" style="display: flex; gap: 10px; align-items: flex-end;; border-radius: 22px; overflow: hidden; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
@@ -1280,7 +1294,7 @@ async function fetchAnswer(question) {
     }
 
     const messages = buildLawAIRequestMessages();
-    const response = await fetch("https://airobot-br7n.onrender.com/airobot/api/generate", {
+    const response = await window.LawAIRuntime.request("https://airobot-br7n.onrender.com/airobot/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages })
@@ -1483,6 +1497,7 @@ document.addEventListener('DOMContentLoaded', function () {
         appendMessage('user', question);
         userInput.value = '';
         isSending = true;
+        window.LawAIRuntime.track("ai_start", "chat");
         lockUIIfNeeded();
         showTypingIndicator();
 
@@ -1494,6 +1509,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const answer = await fetchAnswer(question);
             removeTypingIndicator();
             appendMessage('bot', answer);
+            window.LawAIRuntime.track("ai_complete", "chat");
             appendDeadlineAlert(question + ' ' + answer);
             appendCaseSummaryCard();
             appendNextSteps(question);
@@ -1525,7 +1541,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sendBtn.addEventListener('click', () => handleSendMessage());
     userInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && e.keyCode !== 229) {
             e.preventDefault();
             handleSendMessage();
         }

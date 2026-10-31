@@ -441,7 +441,13 @@ function showLoading(message) {
 }
 
 
+function clearLoadingTimer() {
+  if (window.__loadingCountdownTimer) clearInterval(window.__loadingCountdownTimer);
+  window.__loadingCountdownTimer = null;
+}
+
 function hideLoading() {
+  clearLoadingTimer();
   // 用於「顯示 overlay 前」避免 loading 狀態卡死（例如：外遇/不忠多路徑選擇）
   // 只在目前畫面確實是 loading 時，才把 UI 恢復成「初始輸入」狀態；避免影響既有流程。
   try {
@@ -468,11 +474,20 @@ function hideLoading() {
   }
 }
 
+function recoverInitialQuestion() {
+  const saved = initialQuestionText;
+  initFirstStep();
+  initialQuestionText = saved;
+  const input = document.getElementById("initialQuestion");
+  if (input) input.value = saved;
+}
+
 function showError(message) {
+  clearLoadingTimer();
   stepContainer.innerHTML = `
-    <div class="loading">${message}</div>
+    <div class="loading">${escapeHtml(message)}</div>
     <div class="buttons" style="margin-top:20px;">
-      <button onclick="initFirstStep()">🔄 重新開始</button>
+      <button onclick="recoverInitialQuestion()">🔄 重新開始</button>
     </div>`;
 }
 
@@ -538,11 +553,14 @@ function pickScenario(index){
   persistMeta();
 }
 
+let followupsPending = false;
 async function confirmScenarioAndBuildFollowups(directFromInitial) {
+  if (followupsPending) return;
   let chosen = "";
   if (directFromInitial) {
     // 直接用使用者第一段原始輸入當作「主要情境」占位，維持第二階段 prompt 不變
     chosen = (initialQuestionText || "").trim();
+    selectedScenario = chosen;
     customScenario = "";
   } else {
     const cs = document.getElementById("customScenario");
@@ -561,6 +579,8 @@ renderCaseSummary();
   // 一律改由 AI 依照指令動態生成「3 題複合式追問＋情境式選項」，
   // 讓題目內容不受固定類型限制（可通用於各種案件）。
 
+  followupsPending = true;
+  window.LawAIRuntime.track("ai_start", "report");
   showLoading("AI 正在生成 3 題釐清問題，請稍候...");
   try {
     const prompt = `你是一位熟悉台灣法律的「執業律師助理」。你的任務是像律師問話一樣，把事實問清楚，暫時不要下任何法律結論。
@@ -616,7 +636,7 @@ renderCaseSummary();
 }
 `;
 
-    const res = await fetch("https://flask-law-ai.onrender.com/airobot/api/generate", {
+    const res = await window.LawAIRuntime.request("https://flask-law-ai.onrender.com/airobot/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -644,8 +664,7 @@ renderCaseSummary();
     let payload;
     try { payload = JSON.parse(jsonText); }
     catch (e) {
-      console.error("原始內容：", content);
-      console.error("解析內容：", jsonText);
+      console.error("AI 回覆格式驗證失敗。");
       throw new Error("AI 回傳非 JSON。");
     }
 
@@ -669,10 +688,14 @@ renderCaseSummary();
   } catch (err) {
     showError("生成追問選項時發生錯誤，請重新嘗試。");
     console.error(err);
+  } finally {
+    followupsPending = false;
+    clearLoadingTimer();
   }
 }
 
 function renderFollowupStep() {
+  clearLoadingTimer();
   const idx = currentStep - 1; // 0..2
   const item = followups[idx] || { q: "", options: [] };
   const meta = answersMeta[idx] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(idx) };
@@ -741,7 +764,7 @@ function pickFollowupOption(qIndex, optIndex){
   const item = followups[qIndex];
   if (!item) return;
   const text = (item.options && item.options[optIndex]) ? item.options[optIndex] : "";
-  answersMeta[qIndex] = answersMeta[qIndex] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(idx) };
+  answersMeta[qIndex] = answersMeta[qIndex] || { selectedIndex: -1, selectedText: "", customText: "", layer: getLayerForFollowup(qIndex) };
   answersMeta[qIndex].selectedIndex = optIndex;
   answersMeta[qIndex].selectedText = text;
 
@@ -808,7 +831,10 @@ async function generateFinalOpinion() {
   return;
 }
 
+let opinionPending = false;
 async function continueGenerateOpinionAfterLine(){
+  if (opinionPending) return;
+  opinionPending = true;
 
   showLoading("AI 正在產生法律意見書中...");
   const encourEl = document.getElementById("encouragement");
@@ -828,7 +854,7 @@ async function continueGenerateOpinionAfterLine(){
       }))
     };
 
-    const res = await fetch("https://flask-law-ai.onrender.com/aireport/api/opinion", {
+    const res = await window.LawAIRuntime.request("https://flask-law-ai.onrender.com/aireport/api/opinion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
@@ -845,7 +871,9 @@ async function continueGenerateOpinionAfterLine(){
       throw new Error("AI 回傳內容為空");
     }
 
+    clearLoadingTimer();
     const formattedOpinion = formatOpinion(opinion);
+    window.LawAIRuntime.track("ai_complete", "report");
 
     // Hide the auto-generated case summary panel for a cleaner final opinion
     const _csp = document.getElementById("caseSummaryPanel");
@@ -865,6 +893,9 @@ async function continueGenerateOpinionAfterLine(){
   } catch (err) {
     showError("生成法律意見書時發生錯誤，請重新嘗試。");
     console.error(err);
+  } finally {
+    opinionPending = false;
+    clearLoadingTimer();
   }
 }
 
@@ -1042,7 +1073,9 @@ function setupContactFormValidation(){
   });
   validate();
 }
+let lawyerSendPending = false;
 function submitToLawyer() {
+  if (lawyerSendPending) return;
   document.getElementById("submitStatus").style.display = "block";
   document.getElementById("submitStatus").innerText = "📨 發送中，請稍候...";
 
@@ -1090,6 +1123,7 @@ if (hintBox) {
     hintBox.style.borderColor = "rgba(0,75,107,.15)";
     hintBox.innerHTML = '資料完整，您可以送出 👍';
   }
+lawyerSendPending = true;
 closeModal();
 
   const sections = document.querySelectorAll(".opinion-section");
@@ -1100,7 +1134,7 @@ closeModal();
     plainText += `${title}\n${content}\n\n`;
   });
 
-  fetch("https://flask-law-ai.onrender.com/api/email-text", {
+  window.LawAIRuntime.request("https://flask-law-ai.onrender.com/api/email-text", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -1120,7 +1154,7 @@ closeModal();
   }).catch(error => {
     document.getElementById("submitStatus").innerText = "⚠️ 發送過程中發生錯誤。";
     console.error(error);
-  });
+  }).finally(() => { lawyerSendPending = false; });
 }
 
 
