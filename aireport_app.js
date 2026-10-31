@@ -620,9 +620,8 @@ renderCaseSummary();
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "gpt-4o",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.2
+        model: "gpt-6-luna",
+        messages: [{ role: "user", content: prompt }]
       })
     });
 
