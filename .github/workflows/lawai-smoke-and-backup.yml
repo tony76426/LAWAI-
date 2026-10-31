@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Python syntax and external API smoke test
         run: |
+          python3 - <<'PY'
           import json, urllib.request, urllib.error, sys, time
           cases = [
               ("AI Robot / Luna", "https://airobot-br7n.onrender.com/airobot/api/generate", {
@@ -20,7 +21,7 @@ jobs:
               }),
               ("AI Report / Luna 追問", "https://flask-law-ai.onrender.com/airobot/api/generate", {
                 "model": "gpt-6-luna",
-                "messages": [{"role": "user", "content": "請針對『租屋期滿房東未退押金』設計三個釐清問題，每題三個合理可能情境，需避免將未知金額日期當成已確認事實。僅輸出JSON：{\\\"status\\\":\\\"法律問題\\\",\\\"questions\\\":[{\\\"q\\\":\\\"...\\\",\\\"options\\\":[\\\"...\\\",\\\"...\\\",\\\"...\\\"]}]}。"}]
+                "messages": [{"role": "user", "content": '請針對「租屋期滿房東未退押金」設計三個釐清問題，每題三個合理可能情境，需避免將未知金額日期當成已確認事實。僅輸出JSON格式：{"status":"法律問題","questions":[{"q":"...","options":["...","...","..."]}]}。'}]
               }),
               ("AI Report / Terra 報告", "https://flask-law-ai.onrender.com/aireport/api/opinion", {
                 "chosenScenario": "租約期滿房東尚未退還押金，金額與日期不詳。這是虛構測試案例。",
@@ -62,6 +63,7 @@ jobs:
           if failures:
               raise SystemExit("Smoke test failed: " + "; ".join(failures))
           print("All three live external API calls passed.")
+          PY
           
       - name: Package complete website and each backend repository
         if: always()
