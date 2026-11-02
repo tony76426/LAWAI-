@@ -880,7 +880,7 @@ async function continueGenerateOpinionAfterLine(){
     if (_csp) { _csp.style.display = "none"; }
 
     stepContainer.innerHTML = `
-      ${formattedOpinion}
+      <div id="opinionDocument">${formattedOpinion}</div>
       <div class="buttons" style="margin-top:20px;">
         <button onclick="downloadPDF()">📥 下載 PDF 版本</button>
         <button class="cta-breath" onclick="sendToLawyer()">📨 免費發送律師諮詢</button>
@@ -935,31 +935,75 @@ function formatOpinion(text) {
 }
 
 
-function downloadPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('p', 'pt', 'a4');
-  const pdfContent = document.getElementById("pdfContent");
-
-  html2canvas(pdfContent, { scale: 2 }).then(canvas => {
-    const imgData = canvas.toDataURL("image/png");
-    const imgWidth = 595.28;
-    const pageHeight = 841.89;
-    const imgHeight = canvas.height * imgWidth / canvas.width;
-    let heightLeft = imgHeight;
-    let position = 0;
-
-    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-    heightLeft -= pageHeight;
-
-    while (heightLeft >= 0) {
-      position = heightLeft - imgHeight;
-      doc.addPage();
-      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
+let pdfPending = false;
+async function downloadPDF() {
+  if (pdfPending) return;
+  const content = document.getElementById('opinionDocument');
+  if (!content || !content.textContent.trim()) {
+    alert('請先完成法律意見書，再下載 PDF。');
+    return;
+  }
+  if (!window.jspdf || !window.html2canvas) {
+    alert('PDF 元件尚未載入完成，請稍後重試或重新整理頁面。');
+    return;
+  }
+  pdfPending = true;
+  const buttons = Array.from(document.querySelectorAll('[onclick="downloadPDF()"]'));
+  buttons.forEach(b => { b.disabled = true; b.setAttribute('aria-busy', 'true'); });
+  let host;
+  try {
+    if (document.fonts) await document.fonts.ready;
+    // Stable print width, opaque background and opinion text only.
+    host = document.createElement('div');
+    host.style.cssText = 'position:fixed;left:-10000px;top:0;width:760px;padding:28px;background:#fff;color:#111;font:16px/1.8 "Microsoft JhengHei",sans-serif;';
+    const clone = content.cloneNode(true);
+    clone.removeAttribute('id');
+    host.appendChild(clone);
+    document.body.appendChild(host);
+    const canvas = await html2canvas(host, {scale:1.5, backgroundColor:'#ffffff', logging:false, useCORS:false});
+    const doc = new window.jspdf.jsPDF('p','pt','a4');
+    const margin = 32;
+    const width = doc.internal.pageSize.getWidth() - margin * 2;
+    const height = doc.internal.pageSize.getHeight() - margin * 2;
+    const sliceHeight = Math.floor(height * canvas.width / width);
+    if (!canvas.width || !canvas.height || sliceHeight <= 0) throw new Error('空白畫布');
+    // Prefer a blank scanline near the page boundary to avoid splitting Chinese glyphs.
+    let y = 0, page = 0;
+    while (y < canvas.height) {
+      let end = Math.min(y + sliceHeight, canvas.height);
+      if (end < canvas.height) {
+        const scanStart = Math.max(y + Math.floor(sliceHeight * .75), end - 100);
+        const pixels = canvas.getContext('2d').getImageData(0, scanStart, canvas.width, end-scanStart);
+        for (let row = pixels.height-1; row > 0; row--) {
+          let ink = 0;
+          for (let x = 0; x < pixels.width; x++) {
+            const k = (row * pixels.width + x) * 4;
+            if (pixels.data[k] < 200 || pixels.data[k+1] < 200 || pixels.data[k+2] < 200) ink++;
+          }
+          if (ink <= Math.max(12, canvas.width * .012)) {end = scanStart + row; break;}
+        }
+      }
+      const slice = document.createElement('canvas');
+      slice.width = canvas.width;
+      slice.height = end - y;
+      const ctx = slice.getContext('2d');
+      ctx.drawImage(canvas,0,y,slice.width,slice.height,0,0,slice.width,slice.height);
+      if (page) doc.addPage();
+      doc.addImage(slice.toDataURL('image/jpeg',0.94),'JPEG',margin,margin,width,slice.height*width/canvas.width);
+      y = end;
+      page++;
     }
-
-    doc.save("法律意見書.pdf");
-  });
+    await doc.save('法律意見書.pdf', {returnPromise:true});
+    window.LawAIRuntime.track('pdf_download','report');
+  } catch (error) {
+    window.LawAIRuntime.track('pdf_error','report');
+    alert('PDF 匯出未完成，請稍後重試。');
+    console.error('PDF export failed');
+  } finally {
+    if (host) host.remove();
+    pdfPending = false;
+    buttons.forEach(b => {b.disabled=false;b.removeAttribute('aria-busy');});
+  }
 }
 
 
@@ -1076,8 +1120,6 @@ function setupContactFormValidation(){
 let lawyerSendPending = false;
 function submitToLawyer() {
   if (lawyerSendPending) return;
-  document.getElementById("submitStatus").style.display = "block";
-  document.getElementById("submitStatus").innerText = "📨 發送中，請稍候...";
 
   const name = document.getElementById("userName").value.trim();
   const phone = document.getElementById("userPhone").value.trim();
@@ -1113,7 +1155,7 @@ function submitToLawyer() {
       hintBox.style.borderColor = "rgba(239,68,68,.45)";
       hintBox.innerHTML = '請輸入正確的台灣電話號碼（手機 10 碼或市話）。';
     }
-    const ss = document.getElementById("submitStatus");
+    const ss = document.getElementById("sendStatus");
     if (ss) ss.style.display = "none";
     return;
   }
@@ -1125,6 +1167,8 @@ if (hintBox) {
   }
 lawyerSendPending = true;
 closeModal();
+document.getElementById("sendStatus").style.display = "block";
+document.getElementById("sendStatus").innerText = "📨 發送中，請稍候...";
 
   const sections = document.querySelectorAll(".opinion-section");
   let plainText = "";
@@ -1145,14 +1189,16 @@ closeModal();
       line: line,
       text: plainText
     })
-  }).then(response => {
-    if (response.ok) {
-      document.getElementById("submitStatus").innerText = "✅ 已成功寄出給律師！";
+  }).then(async response => {
+    const result = await response.json();
+    if (response.ok && result.status === "ok") {
+      window.LawAIRuntime.track("lawyer_send_success", "report");
+      document.getElementById("sendStatus").innerHTML = '<span id="submitStatus">✅ 已成功寄出給律師！</span>';
     } else {
-      document.getElementById("submitStatus").innerText = "❌ 發送失敗，請稍後再試。";
+      document.getElementById("sendStatus").innerText = "❌ 發送失敗，請稍後再試。";
     }
   }).catch(error => {
-    document.getElementById("submitStatus").innerText = "⚠️ 發送過程中發生錯誤。";
+    document.getElementById("sendStatus").innerText = "⚠️ 發送過程中發生錯誤。";
     console.error(error);
   }).finally(() => { lawyerSendPending = false; });
 }
