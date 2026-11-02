@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>任務詳情頁 | LawAI 法詢</title>
-<meta content="AI科技與法律的完美結合，智能法律諮詢、文件生成與案例分析" name="description"/>
+<meta content="在 LawAI 法詢發布法律需求，填寫任務標題、案情描述與聯絡方式，向團隊提出個案評估需求；可選擇相關文件，送出前確認附件傳送狀態。" name="description"/>
 <link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
 <link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -603,7 +603,7 @@ textarea.task-field {
 
 <link rel="canonical" href="https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"/>
 <meta property="og:title" content="任務詳情頁 | LawAI 法詢"/>
-<meta property="og:description" content="AI科技與法律的完美結合，智能法律諮詢、文件生成與案例分析"/>
+<meta property="og:description" content="在 LawAI 法詢發布法律需求，填寫任務標題、案情描述與聯絡方式，向團隊提出個案評估需求；可選擇相關文件，送出前確認附件傳送狀態。"/>
 <meta property="og:url" content="https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="LawAI 法詢"/>
@@ -611,7 +611,8 @@ textarea.task-field {
 <meta property="og:locale" content="zh_TW"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html#page","url":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html","name":"任務詳情頁 | LawAI 法詢","description":"AI科技與法律的完美結合，智能法律諮詢、文件生成與案例分析","inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"auto_awesome任務發佈區","item":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html#page","url":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html","name":"任務詳情頁 | LawAI 法詢","description":"在 LawAI 法詢發布法律需求，填寫任務標題、案情描述與聯絡方式，向團隊提出個案評估需求；可選擇相關文件，送出前確認附件傳送狀態。","inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"auto_awesome任務發佈區","item":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"}]}]}</script>
+<script src="lawai_config.js" defer></script>
 <script src="lawai_runtime.js" defer data-page="p013"></script>
 </head>
 <body>
@@ -643,7 +644,7 @@ textarea.task-field {
 <textarea id="descInput" class="task-field" placeholder="詳細描述您的需求..." rows="6"></textarea>
 <input accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" id="fileInput" multiple="" onchange="previewFiles(event)" style="display: none;" type="file"/><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;"><button class="action-btn" onclick="document.getElementById('fileInput').click()">
 <span class="material-icons">upload_file</span>上傳檔案
-        </button><div style="font-size: 1rem; color: var(--text-muted); margin-left: 0.3rem; white-space: nowrap;">（請點擊，上傳您相關案情的文件與檔案）</div></div>
+        </button><div style="font-size: 1rem; color: var(--text-muted); margin-left: 0.3rem; white-space: nowrap;">（選取相關文件，隨任務送出）</div></div>
 <div id="filePreview" style="margin-top: 1rem;"></div>
 <div style="background: rgba(255,255,255,0.85); border-radius: 14px; padding: 1rem 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1.5rem 0 1rem 0; border: 1px solid rgba(0,0,0,0.04);"><h3 style="margin-bottom: 0.8rem; font-size: 1.05rem; color: var(--primary); font-weight: 700;">📬 聯絡方式</h3><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">👤 您的姓名或暱稱</label><input id="nameInput" class="task-field" placeholder="請輸入您的姓名或暱稱" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/><div style="display:flex; flex-wrap:wrap; gap:1rem;"><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">📞 聯絡電話</label><input id="phoneInput" class="task-field" placeholder="請輸入電話" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="tel"/></div><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">💬 LINE ID</label><input id="lineInput" class="task-field" placeholder="請輸入LINE ID" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/></div></div><label style="display:block; font-weight: 500; margin-top: 1.2rem; margin-bottom: 0.2rem; font-size: 0.9rem;">📧 Email</label><input id="emailInput" class="task-field" placeholder="請輸入Email（選填）" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="email"/></div><div id="publishWrap" style="display:flex;flex-direction:column;align-items:center;gap:.5rem;">
   <button class="action-btn publish" id="publishBtn" aria-disabled="true" title="請完成必填欄位後再發佈">
@@ -669,26 +670,6 @@ textarea.task-field {
         return '📎';
     }
 
-    function previewFiles(event) {
-        const files = event.target.files;
-        const preview = document.getElementById('filePreview');
-        preview.innerHTML = ''; // clear existing
-
-        Array.from(files).slice(0, 3).forEach(file => {
-            const icon = getIconByType(file.name);
-            const item = document.createElement('div');
-            item.style.padding = '8px 12px';
-            item.style.border = '1px solid rgba(0, 75, 107, 0.2)';
-            item.style.borderRadius = '8px';
-            item.style.background = 'rgba(224, 242, 255, 0.3)';
-            item.style.display = 'flex';
-            item.style.alignItems = 'center';
-            item.style.gap = '8px';
-            item.innerHTML = `<span style="font-size: 24px">${icon}</span><span style="font-size:14px">${escapeFileName(file.name)}</span>`;
-            preview.appendChild(item);
-        });
-    }
-
     // 底部導航交互
     const navPlanets = document.querySelectorAll('.nav-planet');
     navPlanets.forEach(planet => {
@@ -701,30 +682,37 @@ textarea.task-field {
     let allFiles = [];
 
     function previewFiles(event) {
-        const newFiles = Array.from(event.target.files);
-        allFiles = allFiles.concat(newFiles).slice(0, 5); // 最多保留5個
-
-        const preview = document.getElementById('filePreview');
-        preview.innerHTML = ''; // 重新繪製全部
-
-        allFiles.forEach(file => {
-            const icon = getIconByType(file.name);
-            const item = document.createElement('div');
-            item.style.padding = '8px 12px';
-            item.style.border = '1px solid rgba(0, 75, 107, 0.2)';
-            item.style.borderRadius = '8px';
-            item.style.background = 'rgba(224, 242, 255, 0.3)';
-            item.style.display = 'flex';
-            item.style.alignItems = 'center';
-            item.style.gap = '8px';
-            item.innerHTML = `<span style="font-size: 24px">${icon}</span><span style="font-size:14px">${escapeFileName(file.name)}</span>`;
-            preview.appendChild(item);
-        });
-
-        // 清空 input 允許重複上傳
-        event.target.value = '';
+      const incoming = Array.from(event.target.files || []);
+      const allowed = /\.(?:jpg|jpeg|png|pdf|doc|docx)$/i;
+      const combined = allFiles.concat(incoming).filter((file, index, list) =>
+        list.findIndex(x => x.name === file.name && x.size === file.size && x.lastModified === file.lastModified) === index);
+      if (combined.length > 5 || combined.some(f => !allowed.test(f.name) || !f.size || f.size > 5*1024*1024) ||
+          combined.reduce((sum, f) => sum + f.size, 0) > 12*1024*1024) {
+        alert('附件限 5 個，每個不超過 5 MB，合計不超過 12 MB，支援 JPG、PNG、PDF、DOC、DOCX。');
+      } else {
+        allFiles = combined;
+      }
+      event.target.value = '';
+      renderTaskFiles();
     }
-    </script>
+    function renderTaskFiles() {
+      const preview = document.getElementById('filePreview');
+      preview.replaceChildren();
+      allFiles.forEach((file, index) => {
+        const item = document.createElement('div');
+        item.style.cssText = 'padding:8px 12px;border:1px solid rgba(0,75,107,.2);border-radius:8px;background:rgba(224,242,255,.3);display:flex;align-items:center;gap:8px;';
+        const label = document.createElement('span');
+        label.textContent = getIconByType(file.name) + ' ' + file.name;
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.textContent = '移除';
+        remove.setAttribute('aria-label', '移除附件 ' + file.name);
+        remove.addEventListener('click', () => { allFiles.splice(index, 1); renderTaskFiles(); });
+        item.append(label, remove);
+        preview.appendChild(item);
+      });
+    }
+</script>
 <div style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-top: 4rem; margin-bottom: 1.2rem; color: var(--primary); text-shadow: 0 1px 1px rgba(0,0,0,0.05);">✨ 智能任務流程說明</div><div class="step-container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 4rem;"><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">auto_awesome</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">輸入任務標題</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">notes</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">撰寫詳細說明</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">upload_file</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">上傳相關檔案</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">rocket_launch</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">發佈任務給團隊</div></div></div>
 
 
@@ -751,7 +739,7 @@ textarea.task-field {
       <button type="button" class="modal-btn ghost" id="cancelFakeDisabled" disabled>處理中…</button>
     </div>
     <div class="small-divider"></div>
-    <div class="subtle-note">溫馨提示：大型附件可能需要更久時間上傳。</div>
+    <div class="subtle-note">溫馨提示：附件限 5 個、單檔 5 MB、合計 12 MB。</div>
   </div>
 </div>
 
@@ -767,7 +755,7 @@ textarea.task-field {
     </div>
     <div class="modal-steps">
       <div class="modal-step"><div class="modal-step-bullet"></div><div>您的基本資料與任務內容已安全儲存</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>附件（如有）已完成檔案驗證</div></div>
+      <div class="modal-step"><div class="modal-step-bullet"></div><div><span id="taskAttachmentStatus">任務文字已送出</span></div></div>
       <div class="modal-step"><div class="modal-step-bullet"></div><div>後續通知：將以您提供的聯絡方式通知</div></div>
     </div>
     <div class="modal-actions">
@@ -838,21 +826,44 @@ textarea.task-field {
     const line = document.querySelector("input[placeholder='請輸入LINE ID']").value.trim();
     const email = document.querySelector("input[placeholder='請輸入Email（選填）']").value.trim();
 
+    if (!title || !description || !name || !(phone || line)) {
+      alert('請完成必填欄位，電話與 LINE ID 至少擇一。');
+      return;
+    }
+    const filesToSend = allFiles.slice();
     publishPending = true;
     show('loadingModal');
     const wait3s = delay(3000);
 
     try {
-      const res = await window.LawAIRuntime.request("https://publish-task.onrender.com/submit-task", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, description, name, phone, line, email })
-      });
+      const endpoint = 'https://publish-task.onrender.com';
+      let options;
+      if (filesToSend.length) {
+        // Old API accepts JSON only. Never silently discard selected attachments.
+        const caps = await window.LawAIRuntime.request(endpoint + '/task-capabilities', {method:'GET'}, 20000);
+        const capabilities = await caps.json();
+        if (!capabilities.attachments || capabilities.version !== 2) {
+          throw new Error('附件服務尚未啟用，請稍後再試；您選取的檔案仍保留。');
+        }
+        const body = new FormData();
+        Object.entries({title, description, name, phone, line, email}).forEach(([key, value]) => body.append(key, value));
+        filesToSend.forEach(file => body.append('files', file, file.name));
+        options = {method:'POST', body};
+      } else {
+        options = {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({title, description, name, phone, line, email})};
+      }
+      const res = await window.LawAIRuntime.request(endpoint + '/submit-task', options);
       const result = await res.json();
       await wait3s;
       hide('loadingModal');
 
       if (res.ok && result.success) {
+        if (filesToSend.length && result.attachment_count !== filesToSend.length) {
+          alert('任務已送出，但附件回執不一致，請聯繫團隊確認，請勿重複提交。');
+          return;
+        }
+        document.getElementById('taskAttachmentStatus').textContent = filesToSend.length ?
+          '任務及 ' + result.attachment_count + ' 個附件已交付通知郵件服務' : '任務文字已送出（未附檔案）';
         window.LawAIRuntime.track("task_success", "task");
         show('successModal');
       } else {
@@ -862,7 +873,7 @@ textarea.task-field {
     } catch (e) {
       await wait3s;
       hide('loadingModal');
-      alert("❌ 發生錯誤！\n\n錯誤訊息：" + (e?.message || e));
+      alert("❌ 送出未完成或尚待確認，請勿連續重複提交。\n\n" + (filesToSend.length ? "如為附件服務尚未更新，請先聯繫團隊；檔案仍保留。\n" : "") + (e?.message || e));
     } finally {
       publishPending = false;
     }

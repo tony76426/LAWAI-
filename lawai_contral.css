@@ -86,6 +86,7 @@ display: flex; justify-content: space-between; align-items: center; padding: 1re
   width: 100%;
   height: 100%;
   background-image: linear-gradient(135deg, rgba(236, 248, 255, 0.20), rgba(255, 255, 255, 0.60)), url('lawai-legal-office-hero-banner.png');
+  background-image: linear-gradient(135deg, rgba(236, 248, 255, 0.20), rgba(255, 255, 255, 0.60)), image-set(url('assets/images/lawai-legal-office-hero-banner-1920.webp') type('image/webp'), url('lawai-legal-office-hero-banner.png') type('image/png'));
   background-size: cover;
   background-position: center 80%;
   background-repeat: no-repeat;
@@ -396,3 +397,6 @@ display: flex; justify-content: space-between; align-items: center; padding: 1re
   color: #333;
   font-size: 0.98rem;
 }
+
+/* Responsive image only; original layout/colors are retained. */
+@media (max-width:768px){.hero-bg{background-image:linear-gradient(135deg, rgba(236,248,255,.20), rgba(255,255,255,.60)),image-set(url("assets/images/lawai-legal-office-hero-banner-960.webp") type("image/webp"),url("lawai-legal-office-hero-banner.png") type("image/png"));}}

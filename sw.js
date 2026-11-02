@@ -1,5 +1,5 @@
-// LawAI Service Worker v3: public GET assets only; no form/API caching.
-const CACHE_VERSION = 'lawai-cache-v3';
+// LawAI Service Worker v4: public GET assets only; no form/API caching.
+const CACHE_VERSION = 'lawai-cache-v4-20261101';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 const MAX_RUNTIME_ENTRIES = 80;

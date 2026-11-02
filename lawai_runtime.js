@@ -5,11 +5,11 @@
   const script = document.currentScript;
   const pageId = script ? script.getAttribute('data-page') : '';
   const events = new Set(['cta_click', 'contact_click', 'ai_start', 'ai_complete',
-    'task_success', 'appointment_success', 'lawyer_send_success']);
+    'task_success', 'appointment_success', 'lawyer_send_success', 'pdf_download', 'pdf_error']);
   const flows = new Set(['navigation', 'telephone', 'line', 'email', 'chat', 'report', 'task', 'appointment']);
 
   function track(eventName, flow) {
-    // Explicit opt-in only. No tag installation, user input, URL, or DOM text.
+    // Configuration enables fixed events only; GTM still needs a GA4 event mapping. No form data.
     if (!window.LAWAI_ANALYTICS || window.LAWAI_ANALYTICS.enabled !== true) return;
     if (!events.has(eventName) || !flows.has(flow)) return;
     window.dataLayer = window.dataLayer || [];
