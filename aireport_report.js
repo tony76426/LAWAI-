@@ -1,4 +1,4 @@
-/* LawAI 法詢 — 法律意見書 V2.8 專用呈現模組。
+/* LawAI 法詢 — 法律意見書 V2.9 專用呈現模組。
  * 相容既有 /aireport/api/opinion 之文字回傳；不得虛構法條、判決、勝訴機率。
  * 所有 AI/使用者輸入皆經過 HTML escaping；報告僅在完成諮詢後顯示。
  */
@@ -250,5 +250,5 @@
     </article>`;
   }
 
-  root.LawAIReport = Object.freeze({ render, icon, parseSections, sectionsFromText, plainText: source => tidy(source), version: '2.8' });
+  root.LawAIReport = Object.freeze({ render, icon, parseSections, sectionsFromText, plainText: source => tidy(source), version: '2.9' });
 })(window);

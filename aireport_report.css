@@ -515,3 +515,47 @@ body.report-mode .law-report .report-action-description .report-bullets {margin:
   body.report-mode .law-report .report-summary-list .report-action {grid-template-columns:37px 122px minmax(0,1fr)!important;}
   body.report-mode .law-report * {-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
+
+
+/* V2.9：全部報告編號橫列改為緊湊排列，取消虛寬標題欄。
+   目標：標題結束到內文大致保留 2~3 個中文字，三種列型同一基線。 */
+@media (min-width: 901px) {
+  body.report-mode .law-report .report-summary-list .report-action,
+  body.report-mode .law-report .report-legal-points .report-action,
+  body.report-mode .law-report .report-actions:not(.report-summary-list):not(.report-legal-points) .report-action {
+    display:grid!important;
+    grid-template-columns:44px 130px minmax(0,1fr)!important;
+    column-gap:9px!important;
+    row-gap:0!important;
+    align-items:start!important;
+    padding:13px 0!important;
+  }
+}
+@media (min-width:621px) and (max-width:900px) {
+  body.report-mode .law-report .report-summary-list .report-action,
+  body.report-mode .law-report .report-legal-points .report-action,
+  body.report-mode .law-report .report-actions:not(.report-summary-list):not(.report-legal-points) .report-action {
+    display:grid!important;
+    grid-template-columns:40px 116px minmax(0,1fr)!important;
+    column-gap:8px!important;
+    align-items:start!important;
+  }
+}
+body.report-mode .law-report .report-summary-list .report-action strong,
+body.report-mode .law-report .report-legal-points .report-action strong,
+body.report-mode .law-report .report-actions .report-action strong {
+  white-space:normal!important;
+  margin:0!important;
+  padding:0!important;
+  align-self:start;
+}
+body.report-mode .law-report .report-action-description,
+body.report-mode .law-report .report-actions .report-action > p {
+  width:auto!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  text-indent:0!important;
+  min-width:0!important;
+}
+/* 下載匯出為自動產生 PDF；不要讓瀏覽器執行列印對話框。 */

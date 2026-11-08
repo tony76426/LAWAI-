@@ -1113,85 +1113,29 @@ function formatOpinion(text) {
 }
 
 
-function printOpinionAsPDF() {
-  // 原生列印能保留中文字元與可選取文字；請選「另存為 PDF」。
-  // 在 GitHub Pages 預覽或缺少離線套件時仍可正常操作。
-  const report = document.getElementById('opinionDocument');
-  if (!report || !report.textContent.trim()) return;
-  try { window.print(); }
-  catch (error) { console.error('無法開啟瀏覽器 PDF 儲存視窗', error); }
-}
-
+// V2.9：直接下載 PDF，不再以列印視窗代替套件匯出。
 let pdfPending = false;
 async function downloadPDF() {
   if (pdfPending) return;
   const content = document.getElementById('opinionDocument');
-  if (!content || !content.textContent.trim()) {
+  if (!content || !content.querySelector('.law-report')) {
     alert('請先完成法律意見書，再下載 PDF。');
-    return;
-  }
-  // 直接下載需有 jsPDF 與 html2canvas；不具備時立即使用原生儲存 PDF。
-  // 避免使用者收到「缺少 PDF 匯出套件」而無法繼續。
-  if (!window.jspdf?.jsPDF || typeof window.html2canvas !== 'function') {
-    printOpinionAsPDF();
     return;
   }
   pdfPending = true;
   const buttons = Array.from(document.querySelectorAll('[onclick="downloadPDF()"]'));
   buttons.forEach(b => { b.disabled = true; b.setAttribute('aria-busy', 'true'); });
-  let host;
   try {
-    if (document.fonts) await document.fonts.ready;
-    // Stable print width, opaque background and opinion text only.
-    host = document.createElement('div');
-    host.style.cssText = 'position:fixed;left:-10000px;top:0;width:760px;padding:28px;background:#fff;color:#111;font:16px/1.8 "Microsoft JhengHei",sans-serif;';
-    const clone = content.cloneNode(true);
-    clone.removeAttribute('id');
-    host.appendChild(clone);
-    document.body.appendChild(host);
-    const canvas = await html2canvas(host, {scale:1.5, backgroundColor:'#ffffff', logging:false, useCORS:false});
-    const doc = new window.jspdf.jsPDF('p','pt','a4');
-    const margin = 32;
-    const width = doc.internal.pageSize.getWidth() - margin * 2;
-    const height = doc.internal.pageSize.getHeight() - margin * 2;
-    const sliceHeight = Math.floor(height * canvas.width / width);
-    if (!canvas.width || !canvas.height || sliceHeight <= 0) throw new Error('空白畫布');
-    // Prefer a blank scanline near the page boundary to avoid splitting Chinese glyphs.
-    let y = 0, page = 0;
-    while (y < canvas.height) {
-      let end = Math.min(y + sliceHeight, canvas.height);
-      if (end < canvas.height) {
-        const scanStart = Math.max(y + Math.floor(sliceHeight * .75), end - 100);
-        const pixels = canvas.getContext('2d').getImageData(0, scanStart, canvas.width, end-scanStart);
-        for (let row = pixels.height-1; row > 0; row--) {
-          let ink = 0;
-          for (let x = 0; x < pixels.width; x++) {
-            const k = (row * pixels.width + x) * 4;
-            if (pixels.data[k] < 200 || pixels.data[k+1] < 200 || pixels.data[k+2] < 200) ink++;
-          }
-          if (ink <= Math.max(12, canvas.width * .012)) {end = scanStart + row; break;}
-        }
-      }
-      const slice = document.createElement('canvas');
-      slice.width = canvas.width;
-      slice.height = end - y;
-      const ctx = slice.getContext('2d');
-      ctx.drawImage(canvas,0,y,slice.width,slice.height,0,0,slice.width,slice.height);
-      if (page) doc.addPage();
-      doc.addImage(slice.toDataURL('image/jpeg',0.94),'JPEG',margin,margin,width,slice.height*width/canvas.width);
-      y = end;
-      page++;
-    }
-    await doc.save('法律意見書.pdf', {returnPromise:true});
+    if (!window.LawAIStandalonePdf?.save) throw new Error('PDF 匯出模組未載入，請確認 aireport_pdf_export.js 已部署。');
+    await window.LawAIStandalonePdf.save(content);
     window.LawAIRuntime?.track?.('pdf_download','report');
   } catch (error) {
     window.LawAIRuntime?.track?.('pdf_error','report');
-    console.error('PDF 直接下載失敗，改用原生另存為 PDF', error);
-    printOpinionAsPDF();
+    console.error('PDF 直接下載失敗', error);
+    alert('PDF 下載未完成：'+(error?.message || '請重新整理頁面後再試。'));
   } finally {
-    if (host) host.remove();
     pdfPending = false;
-    buttons.forEach(b => {b.disabled=false;b.removeAttribute('aria-busy');});
+    buttons.forEach(b => { b.disabled = false; b.removeAttribute('aria-busy'); });
   }
 }
 
