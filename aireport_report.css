@@ -1,0 +1,517 @@
+/* 最終法律意見書 V2.0：僅作用於 body.report-mode，原諮詢畫面保持不變。 */
+.followup-question {font-size:19px; line-height:1.85; font-weight:400 !important; color:var(--primary-dark); margin:0 0 12px; white-space:pre-line;}
+#step-container .followup-question strong, #step-container .followup-question b {font-weight:400 !important;}
+#step-container .opt-grid .opt-text {font-weight:400;}
+#step-container .opt-grid .opt-btn {font-weight:400;}
+body.report-mode {background:linear-gradient(145deg,#f5f8fc 0%,#fffdfa 48%,#f6f8fc 100%);}
+body.report-mode .wrapper {max-width:1120px; margin:58px auto 36px; padding:14px;}
+body.report-mode .card {padding:0; border:0; border-radius:24px; background:transparent; box-shadow:none;}
+body.report-mode .card > h1, body.report-mode .card > .subtitle, body.report-mode .card > .hero-highlights,
+body.report-mode .card > .trust-note, body.report-mode .card > .progress-container {display:none !important;}
+body.report-mode .law-report,body.report-mode .law-report * {box-sizing:border-box;}
+.law-report {font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif; color:#1d2b3e; line-height:1.8; font-size:16px; background:#fff; padding:0 2px 18px;}
+.law-report p {margin:0 0 9px; color:#243244; font-size:15.5px; line-height:1.85; font-weight:400; overflow-wrap:anywhere;}
+.law-report p:last-child {margin-bottom:0;}
+.law-report .report-cover {position:relative; overflow:hidden; text-align:center; padding:35px 26px 25px; margin-bottom:22px; min-height:220px; background:radial-gradient(circle at 6% 18%,rgba(171,196,227,.32),transparent 34%),radial-gradient(circle at 95% 65%,rgba(209,182,123,.18),transparent 32%),linear-gradient(165deg,#fff,#fcfdff 68%,#faf7f1);border-radius:20px;}
+.report-cover:before {content:""; position:absolute; top:-100px;left:-130px;width:380px;height:230px;border-radius:45%;transform:rotate(-19deg);border:20px solid rgba(171,194,223,.19);pointer-events:none;}
+.report-decoration {position:absolute;top:20px;left:18%;font-size:24px;color:#17365b;}
+.report-cover-kicker {font-size:12px;letter-spacing:2px;color:#6d7e94;margin-bottom:7px;font-weight:600;}
+.report-cover-title-wrap {display:flex;align-items:center;justify-content:center;gap:22px;}
+.law-report .report-cover h2 {font-family:'Noto Serif TC','Noto Sans TC',serif;color:#0b2b50;font-size:clamp(26px,3.8vw,42px);letter-spacing:3px;font-weight:700;line-height:1.4;margin:0;}
+.report-cover-balance {font-size:62px !important;color:#b08b40 !important;text-shadow:0 3px 8px rgba(184,148,75,.14);}
+.report-gold-rule {height:2px;width:min(300px,65%);margin:7px auto 11px;background:linear-gradient(90deg,transparent,#c4a266,transparent);}
+.law-report .report-cover-subtitle {text-align:center;color:#303844;font-size:17px;line-height:1.7;margin:0 auto 18px;}
+.report-promises {display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.report-promises>span {display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#fff,#eef6f4);border:1px solid #d5e2e4;border-radius:30px;padding:5px 14px;color:#20344a;font-size:13px;font-weight:500;box-shadow:0 2px 5px rgba(15,35,60,.05);}
+.report-promises .material-icons {font-size:20px;color:#39a65b;}
+body.report-mode .opinion-section.report-section {padding:0;margin:0 14px 24px;border:0;background:transparent;box-shadow:none;border-radius:17px; font-size:16px;overflow:hidden;}
+.law-report .report-section-title {margin:0;padding:8px 28px;border:0;border-radius:16px 16px 0 0;background:linear-gradient(95deg,#dceafb 0%,#eff6fd 68%,#f7fafc 100%);font-family:'Noto Serif TC',serif;font-size:26px;line-height:1.55;font-weight:700;color:#09284c;letter-spacing:1px;}
+.law-report .report-section-body {background:linear-gradient(155deg,#fff,#fbfdff);border:1px solid #e4eaf2;border-top:0;border-radius:0 0 16px 16px;padding:12px 20px 16px;max-width:none !important;margin:0 !important;}
+.law-report .report-details {display:flex; flex-direction:column;}
+.law-report .report-detail-row {display:grid;grid-template-columns:160px minmax(0,1fr);border-bottom:1px solid #e4e8ee;gap:16px;align-items:stretch;}
+.law-report .report-detail-row:last-child {border-bottom:0;}
+.law-report .report-row-label {align-self:center;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(130deg,#eef3fa,#f7f7f8);color:#11345f;padding:9px 12px;font-weight:700;border-radius:10px;max-width:none !important; margin:3px 0 !important;}
+.law-report .report-row-content {display:flex;flex-direction:column;justify-content:center;padding:8px 0;max-width:none !important;margin:0 !important;}
+.law-report .report-row-content p {font-size:15.5px;}
+.law-report .report-legal-intro {padding:3px 8px 5px;max-width:none !important;}
+.law-report .report-bullets {margin:4px 0 8px;padding-left:21px;color:#273447;font-size:15px;line-height:1.8;}
+.law-report .report-bullets li {padding-left:2px;margin-bottom:3px;}
+.report-law-index {margin-top:12px;border-top:1px solid #e1e9f2;padding:12px 8px 2px;font-size:13px;color:#5a6a7e;}
+.report-law-index>span {display:block;margin-bottom:9px;font-weight:600;}
+.report-law-index>div {display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px;}
+.report-law-tag {background:#edf3fc;border:1px solid #d9e5f5;color:#1c4672;border-radius:7px;padding:3px 10px;}
+.report-law-index a {color:#245d91;font-size:12px;text-underline-offset:3px;}
+.report-source-hint {color:#69788c;font-size:12px;padding:10px 8px 0;border-top:1px solid #e9edf3;}
+.law-report .report-risk-panel {display:grid;grid-template-columns:210px minmax(0,1.7fr) minmax(180px,1fr);gap:0;background:linear-gradient(90deg,#fffcf7,#fdfbf7);border:1px solid #efe7dc;border-radius:16px;padding:18px 16px;max-width:none !important;margin:0 !important;}
+.report-risk-level,.report-risk-main,.report-risk-impact {min-width:0;padding:0 18px;}
+.report-risk-level {display:flex;flex-direction:column;text-align:center;align-items:center;justify-content:center;border-right:1px solid #e8dfd0;}
+.report-risk-label {font-size:17px;font-weight:700;color:#173252;}
+.report-risk-level strong {font-size:31px;color:#9b742d;font-weight:800;line-height:1.5;}
+.report-risk-level small {font-size:12px;color:#6a6870;}
+.report-risk-main {border-right:1px solid #e8dfd0;}
+.law-report .report-risk-panel h4 {font-size:17px;color:#173252;font-weight:700;margin:0 0 8px;line-height:1.5;}
+.report-risk-main p,.report-risk-impact p {font-size:14.5px;}
+.law-report .report-actions {display:flex;flex-direction:column;max-width:none !important;margin:0 !important;padding:0 6px;}
+.law-report .report-action {display:grid;grid-template-columns:36px 150px minmax(0,1fr);align-items:start;column-gap:12px;padding:10px 7px;border-bottom:1px solid #dfe5ed;max-width:none !important;margin:0 !important;}
+.law-report .report-action:last-child {border-bottom:0;}
+.report-action-num {width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:100%;background:linear-gradient(135deg,#5e95c1,#204e7d);color:#fff;font-weight:700;font-size:16px;box-shadow:0 2px 6px #b7cadc;}
+.report-action strong {font-size:16px;color:#10345c;line-height:1.65;}
+.report-action p {font-size:14.8px;padding-top:2px;}
+.law-report .report-evidence-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;padding:12px 12px 8px;max-width:none !important;margin:0 !important;}
+.law-report .report-evidence-item {display:flex;align-items:flex-start;gap:9px;min-width:0;font-size:15px;line-height:1.7;max-width:none !important; margin:0 !important;overflow-wrap:anywhere;}
+.report-evidence-item .material-icons {color:#2f6ca9;font-size:22px;flex:0 0 22px;}
+.law-report .report-evidence-note {font-size:12px;color:#738095;padding:0 12px;margin-top:10px;}
+.law-report .report-disclaimer {display:flex;gap:9px;align-items:start;border-top:1px solid #cad8e7;padding:15px 28px 0;color:#788395;max-width:none !important;}
+.report-disclaimer .material-icons {color:#6c90b3;font-size:19px;}
+.law-report .report-disclaimer p {font-size:12px;color:#677585;line-height:1.7;}
+.law-report .report-empty {color:#7d8897;font-size:14px;}
+.report-action-buttons {display:flex;align-items:stretch;justify-content:center;gap:14px;flex-wrap:wrap;margin:18px 0 24px;}
+.report-action-buttons button {display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 22px;min-height:52px;font-size:15px;letter-spacing:.4px;font-weight:700;box-shadow:0 4px 16px rgba(20,43,75,.12);}
+.report-action-buttons button .material-icons {color:inherit;font-size:20px;}
+.report-action-buttons .report-download {background:linear-gradient(125deg,#3f78b6,#132e55);color:white;border:1px solid #25466a;}
+.report-action-buttons .report-contact {background:#fff;color:#19395d;border:1px solid #c99d4a;}
+.report-action-buttons .report-restart {background:linear-gradient(115deg,#ffedc7,#e6c681);color:#16365e;border:1px solid #cca15c;}
+.report-action-buttons button:hover {filter:brightness(1.04);}
+@media(max-width:900px){
+ .law-report .report-risk-panel {grid-template-columns:180px minmax(0,1fr);}
+ .report-risk-impact {grid-column:1/-1;border-top:1px solid #e8dfd0;padding-top:12px;margin-top:12px;}
+ .report-risk-main {border-right:0;}
+}
+@media(max-width:620px){
+ body.report-mode .wrapper{margin:58px auto 18px !important;padding:7px !important;}
+ body.report-mode .card{padding:0 !important;}
+ .law-report {font-size:14px;}
+ .law-report .report-cover {padding:23px 14px 18px;margin-bottom:14px;border-radius:14px;}
+ .report-cover-balance {font-size:34px !important;}
+ .report-cover-title-wrap{gap:6px;}
+ .law-report .report-cover h2 {font-size:clamp(23px,5.6vw,29px);letter-spacing:.3px;}
+ .law-report .report-cover-subtitle{font-size:14px;}
+ .report-desktop-only{display:none;}
+ .report-decoration {left:5%;top:7px;}
+ .report-promises{gap:5px;}
+ .report-promises>span{font-size:11px;padding:5px 8px;gap:3px;}
+ .report-promises .material-icons{font-size:15px;}
+ body.report-mode .opinion-section.report-section{margin:0 4px 16px;padding:0 !important;}
+ .law-report .report-section-title {font-size:20px;padding:8px 12px;letter-spacing:.5px;}
+ .law-report .report-section-body {padding:10px 10px 13px;}
+ .law-report .report-detail-row {grid-template-columns:100px minmax(0,1fr);gap:8px;}
+ .law-report .report-row-label {font-size:13px;padding:7px 5px;}
+ .law-report .report-row-content p,.law-report p {font-size:13.5px;line-height:1.8;}
+ .law-report .report-risk-panel {grid-template-columns:1fr;padding:12px;}
+ .report-risk-level{border-right:0;border-bottom:1px solid #e8dfd0;padding-bottom:10px;}
+ .report-risk-level strong{font-size:25px;}
+ .report-risk-main,.report-risk-impact{padding:10px 2px;}
+ .report-risk-impact{grid-column:auto;margin-top:2px;}
+ .law-report .report-action {grid-template-columns:30px minmax(0,1fr);gap:5px 8px;padding:9px 3px;}
+ .report-action p{grid-column:2;}
+ .report-action-num{width:28px;height:28px;font-size:14px;}
+ .law-report .report-evidence-grid{grid-template-columns:1fr;gap:8px;padding:5px 4px;}
+ .law-report .report-disclaimer{padding:12px;}
+ .report-action-buttons{gap:9px;padding:0 6px;}
+ .report-action-buttons button{font-size:13px;min-height:46px;padding:11px 15px;}
+}
+@media print{
+ body.report-mode {background:#fff !important;}
+ body.report-mode .wrapper{max-width:none;margin:0 !important;padding:0 !important;}
+ body.report-mode .back-container,body.report-mode .tech-bg,body.report-mode .report-action-buttons,body.report-mode #suggestLawyerPrompt,body.report-mode #lawyerModal{display:none !important;}
+ .law-report{padding:0;}
+ body.report-mode .opinion-section.report-section{break-inside:avoid-page;}
+ .law-report .report-cover{break-after:avoid-page;}
+ .law-report .report-section-title{print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+ .law-report .report-action,.law-report .report-detail-row{break-inside:avoid;}
+}
+
+/* 防止原版通用 .opinion-section div 選擇器使新版表格收窄至 70ch */
+.law-report .report-section-body div {max-width:none; margin-left:0; margin-right:0;}
+.report-icon-svg {width:100%;height:100%;display:block;flex:0 0 auto;}
+.report-cover-balance {width:62px;height:62px;color:#b08b40;display:inline-flex;flex:0 0 62px;}
+.report-promise-check {width:20px;height:20px;color:#36a05b;display:inline-flex;}
+.report-check-icon {width:23px;height:23px;flex:0 0 23px;color:#296cae;display:inline-flex;}
+.report-shield-icon {width:19px;height:19px;color:#6c90b3;display:inline-flex;flex:0 0 19px;}
+.report-button-icon {width:20px;height:20px;display:inline-flex;}
+@media(max-width:620px){.report-cover-balance {width:34px;height:34px;flex-basis:34px;}.report-promise-check {width:15px;height:15px;}}
+
+/* V2.3 — 依原始參考圖回歸清爽的法律書表，無外圍實線大框。 */
+body, #step-container, #step-container textarea,
+#step-container .opt-text, #step-container .opt-btn, #step-container .opt-custom,
+.law-report, .law-report p, .law-report .report-detail-row,
+.law-report .report-evidence-item {
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+#step-container .followup-question {
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  font-size:16.15px; /* 19px × 85% */
+  line-height:1.86;
+  font-weight:400 !important;
+  letter-spacing:.015em;
+}
+#step-container .followup-question strong,
+#step-container .followup-question b{font-weight:400!important;}
+/* 用戶所提「指令」屬輔助引導文字，約縮小 30%；主要法律內容維持易讀。 */
+#step-container .opt-custom > div:first-child,
+#step-container .encouragement,
+#step-container .hint-mini,
+#step-container #inputLiveHint,
+#step-container .voice-input-status {
+  font-size:13px !important;
+  line-height:1.65;
+  font-weight:400 !important;
+}
+#step-container .opt-custom > div:first-child {color:#5e6e81!important;}
+body.report-mode .law-report {
+  border:0!important;border-radius:0!important;box-shadow:none!important;
+  background:transparent!important;overflow:visible!important;padding:0 0 18px!important;
+  font-size:17px;line-height:1.86;
+}
+body.report-mode .law-report .report-cover {
+  border:0!important;border-radius:20px!important;box-shadow:none!important;
+  margin-bottom:22px;
+}
+body.report-mode .opinion-section.report-section {
+  margin:0 0 22px!important;padding:0!important;
+  border:0!important;border-radius:17px!important;
+  box-shadow:none!important;background:transparent!important;overflow:visible!important;
+}
+body.report-mode .law-report .report-section-title {
+  font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  font-size:27px;letter-spacing:.02em;line-height:1.55;
+  color:#0f315c;background:linear-gradient(100deg,#dfecfa 0%,#edf4fc 70%,#f8fbfe 100%);
+  border:0!important;border-radius:17px 17px 0 0!important;
+  padding:8px 25px;
+}
+body.report-mode .law-report .report-section-body {
+  border:1px solid #e0e7f0!important;border-top:0!important;
+  border-radius:0 0 17px 17px!important;box-shadow:0 3px 14px rgba(23,48,81,.04);
+  background:#fff!important;padding:8px 11px 14px!important;margin:0!important;
+}
+/* 報告內容沒有整塊縮排，表格佔滿章節寬度；只保留必要的欄位內距。 */
+body.report-mode .law-report .report-legal-intro,
+body.report-mode .law-report .report-actions,
+body.report-mode .law-report .report-evidence-grid,
+body.report-mode .law-report .report-details,
+body.report-mode .law-report .report-legal-table {
+  padding-left:0!important;padding-right:0!important;margin-left:0!important;margin-right:0!important;
+  width:100%;max-width:none!important;
+}
+body.report-mode .law-report .report-legal-intro {padding-top:5px;padding-bottom:6px;}
+body.report-mode .law-report .report-detail-row {
+  grid-template-columns:166px minmax(0,1fr);
+  gap:13px;align-items:stretch;border-color:#dce5f0;
+}
+body.report-mode .law-report .report-row-label {
+  padding:10px 9px;margin:5px 0!important;
+  font-size:19px;font-weight:700;line-height:1.6;
+  color:#0f3056;background:#eff4fa;border:0;border-radius:8px;
+}
+body.report-mode .law-report .report-row-content {
+  padding:8px 0!important;line-height:1.85;
+}
+body.report-mode .law-report p,
+body.report-mode .law-report .report-row-content p,
+body.report-mode .law-report .report-legal-intro p,
+body.report-mode .law-report .report-action p {
+  font-size:17.5px;line-height:1.85;color:#27364a;
+  margin-left:0!important;text-indent:0!important;
+}
+body.report-mode .law-report .report-bullets {
+  font-size:17px;line-height:1.8;margin:4px 0 8px;padding-left:20px;
+}
+body.report-mode .law-report .report-action {
+  grid-template-columns:37px 157px minmax(0,1fr);
+  padding:12px 1px;column-gap:10px;
+}
+body.report-mode .law-report .report-action strong {font-size:19px;line-height:1.65;}
+body.report-mode .law-report .report-evidence-grid {gap:12px 18px;padding-top:8px;padding-bottom:6px;}
+body.report-mode .law-report .report-evidence-item {font-size:19px;line-height:1.8;}
+body.report-mode .law-report .report-evidence-note {font-size:13px;}
+body.report-mode .law-report .report-disclaimer {padding-left:15px;padding-right:15px;}
+body.report-mode .law-report .report-law-index,
+body.report-mode .law-report .report-source-hint {padding-left:0;padding-right:0;}
+/* 台灣法律書表閱讀字型：正文與追問採明體系，表格欄名和按鍵保留清楚無襯線。 */
+body.report-mode .law-report,
+body.report-mode .law-report p,
+body.report-mode .law-report .report-row-content,
+body.report-mode .law-report .report-legal-intro,
+body.report-mode .law-report .report-action p,
+body.report-mode .law-report .report-evidence-item,
+#step-container .followup-question,
+#step-container .opt-text,
+#step-container .opt-custom,
+#step-container .initial-input-with-mic textarea,
+.card > .subtitle, .trust-note, #caseSummaryText {
+  font-family:"Noto Serif TC","Songti TC","PMingLiU","Noto Sans TC",serif;
+  font-weight:400;
+}
+/* 初始輸入區：麥克風確實位於輸入框右下，不遮擋輸入文字。 */
+.initial-input-with-mic{position:relative;width:100%;}
+#step-container .initial-input-with-mic textarea {
+  display:block;width:100%;padding-right:54px!important;padding-bottom:57px!important;
+  margin-bottom:0!important;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+#step-container .initial-mic-button {
+  position:absolute!important;right:13px;bottom:13px;z-index:2;
+  width:40px;height:40px;min-width:40px;min-height:40px;
+  padding:9px!important;border:1px solid #dae5f0!important;border-radius:50%!important;
+  display:flex;align-items:center;justify-content:center;
+  color:#1e4b76!important;background:#f6f9fd!important;
+  box-shadow:0 2px 7px rgba(18,52,91,.08)!important;
+  cursor:pointer;transition:background .2s,border-color .2s;
+}
+#step-container .initial-mic-button:hover {transform:none;background:#e6f0fa!important;box-shadow:0 2px 7px rgba(18,52,91,.12)!important;}
+#step-container .initial-mic-button:focus-visible {outline:3px solid #83b8e8;outline-offset:2px;}
+#step-container .initial-mic-button svg {width:21px;height:21px;display:block;flex:none;}
+#step-container .initial-mic-button.recording {
+  background:#fff0ee!important;color:#b12f35!important;border-color:#dba09f!important;
+  box-shadow:0 0 0 4px rgba(202,53,58,.08)!important;
+}
+#step-container .voice-input-status {min-height:18px;margin-top:6px;color:#58728b;}
+@media(max-width:900px){
+  body.report-mode .law-report .report-action {grid-template-columns:35px 135px minmax(0,1fr);}
+}
+@media(max-width:620px){
+  body.report-mode .law-report .report-cover {border-radius:14px!important;}
+  body.report-mode .opinion-section.report-section {margin:0 0 17px!important;}
+  body.report-mode .law-report .report-section-title {font-size:22px;letter-spacing:0;padding:9px 13px;}
+  body.report-mode .law-report .report-section-body {padding:9px 10px 13px!important;}
+  body.report-mode .law-report .report-detail-row {display:block;border-bottom:1px solid #e4eaf2;}
+  body.report-mode .law-report .report-row-label {display:inline-flex;font-size:17px;min-width:106px;padding:5px 11px;margin:9px 0 3px!important;}
+  body.report-mode .law-report .report-row-content {padding:3px 0 10px!important;}
+  body.report-mode .law-report p,
+  body.report-mode .law-report .report-row-content p,
+  body.report-mode .law-report .report-legal-intro p,
+  body.report-mode .law-report .report-action p,
+  body.report-mode .law-report .report-bullets {font-size:16px;line-height:1.84;}
+  body.report-mode .law-report .report-action {display:grid;grid-template-columns:30px minmax(0,1fr);gap:3px 8px;padding:11px 0;}
+  body.report-mode .law-report .report-action strong {font-size:17px;}
+  body.report-mode .law-report .report-evidence-grid {grid-template-columns:1fr;gap:10px;}
+  body.report-mode .law-report .report-evidence-item {font-size:17px;}
+  #step-container .followup-question {font-size:17.6px;}
+}
+@media print{
+  body.report-mode .law-report {border:0!important;}
+  body.report-mode .opinion-section.report-section {border:0!important;}
+  body.report-mode .law-report .report-section-body {border:1px solid #e0e7f0!important;}
+}
+
+
+/* === V2.4｜最終意見書：沿用第一題頁面的「單張白色紙頁」視覺 ===
+   外層採原始 .card 白底、28px 圓角與柔和陰影的設計語言；
+   取消 V2.3 最終報告的透明無框外觀，但不新增粗實線外框。 
+   以下只在報告完成後的 report-mode 套用，不影響一開始的問答頁。 */
+body.report-mode {
+  background: linear-gradient(135deg, var(--accent-bg, #f9f5ee), #f3f6fb) !important;
+}
+body.report-mode .wrapper {
+  max-width: 1160px !important;
+  margin: 54px auto 42px !important;
+  padding: 22px !important;
+}
+/* 讓報告本體成為唯一紙頁；上層 .card 不重複產生第二道框。 */
+body.report-mode .card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+body.report-mode #opinionDocument {
+  width: 100%;
+  max-width: 100%;
+}
+body.report-mode .law-report {
+  background: #fff !important;
+  border: 1px solid rgba(36,52,86,.08) !important;
+  border-radius: 28px !important;
+  padding: 38px 38px 27px !important;
+  box-shadow: 0 18px 45px rgba(15,23,42,.06) !important;
+  overflow: hidden !important;
+  width: 100%;
+  min-width: 0;
+}
+/* 封面與第一題頁面一致，主標題直接位於白紙，不再套入另一層霧感卡片。 */
+body.report-mode .law-report .report-cover {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 22px 13px 28px !important;
+  margin: 0 0 15px !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+body.report-mode .law-report .report-cover::before {display: none !important;}
+body.report-mode .law-report .report-decoration {top: 9px; left: 13%;}
+/* 四章標題、文字、麥克風與 12/18 秒倒數維持 V2.3。 */
+@media (max-width: 620px) {
+  body.report-mode .wrapper {
+    margin: 68px auto 20px !important;
+    padding: 9px !important;
+  }
+  body.report-mode .law-report {
+    border-radius: 19px !important;
+    padding: 17px 11px 19px !important;
+    box-shadow: 0 9px 30px rgba(15,23,42,.065) !important;
+  }
+  body.report-mode .law-report .report-cover {
+    padding: 12px 5px 21px !important;
+    margin-bottom: 6px !important;
+  }
+  body.report-mode .law-report .report-decoration {top: 2px; left: 2%;}
+}
+@media print {
+  body.report-mode { background: white !important; }
+  body.report-mode .wrapper { margin: 0 !important; padding: 0 !important; max-width: none !important; }
+  body.report-mode .law-report {
+    border: 0 !important; border-radius: 0 !important;
+    box-shadow: none !important; padding: 8px 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* === V2.5：追問 5% 字級增幅、全流程連續語音聽寫與摘要置中 === */
+@media (min-width: 621px) {
+  #step-container .followup-question {font-size:18.66px!important;} /* V2.4 16.15 × 1.05 */
+}
+/* 共用語音按鈕靠輸入框內右下角，錄音中改為明確紅色「停止」方塊。 */
+#step-container .voice-input-with-mic {position:relative;width:100%;}
+#step-container .voice-input-with-mic textarea {
+  display:block;box-sizing:border-box;width:100%;margin:0!important;
+  padding-right:63px!important;padding-bottom:61px!important;
+}
+#step-container .voice-dictation-button {
+  position:absolute!important;right:13px;bottom:13px;z-index:5;
+  width:44px;height:44px;min-height:44px;min-width:44px;
+  display:flex;align-items:center;justify-content:center;
+  padding:10px!important;margin:0!important;
+  border-radius:50%!important;border:1px solid #c9d9e7!important;
+  color:#1b4d7a!important;background:#f5f9fc!important;
+  box-shadow:0 2px 8px rgba(17,51,84,.10)!important;
+  cursor:pointer;transform:none!important;
+}
+#step-container .voice-dictation-button svg {display:block;width:22px;height:22px;flex:none;}
+#step-container .voice-dictation-button:hover {background:#e7f1fa!important;}
+#step-container .voice-dictation-button:focus-visible {outline:3px solid #8eb8d9;outline-offset:2px;}
+#step-container .voice-dictation-button.recording {
+  color:#b32d33!important;background:#fff1ef!important;border-color:#d59194!important;
+  box-shadow:0 0 0 4px rgba(188,44,52,.1)!important;
+}
+#step-container .voice-dictation-button.recording:hover {background:#ffe5e2!important;}
+#step-container .voice-input-status {font-size:13px;min-height:22px;margin-top:6px;color:#63798a;line-height:1.55;}
+#step-container .voice-input-status.listening {color:#9d343a;}
+/* 不產生第 2 層邊框或表格式分類欄位；第一章完整敘述居中。 */
+body.report-mode .law-report .report-summary-prose {
+  width:100%;margin:0!important;padding:17px 26px 20px!important;
+  text-align:center;display:block;max-width:none!important;
+}
+body.report-mode .law-report .report-summary-prose p,
+body.report-mode .law-report .report-summary-prose li {
+  text-align:center;font-size:18px;line-height:1.92;font-weight:400;
+  color:#27374c;margin:0 auto 12px;max-width:840px;
+  overflow-wrap:anywhere;white-space:normal;text-indent:0;
+}
+body.report-mode .law-report .report-summary-prose p:last-child {margin-bottom:0;}
+body.report-mode .law-report .report-summary-prose .report-bullets {padding:0;list-style-position:inside;}
+@media(max-width:620px){
+  body.report-mode .law-report .report-summary-prose {padding:13px 7px 18px!important;}
+  body.report-mode .law-report .report-summary-prose p,
+  body.report-mode .law-report .report-summary-prose li {font-size:16px;line-height:1.86;}
+  #step-container .voice-dictation-button {right:11px;bottom:11px;width:42px;height:42px;min-width:42px;min-height:42px;}
+}
+@media print{
+  body.report-mode .law-report .report-summary-prose {padding:8px 12px!important;}
+}
+
+/* 既有 .opt-custom .hint-mini 帶有負上邊距；新增錄音狀態列後必須消除重疊。 */
+#step-container .opt-custom #followupVoiceStatus + .hint-mini {
+  margin-top:8px!important;
+  margin-bottom:10px!important;
+}
+#step-container #followupVoiceStatus {height:auto!important;min-height:24px;white-space:normal;}
+
+
+/* === V2.7｜案件摘要／法律分析統一編號式橫列，不置中、不縮排 === */
+body.report-mode .law-report .report-summary-list,
+body.report-mode .law-report .report-legal-points {
+  display:flex; flex-direction:column; width:100%; max-width:none!important;
+  margin:0!important; padding:0!important; text-align:left;
+}
+body.report-mode .law-report .report-summary-list .report-action,
+body.report-mode .law-report .report-legal-points .report-action {
+  display:grid;grid-template-columns:37px 157px minmax(0,1fr);
+  align-items:start;gap:12px 10px;padding:12px 1px;
+  width:100%;max-width:none!important;margin:0!important;
+  border-bottom:1px solid #dce5ef;
+}
+body.report-mode .law-report .report-summary-list .report-action:last-child,
+body.report-mode .law-report .report-legal-points .report-action:last-child {border-bottom:0;}
+body.report-mode .law-report .report-action-description {
+  width:100%;max-width:none!important;margin:0!important;padding:0!important;
+  text-align:left;min-width:0;
+}
+body.report-mode .law-report .report-action-description p,
+body.report-mode .law-report .report-action-description li {
+  font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  font-size:17.5px;line-height:1.85;text-align:left!important;
+  margin:0 0 7px!important;max-width:none!important;text-indent:0!important;
+  font-weight:400;color:#27364a;overflow-wrap:anywhere;
+}
+body.report-mode .law-report .report-action-description p:last-child {margin-bottom:0!important;}
+body.report-mode .law-report .report-action-description .report-bullets {margin:0 0 4px!important;padding-left:20px;}
+@media(max-width:900px) and (min-width:621px){
+ body.report-mode .law-report .report-summary-list .report-action,
+ body.report-mode .law-report .report-legal-points .report-action {grid-template-columns:35px 135px minmax(0,1fr);}
+}
+@media(max-width:620px){
+ body.report-mode .law-report .report-summary-list .report-action,
+ body.report-mode .law-report .report-legal-points .report-action {
+   grid-template-columns:30px minmax(0,1fr);gap:3px 8px;padding:11px 0;
+ }
+ body.report-mode .law-report .report-summary-list .report-action strong,
+ body.report-mode .law-report .report-legal-points .report-action strong {grid-column:2;font-size:17px;}
+ body.report-mode .law-report .report-summary-list .report-action-description,
+ body.report-mode .law-report .report-legal-points .report-action-description {grid-column:2;}
+ body.report-mode .law-report .report-action-description p,
+ body.report-mode .law-report .report-action-description li {font-size:16px;line-height:1.84;}
+}
+@media print {
+ body.report-mode .law-report .report-summary-list .report-action,
+ body.report-mode .law-report .report-legal-points .report-action {break-inside:avoid-page;}
+}
+
+
+/* === V2.8｜桌面案件摘要：小標題到內文約三個中文字寬；法律分析仍維持原對齊 === */
+@media (min-width: 901px) {
+  body.report-mode .law-report .report-summary-list .report-action {
+    grid-template-columns: 37px 122px minmax(0,1fr) !important;
+  }
+}
+@media (min-width: 621px) and (max-width: 900px) {
+  body.report-mode .law-report .report-summary-list .report-action {
+    grid-template-columns: 35px 115px minmax(0,1fr) !important;
+  }
+}
+
+/* 原 PDF 套件未到位時使用瀏覽器原生「另存為 PDF」；確保只印報告。 */
+@page {size: A4; margin: 13mm 12mm 15mm;}
+@media print {
+  html, body {background:#fff!important;overflow:visible!important;}
+  body.report-mode .tech-bg,
+  body.report-mode .back-container,
+  body.report-mode .report-action-buttons,
+  body.report-mode #contextFaqBlock,
+  body.report-mode #suggestLawyerPrompt,
+  body.report-mode #lawyerModal,
+  body.report-mode .progress-container,
+  body.report-mode .trust-note {display:none!important;}
+  body.report-mode .wrapper {width:100%!important;max-width:none!important;margin:0!important;padding:0!important;}
+  body.report-mode .card {border:0!important;box-shadow:none!important;padding:0!important;}
+  body.report-mode .law-report {background:#fff!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important;}
+  body.report-mode .law-report .report-cover {margin:0 0 11mm!important;padding:7mm 2mm 5mm!important;}
+  body.report-mode .opinion-section.report-section {break-inside:auto!important;margin-bottom:6mm!important;}
+  body.report-mode .law-report .report-section-title {break-after:avoid-page!important;}
+  body.report-mode .law-report .report-section-body {box-shadow:none!important;}
+  body.report-mode .law-report .report-action {break-inside:avoid-page!important;}
+  body.report-mode .law-report .report-disclaimer {break-inside:avoid-page;}
+  body.report-mode .law-report .report-summary-list .report-action {grid-template-columns:37px 122px minmax(0,1fr)!important;}
+  body.report-mode .law-report * {-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}

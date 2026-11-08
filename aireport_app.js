@@ -265,9 +265,164 @@ if (/(網購|電商|蝦皮|露天|momo|PChome|賣家不出貨|退貨|退款)/.te
 
 const stepContainer = document.getElementById("step-container");
 
+// 先定義語音圖示與錄音狀態，再初始化第一個輸入畫面。
+
+// V2.5 共用語音聽寫：初始問題與三道追問皆可開始／明確按「停止」才結束。
+// 瀏覽器 SpeechRecognition 不提供永久不斷的原始錄音流：若瀏覽器因停頓結束本段辨識，
+// 在使用者仍希望聽寫、輸入框仍存在且服務正常時自動銜接下一段。
+// 權限是否記住由瀏覽器控制；此程式不自行重複呼叫 getUserMedia 或保存錄音。
+const VOICE_MIC_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg>';
+const VOICE_STOP_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2.5" fill="currentColor" stroke="none"/></svg>';
+function voiceButtonMarkup(buttonId, targetId) {
+  return `<button type="button" id="${buttonId}" class="voice-dictation-button" onclick="toggleVoiceDictation('${targetId}')" aria-label="開始語音輸入" title="開始語音輸入" aria-pressed="false">${VOICE_MIC_SVG}</button>`;
+}
+function initialQuestionInputMarkup() {
+  return `<div class="voice-input-with-mic initial-input-with-mic">
+    <textarea id="initialQuestion" placeholder="請輸入或點選右下方麥克風說明您的問題" style="background:#ffffff;" aria-label="請描述您的法律問題"></textarea>
+    ${voiceButtonMarkup('initialVoiceButton','initialQuestion')}
+  </div><div id="voiceInputStatus" class="voice-input-status" role="status" aria-live="polite"></div>`;
+}
+var voiceSession = null;
 initFirstStep();
+function voiceFieldInfo(targetId){
+  if (targetId === 'initialQuestion') return {buttonId:'initialVoiceButton',statusId:'voiceInputStatus'};
+  if (targetId === 'customAnswer') return {buttonId:'followupVoiceButton',statusId:'followupVoiceStatus'};
+  return null;
+}
+function setVoiceUI(session, active, message){
+  if (!session) return;
+  const button = document.getElementById(session.buttonId);
+  const status = document.getElementById(session.statusId);
+  if (button) {
+    button.classList.toggle('recording', !!active);
+    button.setAttribute('aria-pressed', String(!!active));
+    button.setAttribute('aria-label',active ? '停止錄音' : '開始語音輸入');
+    button.title=active ? '停止錄音' : '開始語音輸入';
+    button.innerHTML=active ? VOICE_STOP_SVG : VOICE_MIC_SVG;
+  }
+  if (status && typeof message === 'string') {
+    status.textContent=message;
+    status.classList.toggle('listening',!!active);
+  }
+}
+function stopVoiceDictation(clearStatus){
+  const session=voiceSession;
+  if (!session) return;
+  session.requested=false;
+  clearTimeout(session.restartTimer);
+  // 先取消會話，以免舊的 onend 在新題目重新啟動錄音。
+  voiceSession=null;
+  setVoiceUI(session,false,clearStatus ? '' : '語音輸入已停止，您可以檢查或修改文字。');
+  try { if(session.recognition) session.recognition.stop(); }catch(_){}
+}
+// 舊函式名稱維持可呼叫，避免其他既有按鍵流程出錯。
+function stopInitialVoice(){stopVoiceDictation(true);}
+function toggleInitialVoice(){toggleVoiceDictation('initialQuestion');}
+function toggleVoiceDictation(targetId){
+  const field=voiceFieldInfo(targetId);
+  const input=document.getElementById(targetId);
+  if(!field || !input) return;
+  if(voiceSession){
+    const wasSame=voiceSession.input === input;
+    stopVoiceDictation(false);
+    if(wasSame) return;
+  }
+  const Recognition=window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!Recognition){
+    setVoiceUI({ ...field },false,'此瀏覽器不支援語音辨識，建議使用新版 Chrome 或 Edge，或直接鍵入文字。');
+    return;
+  }
+  if(!window.isSecureContext && location.protocol!=='file:'){
+    setVoiceUI({...field},false,'麥克風需要 HTTPS 安全連線或 localhost 網站環境。');
+    return;
+  }
+  const session={targetId,input,...field,Recognition,requested:true,recognition:null,restartTimer:null,rapidRestarts:0};
+  voiceSession=session;
+  setVoiceUI(session,true,'正在聆聽… 需要結束時，請按右下角紅色停止鍵。');
+  startVoiceSegment(session);
+}
+function startVoiceSegment(session){
+  if(voiceSession!==session || !session.requested || document.getElementById(session.targetId)!==session.input){
+    if(voiceSession===session) stopVoiceDictation(true);
+    return;
+  }
+  const before=session.input.value.trimEnd();
+  const startAt=Date.now();
+  try {
+    const recognition=new session.Recognition();
+    session.recognition=recognition;
+    recognition.lang='zh-TW';
+    recognition.continuous=true;
+    recognition.interimResults=true;
+    recognition.maxAlternatives=1;
+    recognition.onstart=()=>{
+      if(voiceSession===session) setVoiceUI(session,true,'正在聆聽… 點擊紅色方塊即可停止錄音。');
+    };
+    recognition.onresult=(event)=>{
+      if(voiceSession!==session || document.getElementById(session.targetId)!==session.input) return;
+      let finalText='',interimText='';
+      for(let i=0;i<event.results.length;i++){
+        const result=event.results[i];
+        const sentence=result[0] ? result[0].transcript : '';
+        if(result.isFinal) finalText+=sentence;
+        else interimText+=sentence;
+      }
+      const content=(finalText+interimText).trim();
+      if(content){
+        const nextValue=(before ? before + '\n' : '')+content;
+        if(session.input.value!==nextValue){
+          session.input.value=nextValue;
+          session.input.dispatchEvent(new Event('input',{bubbles:true}));
+        }
+        session.rapidRestarts=0;
+      }
+    };
+    recognition.onerror=(event)=>{
+      if(voiceSession!==session) return;
+      const code=event && event.error || '';
+      // 靜音通常會導致該段 SpeechRecognition 結束；維持使用者的錄音意圖。
+      if(code==='no-speech' || code==='aborted') return;
+      const labels={
+        'not-allowed':'麥克風未獲允許。請在網址列的網站權限中選擇「允許」，再重新啟動。',
+        'service-not-allowed':'瀏覽器未開放語音辨識服務，請確認語音辨識設定。',
+        'audio-capture':'無法存取麥克風，請檢查裝置或網站的麥克風設定。',
+        'network':'語音辨識連線異常，請檢查網路後重試。'
+      };
+      session.requested=false;
+      clearTimeout(session.restartTimer);
+      voiceSession=null;
+      setVoiceUI(session,false,labels[code]||'語音辨識暫時無法繼續，請重新點擊麥克風。');
+    };
+    recognition.onend=()=>{
+      if(voiceSession!==session || !session.requested) return;
+      if(document.getElementById(session.targetId)!==session.input){stopVoiceDictation(true);return;}
+      // 某些瀏覽器即使 continuous=true，停頓或單段時限仍會讓辨識自行結束。
+      // 為避免短時間無限重啟導致反覆請求權限，快速異常結束最多重試三次。
+      session.rapidRestarts = Date.now()-startAt<900 ? session.rapidRestarts+1 : 0;
+      if(session.rapidRestarts>=3){
+        voiceSession=null;session.requested=false;
+        setVoiceUI(session,false,'瀏覽器多次中斷語音辨識。請確認已允許本站使用麥克風，再重試。');
+        return;
+      }
+      setVoiceUI(session,true,'正在接續聆聽… 要結束請按紅色停止鍵。');
+      session.restartTimer=setTimeout(()=>startVoiceSegment(session),350);
+    };
+    recognition.start();
+  }catch(_){
+    if(voiceSession===session){
+      session.requested=false;voiceSession=null;
+      setVoiceUI(session,false,'無法啟動語音辨識。請確認網站麥克風權限及瀏覽器支援狀態。');
+    }
+  }
+}
 
 function initFirstStep() {
+  stopInitialVoice();
+  document.body.classList.remove("report-mode");
+  window.__lastOpinionText = "";
+  try { __hasArmedSuggestScroll = false; } catch (_) {}
+  window.__hasShownSuggestPrompt = false;
+  window.removeEventListener("scroll", handleSuggestScroll);
   currentStep = -1;
   detectedCaseType = '';
   initialQuestionText = '';
@@ -283,7 +438,7 @@ function initFirstStep() {
 
   stepContainer.innerHTML = `
        <label style="color:var(--primary)">請描述您的法律問題（例如：我買的房子交屋後發現漏水）</label>
-       <textarea id="initialQuestion" placeholder="請輸入" style="background:#ffffff;"></textarea>
+       ${initialQuestionInputMarkup()}
        <div id="inputLiveHint" class="hint-mini" style="display:none; margin-top:10px; line-height:1.6;">我正在整理你的重點，等等會用幾個問題幫你釐清。</div>
        <div class="encouragement">✍️ 請盡量具體描述，有助於後續問答準確</div>
 
@@ -350,6 +505,7 @@ function attachInitialTypingHint(){
 
 
 async function actuallySubmitInitialQuestion() {
+  stopInitialVoice();
   const inputEl = document.getElementById("initialQuestion");
   const input = (inputEl ? inputEl.value.trim() : "");
   if (!input) {
@@ -383,13 +539,14 @@ if(window.__pendingOpinionGeneration){
 
 
 function showLoading(message) {
+  stopVoiceDictation(true);
   if (!stepContainer) return;
 
-  // 讀秒規則：生成釐清問題 15 秒、生成法律意見書 18 秒；其他預設 8 秒
+  // 第一次釐清問題讀秒 12 秒、第二次意見書讀秒 18 秒。這是進度提示，非保證 API 完成時間。
   let sec = 8;
   const msg = String(message || "");
   if (msg.includes("釐清問題")) {
-    sec = 15;
+    sec = 12;
   } else if (msg.includes("法律意見書")) {
     sec = 18;
   }
@@ -402,16 +559,21 @@ function showLoading(message) {
     }
   } catch (e) {}
 
+  const isOpinion = msg.includes("法律意見書");
   stepContainer.innerHTML = `
     <div class="loading">
       <div class="loading-title">${escapeHtml(msg)}</div>
       <div class="loading-subtitle">
-        為了讓後續建議更精準，正在整理你提供的重點。
+        ${isOpinion ? '正在將案件脈絡整理為四大章節的法律分析報告。' : '為了讓後續建議更精準，正在整理你提供的重點。'}
       </div>
       <ul class="loading-steps">
+        ${isOpinion ? `
+        <li>① 整理案件事實與爭議焦點</li>
+        <li>② 彙整法律依據及初步分析</li>
+        <li>③ 整理建議行動與蒐證清單</li>` : `
         <li>① 讀取並理解你的敘述重點</li>
         <li>② 彙整需要確認的關鍵細節</li>
-        <li>③ 生成下一步要回答的重點問題</li>
+        <li>③ 生成下一步要回答的重點問題</li>`}
       </ul>
       <div id="loadingCountdown" class="loading-countdown" aria-live="polite"></div>
     </div>
@@ -423,10 +585,10 @@ function showLoading(message) {
   function updateCountdown() {
     if (!countdownEl) return;
     if (sec > 0) {
-      countdownEl.textContent = `約 ${sec} 秒內完成分析，請稍候…`;
+      countdownEl.textContent = `分析進度：${sec} 秒`;
       sec -= 1;
     } else {
-      countdownEl.textContent = "快好了，正在為你整理內容…";
+      countdownEl.textContent = "分析仍在進行，實際時間以系統回應為準…";
       try {
         if (window.__loadingCountdownTimer) {
           clearInterval(window.__loadingCountdownTimer);
@@ -447,6 +609,7 @@ function clearLoadingTimer() {
 }
 
 function hideLoading() {
+  stopInitialVoice();
   clearLoadingTimer();
   // 用於「顯示 overlay 前」避免 loading 狀態卡死（例如：外遇/不忠多路徑選擇）
   // 只在目前畫面確實是 loading 時，才把 UI 恢復成「初始輸入」狀態；避免影響既有流程。
@@ -457,7 +620,7 @@ function hideLoading() {
 
     stepContainer.innerHTML = `
       <label style="color:var(--primary)">請描述您的法律問題（例如：我買的房子交屋後發現漏水）</label>
-      <textarea id="initialQuestion" placeholder="請輸入" style="background:#ffffff;"></textarea>
+      ${initialQuestionInputMarkup()}
       <div class="encouragement">✍️ 請盡量具體描述，有助於後續問答準確</div>
 
       <div class="buttons" style="margin-top:20px;">
@@ -492,6 +655,7 @@ function showError(message) {
 }
 
 function renderScenarioStep() {
+  stopVoiceDictation(true);
   hideHeroHighlights();
 
   currentStep = 0;
@@ -695,6 +859,7 @@ renderCaseSummary();
 }
 
 function renderFollowupStep() {
+  stopVoiceDictation(true);
   clearLoadingTimer();
   const idx = currentStep - 1; // 0..2
   const item = followups[idx] || { q: "", options: [] };
@@ -733,18 +898,23 @@ const opts = (item.options.length ? item.options : ["（選項1）","（選項2�
         邏輯判斷層：${layerLabel(getLayerForFollowup(idx))}
       </span>
     </div>
-    <p style="font-size:20px; font-weight:bold; color:var(--primary); margin:0 0 12px;">${escapeHtml(item.q)}</p>
+    <p class="followup-question">${escapeHtml(item.q.replace(/\*\*|__/g, ""))}</p>
 
     <div class="opt-custom">
       <div style="font-weight:700; color:var(--primary); margin:16px 0 8px;">
         請選擇最接近實際情況的情境；選項僅供辨認，未必完全符合。若有不同或尚未確認的細節，請在這裡補充或更正。
       </div>
-      <textarea
-        id="customAnswer"
-        oninput="onCustomAnswerInput(${idx})"
-        placeholder="請輸入"
-        style="min-height:140px;"
-      >${escapeHtml(meta.customText || "")}</textarea>
+      <div class="voice-input-with-mic followup-input-with-mic">
+        <textarea
+          id="customAnswer"
+          oninput="onCustomAnswerInput(${idx})"
+          placeholder="請輸入...."
+          style="min-height:140px;"
+          aria-label="第 ${idx + 1} 題補充說明"
+        >${escapeHtml(meta.customText || "")}</textarea>
+        ${voiceButtonMarkup('followupVoiceButton','customAnswer')}
+      </div>
+      <div id="followupVoiceStatus" class="voice-input-status" role="status" aria-live="polite"></div>
       <div class="hint-mini">
         （你可以只輸入文字、只選情境，或兩者都填寫）
       </div>
@@ -775,6 +945,7 @@ function pickFollowupOption(qIndex, optIndex){
 }
 
 function nextStep() {
+  stopVoiceDictation(true);
   // ✅ 已取消「情境聚焦」：不再存在 currentStep === 0
 const idx = currentStep - 1;
   const ta = document.getElementById("customAnswer");
@@ -802,6 +973,7 @@ const idx = currentStep - 1;
 }
 
 function prevStep() {
+  stopVoiceDictation(true);
   if (currentStep === 1) {
     // 回到第一步（重新輸入）
     initFirstStep();
@@ -833,6 +1005,7 @@ async function generateFinalOpinion() {
 
 let opinionPending = false;
 async function continueGenerateOpinionAfterLine(){
+  stopVoiceDictation(true);
   if (opinionPending) return;
   opinionPending = true;
 
@@ -872,19 +1045,24 @@ async function continueGenerateOpinionAfterLine(){
     }
 
     clearLoadingTimer();
-    const formattedOpinion = formatOpinion(opinion);
+    window.__lastOpinionText = opinion;
+    const formattedOpinion = window.LawAIReport.render(opinion, {
+      initialQuestion: initialQuestionText,
+      detectedCaseType: detectedCaseType
+    });
     window.LawAIRuntime.track("ai_complete", "report");
 
     // Hide the auto-generated case summary panel for a cleaner final opinion
     const _csp = document.getElementById("caseSummaryPanel");
     if (_csp) { _csp.style.display = "none"; }
 
+    document.body.classList.add("report-mode");
     stepContainer.innerHTML = `
       <div id="opinionDocument">${formattedOpinion}</div>
-      <div class="buttons" style="margin-top:20px;">
-        <button onclick="downloadPDF()">📥 下載 PDF 版本</button>
-        <button class="cta-breath" onclick="sendToLawyer()">📨 免費發送律師諮詢</button>
-        <button onclick="confirmRestart()">📝 重新開始諮詢</button>
+      <div class="report-action-buttons" role="group" aria-label="法律意見書後續操作">
+        <button class="report-download" onclick="downloadPDF()"><span class="report-button-icon" aria-hidden="true">${window.LawAIReport.icon("pdf")}</span>下載 PDF 版本</button>
+        <button class="report-contact" onclick="sendToLawyer()"><span class="report-button-icon" aria-hidden="true">${window.LawAIReport.icon("mail")}</span>免費發送律師諮詢</button>
+        <button class="report-restart" onclick="confirmRestart()"><span class="report-button-icon" aria-hidden="true">${window.LawAIReport.icon("refresh")}</span>重新開始諮詢</button>
       </div>
     `;
 
@@ -935,6 +1113,15 @@ function formatOpinion(text) {
 }
 
 
+function printOpinionAsPDF() {
+  // 原生列印能保留中文字元與可選取文字；請選「另存為 PDF」。
+  // 在 GitHub Pages 預覽或缺少離線套件時仍可正常操作。
+  const report = document.getElementById('opinionDocument');
+  if (!report || !report.textContent.trim()) return;
+  try { window.print(); }
+  catch (error) { console.error('無法開啟瀏覽器 PDF 儲存視窗', error); }
+}
+
 let pdfPending = false;
 async function downloadPDF() {
   if (pdfPending) return;
@@ -943,8 +1130,10 @@ async function downloadPDF() {
     alert('請先完成法律意見書，再下載 PDF。');
     return;
   }
-  if (!window.jspdf || !window.html2canvas) {
-    alert('PDF 元件尚未載入完成，請稍後重試或重新整理頁面。');
+  // 直接下載需有 jsPDF 與 html2canvas；不具備時立即使用原生儲存 PDF。
+  // 避免使用者收到「缺少 PDF 匯出套件」而無法繼續。
+  if (!window.jspdf?.jsPDF || typeof window.html2canvas !== 'function') {
+    printOpinionAsPDF();
     return;
   }
   pdfPending = true;
@@ -994,11 +1183,11 @@ async function downloadPDF() {
       page++;
     }
     await doc.save('法律意見書.pdf', {returnPromise:true});
-    window.LawAIRuntime.track('pdf_download','report');
+    window.LawAIRuntime?.track?.('pdf_download','report');
   } catch (error) {
-    window.LawAIRuntime.track('pdf_error','report');
-    alert('PDF 匯出未完成，請稍後重試。');
-    console.error('PDF export failed');
+    window.LawAIRuntime?.track?.('pdf_error','report');
+    console.error('PDF 直接下載失敗，改用原生另存為 PDF', error);
+    printOpinionAsPDF();
   } finally {
     if (host) host.remove();
     pdfPending = false;
@@ -1075,6 +1264,12 @@ function goToLawyerFromPrompt() {
 }
 
 function openModal() {
+  __hasArmedSuggestScroll = false;
+  __hasShownSuggestPrompt = true;
+  window.__hasShownSuggestPrompt = true;
+  window.removeEventListener("scroll", handleSuggestScroll);
+  closeSuggestPrompt();
+  document.getElementById("lawyerModal").style.zIndex = "1005";
   document.getElementById("lawyerModal").style.display = "block";
   setupContactFormValidation();
 }
@@ -1170,13 +1365,8 @@ closeModal();
 document.getElementById("sendStatus").style.display = "block";
 document.getElementById("sendStatus").innerText = "📨 發送中，請稍候...";
 
-  const sections = document.querySelectorAll(".opinion-section");
-  let plainText = "";
-  sections.forEach(section => {
-    const title = section.querySelector("h3")?.innerText || "";
-    const content = section.querySelector("div")?.innerText || "";
-    plainText += `${title}\n${content}\n\n`;
-  });
+  // 寄送完整生成原文，不由視覺化表格反推文字，避免漏段落。
+  const plainText = (window.__lastOpinionText || document.getElementById('opinionDocument')?.innerText || '').trim();
 
   window.LawAIRuntime.request("https://flask-law-ai.onrender.com/api/email-text", {
     method: "POST",
