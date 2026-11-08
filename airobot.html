@@ -952,6 +952,253 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 </style>
+<style id="lawai-v4-guided-redesign">
+/* ===== LawAI V4 + V5 three-point refinement · 2026-11-09 ===== */
+:root{--lawai-ink:#102f42;--lawai-teal:#004b67;--lawai-gold:#d3a846;--lawai-bg:#f5faff;}
+html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{padding:0;background:#f3f9fc;}
+.chatbot-container{width:100%;max-width:1040px;height:100dvh;border-radius:0;min-height:0;}
+.chatbot-header{flex:0 0 auto;display:flex;flex-direction:row!important;align-items:center!important;gap:12px;
+  padding:13px 18px!important;background:linear-gradient(120deg,#053449,#004966 75%,#06344a)!important;
+  color:white;border-radius:0;box-shadow:0 3px 16px rgba(3,41,59,.14);z-index:12;}
+.logo-home-link{text-decoration:none;flex-shrink:0;display:flex;}
+.logo-container{width:46px!important;height:46px!important;border-radius:13px;background:linear-gradient(145deg,#006a94,#087fad)!important;
+ color:#e6b947!important;display:grid!important;place-items:center;font-size:30px;line-height:1;box-shadow:0 3px 9px rgba(0,0,0,.17);}
+.header-text{min-width:0;flex:1;color:#fff!important;text-align:left;}
+.header-title{font-size:clamp(17px,2vw,23px);font-weight:750;letter-spacing:.01em;line-height:1.2;white-space:nowrap;}
+.header-subtitle{display:block;font-size:12px;color:rgba(255,255,255,.83);margin-top:5px;line-height:1.35;white-space:nowrap;}
+.header-lawyer-link{display:flex;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;white-space:nowrap;
+ background:#f7f0e2;color:#164259;text-decoration:none;padding:11px 13px;border-radius:999px;font-weight:750;font-size:14px;}
+.header-lawyer-link:hover{background:white;}
+.header-menu-wrap{position:relative;flex:0 0 auto;}
+.header-more-btn{font-size:24px;color:white;background:none;border:0;min-width:36px;min-height:42px;cursor:pointer;}
+.header-menu{position:absolute;z-index:1002;right:0;top:100%;width:190px;background:white;color:#173e52;box-shadow:0 14px 30px rgba(0,36,55,.18);
+ padding:7px;border:1px solid #e5edf4;border-radius:14px;}
+.header-menu[hidden]{display:none!important;}
+.header-menu a,.header-menu button{display:block;width:100%;background:transparent;border:0;text-decoration:none;color:inherit;font-weight:600;
+ font-size:14px;text-align:left;border-radius:8px;padding:11px;cursor:pointer;}
+.header-menu a:hover,.header-menu button:hover{background:#eaf5fc;}
+.chat-window{padding:20px 19px 20px!important;min-height:0;gap:13px!important;background:#f3f9fc!important;overscroll-behavior:contain;
+ scroll-behavior:auto;}
+.message{box-shadow:0 3px 14px rgba(3,40,62,.06);line-height:1.7;}
+.message[hidden]{display:none!important;}
+.message.user-message{align-self:flex-end;background:#d8ebfa!important;color:#11384d!important;border-radius:18px 18px 5px 18px!important;
+ max-width:82%;font-weight:600;padding:12px 17px!important;border:none;}
+.user-message::before,.user-message::after{display:none!important;}
+.message.bot-message{margin-left:40px;width:calc(100% - 40px);max-width:790px;align-self:flex-start;
+ background:white;border:1px solid #e1eaf1;border-radius:20px!important;padding:16px 17px!important;overflow:visible;}
+.bot-message::before{content:'⚖'!important;position:absolute;top:4px;left:-42px;width:32px;height:32px;
+ display:grid;place-items:center;font-size:21px;color:#f2bb52;background:#075472;border:0!important;border-radius:50%;box-shadow:0 3px 8px rgba(0,0,0,.12);}
+.bot-message::after{display:none!important;}
+.bot-message .message-role{background:transparent!important;border-left:0!important;box-shadow:none!important;padding:0!important;
+ display:flex!important;gap:8px;margin:0 0 12px 0!important;font-weight:800;font-size:16px!important;color:#183b4b!important;max-width:none;}
+.ai-badge{background:#e0f1ff;color:#0b5574;border-radius:12px;padding:3px 8px;font-size:12px;font-weight:650;letter-spacing:0;}
+.message-content,.bot-answer{font-size:19px!important;line-height:1.68!important;font-weight:450;color:#182737;overflow-wrap:anywhere;}
+.user-message .message-content{color:#123a50;}
+.bot-answer{padding:0!important;}
+.bot-answer-extra[hidden]{display:none!important;}
+.bot-expand-btn{background:#e9f5fc;border:1px solid #cfe4f0;padding:10px 13px;border-radius:11px;margin-top:13px;
+ color:#005777;font-size:15px;font-weight:700;cursor:pointer;}
+.lawai-welcome-copy{font-size:18px;line-height:1.73;}
+.lawai-welcome-copy p{margin:0 0 13px;}
+.lawai-welcome-copy p:last-child{margin-bottom:0;}
+.welcome-friendly{color:#0c6587;font-weight:600;}
+.lawai-next-steps{margin-left:40px;align-self:flex-start;width:calc(100% - 40px);max-width:790px;padding:0;animation:fadeIn .3s ease;}
+.lawai-next-title{font-size:16px!important;color:#466479;margin:4px 3px 11px;font-weight:500;line-height:1.5;}
+.lawai-choice-list{display:flex;flex-direction:column;gap:8px;}
+.lawai-choice-card{appearance:none;width:100%;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;
+ border:1px solid #d1dce6;background:#fff;box-shadow:0 1px 4px rgba(0,40,66,.03);border-radius:13px;padding:11px 12px;
+ color:#173446;font-size:17px!important;font-weight:620!important;line-height:1.45;min-height:56px;transition:.15s ease;white-space:normal;}
+.lawai-choice-card:hover,.lawai-choice-card:focus-visible{background:#edf7ff;border-color:#6dadd3;outline:2px solid transparent;transform:none;}
+.choice-icon{display:grid;place-items:center;border-radius:50%;background:#e4f3ff;color:#0874bd;flex:0 0 38px;height:38px;font-size:19px;font-weight:750;}
+.choice-1{background:#fff1e0;color:#b47731;}.choice-2{background:#fff0f0;color:#b94343;}.choice-3{background:#f2eafb;color:#7954a0;}
+.choice-arrow{font-size:29px;line-height:1;color:#4b6575;margin-left:auto;flex-shrink:0;}
+.chat-input-shell{flex:0 0 auto;padding:10px 12px max(12px,env(safe-area-inset-bottom));z-index:20;background:rgba(255,255,255,.96);
+ border-top:1px solid #e6ecf2;box-shadow:0 -5px 20px rgba(20,70,100,.06);}
+.chat-input-area{position:relative!important;bottom:auto!important;left:auto!important;width:100%!important;display:flex!important;flex-direction:row!important;
+ align-items:center!important;gap:10px!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;}
+.input-with-mic{position:relative;flex:1;display:flex;align-items:center;min-width:0;}
+.input-with-mic .chat-input{resize:none!important;width:100%!important;min-height:58px;max-height:140px;line-height:1.45!important;
+ font-size:17px!important;padding:15px 58px 15px 16px!important;border:1px solid #cbd6df!important;border-radius:30px!important;box-shadow:0 1px 4px rgba(0,0,0,.04);
+ background:#fff;color:#132e40;}
+.chat-input::placeholder{color:#768593;opacity:1;}
+#voice-btn{position:absolute!important;top:50%!important;right:7px!important;transform:translateY(-50%)!important;z-index:2;
+ display:grid!important;place-items:center;background:#e2f2fe!important;color:#00658b!important;border:none;width:43px!important;height:43px!important;
+ border-radius:50%!important;padding:0!important;margin:0!important;box-shadow:none!important;font-size:23px;cursor:pointer;}
+#voice-btn.is-listening{background:#ffe6df!important;color:#a5301c!important;animation:pulseMic 1.3s infinite;}
+@keyframes pulseMic{50%{box-shadow:0 0 0 8px rgba(228,85,59,.14)!important;}}
+.chat-input-area .send-button{flex:0 0 53px!important;height:53px!important;width:53px!important;border-radius:50%!important;
+ display:grid!important;place-items:center;padding:0!important;margin:0!important;background:linear-gradient(145deg,#005775,#00354e)!important;
+ box-shadow:0 4px 10px rgba(0,57,84,.18);cursor:pointer;}
+.send-arrow{display:block!important;font-size:22px;line-height:1;color:#fff;transform:rotate(-25deg);}
+.send-button:disabled,#voice-btn:disabled{opacity:.46;cursor:not-allowed;pointer-events:none;}
+.typing-indicator{font-size:15px;padding:12px;margin-left:40px;}
+.typing-text{font-size:15px;}
+.lawai-lawyer-cta,.lawai-case-summary,.lawai-deadline-alert{margin-left:40px;max-width:790px;width:calc(100% - 40px)!important;box-sizing:border-box;}
+.lawai-lawyer-cta{background:#fff9ed;border:1px solid #e9d9b1;border-radius:15px;border-left:3px solid #cfac58;}
+.lawai-quick-btn:not(.lawai-choice-card){font-size:15px;}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
+@media(max-width:768px){
+ .chatbot-container{height:100dvh!important;min-height:0;}
+ .chatbot-header{padding:11px 12px!important;gap:8px!important;}
+ .logo-container{width:42px!important;height:42px!important;font-size:27px;}
+ .header-title{font-size:17px!important;}
+ .header-subtitle{font-size:11px;margin-top:3px;}
+ .header-lawyer-link{font-size:12px;padding:9px 10px;}
+ .header-more-btn{font-size:21px;min-width:29px;}
+ .chat-window{padding:16px 12px 18px!important;}
+ .message.bot-message{margin-left:36px;width:calc(100% - 36px);padding:14px 14px!important;}
+ .bot-message::before{left:-37px;width:29px;height:29px;font-size:19px;}
+ .message.user-message{max-width:89%;padding:12px 15px!important;}
+ .message-content,.bot-answer{font-size:19px!important;line-height:1.64!important;}
+ .lawai-next-steps{margin-left:36px;width:calc(100% - 36px);}
+ .lawai-choice-card{font-size:17px!important;min-height:58px;padding:10px;}
+ .choice-icon{flex-basis:36px;height:36px;font-size:18px;}
+ .chat-input-shell{padding:9px 10px max(10px,env(safe-area-inset-bottom));}
+ .lawai-case-summary,.lawai-lawyer-cta,.lawai-deadline-alert{margin-left:36px;width:calc(100% - 36px)!important;}
+}
+@media(max-width:400px){
+ .chatbot-header{padding:10px 9px!important;gap:6px!important;}
+ .header-title{font-size:15.8px!important;letter-spacing:-.02em;}
+ .header-subtitle{font-size:10px;}
+ .header-lawyer-link{font-size:11px;padding:9px 8px;}
+ .logo-container{width:38px!important;height:38px!important;font-size:24px;}
+ .header-more-btn{min-width:26px;font-size:20px;}
+ .message-content,.bot-answer{font-size:19px!important;}
+ .lawai-choice-card{font-size:17px!important;}
+}
+
+.bot-answer p{margin:0 0 11px;line-height:1.6;}
+.bot-answer p:last-child{margin-bottom:0;}
+.bot-answer .lawai-key-point{display:flex;align-items:flex-start;gap:8px;background:#fff5e4;
+  border-radius:14px;padding:12px;margin:11px 0 12px;color:#064663;}
+.bot-answer .lawai-key-point p{color:#064663;font-weight:700;font-size:.95em;line-height:1.5;margin:0;}
+.lawai-key-icon{font-size:20px;flex-shrink:0;line-height:1.2;}
+.bot-answer .lawai-follow-up-question{color:#084767;font-weight:750;}
+
+@media(prefers-reduced-motion:reduce){.message,.lawai-next-steps{animation:none!important;}#voice-btn.is-listening{animation:none!important;}}
+
+/* ===== LawAI V5 · 精簡提示框、置中麥克風、無進站語音彈窗 ===== */
+/* 取消所有提醒／轉介卡片側邊強調條，保留輕薄、四周一致的邊框。 */
+.lawai-deadline-alert {
+    border: 1px solid #EBCB80 !important;
+    border-left: 1px solid #EBCB80 !important;
+    box-shadow: none !important;
+}
+.lawai-lawyer-cta {
+    border: 1px solid #E9D9B1 !important;
+    border-left: 1px solid #E9D9B1 !important;
+    box-shadow: none !important;
+}
+.lawai-case-summary {
+    border: 1px solid #D6E4ED !important;
+    border-left: 1px solid #D6E4ED !important;
+    box-shadow: none !important;
+}
+.bot-prefix,.ad-footer {border-left:0!important;}
+.bot-message .message-role{border-left:0!important;}
+/* 改回清楚、可縮放的麥克風造型，向左微移，與輸入框邊界保持自然留白。 */
+#voice-btn {
+    right: 19px !important;
+    width: 43px !important;
+    height: 43px !important;
+    border-radius: 50% !important;
+    background: #F4F6F8 !important;
+    color: #07546D !important;
+    border: 1px solid #E2E7EA !important;
+    box-shadow: 0 2px 7px rgba(13,44,59,.13) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+#voice-btn .microphone-icon {display:block;width:25px;height:25px;flex:none;}
+#voice-btn.is-listening {background:#FFF0EC!important;color:#A5301C!important;border-color:#F1C8BA!important;}
+.input-with-mic .chat-input {padding-right:82px!important;}
+/* 語音狀態僅在實際點擊麥克風時出現，不製作初始彈窗。 */
+.voice-status {margin:7px 7px 0;color:#456B7E;font-size:13px;line-height:1.5;}
+.voice-status[hidden]{display:none!important;}
+@media(max-width:400px){#voice-btn{right:18px!important;}}
+
+/* ===== LawAI V6 · 2026-11-09 · 錄音狀態 / 免重複授權提示 / 可關閉小視窗 ===== */
+.voice-tip{display:flex;align-items:center;gap:11px;position:relative;margin:0 0 10px;
+  padding:9px 10px 9px 12px;background:#edf7fd;border:1px solid #d7e8f3;border-radius:16px;
+  color:#143d59;box-shadow:0 1px 6px rgba(0,60,90,.04);}
+.voice-tip[hidden]{display:none!important;}
+.voice-tip-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;
+  color:#fff;background:#076c90;border-radius:50%;}
+.voice-tip-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:4px;line-height:1.43;}
+.voice-tip-copy strong{font-size:15px;line-height:1.4;font-weight:730;color:#173f57;}
+.voice-tip-copy span{font-size:12px;color:#54768a;line-height:1.4;}
+.voice-tip-close{display:grid;place-items:center;align-self:flex-start;flex:0 0 46px;width:46px;height:46px;
+  margin:-5px -4px 0 0;padding:0;border:0;border-radius:50%;background:transparent;color:#42697e;cursor:pointer;}
+.voice-tip-close:hover,.voice-tip-close:focus-visible{background:#dbeef9;color:#003e5d;outline-offset:2px;}
+.voice-tip-close svg{width:27px;height:27px;}
+.mic-overlay{position:fixed!important;z-index:1005!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;
+  transform:translate(-50%,-50%)!important;display:flex!important;align-items:center!important;justify-content:center;
+  gap:13px;padding:20px 26px!important;border-radius:22px!important;background:#0a4a65!important;
+  color:#fff!important;box-shadow:0 10px 28px rgba(2,40,62,.23)!important;animation:none!important;
+  pointer-events:none;white-space:nowrap;}
+.mic-overlay[hidden]{display:none!important;}
+.mic-overlay svg{flex:0 0 35px;color:#ffcd79;}
+.mic-overlay strong{font-size:20px;font-weight:720;letter-spacing:.01em;}
+.mic-overlay::after{content:none!important;}
+/* 提示與狀態不擠壓已微調的麥克風位置；右側留白延續 V5。 */
+@media(max-width:768px){
+ .voice-tip{margin-bottom:9px;padding:8px 9px 8px 11px;gap:9px;}
+ .voice-tip-copy strong{font-size:14px;}
+ .voice-tip-copy span{font-size:11.5px;}
+ .voice-tip-close{flex-basis:46px;width:46px;height:46px;}
+ .mic-overlay{padding:17px 22px!important;gap:12px;}
+ .mic-overlay strong{font-size:19px;}
+}
+@media(max-width:370px){.voice-tip-copy strong{font-size:13.2px;}.voice-tip-copy span{font-size:11px;}}
+
+
+/* ===== LawAI V7 · classic balance icon + manual-stop continuous speech ===== */
+.logo-container svg {width:29px;height:29px;display:block;color:#F2BD54;flex:none;}
+.bot-message::before {
+  content:'' !important;
+  background-color:#075472 !important;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23F2BD54%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203v17M4.5%206.5h15M8%2021h8%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%223%22%20r%3D%221%22%20fill%3D%22%23F2BD54%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M5%207v7.5M19%207v7.5M1.75%2014.5h6.5a3.25%203.25%200%200%201-6.5%200ZM15.75%2014.5h6.5a3.25%203.25%200%200%201-6.5%200Z%22%2F%3E%3C%2Fsvg%3E") !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+  background-size:23px 23px !important;
+}
+#voice-btn .voice-stop-icon {width:21px;height:21px;display:block;flex:none;}
+#voice-btn.is-listening {background:#FCE7E2!important;color:#9B261B!important;border:1px solid #E8ABA1!important;}
+.mic-overlay{
+  pointer-events:auto!important;white-space:normal!important;
+  display:flex!important;gap:13px!important;
+  width:min(92vw,360px)!important;
+  max-width:360px!important;
+  padding:16px 18px!important;
+}
+.mic-overlay .voice-recording-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;}
+.mic-overlay .voice-recording-copy strong{font-size:17px!important;line-height:1.25;}
+.mic-overlay .voice-recording-copy small{font-size:12px;line-height:1.35;white-space:normal;color:#DDEDF3;}
+.mic-overlay .voice-stop-btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  flex:0 0 auto;min-height:45px;padding:0 11px;
+  border:1px solid rgba(255,255,255,.45);border-radius:12px;
+  font-size:15px;line-height:1;color:white;background:#A53629;
+  font-weight:700;cursor:pointer;touch-action:manipulation;
+}
+.mic-overlay .voice-stop-btn:hover,.mic-overlay .voice-stop-btn:focus-visible{background:#C54336;outline:2px solid #fff;outline-offset:2px;}
+.mic-overlay .voice-stop-btn svg{width:18px;height:18px;flex:none;color:#fff;}
+.mic-overlay .voice-stop-btn[disabled]{opacity:.55;cursor:wait;}
+.voice-status{font-size:13px;line-height:1.45;}
+@media(max-width:400px){
+ .mic-overlay{gap:9px!important;padding:12px 13px!important;width:min(94vw,350px)!important;}
+ .mic-overlay .voice-recording-copy strong{font-size:16px!important;}
+ .mic-overlay .voice-recording-copy small{font-size:11px!important;}
+ .mic-overlay .voice-stop-btn{padding:0 9px;min-height:42px;}
+ .logo-container svg{width:26px;height:26px;}
+ .bot-message::before{background-size:20px 20px!important;}
+}
+
+</style>
 
 <meta name="description" content="LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。"/>
 <link rel="canonical" href="https://www.lawfavor.com/airobot.html"/>
@@ -965,8 +1212,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.lawfavor.com/airobot.html#page","url":"https://www.lawfavor.com/airobot.html","name":"⚖️ LawAI法詢 客服平台","description":"LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。","inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"⚖️ LawAI法詢 客服平台","item":"https://www.lawfavor.com/airobot.html"}]}]}</script>
-<script src="lawai_config.js" defer></script>
-<script src="lawai_runtime.js" defer data-page="p003"></script>
+<script>/* Existing Google tags are deliberately retained. Map these dataLayer events in GTM. */
+window.LAWAI_ANALYTICS = Object.assign({enabled: true}, window.LAWAI_ANALYTICS || {});</script>
+<script data-page="p003">/* LawAI shared request and opt-in analytics helpers. No dependencies. */
+(function () {
+  'use strict';
+  if (window.LawAIRuntime) return;
+  const script = document.currentScript;
+  const pageId = script ? script.getAttribute('data-page') : '';
+  const events = new Set(['cta_click', 'contact_click', 'ai_start', 'ai_complete',
+    'task_success', 'appointment_success', 'lawyer_send_success', 'pdf_download', 'pdf_error']);
+  const flows = new Set(['navigation', 'telephone', 'line', 'email', 'chat', 'report', 'task', 'appointment']);
+  function track(eventName, flow) {
+    if (!window.LAWAI_ANALYTICS || window.LAWAI_ANALYTICS.enabled !== true) return;
+    if (!events.has(eventName) || !flows.has(flow)) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event: 'lawai_' + eventName, lawai_flow: flow, lawai_page: pageId});
+  }
+  async function request(url, options, timeoutMs) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs || 120000);
+    try {
+      const response = await fetch(url, Object.assign({}, options, {signal: controller.signal}));
+      const body = await response.arrayBuffer();
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return new Response(body, {status: response.status, statusText: response.statusText, headers: response.headers});
+    } catch (error) {
+      if (error && error.name === 'AbortError') throw new Error('連線逾時，請稍後確認處理結果；請勿連續重複送出。');
+      throw error;
+    } finally { clearTimeout(timeout); }
+  }
+  window.LawAIRuntime = Object.freeze({request, track});
+  document.addEventListener('click', function (event) {
+    const a = event.target.closest && event.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    if (/^tel:/i.test(href)) track('contact_click', 'telephone');
+    else if (/^mailto:/i.test(href)) track('contact_click', 'email');
+    else if (/^https:\/\/(?:line\.me|page\.line\.me)\//i.test(href)) track('contact_click', 'line');
+    else if (a.matches('.main-ai-btn,.feature-link,.cta-button,.nav-card')) track('cta_click', 'navigation');
+  });
+  document.addEventListener('keydown', function (event) {
+    const node = event.target;
+    if ((event.key === 'Enter' || event.key === ' ') && node.matches && node.matches('#interactive-flowchart .node')) {
+      event.preventDefault(); node.click();
+    }
+  });
+}());</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -975,19 +1267,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <div class="chatbot-container">
-<div class="chatbot-header">
-<a href="index.html" style="text-decoration: none;"><div class="logo-container">
-<i class="fas fa-balance-scale">
-</i>
-</div></a>
-<div class="header-text" style="font-size: 1.15rem; font-weight: 600; color: white;">
-<div>
-      LawAI法詢 客服平台
-     </div>
-</div>
-<button id="clear-history-btn" style="margin-left:auto; background:#ffffff; color:#004B6B; border:1px solid #004B6B; padding:6px 12px; border-radius:8px; font-weight:600; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-     清除紀錄
-    </button>
+<div class="chatbot-header" role="banner">
+  <a href="https://www.lawfavor.com/" class="logo-home-link" aria-label="返回 LawAI 首頁"><span class="logo-container" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v17M4.5 6.5h15M8 21h8"/><circle cx="12" cy="3" r="1" fill="currentColor" stroke="none"/><path d="M5 7v7.5M19 7v7.5M1.75 14.5h6.5a3.25 3.25 0 0 1-6.5 0ZM15.75 14.5h6.5a3.25 3.25 0 0 1-6.5 0Z"/></svg></span></a>
+  <div class="header-text">
+    <div class="header-title">LawAI 法詢客服平台</div>
+    <div class="header-subtitle">不需懂法律・用對話獲得專業建議</div>
+  </div>
+  <a class="header-lawyer-link" href="https://www.lawfavor.com/lawreserve.html" target="_blank" rel="noopener"><span aria-hidden="true">♙</span> 預約律師</a>
+  <div class="header-menu-wrap">
+    <button type="button" id="header-more-btn" class="header-more-btn" aria-label="更多選項" aria-controls="header-menu" aria-expanded="false">☰</button>
+    <div class="header-menu" id="header-menu" hidden>
+      <button type="button" id="clear-history-btn">清除對話紀錄</button>
+      <a href="https://www.lawfavor.com/">返回 LawAI 首頁</a>
+      <a href="https://www.lawfavor.com/lawreserve.html" target="_blank" rel="noopener">預約真人律師</a>
+    </div>
+  </div>
 </div>
 <div class="chatbot-disclaimer">
 <div class="disclaimer-icon">
@@ -1009,20 +1303,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="message-content">
 <div class="bot-answer">
        <div class="lawai-welcome-copy">
-          <strong>您好，我是 LawAI 法詢。</strong><br/>
-          你可以直接告訴我「發生什麼事」，不需要先知道法律名稱。<br/>
-          我會先幫你整理事實、法律問題、證據與下一步。
-          <div class="lawai-start-actions" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
-            <button type="button" class="lawai-quick-btn" data-prompt="有人欠我錢，我想知道可以怎麼處理">有人欠我錢</button>
-            <button type="button" class="lawai-quick-btn" data-prompt="我被告了，想先了解接下來應該注意什麼">我被告了</button>
-            <button type="button" class="lawai-quick-btn" data-prompt="我有家庭或離婚相關法律問題">家庭／離婚問題</button>
-            <button type="button" class="lawai-quick-btn" data-prompt="我有其他法律問題，請引導我說明案情">其他法律問題</button>
-          </div>
-        </div>
-      </div>
+  <p><strong>你好，我是 LawAI 法詢。</strong></p>
+  <p>你可以像聊天一樣，直接說說發生了什麼事，不需要先知道法律名稱。</p>
+  <p>我會先聽你說，再一步一步釐清問題、證據與可能的處理方式。</p>
 </div>
 </div>
-<div id="lawai-ad-banner" style="display:none; background:#FFF9E6; border-left:5px solid #D4AF37; padding:18px 20px; margin:20px; border-radius:12px; font-size:1rem; line-height:1.7; box-shadow: 0 4px 10px rgba(0,0,0,0.05); color:#333;">
+</div>
+</div>
+<div id="lawai-ad-banner" style="display:none; background:#FFF9E6; border:1px solid #E9D9B1; padding:18px 20px; margin:20px; border-radius:12px; font-size:1rem; line-height:1.7; box-shadow: 0 4px 10px rgba(0,0,0,0.05); color:#333;">
 <strong>🎯 法律問題不知道從哪開始？</strong><br/>
   LawAI法詢，給你第一步的信賴依據。<br/><br/>
   📌 想請律師但怕流程複雜、費用不明？<br/>
@@ -1035,28 +1323,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   📍 <a href="https://www.lawfavor.com/" style="color:#004B6B;" target="_blank" rel="noopener">https://www.lawfavor.com/</a>
 </div>
 </div>
-<div class="chat-input-area" style="display: flex; gap: 10px; align-items: flex-end;; border-radius: 22px; overflow: hidden; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
-<div class="input-with-mic" style="position: relative; flex: 1; display: flex; align-items: center;">
-<textarea autocomplete="off" class="chat-input" id="user-input" placeholder="請輸入您的法律問題..." style="border-radius: 18px;"></textarea>
-<button id="voice-btn" style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%); background: none; border: none; cursor: pointer; z-index: 10;" title="語音輸入">
-<i class="fas fa-microphone" style="font-size: 20px; color: #004B6B;">
-</i>
-</button>
+<div class="chat-input-shell" id="chat-input-shell">
+  <!-- 可關閉的語音提示。關閉後僅記錄「提示已關閉」，不保存或變更瀏覽器的麥克風權限。 -->
+  <div class="voice-tip" id="voice-tip" role="note">
+    <span class="voice-tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor"/><path d="M6.1 10.6v1.25a5.9 5.9 0 0 0 11.8 0V10.6M12 17.8V22M8.2 22h7.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="voice-tip-copy">
+      <strong>不方便打字？點一下麥克風，直接說出你的問題。</strong>
+      <span id="voice-permission-help">首次授權請選「使用網站期間允許」，之後即可直接使用。</span>
+    </div>
+    <button type="button" class="voice-tip-close" id="voice-tip-close" aria-label="關閉語音操作提示" title="關閉提示"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="chat-input-area">
+    <div class="input-with-mic">
+      <label class="visually-hidden" for="user-input">輸入法律問題</label>
+      <textarea autocomplete="off" class="chat-input" id="user-input" rows="2" placeholder="輸入或說出你的法律問題…"></textarea>
+      <button id="voice-btn" type="button" class="voice-button" aria-label="開始語音輸入" title="點擊麥克風開始語音輸入，辨識後確認文字再送出"><svg class="microphone-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor"/><path d="M6.1 10.6v1.25a5.9 5.9 0 0 0 11.8 0V10.6M12 17.8V22M8.2 22h7.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <button class="send-button" id="send-btn" type="button" aria-label="送出法律問題"><span class="visually-hidden">送出</span><span class="send-arrow" aria-hidden="true">➤</span></button>
+  </div>
+  <div id="voice-status" class="voice-status" role="status" aria-live="polite" hidden></div>
 </div>
-<button class="send-button" id="send-btn">
-<span>
-      送出
-     </span>
-<i class="fas fa-paper-plane">
-</i>
-</button>
+<!-- 只有偵測到語音辨識實際開始後，才顯示「正在聆聽」標示。 -->
+<div id="mic-overlay" class="mic-overlay" role="status" aria-live="polite" aria-label="正在聆聽" hidden>
+  <svg viewBox="0 0 24 24" width="35" height="35" fill="none" aria-hidden="true" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor"/><path d="M6.1 10.6v1.25a5.9 5.9 0 0 0 11.8 0V10.6M12 17.8V22M8.2 22h7.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="voice-recording-copy"><strong id="voice-recording-headline">正在聆聽…</strong><small id="voice-recording-subtitle">說完後，請按「停止」結束</small></span>
+  <button type="button" class="voice-stop-btn" id="voice-stop-btn" aria-label="停止語音輸入"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>停止</button>
 </div>
-</div>
-<div class="mic-overlay" id="mic-overlay">
-<i class="fas fa-microphone">
-</i>
-</div>
-
 
 <script>
 // === StorageUtil: 使用 localStorage（含「每日重置」）＋ 瀏覽器指紋前綴，避免不同容器誤共用 ===
@@ -1168,13 +1460,14 @@ function lawaiSystemPrompt() {
         content: `你是「LawAI法詢」法律資訊助手，服務台灣使用者。
 1) 用台灣法律用語，清楚、溫和、具體；不保證勝訴，不把一般資訊冒充最終個案法律意見。
 2) 依「案件記憶」與最近對話理解事實、程序、目標、證據及期限；若內容衝突，以使用者最新陳述為準。
-3) 明確問題先給結論，再說判斷重點與下一步；一般約180～300字。資訊不足時最多追問2個真正影響判斷的問題。
+3) 採用循序漸進、像真人交談的模式。一般回覆約60～120個中文字，最多2～3個短段；先自然接住使用者情緒，清楚回答最重要的一點，再只問1個關鍵問題。不要一次講完全部法律分析、羅列過長的法規或程序，也不要重複使用者說過的話。使用者要求詳細說明、案件整理、法律依據時，才適度展開。
 4) 涉及法院、地檢署、警察通知、判決、裁定、支付命令、不起訴、傳票、送達、上訴、抗告、再議或答辯期限時，先提醒可能有程序／法定期限，並確認文件名稱及收到／送達日期；資料不足不要武斷算期限。
 5) 「整理我的案件」：案件類型／已知事實／證據／主要法律問題／尚需確認／下一步；「整理證據」：已知證據／用途／待補資料；「查看法律依據」：列最相關台灣法規方向，不確定條號就不要虛構。
 6) 使用者詢問本所哪位律師適合時，可依公開分工具體媒合：家事／離婚→廖婉茹；刑事→林原弘（必要時劉添錫）；土地／共有物→劉添錫；一般民商事／契約／公司／股東→張育銜；重大複雜、跨國、企業治理或高額債務→李欣庭。優先推薦1位，必要時1位備選並簡述理由；不得宣稱一定最好或保證結果，也不要導向外部搜尋。
 7) 使用者想找、請、預約或聯絡律師時，仍先回答目前法律問題；聯絡資訊由前端顯示。
 8) 非法律問題簡短說明本工具以法律資訊為主；涉及立即人身危險時優先提醒先確保安全並尋求即時協助。
-9) 不輸出HTML，以一般文字回答。`
+9) 不輸出HTML，以一般文字回答。回答末尾只提出1個自然、具體的追問，不要自己列出選單。前端會根據目前情境提供可點選的後續選項，但使用者仍可自由回答。
+10) 如為家事爭議，不因反覆提及離婚就逕認已符合法定離婚要件。注意辨識家暴、脅迫、人身安全與涉及子女的急迫情形。避免猜測當事人的心理或過度保證；需要律師評估時提醒可由真人協助。`
     };
 }
 
@@ -1325,7 +1618,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatWindow = document.getElementById('chat-window');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
-    const micOverlay = document.getElementById('mic-overlay');
     const voiceBtn = document.getElementById('voice-btn');
     const clearBtn = document.getElementById('clear-history-btn');
     let isSending = false;
@@ -1340,10 +1632,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function formatBotText(text) {
-        const safe = escapeHTML(text);
-        return safe
-            .replace(/\n{2,}/g, '<br/><br/>')
-            .replace(/\n/g, '<br/>');
+        const parts = String(text || '').split(/\n\s*\n/).filter(p => p.trim());
+        return parts.map((paragraph, index) => {
+            const safe = escapeHTML(paragraph).replace(/\n/g, '<br/>');
+            const emphasis = /^(?:先告訴你|重要的是|請先留意|需要注意|首先要注意)/.test(paragraph.trim());
+            if (emphasis) return `<div class="lawai-key-point"><span class="lawai-key-icon" aria-hidden="true">💡</span><p>${safe}</p></div>`;
+            const isLast = index === parts.length - 1 && /[？?]$/.test(paragraph.trim());
+            return `<p class="${isLast ? 'lawai-follow-up-question' : 'lawai-answer-paragraph'}">${safe}</p>`;
+        }).join('');
+    }
+
+    function formatProgressiveAnswer(text) {
+        const value = String(text || '').trim();
+        // Keep all information available. Important deadline/safety guidance is not collapsed.
+        const critical = /(?:緊急|人身安全|立即報警|保護令|家暴|送達期限|上訴期限)/.test(value);
+        if (value.length <= 245 || critical) return `<div class="bot-answer">${formatBotText(value)}</div>`;
+        let cut = 175;
+        const slice = value.slice(115, 215);
+        const separators = ['。','？','！','\n'];
+        let last = -1;
+        separators.forEach(p => { const v = slice.lastIndexOf(p); if (v > last) last = v; });
+        if (last >= 0) cut = 115 + last + 1;
+        return `<div class="bot-answer bot-answer-preview">${formatBotText(value.slice(0,cut))}</div>`+
+               `<div class="bot-answer bot-answer-extra" hidden>${formatBotText(value.slice(cut))}</div>`+
+               `<button type="button" class="bot-expand-btn" aria-expanded="false">閱讀完整說明 <span aria-hidden="true">⌄</span></button>`;
     }
 
     function lockUIIfNeeded() {
@@ -1359,20 +1671,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${role}-message`;
         if (role === 'bot') {
-            messageDiv.innerHTML = `
-                <div class="message-role">
-                    <i class="fas fa-balance-scale" style="color: #D4AF37;"></i> LawAI法詢 客服
-                </div>
-                <div class="message-content">
-                    <div class="bot-answer">${formatBotText(text)}</div>
-                </div>`;
+            messageDiv.innerHTML = `<div class="message-role"><span>LawAI 法詢</span><span class="ai-badge">AI 法律助理</span></div><div class="message-content">${formatProgressiveAnswer(text)}</div>`;
         } else {
-            messageDiv.innerHTML = `
-                <div class="message-role"><i class="fas fa-user"></i> 您</div>
-                <div class="message-content">${escapeHTML(text)}</div>`;
+            messageDiv.innerHTML = `<div class="message-content">${escapeHTML(text)}</div>`;
         }
         chatWindow.appendChild(messageDiv);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+        return messageDiv;
     }
 
     function showTypingIndicator() {
@@ -1463,26 +1767,60 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWindow.appendChild(div);
     }
 
+    function guidedOptions(question) {
+        const all = userQuestions.join(' ');
+        const type = classifyCase(question + ' ' + all);
+        if (type === '家事／離婚') {
+            if (/離婚|老婆|老公|配偶|妻子|丈夫/.test(all) && /要求|一直|道歉|生氣|不想|怎麼辦/.test(all)) {
+                if (/吵架、生氣時|生氣時才|吵架才/.test(question))
+                    return ['我希望挽回關係，該怎麼溝通？','她現在有沒有可能提告離婚？','我想知道不同意離婚的法律效果'];
+                if (/認真|辦理離婚/.test(question))
+                    return ['她有提過要簽離婚協議書','她說要去法院提起離婚訴訟','我想先知道自己有哪些權利'];
+                if (/道歉|讓步/.test(question))
+                    return ['她要求我道歉的原因是什麼？','我擔心她一直用離婚威脅我','這樣的衝突可能構成離婚原因嗎？'];
+                return [
+                    '吵架、生氣時才會說要離婚',
+                    '她已經很認真地要求辦理離婚',
+                    '她常拿離婚要求我道歉或讓步',
+                    '我也不確定她是不是真的想離婚'
+                ];
+            }
+            return ['我想知道離婚需要哪些條件','我們有小孩，要注意什麼？','如何整理對話與其他證據？'];
+        }
+        const cases = {
+            '刑事': ['我已收到警局或法院通知','我需要先準備哪些資料？','我想確認目前的程序和期限'],
+            '債務／借款': ['我有匯款或對話紀錄','對方一直不還錢，我能怎麼做？','我需要準備哪些證據？'],
+            '車禍／損害賠償': ['我想先釐清事故責任','可以請求哪些損害賠償？','我要準備哪些事故證據？'],
+            '勞資': ['雇主沒有依法給付薪資','我被解僱或要求離職','我想知道可以保留哪些證據'],
+            '契約／消費': ['我想先確認契約條款','對方可能違約了','我想知道解除或退款的條件'],
+            '不動產': ['我有房東或房客的問題','我遇到土地或共有物爭議','我需要保留哪些資料？'],
+            '民事爭議': ['我想先弄清楚對方的責任','我手上有哪些證據能用？','要走法律程序該怎麼開始？'],
+            '法律問題待確認': ['我想再多說一些事情經過','你先幫我釐清問題','我想了解接下來怎麼處理']
+        };
+        return cases[type] || cases['法律問題待確認'];
+    }
+
     function appendNextSteps(question) {
         const old = chatWindow.querySelector('.lawai-next-steps');
         if (old) old.remove();
-        const type = classifyCase(question + ' ' + userQuestions.join(' '));
-        const map = {
-            '家事／離婚': ['我想了解離婚條件','子女親權怎麼判斷','扶養費怎麼處理'],
-            '刑事': ['我現在程序到哪裡','我需要準備哪些證據','收到通知要注意什麼'],
-            '債務／借款': ['沒有借據可以告嗎','我有哪些證據可用','下一步怎麼催討'],
-            '車禍／損害賠償': ['責任比例怎麼判斷','可以求償哪些項目','保險理賠要注意什麼'],
-            '勞資': ['可以請求哪些項目','要準備哪些證據','申訴或訴訟怎麼走'],
-            '契約／消費': ['契約是否有效','可以解除或退款嗎','違約可以怎麼處理'],
-            '不動產': ['我的權利義務是什麼','需要保留哪些證據','下一步程序怎麼走'],
-            '民事爭議': ['可以主張什麼','要準備哪些證據','訴訟程序怎麼走'],
-            '法律問題待確認': ['請問我還需要補充什麼','幫我整理目前重點','下一步我該做什麼']
-        };
-        const items = map[type] || map['法律問題待確認'];
+        const items = guidedOptions(question).slice(0,4);
+        const icons = ['💬','▤','⚠','❔'];
         const div = document.createElement('div');
         div.className = 'lawai-next-steps';
-        div.innerHTML = `<div class="lawai-next-title">接下來你可以直接問：</div><div class="lawai-chip-row">${items.map(x => `<button type="button" class="lawai-quick-btn" data-prompt="${escapeHTML(x)}">${escapeHTML(x)}</button>`).join('')}<button type="button" class="lawai-quick-btn" data-action="lawyer">找真人律師</button></div>`;
+        div.innerHTML = `<p class="lawai-next-title">你可以選擇下面一項，也可以繼續直接說：</p>` +
+            `<div class="lawai-choice-list">${items.map((x,i) =>
+                `<button type="button" class="lawai-quick-btn lawai-choice-card" data-prompt="${escapeHTML(x)}"><span class="choice-icon choice-${i}" aria-hidden="true">${icons[i]}</span><span>${escapeHTML(x)}</span><span class="choice-arrow" aria-hidden="true">›</span></button>`
+            ).join('')}</div>`;
         chatWindow.appendChild(div);
+    }
+
+    function anchorToUserQuestion(element) {
+        if (!element) return;
+        requestAnimationFrame(() => {
+            const windowRect = chatWindow.getBoundingClientRect();
+            const bubbleRect = element.getBoundingClientRect();
+            chatWindow.scrollTop += bubbleRect.top - windowRect.top - chatWindow.clientHeight * 0.17;
+        });
     }
 
     async function handleSendMessage(forcedQuestion) {
@@ -1495,12 +1833,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!question) return;
 
         removeTransientGuides();
-        appendMessage('user', question);
+        const questionBubble = appendMessage('user', question);
         userInput.value = '';
         isSending = true;
         window.LawAIRuntime.track("ai_start", "chat");
         lockUIIfNeeded();
         showTypingIndicator();
+        anchorToUserQuestion(questionBubble);
 
         let count = StorageUtil.getCount();
         count = (Number.isFinite(count) ? count : 0) + 1;
@@ -1536,7 +1875,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } finally {
             isSending = false;
             lockUIIfNeeded();
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+            anchorToUserQuestion(questionBubble);
         }
     }
 
@@ -1549,8 +1888,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     chatWindow.addEventListener('click', (e) => {
+        const expander = e.target.closest('.bot-expand-btn');
+        if (expander) {
+            const card = expander.closest('.bot-message');
+            const extra = card && card.querySelector('.bot-answer-extra');
+            if (extra) {
+                const opening = extra.hidden;
+                extra.hidden = !opening;
+                expander.setAttribute('aria-expanded', String(opening));
+                expander.innerHTML = opening ? '收合說明 <span aria-hidden="true">⌃</span>' : '閱讀完整說明 <span aria-hidden="true">⌄</span>';
+            }
+            return;
+        }
         const btn = e.target.closest('.lawai-quick-btn');
         if (!btn) return;
+        if (btn.dataset.action === 'focus-input') { userInput.focus(); return; }
+        if (btn.dataset.action === 'voice') { voiceBtn.click(); return; }
         if (btn.dataset.action === 'lawyer') {
             appendAdBlock(true);
             if (typeof showLineBindModal === 'function') showLineBindModal();
@@ -1560,23 +1913,253 @@ document.addEventListener('DOMContentLoaded', function () {
         if (prompt) handleSendMessage(prompt);
     });
 
-    if ('webkitSpeechRecognition' in window) {
-        const recognition = new webkitSpeechRecognition();
+    // V7：Web Speech API 連續語音辨識。停止權由使用者控制，不會因停頓自動結束整個輸入會話。
+    // 注意：Web Speech API 在某些 Android/Chrome 版本會因靜音或服務限制自行 onend，程式在使用者尚未按停止時重啟辨識。
+    // 此為語音轉文字（不保存聲音檔）；網站無法自行決定或儲存瀏覽器麥克風授權。
+    const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const micOverlay = document.getElementById('mic-overlay');
+    const voiceStatus = document.getElementById('voice-status');
+    const voiceTip = document.getElementById('voice-tip');
+    const voiceTipClose = document.getElementById('voice-tip-close');
+    const voicePermissionHelp = document.getElementById('voice-permission-help');
+    const voiceStopBtn = document.getElementById('voice-stop-btn');
+    const voiceRecordingHeadline = document.getElementById('voice-recording-headline');
+    const voiceRecordingSubtitle = document.getElementById('voice-recording-subtitle');
+    const microphoneIconHTML = voiceBtn.innerHTML;
+    const stopIconHTML = '<svg class="voice-stop-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2.5" fill="currentColor"/></svg>';
+    const VOICE_TIP_DISMISSED_KEY = 'lawai_voice_tip_dismissed_v6';
+    let stopVoiceSession = () => {};
+    function voiceMessage(message) {
+        if (!voiceStatus) return;
+        voiceStatus.textContent = message || '';
+        voiceStatus.hidden = !message;
+    }
+    function showListening(show, headline = '正在聆聽…', subtitle = '說完後，請按「停止」結束') {
+        if (micOverlay) micOverlay.hidden = !show;
+        if (voiceRecordingHeadline) voiceRecordingHeadline.textContent = headline;
+        if (voiceRecordingSubtitle) voiceRecordingSubtitle.textContent = subtitle;
+        if (voiceBtn) {
+            voiceBtn.classList.toggle('is-listening', !!show);
+            voiceBtn.innerHTML = show ? stopIconHTML : microphoneIconHTML;
+            voiceBtn.setAttribute('aria-label', show ? '停止語音輸入' : '開始語音輸入');
+            voiceBtn.setAttribute('title', show ? '按下方形停止鍵，完成語音輸入' : '點一下開始語音輸入，說完再按停止');
+            voiceBtn.setAttribute('aria-pressed', String(!!show));
+        }
+        if (voiceStopBtn) voiceStopBtn.disabled = false;
+    }
+    // 提示窗只記住關閉狀態；不干預瀏覽器權限。
+    if (voiceTipClose && voiceTip) voiceTipClose.addEventListener('click', () => {
+        voiceTip.hidden = true;
+        try { localStorage.setItem(VOICE_TIP_DISMISSED_KEY,'1'); } catch (_) {}
+    });
+    try { if (localStorage.getItem(VOICE_TIP_DISMISSED_KEY) === '1' && voiceTip) voiceTip.hidden = true; } catch (_) {}
+    if (navigator.permissions && navigator.permissions.query && voicePermissionHelp) {
+        navigator.permissions.query({name:'microphone'}).then(permission => {
+            const renderPermissionHint = () => {
+                if (permission.state === 'granted') voicePermissionHelp.textContent = '麥克風已授權；開始說話後，按「停止」才結束。';
+                else if (permission.state === 'denied') voicePermissionHelp.textContent = '麥克風已封鎖，請至瀏覽器網站設定改為允許。';
+                else voicePermissionHelp.textContent = '首次使用請授權麥克風；說完後按「停止」即可。';
+            };
+            renderPermissionHint();
+            if (permission.addEventListener) permission.addEventListener('change', renderPermissionHint);
+        }).catch(() => {});
+    }
+    if (SpeechRecognitionClass && voiceBtn) {
+        const recognition = new SpeechRecognitionClass();
         recognition.lang = 'zh-TW';
-        recognition.continuous = false;
-        recognition.interimResults = false;
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.maxAlternatives = 1;
+
+        let sessionActive = false; // 使用者是否仍要求聆聽
+        let engineRunning = false;
+        let launching = false;
+        let stopping = false;
+        let restartTimer = null;
+        let restartAttempts = 0;
+        let originalText = '';
+        let completedText = '';
+        let cycleFinal = '';
+        let cycleInterim = '';
+        let lastError = '';
+        let fatalErrorMessage = '';
+        let stopFallbackTimer = null;
+
+        function clearRestartTimer() {
+            if (restartTimer !== null) { clearTimeout(restartTimer); restartTimer = null; }
+        }
+        function renderRecognizedText() {
+            const dictated = completedText + cycleFinal + cycleInterim;
+            userInput.value = originalText + (originalText && dictated ? '\n' : '') + dictated;
+            userInput.dispatchEvent(new Event('input', {bubbles:true}));
+        }
+        function finishCycle(keepInterim) {
+            // 收攏已完成分段，避免 onresult 的 interim 多次覆寫、重複加入。
+            completedText += cycleFinal;
+            if (keepInterim && cycleInterim) completedText += cycleInterim;
+            cycleFinal = '';
+            cycleInterim = '';
+            renderRecognizedText();
+        }
+        function finishSession(message) {
+            clearRestartTimer();
+            if (stopFallbackTimer !== null) { clearTimeout(stopFallbackTimer); stopFallbackTimer = null; }
+            sessionActive = false;
+            engineRunning = false;
+            launching = false;
+            stopping = false;
+            userInput.readOnly = false;
+            showListening(false);
+            voiceMessage(message || '已停止聆聽，請確認辨識文字後再按送出。');
+        }
+        function launchRecognition() {
+            if (!sessionActive || engineRunning || launching || stopping) return;
+            launching = true;
+            try { recognition.start(); }
+            catch (error) {
+                launching = false;
+                console.warn('[LawAI] recognition.start:', error);
+                restartAttempts++;
+                if (restartAttempts >= 3) finishSession('語音服務目前無法持續啟動，請再點麥克風重試。');
+                else scheduleRestart();
+            }
+        }
+        function scheduleRestart() {
+            if (!sessionActive || stopping || restartTimer !== null) return;
+            showListening(true, '正在恢復聆聽…', '語音服務短暫中斷，無須重新按開始');
+            restartTimer = setTimeout(() => {
+                restartTimer = null;
+                launchRecognition();
+            }, Math.min(1000, 250 + restartAttempts * 200));
+        }
+        function startVoiceSession() {
+            if (sessionActive || isSending || voiceBtn.disabled) return;
+            clearRestartTimer();
+            sessionActive = true;
+            engineRunning = false;
+            stopping = false;
+            restartAttempts = 0;
+            lastError = '';
+            fatalErrorMessage = '';
+            originalText = userInput.value.trimEnd();
+            completedText = '';
+            cycleFinal = '';
+            cycleInterim = '';
+            // 避免使用者在辨識更新期間編輯文字，結束後立即恢復可編輯。
+            userInput.readOnly = true;
+            showListening(true, '正在啟動聆聽…', '正在連接語音辨識服務');
+            voiceMessage('語音輸入已啟動，說完後請按方形「停止」鍵。');
+            launchRecognition();
+        }
+        stopVoiceSession = (reason) => {
+            if (!sessionActive || stopping) return;
+            sessionActive = false;
+            clearRestartTimer();
+            stopping = true;
+            if (engineRunning || launching) {
+                showListening(true, '正在結束…', '正在整理最後一句話');
+                if (voiceStopBtn) voiceStopBtn.disabled = true;
+                try { recognition.stop(); }
+                catch (_) { finishCycle(true); finishSession('已停止聆聽，請確認文字後送出。'); }
+                // 若瀏覽器沒有正常送出 onend，確保停止狀態可以結束。
+                if (stopping) stopFallbackTimer = setTimeout(() => {
+                    if (!stopping) return;
+                    try { recognition.abort(); } catch (_) {}
+                    finishCycle(true);
+                    finishSession('已停止聆聽，請確認辨識文字後按送出。');
+                }, 1600);
+            } else {
+                finishCycle(true);
+                finishSession('已停止聆聽，請確認文字後送出。');
+            }
+        };
+        recognition.onstart = () => {
+            launching = false;
+            engineRunning = true;
+            restartAttempts = 0;
+            if (!sessionActive) { try { recognition.stop(); } catch (_) {} return; }
+            showListening(true);
+            voiceMessage('正在持續聆聽。說完後請按「停止」，系統不會因短暫停頓而主動結束。');
+        };
         recognition.onresult = event => {
-            userInput.value = event.results[0][0].transcript;
+            if (!event.results) return;
+            const finalized = [], interim = [];
+            for (let i=0; i<event.results.length; i++) {
+                const result = event.results[i];
+                const phrase = result && result[0] && result[0].transcript || '';
+                if (result && result.isFinal) finalized.push(phrase);
+                else interim.push(phrase);
+            }
+            cycleFinal = finalized.join('');
+            cycleInterim = interim.join('');
+            renderRecognizedText();
         };
-        recognition.onstart = () => { micOverlay.style.display = 'block'; };
-        recognition.onend = () => { micOverlay.style.display = 'none'; };
+        recognition.onend = () => {
+            launching = false;
+            engineRunning = false;
+            // 意外中斷時也保留尾句，避免先前畫面可見的暫時辨識文字消失。
+            finishCycle(true);
+            if (fatalErrorMessage) {
+                finishSession(fatalErrorMessage);
+                return;
+            }
+            if (stopping || !sessionActive) {
+                finishSession('已停止聆聽，請確認辨識文字後按送出。');
+                return;
+            }
+            // Chrome/Android 有時自行結束辨識；使用者尚未點停止則自動重連。
+            restartAttempts++;
+            scheduleRestart();
+        };
         recognition.onerror = event => {
-            console.error('語音辨識錯誤：', event.error);
-            micOverlay.style.display = 'none';
+            const code = event && event.error || 'unknown';
+            lastError = code;
+            console.warn('[LawAI] speech recognition:', code);
+            const fatal = {
+                'not-allowed':'無法使用麥克風，請在網站權限中允許麥克風。',
+                'service-not-allowed':'瀏覽器限制了語音辨識服務，請檢查網站權限。',
+                'audio-capture':'無法取得麥克風，請檢查裝置及權限。',
+                'network':'語音辨識連線失敗，請稍後再試。',
+                'language-not-supported':'此裝置未提供繁體中文語音辨識。',
+                'aborted':'語音辨識已中斷，請重新點擊麥克風。'
+            };
+            if (code === 'no-speech' && sessionActive) {
+                voiceMessage('暫時沒有聽到聲音，正在保持聆聽；說完後按停止。');
+                return; // onend 後視情況自動重連，不當作使用者停止。
+            }
+            if (fatal[code]) {
+                sessionActive = false;
+                fatalErrorMessage = fatal[code];
+                clearRestartTimer();
+                voiceMessage(fatal[code]);
+                // 交給 onend 收斂，若引擎未呼叫 onend 也會結束 UI。
+                if (!engineRunning && !launching) {
+                    finishCycle(true);
+                    finishSession(fatal[code]);
+                }
+            }
         };
-        voiceBtn.addEventListener('click', () => recognition.start());
-    } else {
-        voiceBtn.addEventListener('click', () => alert('此瀏覽器不支援語音辨識功能'));
+        voiceBtn.addEventListener('click', () => {
+            if (sessionActive) stopVoiceSession();
+            else if (!stopping) startVoiceSession();
+        });
+        if (voiceStopBtn) voiceStopBtn.addEventListener('click', () => stopVoiceSession());
+        // 正在語音轉文字時，先停止並確認尾句，避免尚未完成即直接送出。
+        sendBtn.addEventListener('click', event => {
+            if (sessionActive || stopping) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                if (!stopping) stopVoiceSession();
+                voiceMessage('先完成語音辨識，確認文字後再按送出。');
+            }
+        }, true);
+        window.addEventListener('pagehide', () => { if (sessionActive) stopVoiceSession(); });
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden' && sessionActive) stopVoiceSession();
+        });
+    } else if (voiceBtn) {
+        voiceBtn.addEventListener('click', () => voiceMessage('此瀏覽器不支援語音辨識，建議改用支援語音輸入的 Chrome。'));
+        if (voiceStopBtn) voiceStopBtn.disabled = true;
     }
 
     if (clearBtn) {
@@ -1588,7 +2171,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const firstMessage = chatWindow.querySelector('.message.bot-message');
             const adBanner = document.getElementById('lawai-ad-banner');
             chatWindow.innerHTML = '';
-            if (firstMessage) chatWindow.appendChild(firstMessage.cloneNode(true));
+            if (firstMessage) {
+                const welcome = firstMessage.cloneNode(true);
+                welcome.hidden = false;
+                chatWindow.appendChild(welcome);
+            }
             if (adBanner) {
                 adBanner.style.display = 'none';
                 chatWindow.appendChild(adBanner);
@@ -1600,6 +2187,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Compact header menu keeps 'clear history' accessible but out of the conversation.
+    const moreBtn = document.getElementById('header-more-btn');
+    const headerMenu = document.getElementById('header-menu');
+    if (moreBtn && headerMenu) {
+        moreBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            headerMenu.hidden = !headerMenu.hidden;
+            moreBtn.setAttribute('aria-expanded', String(!headerMenu.hidden));
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.header-menu-wrap')) {
+                headerMenu.hidden = true;
+                moreBtn.setAttribute('aria-expanded','false');
+            }
+        });
+    }
+    // Optional local visual demo: append ?demo=divorce to this HTML file's URL.
+    if (new URLSearchParams(location.search).get('demo') === 'divorce') {
+        const first = chatWindow.querySelector('.message.bot-message');
+        if (first) first.hidden = true;
+        const q = '她一直要求離婚，我該怎麼辦？';
+        userQuestions.push(q); // Demo follows the same contextual branch logic as real messages.
+        const bubble = appendMessage('user', q);
+        appendMessage('bot', '我理解，你很在意她反覆提出離婚，也不知道該怎麼回應。\n\n先告訴你一件重要的事：她說要離婚，不代表你們一定會離婚。若你不同意，仍須依法確認離婚條件。\n\n她通常是在什麼情況下提出離婚？');
+        appendNextSteps(q);
+        anchorToUserQuestion(bubble);
+    }
     lockUIIfNeeded();
     window.LawAIApp = { handleSendMessage, lockUIIfNeeded, classifyCase, isDeadlineSensitive };
 });
