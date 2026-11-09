@@ -1198,6 +1198,90 @@ body{padding:0;background:#f3f9fc;}
  .bot-message::before{background-size:20px 20px!important;}
 }
 
+
+/* ===== 2026-11-09 mobile viewport + compact chat correction =====
+   Only responsive presentation. No change to message, AI or voice logic. */
+@media (max-width: 768px) {
+  html {height:100%;overflow:hidden;}
+  body {
+    height:var(--lawai-mobile-viewport-height,100dvh)!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    align-items:stretch!important;
+  }
+  .chatbot-container {
+    flex:1 1 auto!important;
+    height:100%!important;
+    max-height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  .chatbot-header { flex:0 0 auto!important; }
+  .chat-window {
+    flex:1 1 0%!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overscroll-behavior-y:contain;
+    padding:15px 12px 20px!important;
+  }
+  .message.bot-message {
+    margin-left:35px!important;
+    width:calc(100% - 35px)!important;
+    max-width:calc(100% - 35px)!important;
+    padding:13px 14px!important;
+  }
+  .message-content,.bot-answer,.lawai-welcome-copy {
+    font-size:16px!important;
+    line-height:1.6!important;
+  }
+  .bot-message .message-role {
+    font-size:15px!important;
+    margin-bottom:9px!important;
+    line-height:1.4!important;
+  }
+  .lawai-welcome-copy p {margin:0 0 10px!important;}
+  .lawai-welcome-copy p:last-child {margin-bottom:0!important;}
+  .chat-input-shell {
+    position:relative!important;
+    flex:0 0 auto!important;
+    padding:9px 10px max(12px,env(safe-area-inset-bottom))!important;
+  }
+  .chat-input-area {
+    position:relative!important;
+    bottom:auto!important;
+    left:auto!important;
+    max-width:100%!important;
+    flex-direction:row!important;
+    align-items:center!important;
+  }
+  .input-with-mic .chat-input {
+    font-size:16px!important;
+    line-height:1.45!important;
+    min-height:52px!important;
+    max-height:128px!important;
+    padding:13px 73px 13px 15px!important;
+    resize:none!important;
+  }
+  #voice-btn {
+    right:13px!important;
+    width:40px!important;
+    height:40px!important;
+  }
+  .chat-input-area .send-button {
+    flex:0 0 48px!important;
+    width:48px!important;
+    height:48px!important;
+  }
+  .voice-tip {max-width:100%;}
+}
+@media (max-width:400px) {
+  .message-content,.bot-answer,.lawai-welcome-copy {font-size:16px!important;}
+}
+
 </style>
 
 <meta name="description" content="LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。"/>
@@ -2475,5 +2559,26 @@ function proceedAfterLine(){
 // V3：不再進站強制顯示；只有使用者主動點選真人律師時才開啟。
 </script>
 
+
+<script id="lawai-mobile-viewport-stabilizer">
+/* Match the visible mobile viewport, including browser bars and keyboard. */
+(function(){
+  function syncMobileViewport(){
+    if (!window.matchMedia('(max-width: 768px)').matches) {
+      document.documentElement.style.removeProperty('--lawai-mobile-viewport-height');
+      return;
+    }
+    const viewport = window.visualViewport;
+    const height = viewport && viewport.height > 0 ? viewport.height : window.innerHeight;
+    if (height > 0) {
+      document.documentElement.style.setProperty('--lawai-mobile-viewport-height', Math.round(height) + 'px');
+    }
+  }
+  syncMobileViewport();
+  window.addEventListener('resize', syncMobileViewport, {passive:true});
+  window.addEventListener('orientationchange', syncMobileViewport, {passive:true});
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', syncMobileViewport, {passive:true});
+})();
+</script>
 </body>
 </html>
