@@ -559,3 +559,36 @@ body.report-mode .law-report .report-actions .report-action > p {
   min-width:0!important;
 }
 /* 下載匯出為自動產生 PDF；不要讓瀏覽器執行列印對話框。 */
+
+/* V3.0｜手機與桌面追問題目：分項中文編號與正式法律閱讀用粗體。 */
+#step-container .followup-question {
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+  margin:14px 0 18px;
+  font-weight:700!important;
+  line-height:1.78;
+  overflow-wrap:anywhere;
+}
+#step-container .followup-question-row {
+  display:grid;
+  grid-template-columns:3.15em minmax(0, 1fr);
+  column-gap:3px;
+  align-items:start;
+}
+#step-container .followup-question-num {
+  color:var(--primary);
+  font-weight:800!important;
+  white-space:nowrap;
+}
+#step-container .followup-question-text,
+#step-container .followup-question strong,
+#step-container .followup-question b {
+  color:var(--primary-dark);
+  font-weight:700!important;
+  min-width:0;
+}
+@media (max-width:620px) {
+  #step-container .followup-question {gap:12px;line-height:1.77;margin-top:15px;}
+  #step-container .followup-question-row {grid-template-columns:3.15em minmax(0,1fr);}
+}
