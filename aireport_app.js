@@ -769,6 +769,7 @@ renderCaseSummary();
 第 2 行：子問題（1）。
 第 3 行：子問題（2）。
 ※ 子問題不得超過 2 題。
+※ 三行請使用換行字元分隔，不要自行加編號；畫面會統一以「（一）（二）（三）」顯示。
 
 二、對應的 3 個情境式回答選項（皆為「第一人稱敘述句」，不能是問句）
 1. 每個選項至少 80 字、最多 100 字，聚焦已知人物、行為、爭議及目前處理情況；時間區段、金額、對象等細節，只有使用者已提供時才能寫成確定事實。資訊不足時，以「可能」「尚待確認」標明待釐清事項，絕不可虛構具體數字或事件。
@@ -858,6 +859,23 @@ renderCaseSummary();
   }
 }
 
+// V3.0：三段動態追問由前端統一加上「（一）（二）（三）」；不改動送往後端的原始題目。
+function renderNumberedFollowupQuestion(question) {
+  const raw = String(question || "").replace(/\*\*|__/g, "").replace(/<br\s*\/?\s*>/gi, "\n").replace(/\r\n?/g, "\n");
+  let lines = raw.split(/\n+/).map(s => s.trim()).filter(Boolean);
+  // 少數模型未按要求輸出換行時，僅在恰有三句時進行保守切分。
+  if (lines.length === 1) {
+    const sentences = (raw.match(/[^。！？!?]+[。！？!?]?/g) || []).map(s => s.trim()).filter(Boolean);
+    if (sentences.length === 3) lines = sentences;
+  }
+  const numerals = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+  return lines.map((line, i) => {
+    const cleaned = line.replace(/^\s*(?:(?:（[一二三四五六七八九十\d]+）|\([一二三四五六七八九十\d]+\)|[一二三四五六七八九十\d]+[、.．])\s*)+/u, "").trim();
+    const numeral = numerals[i] || String(i + 1);
+    return `<div class="followup-question-row" role="listitem"><span class="followup-question-num" aria-hidden="true">（${numeral}）</span><span class="followup-question-text">${escapeHtml(cleaned || line)}</span></div>`;
+  }).join("");
+}
+
 function renderFollowupStep() {
   stopVoiceDictation(true);
   clearLoadingTimer();
@@ -898,7 +916,7 @@ const opts = (item.options.length ? item.options : ["（選項1）","（選項2�
         邏輯判斷層：${layerLabel(getLayerForFollowup(idx))}
       </span>
     </div>
-    <p class="followup-question">${escapeHtml(item.q.replace(/\*\*|__/g, ""))}</p>
+    <div class="followup-question" role="list">${renderNumberedFollowupQuestion(item.q)}</div>
 
     <div class="opt-custom">
       <div style="font-weight:700; color:var(--primary); margin:16px 0 8px;">
