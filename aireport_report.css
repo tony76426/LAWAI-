@@ -560,8 +560,10 @@ body.report-mode .law-report .report-actions .report-action > p {
 }
 /* 下載匯出為自動產生 PDF；不要讓瀏覽器執行列印對話框。 */
 
-/* V3.0｜手機與桌面追問題目：分項中文編號與正式法律閱讀用粗體。 */
+/* V3.1｜三題追問統一採參考圖的粗體黑體；中文編號與題目緊密排列（4px）。 */
 #step-container .followup-question {
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  letter-spacing:0;
   display:flex;
   flex-direction:column;
   gap:11px;
@@ -572,13 +574,13 @@ body.report-mode .law-report .report-actions .report-action > p {
 }
 #step-container .followup-question-row {
   display:grid;
-  grid-template-columns:3.15em minmax(0, 1fr);
-  column-gap:3px;
+  grid-template-columns:max-content minmax(0, 1fr);
+  column-gap:4px;
   align-items:start;
 }
 #step-container .followup-question-num {
   color:var(--primary);
-  font-weight:800!important;
+  font-weight:700!important;
   white-space:nowrap;
 }
 #step-container .followup-question-text,
@@ -590,5 +592,5 @@ body.report-mode .law-report .report-actions .report-action > p {
 }
 @media (max-width:620px) {
   #step-container .followup-question {gap:12px;line-height:1.77;margin-top:15px;}
-  #step-container .followup-question-row {grid-template-columns:3.15em minmax(0,1fr);}
+  #step-container .followup-question-row {grid-template-columns:max-content minmax(0,1fr);}
 }
