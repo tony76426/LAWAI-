@@ -1,0 +1,273 @@
+/* LawAI homepage: premium warm-neutral service section above footer.
+   Reference style: ivory paper, champagne-gold details, restrained navy type.
+   Isolated from homepage feature glass cards and from other pages. */
+
+.lawai-premium-section {
+  --premium-ink: #203443;
+  --premium-muted: #5e6870;
+  --premium-gold: #bf9653;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: clamp(68px, 6vw, 108px) clamp(18px, 3vw, 44px) clamp(78px, 6vw, 108px);
+  color: var(--premium-ink);
+  background:
+    radial-gradient(ellipse at 95% 3%, rgba(209, 179, 133, .13) 0%, transparent 32%),
+    radial-gradient(ellipse at 0% 100%, rgba(203, 168, 119, .11) 0%, transparent 30%),
+    linear-gradient(165deg, #fcfaf6 0%, #faf7f2 50%, #f7f2ea 100%);
+  text-align: center;
+}
+
+/* Background flourishes never intersect text or card contents. */
+.lawai-premium-section::before,
+.lawai-premium-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(190, 153, 93, .17);
+  border-radius: 50%;
+}
+.lawai-premium-section::before {
+  top: -520px;
+  right: -300px;
+  width: 1050px;
+  height: 820px;
+  transform: rotate(-19deg);
+}
+.lawai-premium-section::after {
+  bottom: -505px;
+  left: -360px;
+  width: 920px;
+  height: 680px;
+  transform: rotate(-16deg);
+}
+
+.lawai-premium-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1560px;
+  margin-inline: auto;
+}
+.lawai-premium-head {
+  max-width: 1260px;
+  margin: 0 auto clamp(36px, 4vw, 54px);
+}
+.lawai-premium-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 28px);
+  margin: 0 0 18px;
+  color: #3a4c55;
+}
+.lawai-premium-eyebrow::before,
+.lawai-premium-eyebrow::after {
+  content: "";
+  display: block;
+  width: clamp(44px, 9vw, 123px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(188, 144, 75, .8));
+}
+.lawai-premium-eyebrow::after {
+  transform: rotate(180deg);
+}
+.lawai-premium-eyebrow span {
+  display: inline-block;
+  color: #304450;
+  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  font-size: clamp(14px, 1.1vw, 19px);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: .26em;
+  white-space: nowrap;
+}
+.lawai-premium-title {
+  max-width: 1150px;
+  margin: 0 auto 17px;
+  color: #203443;
+  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  font-size: clamp(30px, 3.0vw, 48px);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .025em;
+  text-wrap: balance;
+}
+.lawai-premium-subtitle {
+  max-width: 950px;
+  margin: 0 auto;
+  color: #4d5b66;
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: .045em;
+  text-wrap: pretty;
+}
+
+.lawai-premium-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(16px, 1.65vw, 26px);
+}
+.lawai-premium-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 417px;
+  margin: 0;
+  padding: clamp(28px, 2.6vw, 40px) clamp(20px, 2vw, 32px) 34px;
+  overflow: hidden;
+  border: 1px solid rgba(188, 157, 115, .25);
+  border-radius: 26px;
+  background: rgba(255, 254, 251, .82);
+  box-shadow:
+    0 11px 28px rgba(72, 59, 41, .065),
+    0 1px 3px rgba(73, 54, 27, .035),
+    inset 0 1px 0 rgba(255, 255, 255, .97);
+  color: var(--premium-ink);
+  text-align: center;
+  animation: none;
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.lawai-premium-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 22px;
+  border: 1px solid rgba(196, 156, 89, .42);
+  border-radius: 50%;
+  background: radial-gradient(circle at 37% 23%, #fffefd 0%, #fbf8f2 55%, #f2eadb 100%);
+  box-shadow:
+    0 8px 17px rgba(98, 76, 41, .10),
+    inset 0 2px 2px rgba(255, 255, 255, .9);
+}
+.lawai-premium-icon .material-icons {
+  display: block;
+  color: #2d4855;
+  font-size: 42px;
+  line-height: 1;
+  -webkit-text-fill-color: currentColor;
+}
+.lawai-premium-card h3 {
+  margin: 0;
+  color: #203443;
+  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  font-size: clamp(23px, 1.65vw, 29px);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: .035em;
+  text-wrap: balance;
+}
+.lawai-premium-divider {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 3px;
+  margin: 19px auto 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b58a43, #d4ad6b, #b58a43);
+}
+.lawai-premium-card .lawai-premium-highlight {
+  margin: 0 0 17px;
+  color: #334650;
+  font-size: clamp(16px, 1.1vw, 18px);
+  font-weight: 650;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+.lawai-premium-card .lawai-premium-description {
+  margin: 0;
+  color: #596671;
+  font-size: clamp(15px, 1vw, 17px);
+  font-weight: 400;
+  line-height: 1.9;
+  text-wrap: pretty;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lawai-premium-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(186, 148, 91, .49);
+    box-shadow:
+      0 18px 33px rgba(72, 59, 41, .11),
+      0 2px 5px rgba(73, 54, 27, .045),
+      inset 0 1px 0 #fff;
+  }
+}
+
+@media (max-width: 1320px) {
+  .lawai-premium-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 980px;
+    margin-inline: auto;
+    gap: 23px;
+  }
+  .lawai-premium-card {
+    min-height: 370px;
+  }
+}
+
+@media (max-width: 680px) {
+  .lawai-premium-section {
+    padding: 65px 18px 76px;
+  }
+  .lawai-premium-head {
+    margin-bottom: 35px;
+  }
+  .lawai-premium-eyebrow span {
+    letter-spacing: .15em;
+  }
+  .lawai-premium-title {
+    margin-bottom: 14px;
+    font-size: clamp(27px, 7vw, 34px);
+    line-height: 1.5;
+  }
+  .lawai-premium-subtitle {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .lawai-premium-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 19px;
+  }
+  .lawai-premium-card {
+    min-height: 0;
+    padding: 31px 23px 33px;
+    border-radius: 22px;
+  }
+  .lawai-premium-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  .lawai-premium-icon .material-icons {
+    font-size: 38px;
+  }
+  .lawai-premium-card h3 {
+    font-size: 26px;
+  }
+  .lawai-premium-card .lawai-premium-highlight {
+    font-size: 16px;
+  }
+  .lawai-premium-card .lawai-premium-description {
+    font-size: 15px;
+  }
+}
+
+/* Correct the homepage footer overlap left by the previous dark section. */
+main#main-content + footer {
+  margin-top: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lawai-premium-card {
+    transition: none;
+    animation: none;
+  }
+}
