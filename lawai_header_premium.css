@@ -3,7 +3,7 @@
 header.lawai-premium-header{
  position:sticky!important;top:0;z-index:1050;isolation:isolate;
  display:flex!important;align-items:center!important;justify-content:space-between!important;
- width:100%;min-height:78px;margin:0!important;padding:6px clamp(18px,2vw,34px)!important;
+ width:100%;min-height:67px;margin:0!important;padding:4px clamp(18px,2vw,34px)!important;
  border:0!important;border-bottom:1px solid rgba(149,132,110,.14)!important;
  background:linear-gradient(180deg,#faf9f6 0%,#f5f3ee 55%,#f9f8f5 100%)!important;
  box-shadow:0 4px 18px rgba(51,56,56,.045)!important;
@@ -90,11 +90,12 @@ header.lawai-premium-header .nav-cluster .lawai-nav-link:focus-visible{
 .lawai-premium-drawer .lawai-mh-links a[aria-current="page"]{
  background:#0c4d54!important;border-color:#bda06a!important;color:#fff!important
 }
-/* Desktop refinement: roughly 0.5cm less header height; logo shrinks proportionally
-   and sits slightly higher. Mobile menu/header are intentionally unchanged. */
+/* Desktop refinement: reduce navbar height about 0.3 cm (11px).
+   After header shrink, offset logo 4px so its visual position shifts down ~0.2cm.
+   Preserve logo size/aspect ratio and mobile header behavior. */
 @media (min-width:769px){
  header.lawai-premium-header .logo-container{
-  transform:translateY(-9px)!important;
+  transform:translateY(4px)!important;
  }
 }
 @media (min-width:769px) and (max-width:1040px){
