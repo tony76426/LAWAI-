@@ -3,7 +3,7 @@
 header.lawai-premium-header{
  position:sticky!important;top:0;z-index:1050;isolation:isolate;
  display:flex!important;align-items:center!important;justify-content:space-between!important;
- width:100%;min-height:67px;margin:0!important;padding:4px clamp(18px,2vw,34px)!important;
+ width:100%;min-height:60px;margin:0!important;padding:4px clamp(18px,2vw,34px)!important;
  border:0!important;border-bottom:1px solid rgba(149,132,110,.14)!important;
  background:linear-gradient(180deg,#faf9f6 0%,#f5f3ee 55%,#f9f8f5 100%)!important;
  box-shadow:0 4px 18px rgba(51,56,56,.045)!important;
@@ -25,7 +25,7 @@ header.lawai-premium-header .logo-container{
  margin:0!important;padding:0!important;transform:none!important;transform-origin:left center!important;text-decoration:none
 }
 header.lawai-premium-header .logo-container img{
- display:block;width:auto!important;height:53px!important;max-height:53px!important;
+ display:block;width:auto!important;height:46px!important;max-height:46px!important;
  max-width:min(230px,34vw)!important;margin:0!important;object-fit:contain
 }
 header.lawai-premium-header .nav-cluster{
@@ -36,8 +36,8 @@ header.lawai-premium-header .nav-cluster{
 }
 header.lawai-premium-header .nav-cluster .lawai-nav-link{
  position:relative;display:inline-flex!important;align-items:center!important;justify-content:center!important;
- flex:0 0 auto;gap:8px!important;width:auto!important;min-width:0;min-height:43px;
- padding:10px clamp(13px,1.3vw,21px)!important;margin:0!important;
+ flex:0 0 auto;gap:8px!important;width:auto!important;min-width:0;min-height:39px;
+ padding:6px clamp(12px,1.25vw,20px)!important;margin:0!important;
  border:1px solid rgba(188,169,140,.21)!important;border-radius:999px!important;
  background:linear-gradient(180deg,#fff 0%,#f7f7f5 100%)!important;color:#164752!important;
  box-shadow:0 5px 12px rgba(33,51,51,.14),inset 0 1px 0 rgba(255,255,255,.94)!important;
@@ -90,26 +90,25 @@ header.lawai-premium-header .nav-cluster .lawai-nav-link:focus-visible{
 .lawai-premium-drawer .lawai-mh-links a[aria-current="page"]{
  background:#0c4d54!important;border-color:#bda06a!important;color:#fff!important
 }
-/* Desktop refinement: reduce navbar height about 0.3 cm (11px).
-   After header shrink, offset logo 4px so its visual position shifts down ~0.2cm.
-   Preserve logo size/aspect ratio and mobile header behavior. */
+/* Compact desktop header: keep logo proportional, near-center and fully inside
+   the shorter bar. Preserve nav text size and existing scroll-hide behavior. */
 @media (min-width:769px){
  header.lawai-premium-header .logo-container{
-  transform:translateY(4px)!important;
+  transform:translateY(2px)!important;
  }
 }
 @media (min-width:769px) and (max-width:1040px){
  header.lawai-premium-header{padding-inline:15px!important}
- header.lawai-premium-header .logo-container img{height:48px!important;max-height:48px!important;max-width:195px!important}
+ header.lawai-premium-header .logo-container img{height:43px!important;max-height:43px!important;max-width:195px!important}
  header.lawai-premium-header .nav-cluster{gap:7px!important}
- header.lawai-premium-header .nav-cluster .lawai-nav-link{gap:6px!important;padding:9px 11px!important;font-size:14.4375px!important}
+ header.lawai-premium-header .nav-cluster .lawai-nav-link{gap:6px!important;padding:6px 10px!important;font-size:14.4375px!important}
  header.lawai-premium-header .nav-cluster .lawai-nav-link .lawai-premium-nav-icon{width:18px;height:18px;flex-basis:18px}
 }
 @media (max-width:768px){
- header.lawai-premium-header{min-height:72px;padding:7px 15px!important}
+ header.lawai-premium-header{min-height:64px;padding:5px 15px!important}
  header.lawai-premium-header::before{left:175px;width:45vw;opacity:.46}
  header.lawai-premium-header .logo-container img{
-  height:54px!important;max-height:54px!important;max-width:min(196px,62vw)!important
+  height:48px!important;max-height:48px!important;max-width:min(196px,62vw)!important
  }
  header.lawai-premium-header .nav-cluster,
  header.brand-header.lawai-premium-header nav.nav-cluster,
