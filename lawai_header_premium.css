@@ -25,7 +25,7 @@ header.lawai-premium-header .logo-container{
  margin:0!important;padding:0!important;transform:none!important;transform-origin:left center!important;text-decoration:none
 }
 header.lawai-premium-header .logo-container img{
- display:block;width:auto!important;height:46px!important;max-height:46px!important;
+ display:block;width:auto!important;height:47.38px!important;max-height:47.38px!important;
  max-width:min(230px,34vw)!important;margin:0!important;object-fit:contain
 }
 header.lawai-premium-header .nav-cluster{
@@ -99,7 +99,7 @@ header.lawai-premium-header .nav-cluster .lawai-nav-link:focus-visible{
 }
 @media (min-width:769px) and (max-width:1040px){
  header.lawai-premium-header{padding-inline:15px!important}
- header.lawai-premium-header .logo-container img{height:43px!important;max-height:43px!important;max-width:195px!important}
+ header.lawai-premium-header .logo-container img{height:44.29px!important;max-height:44.29px!important;max-width:195px!important}
  header.lawai-premium-header .nav-cluster{gap:7px!important}
  header.lawai-premium-header .nav-cluster .lawai-nav-link{gap:6px!important;padding:6px 10px!important;font-size:14.4375px!important}
  header.lawai-premium-header .nav-cluster .lawai-nav-link .lawai-premium-nav-icon{width:18px;height:18px;flex-basis:18px}
@@ -108,7 +108,7 @@ header.lawai-premium-header .nav-cluster .lawai-nav-link:focus-visible{
  header.lawai-premium-header{min-height:64px;padding:5px 15px!important}
  header.lawai-premium-header::before{left:175px;width:45vw;opacity:.46}
  header.lawai-premium-header .logo-container img{
-  height:48px!important;max-height:48px!important;max-width:min(196px,62vw)!important
+  height:49.44px!important;max-height:49.44px!important;max-width:min(196px,62vw)!important
  }
  header.lawai-premium-header .nav-cluster,
  header.brand-header.lawai-premium-header nav.nav-cluster,
