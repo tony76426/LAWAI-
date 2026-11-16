@@ -643,8 +643,8 @@ textarea.task-field {
         </h3>
 <textarea id="descInput" class="task-field" placeholder="詳細描述您的需求..." rows="6"></textarea>
 <input accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" id="fileInput" multiple="" onchange="previewFiles(event)" style="display: none;" type="file"/><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;"><button class="action-btn" onclick="document.getElementById('fileInput').click()">
-<span class="material-icons">upload_file</span>上傳檔案
-        </button><div style="font-size: 1rem; color: var(--text-muted); margin-left: 0.3rem; white-space: nowrap;">（選取相關文件，隨任務送出）</div></div>
+<span class="material-icons">upload_file</span>選取附件（僅預覽）
+        </button><div style="font-size: 1rem; color: var(--text-muted); margin-left: 0.3rem; white-space: nowrap;">（僅供本機預覽，不會上傳或隨任務寄出）</div></div>
 <div id="filePreview" style="margin-top: 1rem;"></div>
 <div style="background: rgba(255,255,255,0.85); border-radius: 14px; padding: 1rem 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1.5rem 0 1rem 0; border: 1px solid rgba(0,0,0,0.04);"><h3 style="margin-bottom: 0.8rem; font-size: 1.05rem; color: var(--primary); font-weight: 700;">📬 聯絡方式</h3><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">👤 您的姓名或暱稱</label><input id="nameInput" class="task-field" placeholder="請輸入您的姓名或暱稱" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/><div style="display:flex; flex-wrap:wrap; gap:1rem;"><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">📞 聯絡電話</label><input id="phoneInput" class="task-field" placeholder="請輸入電話" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="tel"/></div><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">💬 LINE ID</label><input id="lineInput" class="task-field" placeholder="請輸入LINE ID" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/></div></div><label style="display:block; font-weight: 500; margin-top: 1.2rem; margin-bottom: 0.2rem; font-size: 0.9rem;">📧 Email</label><input id="emailInput" class="task-field" placeholder="請輸入Email（選填）" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="email"/></div><div id="publishWrap" style="display:flex;flex-direction:column;align-items:center;gap:.5rem;">
   <button class="action-btn publish" id="publishBtn" aria-disabled="true" title="請完成必填欄位後再發佈">
@@ -702,7 +702,7 @@ textarea.task-field {
         const item = document.createElement('div');
         item.style.cssText = 'padding:8px 12px;border:1px solid rgba(0,75,107,.2);border-radius:8px;background:rgba(224,242,255,.3);display:flex;align-items:center;gap:8px;';
         const label = document.createElement('span');
-        label.textContent = getIconByType(file.name) + ' ' + file.name;
+        label.textContent = getIconByType(file.name) + ' ' + file.name + '（未上傳）';
         const remove = document.createElement('button');
         remove.type = 'button';
         remove.textContent = '移除';
@@ -730,16 +730,16 @@ textarea.task-field {
     </div>
     <div class="modal-text">我們正在幫您完成以下流程，約需 <b>3 秒</b>。請不要關閉視窗或重新整理。</div>
     <div class="modal-steps">
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>檢查欄位與附件格式</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>安全傳輸至伺服器並建立任務卡片</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>回寫狀態與確認回覆</div></div>
+      <div class="modal-step"><div class="modal-step-bullet"></div><div>檢查表單必要欄位</div></div>
+      <div class="modal-step"><div class="modal-step-bullet"></div><div>透過 HTTPS 傳送任務文字資料</div></div>
+      <div class="modal-step"><div class="modal-step-bullet"></div><div>寄送通知郵件並確認結果</div></div>
     </div>
     <div class="progress-shell"><div class="progress-bar"></div><div class="progress-sheen"></div></div>
     <div class="modal-actions">
       <button type="button" class="modal-btn ghost" id="cancelFakeDisabled" disabled>處理中…</button>
     </div>
     <div class="small-divider"></div>
-    <div class="subtle-note">溫馨提示：附件限 5 個、單檔 5 MB、合計 12 MB。</div>
+    <div class="subtle-note">提醒：附件只供本機預覽，不會上傳、寄出或儲存至伺服器。</div>
   </div>
 </div>
 
@@ -750,12 +750,12 @@ textarea.task-field {
       <div class="modal-title">任務發佈成功</div>
     </div>
     <div class="modal-text">
-      我們已收到您的任務，並已建立任務卡片。<br/>
-      相關資訊已同步至後端，團隊將盡速回覆您。
+      任務文字資料已透過電子郵件通知團隊。<br/>
+      本頁不會建立任務卡片；所選附件不會上傳或寄出。
     </div>
     <div class="modal-steps">
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>您的基本資料與任務內容已安全儲存</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div><span id="taskAttachmentStatus">任務文字已送出</span></div></div>
+      <div class="modal-step"><div class="modal-step-bullet"></div><div>任務文字已寄送通知郵件，未儲存至線上任務資料庫</div></div>
+      <div class="modal-step"><div class="modal-step-bullet"></div><div><span id="taskAttachmentStatus">僅文字資料已寄送；附件未傳送</span></div></div>
       <div class="modal-step"><div class="modal-step-bullet"></div><div>後續通知：將以您提供的聯絡方式通知</div></div>
     </div>
     <div class="modal-actions">
@@ -830,50 +830,59 @@ textarea.task-field {
       alert('請完成必填欄位，電話與 LINE ID 至少擇一。');
       return;
     }
-    const filesToSend = allFiles.slice();
+    // 附件保留在使用者瀏覽器供預覽，不傳送至 lawyer-booking-api。
+    const selectedFileCount = allFiles.length;
+    if (selectedFileCount && !window.confirm(
+      '提醒：您選取的附件只供本機預覽，不會上傳或隨任務寄送。\n\n確定只提交任務文字與聯絡資料嗎？'
+    )) {
+      return;
+    }
+
     publishPending = true;
     show('loadingModal');
     const wait3s = delay(3000);
 
     try {
-      const endpoint = 'https://publish-task.onrender.com';
-      let options;
-      if (filesToSend.length) {
-        // Old API accepts JSON only. Never silently discard selected attachments.
-        const caps = await window.LawAIRuntime.request(endpoint + '/task-capabilities', {method:'GET'}, 20000);
-        const capabilities = await caps.json();
-        if (!capabilities.attachments || capabilities.version !== 2) {
-          throw new Error('附件服務尚未啟用，請稍後再試；您選取的檔案仍保留。');
+      // 現有預約 API 僅接受 name、phone、email、message。
+      // 保留任務標題、描述及 LINE ID，全部整理在郵件的 message 欄位。
+      const message = [
+        '【LawAI 任務發布】',
+        '任務標題：' + title,
+        '',
+        '任務描述：',
+        description,
+        '',
+        'LINE ID：' + (line || '（未提供）'),
+        '',
+        '來源：LawAI 任務發布頁'
+      ].join('\n');
+      const payload = { name, phone, email, message };
+      const res = await window.LawAIRuntime.request(
+        'https://lawyer-booking-api.onrender.com/submit-appointment',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         }
-        const body = new FormData();
-        Object.entries({title, description, name, phone, line, email}).forEach(([key, value]) => body.append(key, value));
-        filesToSend.forEach(file => body.append('files', file, file.name));
-        options = {method:'POST', body};
-      } else {
-        options = {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({title, description, name, phone, line, email})};
-      }
-      const res = await window.LawAIRuntime.request(endpoint + '/submit-task', options);
-      const result = await res.json();
+      );
+
+      let result = {};
+      try { result = await res.json(); } catch (_) {}
       await wait3s;
       hide('loadingModal');
 
-      if (res.ok && result.success) {
-        if (filesToSend.length && result.attachment_count !== filesToSend.length) {
-          alert('任務已送出，但附件回執不一致，請聯繫團隊確認，請勿重複提交。');
-          return;
-        }
-        document.getElementById('taskAttachmentStatus').textContent = filesToSend.length ?
-          '任務及 ' + result.attachment_count + ' 個附件已交付通知郵件服務' : '任務文字已送出（未附檔案）';
-        window.LawAIRuntime.track("task_success", "task");
+      if (res.ok && (result.success === true || result.status === 'ok')) {
+        document.getElementById('taskAttachmentStatus').textContent =
+          selectedFileCount ? '任務文字已寄送；所選附件未上傳或寄出' : '任務文字已寄送（無附件）';
+        window.LawAIRuntime.track('task_success', 'task');
         show('successModal');
       } else {
-        const errorText = result.error || "未知錯誤";
-        alert("❌ 發生錯誤！\n\n錯誤訊息：" + errorText);
+        alert('❌ 發生錯誤！\n\n錯誤訊息：' + (result.error || '伺服器未確認送出'));
       }
     } catch (e) {
       await wait3s;
       hide('loadingModal');
-      alert("❌ 送出未完成或尚待確認，請勿連續重複提交。\n\n" + (filesToSend.length ? "如為附件服務尚未更新，請先聯繫團隊；檔案仍保留。\n" : "") + (e?.message || e));
+      alert('❌ 送出未完成或尚待確認，請勿連續重複提交。\n\n' + (e?.message || e));
     } finally {
       publishPending = false;
     }
