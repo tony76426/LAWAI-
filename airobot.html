@@ -1614,7 +1614,7 @@ window.LawAIContext = {
 
 document.addEventListener('DOMContentLoaded', function () {
     StorageUtil.checkAndRollDate();
-    const MAX_QUESTIONS = 9;
+    const MAX_QUESTIONS = 15;
     const chatWindow = document.getElementById('chat-window');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
@@ -1826,7 +1826,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function handleSendMessage(forcedQuestion) {
         StorageUtil.checkAndRollDate();
         if (isSending || lockUIIfNeeded()) {
-            if (StorageUtil.getCount() >= MAX_QUESTIONS) alert("⚠️ 已達到今日提問上限（9次），系統已鎖定。");
+            if (StorageUtil.getCount() >= MAX_QUESTIONS) alert(`⚠️ 已達到今日提問上限（${MAX_QUESTIONS}次），系統已鎖定。`);
             return;
         }
         const question = String(forcedQuestion || userInput.value || '').trim();
