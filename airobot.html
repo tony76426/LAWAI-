@@ -1915,7 +1915,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function classifyCase(text) {
         const s = String(text || '');
         const groups = [
-            ['家事／離婚', ['離婚','監護','親權','扶養','小孩','子女','家暴','配偶']],
+            ['家事／離婚', ['家事','離婚','婚姻','夫妻','監護','親權','探視','扶養','小孩','子女','家暴','配偶']],
             ['刑事', ['警察','警局','地檢','偵查','被告','告訴','詐欺','傷害','妨害','刑事']],
             ['債務／借款', ['欠錢','欠我','欠他','借款','借錢','欠款','本票','支付命令','債務','還錢']],
             ['車禍／損害賠償', ['車禍','事故','撞','保險','理賠','肇事']],
@@ -1946,6 +1946,25 @@ document.addEventListener('DOMContentLoaded', function () {
         if (keys.some(k => s.includes(k))) return true;
         return /(找|請|預約|諮詢|推薦|聯絡|聯繫|安排|適合).{0,12}律師/.test(s)
             || /律師.{0,12}(協助|回覆|聯絡|聯繫|諮詢|推薦|適合|哪位|哪個)/.test(s);
+    }
+
+    // 律師媒合以使用者明確指定的姓名或當次案件類型為優先，避免被 AI 回覆或舊對話誤導。
+    function renderMatchingLawyerCard(question, answer) {
+        const ui = window.LawyerUI;
+        if (!ui) return false;
+        if (typeof ui.matchLawyerKey === 'function' &&
+            ui.matchLawyerKey(question) &&
+            typeof ui.renderNamedLawyer === 'function') {
+            return ui.renderNamedLawyer(question);
+        }
+        if (isLawyerIntent(question) && typeof ui.renderRecommendedForCase === 'function') {
+            const currentType = classifyCase(question);
+            const caseType = currentType !== '法律問題待確認'
+                ? currentType : classifyCase(userQuestions.join(' '));
+            if (ui.renderRecommendedForCase(caseType, userQuestions.join(' '))) return true;
+        }
+        return typeof ui.renderNamedLawyer === 'function'
+            ? ui.renderNamedLawyer(answer) : false;
     }
 
     function removeTransientGuides() {
@@ -2033,6 +2052,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const question = String(forcedQuestion || userInput.value || '').trim();
         if (!question) return;
+        const isCaseContextRequest = question === LAWAI_CASE_CONTEXT_ACTION;
 
         removeTransientGuides();
         const questionBubble = appendMessage('user', question);
@@ -2048,39 +2068,53 @@ document.addEventListener('DOMContentLoaded', function () {
         StorageUtil.setCount(count);
 
         try {
-            const answer = await fetchAnswer(question);
-            removeTypingIndicator();
-            appendMessage('bot', answer);
-            window.LawAIRuntime.track("ai_complete", "chat");
-            if (!isCaseContextRequest) {
-                conversationalTurnCount++;
-                appendDeadlineAlert(question + ' ' + answer);
+            let answer;
+            try {
+                answer = await fetchAnswer(question);
+            } catch (requestError) {
+                // 只有 API / 網路請求真的失敗，才提示無法取得 AI 回覆。
+                console.error('[LawAI] AI 請求失敗：', requestError);
+                appendMessage('bot', '目前暫時無法取得 AI 回覆，請稍後再試。你的提問內容仍保留在畫面上。');
+                // 律師名單與照片來自站內資料；即使 AI 暫時無法連線，仍可正常推薦。
+                if (!isCaseContextRequest && isLawyerIntent(question)) {
+                    try {
+                        if (renderMatchingLawyerCard(question, '')) appendAdBlock();
+                    } catch (lawyerError) {
+                        console.error('[LawAI] 本所律師推薦介面顯示失敗：', lawyerError);
+                    }
+                }
+                return;
             }
-            appendNextSteps(question, !isCaseContextRequest);
 
-            // Only regular chat recommendations may add lawyer/CTA cards.
-            // A requested case-context summary is already the chosen output and
-            // must not trigger extra boxes merely for mentioning 法院 or 期限.
-            if (!isCaseContextRequest) {
-                let namedLawyerRendered = false;
-                let recommendationRendered = false;
-                if (window.LawyerUI && typeof window.LawyerUI.renderNamedLawyer === 'function') {
-                    // AI 若主動推薦某位本所律師，也會自動帶出其照片。
-                    namedLawyerRendered = window.LawyerUI.renderNamedLawyer(question + ' ' + answer);
-                }
-                if (!namedLawyerRendered && isLawyerIntent(question) && window.LawyerUI && typeof window.LawyerUI.renderRecommendedForCase === 'function') {
-                    const caseType = classifyCase(userQuestions.join(' '));
-                    recommendationRendered = window.LawyerUI.renderRecommendedForCase(caseType, userQuestions.join(' '));
-                }
-                if (namedLawyerRendered || recommendationRendered || isLawyerIntent(question) || isDeadlineSensitive(question + ' ' + answer)) {
-                    appendAdBlock();
-                }
-            }
-        } catch (err) {
             removeTypingIndicator();
-            console.error('[LawAI] 回覆失敗：', err);
-            appendMessage('bot', '目前暫時無法取得 AI 回覆，請稍後再試。你的提問內容仍保留在畫面上。');
+            try {
+                appendMessage('bot', answer);
+            } catch (displayError) {
+                console.error('[LawAI] AI 已取得回覆，但訊息顯示失敗：', displayError);
+                return;
+            }
+
+            // AI 回覆已顯示；追問、期限提醒或律師卡片出錯，不應誤判成 API 故障。
+            try {
+                window.LawAIRuntime.track("ai_complete", "chat");
+                if (!isCaseContextRequest) {
+                    conversationalTurnCount++;
+                    appendDeadlineAlert(question + ' ' + answer);
+                }
+                appendNextSteps(question, !isCaseContextRequest);
+
+                // 依當次要求推薦律師；直接詢問本所律師時自動顯示其公開照片。
+                if (!isCaseContextRequest) {
+                    const lawyerRendered = renderMatchingLawyerCard(question, answer);
+                    if (lawyerRendered || isLawyerIntent(question) || isDeadlineSensitive(question + ' ' + answer)) {
+                        appendAdBlock();
+                    }
+                }
+            } catch (uiError) {
+                console.error('[LawAI] AI 回覆已顯示，但後續介面處理失敗：', uiError);
+            }
         } finally {
+            removeTypingIndicator();
             isSending = false;
             lockUIIfNeeded();
             anchorToUserQuestion(questionBubble);
@@ -2569,7 +2603,7 @@ window.LawAI_LAWYER_INTENT_KEYWORDS = [
       <div style="margin-top:12px;padding:14px;border:1px solid rgba(0,75,107,.12);border-radius:12px;background:#fff;">
         <div style="font-weight:700;color:#004B6B;margin-bottom:8px;">${label || '推薦律師'}：${name}</div>
         <a href="${media.href}" target="_blank" rel="noopener" class="lawyer-photo-card">
-          <img src="${media.img}" alt="${name}" loading="lazy"/>
+          <img src="${media.img}" alt="${name}" loading="eager" decoding="async"/>
         </a>
         <div style="margin-top:10px;line-height:1.75;color:#1C2A4D;">
           <strong>專業領域：</strong>${media.specialties}<br/>
