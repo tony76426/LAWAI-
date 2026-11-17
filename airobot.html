@@ -1204,41 +1204,90 @@ body{padding:0;background:#f3f9fc;}
 </style>
 
 <style id="lawai-typography-reference-20261118">
-/* Screenshot-based refinement (2026-11-18): typography and layout only. */
-.header-title { font-weight:800; letter-spacing:-.018em; }
-.header-subtitle { font-weight:400; letter-spacing:.006em; }
-.header-lawyer-link { font-weight:700; letter-spacing:0; }
-.bot-message .message-role {
-  font-size:17px !important; font-weight:750; letter-spacing:-.01em;
+/* LawAI 2026-11-18 compact conversational scale.
+   Keep the approved Inter/Noto Sans TC look, brand palette, and all interactions. */
+.header-title {
+  font-weight:800;
+  letter-spacing:-.018em;
 }
-/* Lighter Chinese body glyphs: correct the overly dark previous 500 weight. */
-.message-content,.bot-answer { font-weight:400 !important; letter-spacing:.004em; }
-.lawai-welcome-copy { font-size:20px; line-height:1.65; }
-.lawai-welcome-copy p { margin-bottom:13px; }
-.lawai-welcome-copy p:first-child { font-size:1.23em; line-height:1.55; }
-.lawai-welcome-copy p:first-child strong { font-weight:750; letter-spacing:-.016em; }
-.lawai-welcome-copy p:not(:first-child) { font-weight:400; letter-spacing:.008em; }
+.header-subtitle {
+  font-weight:400;
+  letter-spacing:.005em;
+}
+.header-lawyer-link {
+  font-weight:700;
+  letter-spacing:0;
+}
+.bot-message .message-role {
+  font-size:15.5px !important;
+  font-weight:750;
+  letter-spacing:-.01em;
+  margin-bottom:9px !important;
+}
+.message-content,.bot-answer {
+  font-size:17px !important;
+  line-height:1.56 !important;
+  font-weight:400 !important;
+  letter-spacing:.002em;
+}
+.lawai-welcome-copy {
+  font-size:16.8px;
+  line-height:1.56;
+}
+.lawai-welcome-copy p {
+  margin:0 0 9px;
+  line-height:1.55;
+}
+.lawai-welcome-copy p:first-child {
+  font-size:1.17em;
+  line-height:1.46;
+  margin-bottom:11px;
+}
+.lawai-welcome-copy p:first-child strong {
+  font-weight:750;
+  letter-spacing:-.012em;
+}
+.lawai-welcome-copy p:not(:first-child) {
+  font-weight:400;
+  letter-spacing:.002em;
+}
+.lawai-welcome-copy p:last-child { margin-bottom:0; }
 .chat-input { font-weight:400; }
 .chat-input::placeholder { font-weight:400; letter-spacing:0; }
 .header-menu a,.header-menu button { font-weight:600; }
 @media (min-width:769px) {
-  /* The reference has a near full-width desktop frame, not the old 1040px cap. */
+  /* Restore balanced side margins; previous 1700px width stretched too far. */
   .chatbot-container {
-    width:calc(100% - 40px);
-    max-width:1700px;
+    width:92vw;
+    max-width:1540px;
     height:calc(100dvh - 12px);
     margin:6px auto;
-    border-radius:24px !important;
+    border-radius:22px !important;
   }
-  .header-title { font-size:25px; }
-  .message.bot-message { width:76%; max-width:none; }
+  .header-title { font-size:22px; }
+  .header-subtitle { font-size:11.5px; }
+  .header-lawyer-link { font-size:13px; }
+  /* A compact conversation bubble, not a nearly full-width content panel. */
+  .message.bot-message {
+    width:74%;
+    max-width:1060px;
+    padding:15px 17px !important;
+  }
+  .input-with-mic .chat-input { font-size:16px !important; }
 }
 @media (max-width:768px) {
-  .lawai-welcome-copy { font-size:18px; }
-  .lawai-welcome-copy p:first-child { font-size:1.16em; }
+  .header-title { font-size:16.5px !important; }
+  .header-subtitle { font-size:10.5px; }
+  .bot-message .message-role { font-size:15px !important; }
+  .message-content,.bot-answer { font-size:16px !important; line-height:1.55 !important; }
+  .lawai-welcome-copy { font-size:16px; }
+  .lawai-welcome-copy p:first-child { font-size:1.15em; }
+  .lawai-choice-card { font-size:16px !important; }
+  .input-with-mic .chat-input { font-size:16px !important; }
 }
 @media (max-width:400px) {
-  .bot-message .message-role { font-size:16px !important; }
+  .header-title { font-size:15px !important; }
+  .bot-message .message-role { font-size:14.5px !important; }
 }
 </style>
 
