@@ -1,5 +1,5 @@
-// LawAI Service Worker v5: refresh stale homepage styles; public GET assets only; no form/API caching.
-const CACHE_VERSION = 'lawai-cache-v5-20261116';
+// LawAI Service Worker v6: refresh consolidated AI Report assets; public GET assets only; no form/API caching.
+const CACHE_VERSION = 'lawai-cache-v6-20261117';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 const MAX_RUNTIME_ENTRIES = 80;
