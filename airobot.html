@@ -995,7 +995,7 @@ body{padding:0;background:#f3f9fc;}
 .bot-message::after{display:none!important;}
 .bot-message .message-role{background:transparent!important;border-left:0!important;box-shadow:none!important;padding:0!important;
  display:flex!important;gap:8px;margin:0 0 12px 0!important;font-weight:800;font-size:16px!important;color:#183b4b!important;max-width:none;}
-.ai-badge{background:#e0f1ff;color:#0b5574;border-radius:12px;padding:3px 8px;font-size:12px;font-weight:650;letter-spacing:0;}
+
 .message-content,.bot-answer{font-size:19px!important;line-height:1.68!important;font-weight:450;color:#182737;overflow-wrap:anywhere;}
 .user-message .message-content{color:#123a50;}
 .bot-answer{padding:0!important;}
@@ -1848,7 +1848,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${role}-message`;
         if (role === 'bot') {
-            messageDiv.innerHTML = `<div class="message-role"><span>LawAI 法詢</span><span class="ai-badge">AI 法律助理</span></div><div class="message-content">${formatProgressiveAnswer(text)}</div>`;
+            messageDiv.innerHTML = `<div class="message-role"><span>LawAI 法詢</span></div><div class="message-content">${formatProgressiveAnswer(text)}</div>`;
         } else {
             messageDiv.innerHTML = `<div class="message-content">${escapeHTML(text)}</div>`;
         }
