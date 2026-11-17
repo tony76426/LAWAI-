@@ -27,6 +27,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    LawAI法詢 客服平台
   </title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&amp;family=Noto+Sans+TC:wght@400..800&amp;display=swap" rel="stylesheet"/>
 <style>
    :root {
             --deep-green: #002D42;
@@ -45,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft JhengHei', system-ui, sans-serif;
+            font-family: 'Inter', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
         }
         
         body {
@@ -1198,6 +1201,52 @@ body{padding:0;background:#f3f9fc;}
  .bot-message::before{background-size:20px 20px!important;}
 }
 
+</style>
+
+<style id="lawai-typography-reference-20261118">
+/* 2026-11-18：參照選定的 LawAI 字體樣式圖。僅微調字型、字重與排字，不改動互動邏輯或版面。 */
+.header-title {
+  font-weight: 800;
+  letter-spacing: -.025em;
+}
+.header-subtitle {
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.header-lawyer-link {
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.bot-message .message-role {
+  font-size: 17px !important;
+  font-weight: 800;
+  letter-spacing: -.012em;
+}
+.message-content, .bot-answer {
+  font-weight: 500;
+  letter-spacing: -.008em;
+}
+.lawai-welcome-copy p:first-child {
+  font-size: 1.17em;
+  line-height: 1.55;
+}
+.lawai-welcome-copy p:first-child strong {
+  font-weight: 800;
+  letter-spacing: -.018em;
+}
+.lawai-welcome-copy p:not(:first-child) {
+  font-weight: 500;
+  letter-spacing: -.008em;
+}
+.chat-input { font-weight: 500; }
+.chat-input::placeholder { font-weight: 400; letter-spacing: 0; }
+.header-menu a, .header-menu button { font-weight: 600; }
+@media (min-width: 769px) {
+  .header-title { font-size: 25px; }
+}
+@media (max-width: 400px) {
+  .bot-message .message-role { font-size: 16px !important; }
+}
 </style>
 
 <meta name="description" content="LawAI 法詢客服平台，透過對話整理法律問題與案件脈絡，並提供真人律師聯絡方式。"/>
