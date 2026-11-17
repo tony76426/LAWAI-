@@ -1628,7 +1628,9 @@ let userQuestions = [];
 // 原則：最近 5 則完整 user/assistant 訊息＋必要時才附加一份短版案件記憶。
 // 案件記憶由前端直接整理，不另外呼叫 AI，因此不會多產生一次 API Token。
 const LAWAI_RECENT_CONTEXT_MESSAGES = 5;
-const LAWAI_LOCAL_HISTORY_LIMIT = 20;
+const LAWAI_LOCAL_HISTORY_LIMIT = 40;
+const LAWAI_CASE_CONTEXT_ACTION = '建立案件脈絡';
+const LAWAI_CASE_CONTEXT_PERIOD = 3;
 const LAWAI_MEMORY_MAX_CHARS = 420;
 
 function lawaiSystemPrompt() {
@@ -1751,20 +1753,55 @@ function buildLawAIRequestMessages() {
     return messages;
 }
 
+function buildLawAICaseContextMessages() {
+    // Only a user click invokes this richer context request; ordinary chat stays token-light.
+    // Use conversation history as evidence, not the short three-question preview card.
+    const messages = [
+        lawaiSystemPrompt(),
+        {
+            role: 'system',
+            content: `使用者主動點選「建立案件脈絡」。請根據下列同一對話的上下文，整理成可供當事人核對的初步案件脈絡，而不是假裝已完成律師審查。
+請使用繁體中文，依序列出：
+一、事件與案件類型；
+二、當事人、時間順序及目前已知的關鍵事實；
+三、目前提及的證據與其用途（未見證據原件時標示為「使用者表示有」）；
+四、主要法律爭點與已知程序、可能期限（未能確認不得自行計算）；
+五、仍有矛盾或需要補充確認的資訊；
+六、接下來最優先的行動與應補證據。
+只能根據對話實際提及的內容整理，缺乏資訊請明確註明「待確認」，不可補造當事人、日期、金額、法院、證據或法條。若早期與後期陳述不同，以後期更正為準；不要求每段都提出追問。這是案件初步整理，不取代個案律師法律意見。`
+        }
+    ];
+    const memory = buildCaseMemorySummary();
+    if (memory) {
+        messages.push({role:'system',content:'歷次陳述的精簡索引（僅供參照，與原始陳述有衝突時以原始陳述及最新更正為準）：'+memory});
+    }
+    const history = conversationHistory.slice(-32);
+    for (const entry of history) {
+        if (entry.role !== 'user' && entry.role !== 'assistant') continue;
+        messages.push({
+            role:entry.role,
+            content:lawaiCompactText(entry.content, entry.role === 'user' ? 1400 : 750)
+        });
+    }
+    return messages;
+}
+
 async function fetchAnswer(question) {
     userQuestionCount++;
+    const isCaseContextRequest = question === LAWAI_CASE_CONTEXT_ACTION;
     conversationHistory.push({ role: "user", content: question });
-    userQuestions.push(question);
+    // A summary command is not a fresh factual assertion from the user.
+    if (!isCaseContextRequest) userQuestions.push(question);
 
     // 本地可保留較多資料供前端案件卡與壓縮記憶使用，但 API 每次只送最近 5 則。
     if (conversationHistory.length > LAWAI_LOCAL_HISTORY_LIMIT) {
         conversationHistory = conversationHistory.slice(-LAWAI_LOCAL_HISTORY_LIMIT);
     }
-    if (userQuestions.length > 12) {
-        userQuestions = userQuestions.slice(-12);
+    if (userQuestions.length > 20) {
+        userQuestions = userQuestions.slice(-20);
     }
 
-    const messages = buildLawAIRequestMessages();
+    const messages = isCaseContextRequest ? buildLawAICaseContextMessages() : buildLawAIRequestMessages();
     const response = await window.LawAIRuntime.request("https://airobot-br7n.onrender.com/airobot/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -1798,6 +1835,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const voiceBtn = document.getElementById('voice-btn');
     const clearBtn = document.getElementById('clear-history-btn');
     let isSending = false;
+    // Count completed ordinary conversation turns, not clicks on the summary action.
+    let conversationalTurnCount = 0;
 
     function escapeHTML(value) {
         return String(value ?? '')
@@ -1921,29 +1960,6 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWindow.appendChild(div);
     }
 
-    function appendCaseSummaryCard() {
-        if (userQuestions.length < 3) return;
-        const old = chatWindow.querySelector('.lawai-case-summary');
-        if (old) old.remove();
-        const joined = userQuestions.join(' ');
-        const type = classifyCase(joined);
-        const recent = userQuestions.slice(-3).map(q => escapeHTML(q.length > 64 ? q.slice(0,64) + '…' : q));
-        const div = document.createElement('div');
-        div.className = 'lawai-case-summary';
-        div.innerHTML = `
-            <div class="lawai-case-summary-title">⚖️ LawAI 已建立案件脈絡</div>
-            <div class="case-fact"><strong>目前類型：</strong>${escapeHTML(type)}</div>
-            <div class="case-fact"><strong>最近已知：</strong>${recent.join('；')}</div>
-            <div class="case-fact" style="color:#6B7280;">我會持續依後續對話補足事實、證據、程序與你的目標。</div>
-            <div class="lawai-case-actions">
-                <button type="button" class="lawai-quick-btn" data-prompt="請依照目前案件記憶與最近對話，整理我的案件，分成案件類型、目前已知事實、現有證據、主要法律問題、尚需確認與下一步。">整理我的案件</button>
-                <button type="button" class="lawai-quick-btn" data-prompt="請依照目前對話，幫我整理現有證據、各證據用途，以及我還應該補哪些證據。">整理證據</button>
-                <button type="button" class="lawai-quick-btn" data-prompt="請依照目前案件，告訴我最相關的台灣法律依據與法規方向。">查看法律依據</button>
-                <button type="button" class="lawai-quick-btn" data-action="lawyer">交給律師評估</button>
-            </div>`;
-        chatWindow.appendChild(div);
-    }
-
     function guidedOptions(question) {
         const all = userQuestions.join(' ');
         const type = classifyCase(question + ' ' + all);
@@ -1977,16 +1993,25 @@ document.addEventListener('DOMContentLoaded', function () {
         return cases[type] || cases['法律問題待確認'];
     }
 
-    function appendNextSteps(question) {
+    function appendNextSteps(question, allowCaseContext = true) {
         const old = chatWindow.querySelector('.lawai-next-steps');
         if (old) old.remove();
-        const items = guidedOptions(question).slice(0,4);
-        const icons = ['💬','▤','⚠','❔'];
+        // At the 3rd, 6th, 9th... completed dialogue, add one opt-in
+        // choice INSIDE the existing guided options. Never auto-render a new card.
+        const showCaseContext = allowCaseContext &&
+            conversationalTurnCount > 0 &&
+            conversationalTurnCount % LAWAI_CASE_CONTEXT_PERIOD === 0 &&
+            StorageUtil.getCount() < MAX_QUESTIONS;
+        const choices = guidedOptions(question)
+            .slice(0, showCaseContext ? 3 : 4)
+            .map(text => ({text, prompt:text}));
+        if (showCaseContext) choices.push({text:'建立案件脈絡', action:'case-context'});
+        const icons = ['💬','▤','⚠','🗂'];
         const div = document.createElement('div');
         div.className = 'lawai-next-steps';
         div.innerHTML = `<p class="lawai-next-title">你可以選擇下面一項，也可以繼續直接說：</p>` +
-            `<div class="lawai-choice-list">${items.map((x,i) =>
-                `<button type="button" class="lawai-quick-btn lawai-choice-card" data-prompt="${escapeHTML(x)}"><span class="choice-icon choice-${i}" aria-hidden="true">${icons[i]}</span><span>${escapeHTML(x)}</span><span class="choice-arrow" aria-hidden="true">›</span></button>`
+            `<div class="lawai-choice-list">${choices.map((item,i) =>
+                `<button type="button" class="lawai-quick-btn lawai-choice-card" ${item.action ? 'data-action="case-context"' : `data-prompt="${escapeHTML(item.prompt)}"`}><span class="choice-icon choice-${i}" aria-hidden="true">${icons[i]}</span><span>${escapeHTML(item.text)}</span><span class="choice-arrow" aria-hidden="true">›</span></button>`
             ).join('')}</div>`;
         chatWindow.appendChild(div);
     }
@@ -2027,9 +2052,11 @@ document.addEventListener('DOMContentLoaded', function () {
             removeTypingIndicator();
             appendMessage('bot', answer);
             window.LawAIRuntime.track("ai_complete", "chat");
-            appendDeadlineAlert(question + ' ' + answer);
-            appendCaseSummaryCard();
-            appendNextSteps(question);
+            if (!isCaseContextRequest) {
+                conversationalTurnCount++;
+                appendDeadlineAlert(question + ' ' + answer);
+            }
+            appendNextSteps(question, !isCaseContextRequest);
 
             // 律師意圖不攔截 AI：AI 正常回答後，再依「問題＋AI回答」顯示本所律師照片／推薦卡。
             let namedLawyerRendered = false;
@@ -2081,6 +2108,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!btn) return;
         if (btn.dataset.action === 'focus-input') { userInput.focus(); return; }
         if (btn.dataset.action === 'voice') { voiceBtn.click(); return; }
+        if (btn.dataset.action === 'case-context') { handleSendMessage(LAWAI_CASE_CONTEXT_ACTION); return; }
         if (btn.dataset.action === 'lawyer') {
             appendAdBlock(true);
             if (typeof showLineBindModal === 'function') showLineBindModal();
@@ -2345,6 +2373,7 @@ document.addEventListener('DOMContentLoaded', function () {
             conversationHistory.length = 0;
             userQuestions.length = 0;
             userQuestionCount = 0;
+            conversationalTurnCount = 0;
             const firstMessage = chatWindow.querySelector('.message.bot-message');
             const adBanner = document.getElementById('lawai-ad-banner');
             chatWindow.innerHTML = '';
