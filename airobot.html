@@ -1204,48 +1204,41 @@ body{padding:0;background:#f3f9fc;}
 </style>
 
 <style id="lawai-typography-reference-20261118">
-/* 2026-11-18：參照選定的 LawAI 字體樣式圖。僅微調字型、字重與排字，不改動互動邏輯或版面。 */
-.header-title {
-  font-weight: 800;
-  letter-spacing: -.025em;
-}
-.header-subtitle {
-  font-weight: 500;
-  letter-spacing: .01em;
-}
-.header-lawyer-link {
-  font-weight: 700;
-  letter-spacing: -.01em;
-}
+/* Screenshot-based refinement (2026-11-18): typography and layout only. */
+.header-title { font-weight:800; letter-spacing:-.018em; }
+.header-subtitle { font-weight:400; letter-spacing:.006em; }
+.header-lawyer-link { font-weight:700; letter-spacing:0; }
 .bot-message .message-role {
-  font-size: 17px !important;
-  font-weight: 800;
-  letter-spacing: -.012em;
+  font-size:17px !important; font-weight:750; letter-spacing:-.01em;
 }
-.message-content, .bot-answer {
-  font-weight: 500;
-  letter-spacing: -.008em;
+/* Lighter Chinese body glyphs: correct the overly dark previous 500 weight. */
+.message-content,.bot-answer { font-weight:400 !important; letter-spacing:.004em; }
+.lawai-welcome-copy { font-size:20px; line-height:1.65; }
+.lawai-welcome-copy p { margin-bottom:13px; }
+.lawai-welcome-copy p:first-child { font-size:1.23em; line-height:1.55; }
+.lawai-welcome-copy p:first-child strong { font-weight:750; letter-spacing:-.016em; }
+.lawai-welcome-copy p:not(:first-child) { font-weight:400; letter-spacing:.008em; }
+.chat-input { font-weight:400; }
+.chat-input::placeholder { font-weight:400; letter-spacing:0; }
+.header-menu a,.header-menu button { font-weight:600; }
+@media (min-width:769px) {
+  /* The reference has a near full-width desktop frame, not the old 1040px cap. */
+  .chatbot-container {
+    width:calc(100% - 40px);
+    max-width:1700px;
+    height:calc(100dvh - 12px);
+    margin:6px auto;
+    border-radius:24px !important;
+  }
+  .header-title { font-size:25px; }
+  .message.bot-message { width:76%; max-width:none; }
 }
-.lawai-welcome-copy p:first-child {
-  font-size: 1.17em;
-  line-height: 1.55;
+@media (max-width:768px) {
+  .lawai-welcome-copy { font-size:18px; }
+  .lawai-welcome-copy p:first-child { font-size:1.16em; }
 }
-.lawai-welcome-copy p:first-child strong {
-  font-weight: 800;
-  letter-spacing: -.018em;
-}
-.lawai-welcome-copy p:not(:first-child) {
-  font-weight: 500;
-  letter-spacing: -.008em;
-}
-.chat-input { font-weight: 500; }
-.chat-input::placeholder { font-weight: 400; letter-spacing: 0; }
-.header-menu a, .header-menu button { font-weight: 600; }
-@media (min-width: 769px) {
-  .header-title { font-size: 25px; }
-}
-@media (max-width: 400px) {
-  .bot-message .message-role { font-size: 16px !important; }
+@media (max-width:400px) {
+  .bot-message .message-role { font-size:16px !important; }
 }
 </style>
 
