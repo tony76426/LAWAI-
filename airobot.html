@@ -2058,19 +2058,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             appendNextSteps(question, !isCaseContextRequest);
 
-            // 律師意圖不攔截 AI：AI 正常回答後，再依「問題＋AI回答」顯示本所律師照片／推薦卡。
-            let namedLawyerRendered = false;
-            let recommendationRendered = false;
-            if (window.LawyerUI && typeof window.LawyerUI.renderNamedLawyer === 'function') {
-                // AI 若主動推薦某位本所律師，也會自動帶出其照片。
-                namedLawyerRendered = window.LawyerUI.renderNamedLawyer(question + ' ' + answer);
-            }
-            if (!namedLawyerRendered && isLawyerIntent(question) && window.LawyerUI && typeof window.LawyerUI.renderRecommendedForCase === 'function') {
-                const caseType = classifyCase(userQuestions.join(' '));
-                recommendationRendered = window.LawyerUI.renderRecommendedForCase(caseType, userQuestions.join(' '));
-            }
-            if (namedLawyerRendered || recommendationRendered || isLawyerIntent(question) || isDeadlineSensitive(question + ' ' + answer)) {
-                appendAdBlock();
+            // Only regular chat recommendations may add lawyer/CTA cards.
+            // A requested case-context summary is already the chosen output and
+            // must not trigger extra boxes merely for mentioning 法院 or 期限.
+            if (!isCaseContextRequest) {
+                let namedLawyerRendered = false;
+                let recommendationRendered = false;
+                if (window.LawyerUI && typeof window.LawyerUI.renderNamedLawyer === 'function') {
+                    // AI 若主動推薦某位本所律師，也會自動帶出其照片。
+                    namedLawyerRendered = window.LawyerUI.renderNamedLawyer(question + ' ' + answer);
+                }
+                if (!namedLawyerRendered && isLawyerIntent(question) && window.LawyerUI && typeof window.LawyerUI.renderRecommendedForCase === 'function') {
+                    const caseType = classifyCase(userQuestions.join(' '));
+                    recommendationRendered = window.LawyerUI.renderRecommendedForCase(caseType, userQuestions.join(' '));
+                }
+                if (namedLawyerRendered || recommendationRendered || isLawyerIntent(question) || isDeadlineSensitive(question + ' ' + answer)) {
+                    appendAdBlock();
+                }
             }
         } catch (err) {
             removeTypingIndicator();
