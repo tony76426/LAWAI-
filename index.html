@@ -253,6 +253,23 @@ header.lawai-premium-header.lawai-nav-hidden{
 }
 
 </style>
+<!-- Desktop-only banner height correction: retain full-width artwork without stretching it.
+     The image remains in its native 1920:900 aspect ratio; only excess lower image is cropped. -->
+<style id="lawai-desktop-hero-size-fix-20261119">
+@media (min-width: 1200px) {
+  main#main-content > .u-inline-0006:first-child {
+    height: min(46.875vw, 600px);
+    overflow: hidden;
+  }
+  main#main-content > .u-inline-0006:first-child img.u-inline-0007 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+  }
+}
+</style>
 <script defer src="/lawai_header_scroll.js?v=20261116-01"></script>
 </head>
 <body>
