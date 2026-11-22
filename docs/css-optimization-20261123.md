@@ -19,7 +19,11 @@
 
 ## Static verification
 - Verified syntactic brace balance, zero orphan braces, exact preserved order and declarations for every retained CSS style rule, identical pre/post-minification rule signatures, and primary image resource hints.
-- **Browser visual regression and real-device Lighthouse tests are not yet measured**. Before changing deployed traffic further, compare 360/390/430/768/1024/1440/1920 px including mobile drawer, fixed tab bar, AI/LINE CTAs, and CSS hero crop. Confirm LCP element + 75th percentile field metrics separately.
+- PR #1 的 GitHub Actions Chromium 視覺回歸已在 360/390/430/768/1024/1440/1920 px 通過；這是受控桌面瀏覽器中的截圖測試，**不是實體手機或正式站 Lighthouse**。
+- 2026-11-23 後續驗收加入：PR 基準版本動態選取、390/768/1440 px 中段及底部截圖、手機抽屜選單開關與 Escape 鍵檢查。
+- `node scripts/verify-homepage.mjs` 檢查首頁單一 LCP 圖片預載、來源檔案、入口路徑；`--production` 使用只讀 HTTP GET 核對正式站 CSS 雜湊、主要圖片與入口頁面是否回傳正常內容。
+- `LawAI production homepage resources and Lighthouse` 工作流程會產生 Lighthouse 手機模擬與桌面報告，Lighthouse 步驟採資訊性記錄，不作為部署成功保證。
+- **待人工確認**：實體 iOS/Android 手機、第三方字體及登入/外部連結互動，以及正式站 CrUX/RUM 第 75 百分位 LCP/INP/CLS。
 
 ## Rollback
 Restore `index.html` and `lawai_contral.css` from backup branch, or revert the optimization merge; unrelated website files remain untouched.
