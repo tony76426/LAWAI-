@@ -1,0 +1,25 @@
+name: Verify LawAI CSS source and production bundle
+on:
+  push:
+    paths:
+      - 'lawai_contral.css'
+      - 'lawai_contral.min.css'
+      - 'scripts/build-css.mjs'
+      - '.github/workflows/lawai-css-check.yml'
+  pull_request:
+    paths:
+      - 'lawai_contral.css'
+      - 'lawai_contral.min.css'
+      - 'scripts/build-css.mjs'
+      - '.github/workflows/lawai-css-check.yml'
+jobs:
+  css-bundle-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/build-css.mjs --check
