@@ -1,1034 +1,135 @@
-<!DOCTYPE html>
-
-<html lang="zh-TW">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>任務詳情頁 | LawAI 法詢</title>
-<meta content="在 LawAI 法詢發布法律需求，填寫任務標題、案情描述與聯絡方式，向團隊提出個案評估需求；可選擇相關文件，送出前確認附件傳送狀態。" name="description"/>
-<link as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload"/>
-<link as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="preload"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<!doctype html>
+<html lang="zh-TW"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>法律需求中心｜急件分流與任務發布｜LawAI 法詢</title>
+<meta name="description" content="LawAI 法詢法律需求中心。選擇案件類型、判斷急迫程度、描述案情、留下聯絡方式，四步驟提出法律協助需求。">
+<meta name="theme-color" content="#f7fbfd">
+<link rel="canonical" href="https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html">
+<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/footerlogo_192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script defer src="lawai_config.js"></script><script defer src="lawai_runtime.js" data-page="task"></script>
 <style>
-    :root {
-        --neon-green: #00C49A;
-        --glow: 0 0 15px rgba(0, 75, 107, 0.6);
-        --primary: #004B6B;
-        --text-light: #111827;
-        --shadow-hover: 0 8px 24px rgba(0, 75, 107, 0.2);
-        --gold: #90E0EF;
-        --primary-light: #0077A3;
-        --warning: #F59E0B;
-        --shadow: 0 6px 16px rgba(0,0,0,0.08);
-        --highlight: #A5D8FC;
-        --neon-blue: #00B4D8;
-        --accent: #F3F9FC;
-        --neon-pink: #FF6B9E;
-        --secondary: #E0F2FF;
-        --radius-md: 16px;
-        --radius-xl: 32px;
-        --neon-purple: #48CAE4;
-        --radius-lg: 24px;
-        --bg-dark: #1F2937;
-        --error: #EF4444;
-        --text-dark: #F9FAFB;
-        --text-muted: #6B7280;
-        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        --primary-dark: #002D42;
-        --bg-light: #FFFFFF;
-        --success: #10B981;
-        --radius-sm: 8px;
-        --shadow-large: 0 12px 28px rgba(0,0,0,0.12);
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        background: var(--bg-light);
-        color: var(--text-light);
-        font-family: 'Noto Sans TC', sans-serif;
-        line-height: 1.6;
-        min-height: 100vh;
-        overflow-x: hidden;
-        padding: 20px;
-    }
-
-    /* 科技感背景元素 */
-    .tech-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.15;
-        background: 
-            radial-gradient(circle at 20% 30%, var(--neon-blue), transparent 40%),
-            radial-gradient(circle at 80% 70%, var(--neon-purple), transparent 40%);
-        animation: float 20s infinite alternate ease-in-out;
-    }
-
-    @keyframes float {
-        0% { transform: translate(0, 0); }
-        50% { transform: translate(-5%, 5%); }
-        100% { transform: translate(5%, -5%); }
-    }
-
-    /* 漂浮的科技元素 */
-    .floating-tech {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: -1;
-        overflow: hidden;
-    }
-
-    .tech-circle {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(40px);
-        opacity: 0.15;
-    }
-
-    .circle-1 {
-        width: 300px;
-        height: 300px;
-        background: var(--neon-blue);
-        top: 20%;
-        left: 10%;
-        animation: float-circle 25s infinite alternate ease-in-out;
-    }
-
-    .circle-2 {
-        width: 400px;
-        height: 400px;
-        background: var(--neon-purple);
-        bottom: 10%;
-        right: 10%;
-        animation: float-circle 30s infinite alternate-reverse ease-in-out;
-    }
-
-    @keyframes float-circle {
-        0% { transform: translate(0, 0) rotate(0deg); }
-        50% { transform: translate(-50px, 50px) rotate(180deg); }
-        100% { transform: translate(50px, -50px) rotate(360deg); }
-    }
-
-    /* 品牌頭部 */
-    .brand-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2.5rem;
-        background: rgba(255, 255, 255, 1);
-        box-shadow: var(--shadow);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        transition: background 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 2rem;
-    }
-
-    .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-    }
-
-    .logo-text {
-        font-family: 'Noto Sans TC', sans-serif;
-        font-weight: 900;
-        font-size: 1.8rem;
-        color: var(--primary);
-        transition: var(--transition);
-        line-height: 1;
-    }
-
-    /* 任務卡片 */
-    
-.task-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: var(--radius-lg);
-    padding: 3rem;
-    box-shadow: var(--shadow-large);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(10, 36, 99, 0.1);
-    position: relative;
-    overflow: hidden;
-    max-width: 960px;
-    margin: 40px auto;
+:root{color-scheme:light;--blue:#004b6b;--dark:#00354d;--cyan:#0098b9;--line:#daeaf1;--muted:#5a7483;--bg:#f6fafc}
+*{box-sizing:border-box}body{margin:0;font:16px/1.75 "Noto Sans TC",system-ui,sans-serif;color:#163342;background:var(--bg)}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.58;cursor:wait}[hidden]{display:none!important}a{color:#00769c}
+:focus-visible{outline:3px solid #35b9d6;outline-offset:3px}
+.header{background:#fff;border-bottom:1px solid var(--line)}.header-inner{max-width:1150px;margin:auto;padding:12px 25px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.brand{text-decoration:none;font-weight:900;font-size:21px;color:var(--blue);display:flex;align-items:center;gap:10px}.mark{width:39px;height:39px;border-radius:12px;background:linear-gradient(145deg,#004b6b,#00a2c5);color:#fff;display:grid;place-items:center;font-size:13px;box-shadow:0 8px 17px #004b6b28}
+.nav{display:flex;gap:18px}.nav a{color:var(--blue);font-size:13px;text-decoration:none;font-weight:800}
+.wrap{max-width:1150px;padding:0 25px;margin:auto}
+.hero{padding:49px 0 38px;background:radial-gradient(ellipse at 86% 5%,#dcf4fb,transparent 49%),linear-gradient(#fff,var(--bg))}
+.eyebrow{display:inline-block;border:1px solid #c9e6f2;background:#eaf8fc;color:#007e9d;font-size:12px;letter-spacing:1px;font-weight:800;border-radius:40px;padding:5px 13px}
+.hero h1{font-size:clamp(30px,4vw,49px);line-height:1.3;letter-spacing:-1px;color:var(--dark);margin:18px 0;font-weight:900}.hero p{margin:0;max-width:760px;color:var(--muted);font-size:16px}.hero strong{color:var(--blue)}
+.pills{display:flex;flex-wrap:wrap;gap:10px 23px;margin-top:23px;color:#4f7181;font-weight:700;font-size:13px}.pills span:before{content:"✓";color:#008ead;margin-right:7px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:25px;align-items:start}.wizard,.side-card,.card{border:1px solid var(--line);background:#fff;border-radius:22px;box-shadow:0 14px 38px #004b6b0b}.wizard{overflow:hidden}.wizard-top{padding:24px 28px 21px;border-bottom:1px solid var(--line)}
+.top-title{display:flex;justify-content:space-between;align-items:center;gap:14px}.top-title h2{color:var(--blue);font-size:21px;margin:0}.top-title small{color:#007c9f;font-size:13px;font-weight:900}
+.track{height:6px;border-radius:9px;background:#e5f1f6;margin:20px 0 16px;overflow:hidden}.track i{display:block;height:100%;width:25%;background:linear-gradient(90deg,#004b6b,#00a9cc);transition:width .2s}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.steps li{text-align:center;font-size:12px;color:#8da1ac;font-weight:800}.steps li span{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:50%;border:1px solid currentColor;margin-right:5px}
+.steps .active{color:var(--blue)}.steps .active span{background:var(--blue);color:white;border-color:var(--blue)}.steps .done{color:#008aab}
+.panel{padding:30px 28px 23px}.panel h3{margin:0 0 7px;font-size:23px;line-height:1.35;color:var(--dark)}.lead{font-size:14px;color:var(--muted);margin:0 0 25px}
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.case{min-height:145px;border-radius:15px;border:1.5px solid #d7e8ef;background:#fff;text-align:left;padding:17px 14px;color:var(--dark);transition:.15s}.case:hover,.risk:hover{border-color:#3eabc9;background:#f6fcff;transform:translateY(-1px)}
+.case[aria-pressed="true"],.risk[aria-pressed="true"]{border-color:#007ea4;background:#ecf9fd;box-shadow:inset 0 0 0 1px #007ea4}
+.case .glyph{width:38px;height:38px;border-radius:11px;background:#edf8fc;display:grid;place-items:center;color:var(--blue);font-size:21px;margin-bottom:9px}.case b,.case small{display:block}.case b{font-size:16px}.case small{font-size:12px;color:#738b98;margin-top:3px;line-height:1.5}
+.risks{display:grid;gap:9px}.risk{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid #d9e8ef;border-radius:13px;background:#fff;padding:13px 15px;transition:.15s;color:var(--dark)}
+.radio{width:18px;height:18px;border-radius:50%;border:2px solid #aec2cc;flex:none;position:relative}.risk[aria-pressed="true"] .radio{border-color:#007fa1}.risk[aria-pressed="true"] .radio:after{content:"";position:absolute;inset:3px;background:#007fa1;border-radius:50%}
+.risk b,.risk small{display:block}.risk b{font-size:14px}.risk small{font-size:12px;color:#708895}.risk-text{flex:1}.tag{padding:3px 8px;border-radius:20px;background:#eef6f9;color:#547c90;font-size:11px;font-weight:900;white-space:nowrap}.tag.red{background:#fce9eb;color:#a3303d}.tag.orange{background:#fff1de;color:#915315}
+.notice{padding:16px 17px;border:1px solid #badce7;border-radius:14px;background:#eef8fc;margin:19px 0 0;font-size:13px;color:#28516a}.notice strong{display:block;font-size:16px;margin-bottom:4px}.notice p{margin:0 0 9px}.notice.red{background:#fff4f3;border-color:#eebfc4;color:#8e3038}.notice.orange{background:#fff8ed;border-color:#f1d1a0;color:#845315}
+.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.link{display:inline-block;text-decoration:none;color:#fff;background:var(--blue);border-radius:10px;padding:9px 14px;font-size:13px;font-weight:900}.link.line{color:#087c4d;border:1px solid #a3ddc1;background:white}.link:hover{filter:brightness(1.07)}
+.field{margin-bottom:18px}.field label{display:block;margin-bottom:7px;color:#245368;font-size:14px;font-weight:800}.field small{font-weight:500;color:#8396a2}.input{width:100%;border:1.5px solid #ccdee7;background:white;color:#163342;border-radius:12px;padding:12px 14px;outline:0}.input:focus{border-color:#008cb2;box-shadow:0 0 0 3px #00a4cc22}textarea.input{min-height:190px;resize:vertical}.hint{font-size:12px;color:#668291;margin:5px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fine{border:1px solid var(--line);background:#f6fafc;padding:14px 16px;border-radius:12px;color:#567180;font-size:13px}.fine b{color:var(--blue)}
+.summary{padding:13px 16px;border-radius:13px;background:#f6fafc;border:1px solid var(--line);font-size:13px;color:#4a6877;margin:17px 0;overflow-wrap:anywhere}.summary b{color:var(--blue)}
+.consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.6;color:#466373;margin:15px 0}.consent input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--blue)}
+.controls{padding:17px 28px 12px;display:flex;gap:12px;justify-content:space-between;border-top:1px solid var(--line)}.btn{min-height:48px;padding:11px 20px;border-radius:12px;border:1px solid #cbdfe9;font-weight:800;background:white;color:var(--blue)}.btn.primary{margin-left:auto;min-width:145px;color:white;background:linear-gradient(120deg,var(--blue),#007ea8);border-color:transparent;box-shadow:0 6px 18px #004b6b1e}.btn:hover{filter:brightness(1.06)}.error{padding:3px 28px 20px;color:#a32c36;font-size:13px;font-weight:800;min-height:24px}
+.side{position:sticky;top:20px;display:grid;gap:15px}.side-card{padding:23px;border-radius:19px}.side-card.urgent{border-top:4px solid #e3a14b}.side-card h3{font-size:18px;color:var(--dark);margin:12px 0}.side-card p{font-size:13px;color:var(--muted);margin:0 0 10px}.side-card ul{padding-left:19px;color:#557181;font-size:13px;line-height:2.1}.tiny{font-size:12px!important;color:#748c98!important;margin-top:10px!important}
+.faq{margin:53px auto 67px}.faq h2{text-align:center;font-size:24px;color:var(--dark);margin-bottom:19px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{padding:21px;border-radius:17px}.card small{font-size:11px;letter-spacing:1px;font-weight:900;color:#0093b8}.card h3{font-size:17px;color:var(--dark);margin:10px 0}.card p{font-size:13px;color:var(--muted);margin:0}
+.complete{padding:42px 26px;text-align:center}.complete .tick{width:62px;height:62px;background:#dcf8ec;color:#087e5d;font-size:32px;font-weight:900;border-radius:50%;display:grid;place-items:center;margin:0 auto}.complete h3{color:var(--blue);font-size:24px;margin:15px 0 5px}.complete p{color:var(--muted);font-size:14px}.complete .notice{text-align:left;max-width:570px;margin:16px auto}
+.footer{padding:24px 10px;background:#fff;border-top:1px solid var(--line);text-align:center;font-size:12px;color:#748794}
+@media(max-width:940px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:1fr 1fr}.hero{padding-top:35px}}
+@media(max-width:650px){.wrap{padding:0 15px}.header-inner{padding:11px 15px}.brand{font-size:16px}.mark{width:34px;height:34px}.nav{gap:10px}.nav a{font-size:12px}.hero{padding:31px 0}.hero h1{font-size:30px}.hero p{font-size:14px}.pills{font-size:12px;gap:7px 12px}
+.wizard{border-radius:18px}.wizard-top{padding:20px 16px}.top-title h2{font-size:18px}.steps li{font-size:11px}.steps li span{display:block;margin:0 auto 4px}
+.panel{padding:22px 16px}.panel h3{font-size:20px}.lead{font-size:13px}.cases{grid-template-columns:repeat(2,1fr);gap:9px}.case{min-height:127px;padding:12px}.case b{font-size:14px}.case small{font-size:11px}.case .glyph{width:34px;height:34px}.risk{padding:11px}.risk b{font-size:13px}.risk small{font-size:11px}.tag{font-size:10px}.two{grid-template-columns:1fr;gap:0}.controls{padding:15px 16px 10px}.error{padding:3px 16px 18px}.side{grid-template-columns:1fr}.cards{grid-template-columns:1fr}
 }
-.task-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 3px;
-        height: 0;
-        background: linear-gradient(to bottom, var(--neon-blue), var(--primary));
-        transition: height 0.3s ease;
-    }
-
-    .task-card:hover::before {
-        height: 100%;
-    }
-
-    
-.task-field {
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 1.1rem;
-    font-family: 'Noto Sans TC', sans-serif;
-    border: 2px solid var(--primary-light);
-    border-radius: var(--radius-md);
-    margin-bottom: 2rem;
-    background: rgba(255, 255, 255, 0.8);
-    transition: var(--transition);
-    line-height: 1.7;
-}
-
-.task-field:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.2);
-}
-
-textarea.task-field {
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-    min-height: 240px;
-    resize: vertical;
-}
-
-
-    /* 按鈕樣式 */
-    .action-btn {
-        padding: 0.75rem 1.5rem;
-        border-radius: var(--radius-sm);
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-        color: white;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: var(--transition);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: 'Noto Sans TC', sans-serif;
-    }
-
-    .action-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-hover);
-    }
-
-    .action-btn .material-icons {
-        font-size: 1.2rem;
-    }
-
-    .action-btn.publish {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.2rem;
-        padding: 1rem 2rem;
-        width: 100%;
-        max-width: 500px;
-        margin: 2rem auto 0;
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-large);
-        transition: var(--transition);
-    }
-
-    .action-btn.publish:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: var(--shadow-hover), 0 0 25px rgba(0, 75, 107, 0.8);
-    }
-
-    /* 文件預覽 */
-    #filePreview {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    #filePreview div {
-        padding: 0.5rem 1rem;
-        border: 1px solid rgba(0, 75, 107, 0.2);
-        border-radius: var(--radius-sm);
-        background: rgba(224, 242, 255, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-    }
-
-    #filePreview span:first-child {
-        font-size: 1.2rem;
-    }
-
-    /* 律師回應卡片 */
-    .response-card {
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: var(--radius-md);
-        padding: 1.5rem;
-        margin: 2rem 0;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(0, 75, 107, 0.1);
-        backdrop-filter: blur(5px);
-    }
-
-    .response-card h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .response-card p {
-        color: var(--text-muted);
-        margin-bottom: 1.5rem;
-        line-height: 1.7;
-    }
-
-    .lawyer-actions {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-
-    /* 底部導航 */
-    .nav-galaxy {
-        display: flex;
-        justify-content: space-around;
-        background: linear-gradient(135deg, rgba(0, 75, 107, 0.9), rgba(0, 42, 66, 0.9));
-        padding: 0.8rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(5px);
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
-    }
-
-    .nav-planet {
-        text-align: center;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: var(--transition);
-        padding: 0.5rem;
-        border-radius: var(--radius-sm);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.3rem;
-        min-width: 60px;
-        position: relative;
-        opacity: 0.8;
-    }
-
-    .nav-planet.active,
-    .nav-planet:hover {
-        opacity: 1;
-        transform: translateY(-3px);
-    }
-
-    .nav-planet::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: white;
-        transition: width 0.3s ease;
-    }
-
-    .nav-planet:hover::after,
-    .nav-planet.active::after {
-        width: 50%;
-    }
-
-    .nav-planet .material-icons {
-        font-size: 1.4rem;
-    }
-
-    /* 返回按鈕 */
-    .tool-btn {
-        padding: 0.5rem 1rem;
-        border: 2px solid var(--primary);
-        background-color: white;
-        color: var(--primary);
-        font-weight: 600;
-        border-radius: var(--radius-sm);
-        cursor: pointer;
-        transition: var(--transition);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .tool-btn:hover {
-        background-color: var(--primary);
-        color: white;
-    }
-
-    /* 標題 */
-    h1 {
-        text-align: center;
-        color: var(--primary);
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        font-weight: 900;
-    }
-
-    h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    /* 響應式設計 */
-    @media (max-width: 768px) {
-        body {
-            padding: 1rem;
-            padding-bottom: 70px;
-        }
-        
-        .task-card, .response-card {
-            padding: 1.5rem;
-        }
-        
-        .action-btn.publish {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-        }
-        
-        .lawyer-actions {
-            flex-direction: column;
-        }
-    }
-</style>
-<style>
-@media (max-width: 768px) {
-    .step-container {
-        flex-direction: column !important;
-    }
-    .step-arrow {
-        transform: rotate(90deg);
-        font-size: 2rem;
-        margin: 0.5rem 0;
-    }
-}
-</style>
-<style>
-.tool-btn:hover {
-    background-color: #4f6c7d;
-    color: white;
-}
-</style>
-
-<style>
-.back-container {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  padding: 0 20px;
-  display: flex;
-  justify-content: flex-start;
-  z-index: 999;
-  align-items: center;
-}
-.back-btn {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  color: var(--primary);
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.back-btn:hover {
-  color: var(--primary-dark);
-}
-@media (max-width: 600px) {
-  .back-btn span:last-child {
-    display: none;
-  }
-  .back-btn .material-icons {
-    font-size: 28px;
-  }
-}
-</style>
-
-
-
-<style>
-/* === Brand-aligned modal style (replaces neon theme) === */
-:root{
-  --modal-bg: rgba(0,0,0,.45);
-  --modal-card: #ffffff;
-  --modal-accent: #62A9B4;
-  --modal-accent-2: #62A9B4;
-  --modal-text: var(--text-light);
-  --modal-sub: var(--text-muted);
-  --modal-success: #10B981; /* keep success green consistent with site */
-  --modal-shadow: var(--shadow-large);
-  --modal-radius: var(--radius-lg);
-  --modal-border: 1px solid rgba(0,0,0,0.06);
-}
-.modal-overlay{
-  position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-  background:var(--modal-bg);backdrop-filter: blur(4px);z-index:9999
-}
-.modal-overlay.show{display:flex;animation:fadeIn .2s ease-out}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-box{
-  background: var(--modal-card);
-  border-radius: var(--modal-radius);
-  box-shadow: var(--modal-shadow);
-  padding: 1.25rem 1.25rem 1.35rem;
-  min-width: 320px; max-width:min(560px,92vw);
-  color: var(--modal-text);
-  border: var(--modal-border);
-  position:relative; overflow:hidden;
-  transform: translateY(6px);
-  animation: popIn .18s ease-out forwards
-}
-@keyframes popIn{to{transform: translateY(0)}}
-.modal-head{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
-.modal-icon{
-  width:42px;height:42px;border-radius:12px;
-  background: #62A9B4;
-  display:grid;place-items:center;
-  box-shadow: 0 6px 16px rgba(0,0,0,.18)
-}
-.modal-icon .material-icons, .modal-icon svg{font-size:24px;fill:#fff;color:#fff}
-.modal-title{font-size:1.15rem;font-weight:800;letter-spacing:.3px}
-.modal-text{font-size:.98rem;line-height:1.7;color:var(--modal-sub);margin:.35rem 0 .75rem}
-.modal-steps{display:grid;gap:.35rem;margin:.35rem 0 .9rem}
-.modal-step{display:flex;gap:.5rem;align-items:flex-start;font-size:.95rem;color:var(--modal-text)}
-.modal-step-bullet{
-  width:.65rem;height:.65rem;border-radius:999px;
-  background: linear-gradient(90deg,var(--modal-accent),var(--modal-accent-2));
-  margin-top:.42rem;box-shadow:0 0 0 3px rgba(79,108,125,.15)
-}
-.progress-shell{
-  height:9px;background:rgba(0,0,0,.05);
-  border-radius:999px;position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.05)
-}
-.progress-bar{
-  position:absolute;inset:0 100% 0 0;background: linear-gradient(90deg,var(--modal-accent),var(--modal-accent-2));
-  animation:loadProgress 2.2s ease forwards
-}
-@keyframes loadProgress{from{inset:0 100% 0 0}to{inset:0 0 0 0}}
-.progress-sheen{
-  position:absolute;inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
-  mix-blend-mode:overlay;animation:sheen 1.1s linear infinite
-}
-@keyframes sheen{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
-.modal-actions{margin-top:1rem;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
-.modal-btn{
-  border:0;border-radius:999px;padding:.65rem 1rem;font-weight:700;cursor:pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,.12); font-family: 'Noto Sans TC', sans-serif;
-}
-.modal-btn.primary{
-  background: #62A9B4;
-  color:white
-}
-.modal-btn.primary:hover{transform:translateY(-1px)}
-.modal-btn.ghost{
-  background:#fff;border:2px solid var(--modal-accent);color:var(--modal-accent)
-}
-.modal-btn.ghost:hover{background:rgba(79,108,125,.06)}
-/* success specific */
-.modal-success .modal-icon{
-  background: linear-gradient(135deg,var(--modal-success),#7df2a9)
-}
-.checkmark{width:26px;height:26px;border-radius:50%;border:3px solid white;position:relative}
-.checkmark:after{content:'';position:absolute;left:5px;top:8px;width:8px;height:14px;border-right:3px solid white;border-bottom:3px solid white;transform:rotate(45deg)}
-.subtle-note{font-size:.85rem;color:var(--modal-sub);opacity:.95}
-.small-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent);margin:.5rem 0 .75rem}
-</style>
-
-
-
-
-<style>
-  .action-btn.publish.is-disabled { opacity: 1; cursor: default; filter: none; background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important; }
-  .task-field.invalid{
-    border-color: var(--error) !important;
-    box-shadow: 0 0 0 3px rgba(239,68,68,.15);
-    animation: subtlePulse .9s ease-in-out 0s 2;
-  }
-  @keyframes subtlePulse{
-    0%{transform:translateY(0)}
-    35%{transform:translateY(-1px)}
-    100%{transform:translateY(0)}
-  }
-</style>
-
-
-<link rel="canonical" href="https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"/>
-<meta property="og:title" content="任務詳情頁 | LawAI 法詢"/>
-<meta property="og:description" content="在 LawAI 法詢發布法律需求，填寫任務標題、案情描述與聯絡方式，向團隊提出個案評估需求；可選擇相關文件，送出前確認附件傳送狀態。"/>
-<meta property="og:url" content="https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="LawAI 法詢"/>
-<meta property="og:image" content="https://www.lawfavor.com/ogimage.png"/>
-<meta property="og:locale" content="zh_TW"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="referrer" content="strict-origin-when-cross-origin"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html#page","url":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html","name":"任務詳情頁 | LawAI 法詢","description":"在 LawAI 法詢發布法律需求，填寫任務標題、案情描述與聯絡方式，向團隊提出個案評估需求；可選擇相關文件，送出前確認附件傳送狀態。","inLanguage":"zh-TW","isPartOf":{"@id":"https://www.lawfavor.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.lawfavor.com/"},{"@type":"ListItem","position":2,"name":"auto_awesome任務發佈區","item":"https://www.lawfavor.com/%E4%BB%BB%E5%8B%99%E8%BC%B8%E5%85%A5%E9%A0%81%E7%89%88%E9%9D%A2.html"}]}]}</script>
-<script src="lawai_config.js" defer></script>
-<script src="lawai_runtime.js" defer data-page="p013"></script>
-</head>
-<body>
-<div class="back-container">
-<a class="back-btn" href="index.html">
-<span class="material-icons">arrow_back</span><span>返回首頁</span>
-</a>
+@media(prefers-reduced-motion:reduce){.case,.risk,.track i{transition:none}}
+</style></head><body>
+<header class="header"><div class="header-inner"><a class="brand" href="index.html"><span class="mark">LA</span>LawAI 法詢</a><nav class="nav"><a href="index.html">返回首頁</a><a href="lawreserve.html">律師預約</a></nav></div></header>
+<section class="hero"><div class="wrap"><span class="eyebrow">LAWAI LEGAL REQUEST CENTER</span><h1>遇到法律問題，<br>從這裡找到下一步。</h1><p>不論是<strong>警詢、拘提、羈押等急迫情況</strong>，或一般民事、家事、債務爭議，先選擇情境、再簡單說明需求，讓法律團隊掌握事情重點。</p><div class="pills"><span>案件類型選擇</span><span>急迫情境分流</span><span>四步驟完成需求</span></div></div></section>
+<main class="wrap"><div class="grid">
+<div class="wizard">
+<div class="wizard-top" id="wizardTop"><div class="top-title"><h2>法律需求提交</h2><small id="counter" aria-live="polite">步驟 1 / 4</small></div><div class="track" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" id="progress"><i id="trackFill"></i></div><ol class="steps" id="steps"><li class="active" aria-current="step"><span>1</span>案件類型</li><li><span>2</span>急迫程度</li><li><span>3</span>描述需求</li><li><span>4</span>聯絡方式</li></ol></div>
+<form id="taskForm" novalidate>
+<section class="panel" data-step="0"><h3>您遇到哪一類法律問題？</h3><p class="lead">先選最接近的類型即可。不確定法律性質，也可以選擇「其他／不確定」。</p><div class="cases">
+<button class="case" type="button" data-case="刑事案件" aria-pressed="false"><span class="glyph">⚖</span><b>刑事案件</b><small>警詢、詐欺、毒品、告訴</small></button>
+<button class="case" type="button" data-case="民事糾紛" aria-pressed="false"><span class="glyph">▤</span><b>民事糾紛</b><small>契約、買賣、賠償</small></button>
+<button class="case" type="button" data-case="家事與繼承" aria-pressed="false"><span class="glyph">♡</span><b>家事與繼承</b><small>離婚、監護、遺產</small></button>
+<button class="case" type="button" data-case="債務與執行" aria-pressed="false"><span class="glyph">↗</span><b>債務與執行</b><small>借貸、本票、強制執行</small></button>
+<button class="case" type="button" data-case="勞資與職災" aria-pressed="false"><span class="glyph">✦</span><b>勞資與職災</b><small>工資、資遣、工作傷害</small></button>
+<button class="case" type="button" data-case="其他或不確定" aria-pressed="false"><span class="glyph">＋</span><b>其他／不確定</b><small>不清楚類別，也能先填</small></button></div></section>
+<section class="panel" data-step="1" hidden><h3>現在有多急迫？</h3><p class="lead">選擇最接近的情境，幫助辨識時效。系統不會因此自動安排值班律師或確保立即回覆。</p><div class="risks">
+<button class="risk" type="button" data-risk="正遭警詢、拘提或搜索" data-level="0" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>現在正遭警詢、拘提或搜索</b><small>現場程序正在進行</small></span><span class="tag red">立即聯絡</span></button>
+<button class="risk" type="button" data-risk="遭逮捕、羈押或有人身安全疑慮" data-level="0" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>遭逮捕、羈押或有人身安全危險</b><small>本人或親友需要緊急協助</small></span><span class="tag red">立即聯絡</span></button>
+<button class="risk" type="button" data-risk="24 小時內有開庭或程序期限" data-level="0" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>今天／24 小時內有開庭或法律期限</b><small>例如開庭、上訴、補正等程序</small></span><span class="tag red">立即聯絡</span></button>
+<button class="risk" type="button" data-risk="2 至 3 天內有開庭或法律期限" data-level="1" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>2～3 天內有開庭或法律期限</b><small>需要迅速確認採取什麼行動</small></span><span class="tag orange">儘速聯絡</span></button>
+<button class="risk" type="button" data-risk="一週內有開庭或法律期限" data-level="2" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>一週內有開庭或法律期限</b><small>有明確日期或通知文件</small></span></button>
+<button class="risk" type="button" data-risk="目前沒有明確緊急期限" data-level="3" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>目前沒有明確緊急期限</b><small>希望先了解權利與法律處理方向</small></span></button>
+<button class="risk" type="button" data-risk="不確定是否有緊急期限" data-level="2" aria-pressed="false"><span class="radio"></span><span class="risk-text"><b>不確定期限或急迫程度</b><small>有收到文件，但不知道如何判斷</small></span></button>
+</div><div class="notice" id="triage" hidden role="status" aria-live="polite"></div></section>
+<section class="panel" data-step="2" hidden><h3>簡單描述事情經過</h3><p class="lead">不必使用法律術語。請說明「發生什麼事、目前的情況、希望律師協助什麼」。</p>
+<div class="field"><label for="titleInput">案件主題</label><input class="input" id="titleInput" maxlength="100" placeholder="例如：收到法院傳票，希望律師協助"></div>
+<div class="field"><label for="descInput">案件經過與需求</label><textarea class="input" id="descInput" maxlength="6000" required placeholder="請簡述重要日期、對方主張、已收到的通知及希望處理的事情。"></textarea><p class="hint">避免在此輸入完整身分證字號、帳號、密碼或不必要的敏感個資。</p></div>
+<div class="two"><div class="field"><label for="goalInput">想請律師協助什麼？ <small>選填</small></label><select class="input" id="goalInput"><option value="">請選擇</option><option>緊急程序協助</option><option>偵查或訴訟辯護／代理</option><option>書狀或文件審查</option><option>協商、調解或和解</option><option>初步法律諮詢</option><option>其他</option></select></div><div class="field"><label for="dateInput">重要日期 <small>若有期限請填</small></label><input class="input" id="dateInput" type="date"><p class="hint">請依正式文件記載；此表單不代為核算期限。</p></div></div>
+<div class="fine"><b>文件附件提醒：</b>目前此頁僅傳送文字資料，沒有實際上傳附件功能。需要交付傳票、契約或筆錄，請與團隊確認安全管道後再提供。</div></section>
+<section class="panel" data-step="3" hidden><h3>留下聯絡方式，完成提交</h3><p class="lead">提交表單不是完成律師委任，也不代表已有律師即時接手案件。</p>
+<div class="field"><label for="nameInput">姓名或稱呼</label><input class="input" id="nameInput" autocomplete="name" maxlength="80" required placeholder="請輸入姓名或稱呼"></div>
+<div class="two"><div class="field"><label for="phoneInput">聯絡電話 <small>與 LINE 至少擇一</small></label><input class="input" id="phoneInput" type="tel" autocomplete="tel" maxlength="40" placeholder="09xxxxxxxx"></div><div class="field"><label for="lineInput">LINE ID <small>與電話至少擇一</small></label><input class="input" id="lineInput" maxlength="100" placeholder="您的 LINE ID"></div></div>
+<div class="field"><label for="emailInput">Email <small>選填</small></label><input class="input" id="emailInput" type="email" autocomplete="email" maxlength="150" placeholder="name@example.com"></div>
+<div class="summary"><b>需求摘要</b><div id="summaryText">請確認案件類型與時效資訊。</div></div>
+<label class="consent"><input type="checkbox" id="consentInput" required><span>我已閱讀<a href="使用者條款.html" target="_blank" rel="noopener noreferrer">使用條款與隱私說明</a>，瞭解所提供資訊僅用於需求聯絡與初步評估，後續是否接受委任需另行確認。</span></label>
+<div class="fine"><b>緊急提醒：</b>正在警詢、被拘提或今日有程序期限時，應先直接電話聯絡，不能僅依賴網路表單等待。</div>
+</section>
+<div class="controls"><button class="btn" type="button" id="backBtn" hidden>上一步</button><button class="btn primary" type="button" id="nextBtn">下一步　→</button><button class="btn primary" type="submit" id="sendBtn" hidden>提交法律需求</button></div><div id="formError" class="error" role="alert" aria-live="assertive"></div>
+</form>
+<section class="complete" id="complete" hidden tabindex="-1" aria-live="polite"><div class="tick">✓</div><h3>已提交法律需求</h3><p>既有通知服務已確認收件。團隊是否及何時回覆、能否承接案件，仍須另行確認。</p><div id="completeAlert"></div><button class="btn" type="button" id="againBtn">再提交其他需求</button></section>
 </div>
-
-<!-- 科技感背景元素 -->
-<div class="tech-bg"></div>
-<div class="floating-tech">
-<div class="tech-circle circle-1"></div>
-<div class="tech-circle circle-2"></div>
-</div>
-
-<div class="task-card">
-<h1 style="text-align: center; color: var(--primary); font-size: 2.2rem; margin-bottom: 1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><span class="material-icons" style="">auto_awesome</span>任務發佈區</h1>
-<p class="subtitle" style="text-align: center; color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2.5rem;">
-    由您輸入問題後發布任務，12小時內律師回覆
-</p>
-<h3>
-<span class="material-icons">title</span>任務標題
-        </h3>
-<input id="titleInput" class="task-field" placeholder="輸入任務標題..." style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/>
-<h3>
-<span class="material-icons">description</span>任務描述
-        </h3>
-<textarea id="descInput" class="task-field" placeholder="詳細描述您的需求..." rows="6"></textarea>
-<input accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" id="fileInput" multiple="" onchange="previewFiles(event)" style="display: none;" type="file"/><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;"><button class="action-btn" onclick="document.getElementById('fileInput').click()">
-<span class="material-icons">upload_file</span>選取附件（僅預覽）
-        </button><div style="font-size: 1rem; color: var(--text-muted); margin-left: 0.3rem; white-space: nowrap;">（僅供本機預覽，不會上傳或隨任務寄出）</div></div>
-<div id="filePreview" style="margin-top: 1rem;"></div>
-<div style="background: rgba(255,255,255,0.85); border-radius: 14px; padding: 1rem 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1.5rem 0 1rem 0; border: 1px solid rgba(0,0,0,0.04);"><h3 style="margin-bottom: 0.8rem; font-size: 1.05rem; color: var(--primary); font-weight: 700;">📬 聯絡方式</h3><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">👤 您的姓名或暱稱</label><input id="nameInput" class="task-field" placeholder="請輸入您的姓名或暱稱" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/><div style="display:flex; flex-wrap:wrap; gap:1rem;"><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">📞 聯絡電話</label><input id="phoneInput" class="task-field" placeholder="請輸入電話" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="tel"/></div><div style="flex:1; min-width: 160px;"><label style="display:block; font-weight: 500; margin-bottom: 0.2rem; font-size: 0.9rem;">💬 LINE ID</label><input id="lineInput" class="task-field" placeholder="請輸入LINE ID" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="text"/></div></div><label style="display:block; font-weight: 500; margin-top: 1.2rem; margin-bottom: 0.2rem; font-size: 0.9rem;">📧 Email</label><input id="emailInput" class="task-field" placeholder="請輸入Email（選填）" style="padding: 0.8rem 1rem; font-size: 0.95rem; margin-bottom: 0.8rem;" type="email"/></div><div id="publishWrap" style="display:flex;flex-direction:column;align-items:center;gap:.5rem;">
-  <button class="action-btn publish" id="publishBtn" aria-disabled="true" title="請完成必填欄位後再發佈">
-    <span class="material-icons">task_alt</span>發佈任務
-  </button>
-  <div id="publishHint" style="font-size:.9rem;color:#EF4444;display:flex;align-items:center;gap:.35rem;opacity:.95;">
-    <span class="material-icons" style="font-size:1.1rem;">info</span>
-    請完成必填欄位：任務標題、任務描述、姓名或暱稱，且聯絡電話與 LINE ID 至少擇一。
-  </div>
-</div>
-</div>
-<div class="lawyer-actions">
-</div>
-<script>
-    function escapeFileName(name) {
-      return String(name).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-    }
-    function getIconByType(filename) {
-        const ext = filename.split('.').pop().toLowerCase();
-        if (['jpg', 'jpeg', 'png'].includes(ext)) return '🖼️';
-        if (['pdf'].includes(ext)) return '📄';
-        if (['doc', 'docx'].includes(ext)) return '📝';
-        return '📎';
-    }
-
-    // 底部導航交互
-    const navPlanets = document.querySelectorAll('.nav-planet');
-    navPlanets.forEach(planet => {
-        planet.addEventListener('click', function() {
-            navPlanets.forEach(p => p.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-    
-    let allFiles = [];
-
-    function previewFiles(event) {
-      const incoming = Array.from(event.target.files || []);
-      const allowed = /\.(?:jpg|jpeg|png|pdf|doc|docx)$/i;
-      const combined = allFiles.concat(incoming).filter((file, index, list) =>
-        list.findIndex(x => x.name === file.name && x.size === file.size && x.lastModified === file.lastModified) === index);
-      if (combined.length > 5 || combined.some(f => !allowed.test(f.name) || !f.size || f.size > 5*1024*1024) ||
-          combined.reduce((sum, f) => sum + f.size, 0) > 12*1024*1024) {
-        alert('附件限 5 個，每個不超過 5 MB，合計不超過 12 MB，支援 JPG、PNG、PDF、DOC、DOCX。');
-      } else {
-        allFiles = combined;
-      }
-      event.target.value = '';
-      renderTaskFiles();
-    }
-    function renderTaskFiles() {
-      const preview = document.getElementById('filePreview');
-      preview.replaceChildren();
-      allFiles.forEach((file, index) => {
-        const item = document.createElement('div');
-        item.style.cssText = 'padding:8px 12px;border:1px solid rgba(0,75,107,.2);border-radius:8px;background:rgba(224,242,255,.3);display:flex;align-items:center;gap:8px;';
-        const label = document.createElement('span');
-        label.textContent = getIconByType(file.name) + ' ' + file.name + '（未上傳）';
-        const remove = document.createElement('button');
-        remove.type = 'button';
-        remove.textContent = '移除';
-        remove.setAttribute('aria-label', '移除附件 ' + file.name);
-        remove.addEventListener('click', () => { allFiles.splice(index, 1); renderTaskFiles(); });
-        item.append(label, remove);
-        preview.appendChild(item);
-      });
-    }
-</script>
-<div style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-top: 4rem; margin-bottom: 1.2rem; color: var(--primary); text-shadow: 0 1px 1px rgba(0,0,0,0.05);">✨ 智能任務流程說明</div><div class="step-container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 4rem;"><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">auto_awesome</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">輸入任務標題</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">notes</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">撰寫詳細說明</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">upload_file</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">上傳相關檔案</div></div><div class="step-arrow" style="font-size: 2rem; color: var(--primary);">➡️</div><div style="width: 200px; padding: 1.5rem; border-radius: 20px; text-align: center; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text-light);"><span class="material-icons" style="font-size: 2.8rem; color: #FFD54F; text-shadow: 0 0 6px rgba(255, 213, 79, 0.6); margin-bottom: 0.6rem;">rocket_launch</span><div style="font-size: 1rem; font-weight: bold; color: var(--text-light);">發佈任務給團隊</div></div></div>
-
-
-
-<!-- Removed invalid inline script that caused parse errors and blocked JS execution. -->
-
-
-
-<!-- Loading & Success modals (enhanced) -->
-<div id="loadingModal" class="modal-overlay" role="dialog" aria-live="assertive" aria-label="正在為您發佈任務">
-  <div class="modal-box">
-    <div class="modal-head">
-      <div class="modal-icon"><span class="material-icons">hourglass_top</span></div>
-      <div class="modal-title">正在為您發佈任務</div>
-    </div>
-    <div class="modal-text">我們正在幫您完成以下流程，約需 <b>3 秒</b>。請不要關閉視窗或重新整理。</div>
-    <div class="modal-steps">
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>檢查表單必要欄位</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>透過 HTTPS 傳送任務文字資料</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>寄送通知郵件並確認結果</div></div>
-    </div>
-    <div class="progress-shell"><div class="progress-bar"></div><div class="progress-sheen"></div></div>
-    <div class="modal-actions">
-      <button type="button" class="modal-btn ghost" id="cancelFakeDisabled" disabled>處理中…</button>
-    </div>
-    <div class="small-divider"></div>
-    <div class="subtle-note">提醒：附件只供本機預覽，不會上傳、寄出或儲存至伺服器。</div>
-  </div>
-</div>
-
-<div id="successModal" class="modal-overlay" role="dialog" aria-live="polite" aria-label="任務發佈成功">
-  <div class="modal-box modal-success">
-    <div class="modal-head">
-      <div class="modal-icon"><div class="checkmark"></div></div>
-      <div class="modal-title">任務發佈成功</div>
-    </div>
-    <div class="modal-text">
-      任務文字資料已透過電子郵件通知團隊。<br/>
-      本頁不會建立任務卡片；所選附件不會上傳或寄出。
-    </div>
-    <div class="modal-steps">
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>任務文字已寄送通知郵件，未儲存至線上任務資料庫</div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div><span id="taskAttachmentStatus">僅文字資料已寄送；附件未傳送</span></div></div>
-      <div class="modal-step"><div class="modal-step-bullet"></div><div>後續通知：將以您提供的聯絡方式通知</div></div>
-    </div>
-    <div class="modal-actions">
-      <button type="button" class="modal-btn primary" id="successNextBtn">再發佈一則</button>
-      <button type="button" class="modal-btn ghost" id="successCloseBtn">我知道了</button>
-    </div>
-    <div class="small-divider"></div>
-    <div class="subtle-note">若需立即聯繫律師，請使用頁面中的聯絡方式。</div>
-  </div>
-</div>
-<div id="loadingModal-duplicate-2" class="modal-overlay" role="dialog" aria-live="assertive" aria-label="正在為您發佈任務">
-  <div class="modal-box">
-    <div class="spinner"></div>
-    <div class="modal-text">正在為您發佈任務…</div>
-  </div>
-</div>
-<div id="successModal-duplicate-2" class="modal-overlay" role="dialog" aria-live="polite" aria-label="任務發佈成功">
-  <div class="modal-box">
-    <div class="modal-text">✅ 任務發佈成功</div>
-    <div class="modal-actions">
-      <button type="button" class="modal-close-btn" id="successCloseBtn-duplicate-2">關閉</button>
-    </div>
-  </div>
-</div>
-
-
-
-
-
+<aside class="side">
+<section class="side-card urgent"><span class="eyebrow">急迫案件聯絡</span><h3>時間緊迫？請先直接聯絡。</h3><p>如正在警詢、遭拘提或羈押，或近期面臨訴訟期限，建議先電話告知目前的程序階段、地點與時間。</p><div class="links"><a class="link" href="tel:+886227000677">立即撥打電話</a><a class="link line" href="https://line.me/R/ti/p/@621sbqlu" target="_blank" rel="noopener noreferrer">LINE 聯繫</a></div><p class="tiny">不保證全天候接聽或即時受理。若有人身安全立即危險，請撥 110；需要緊急救護請撥 119。</p></section>
+<section class="side-card"><h3>提交後的處理流程</h3><ul><li><b>收件：</b>文字資料透過既有通知服務傳送</li><li><b>初步評估：</b>團隊檢視需求及可聯絡方式</li><li><b>後續安排：</b>依實際情況另行討論服務及費用</li></ul><p class="tiny">目前沒有自動派案、線上案件進度查詢或附件上傳功能。</p></section>
+</aside></div>
+<section class="faq"><h2>關於法律需求提交</h2><div class="cards">
+<article class="card"><small>01 / URGENT</small><h3>何時應立即聯絡？</h3><p>警詢或拘提正在進行、羈押、今天開庭或期限將屆時，請優先電話聯繫，不要只填表等待。</p></article>
+<article class="card"><small>02 / DOCUMENTS</small><h3>有法院文件怎麼辦？</h3><p>先寫清楚文書種類與記載日期，妥善保存原始文件，接洽團隊後再確認文件傳送管道。</p></article>
+<article class="card"><small>03 / PROCESS</small><h3>提交就是委任律師嗎？</h3><p>不是。提交僅供初步聯絡與需求整理，是否承接、具體服務範圍及費用，都應由雙方另行確認。</p></article></div></section>
+</main><footer class="footer">© LawAI 法詢　｜　<a href="index.html">首頁</a>　｜　<a href="使用者條款.html">使用條款與隱私</a></footer>
 <script>
 (function(){
-  const show = id => document.getElementById(id)?.classList.add('show');
-  const hide = id => document.getElementById(id)?.classList.remove('show');
-  const delay = ms => new Promise(r=>setTimeout(r, ms));
-
-  function clearTaskForm(){
-    const title = document.querySelector("input[placeholder='輸入任務標題...']");
-    const description = document.querySelector("textarea.task-field");
-    const name = document.querySelector("input[placeholder='請輸入您的姓名或暱稱']");
-    const phone = document.querySelector("input[placeholder='請輸入電話']");
-    const line = document.querySelector("input[placeholder='請輸入LINE ID']");
-    const email = document.querySelector("input[placeholder='請輸入Email（選填）']");
-    [title, description, name, phone, line, email].forEach(el=>{ if(el){ if(el.tagName==='TEXTAREA') el.value=''; else el.value=''; }});
-    // 清除檔案預覽（若頁面有）
-    const preview = document.getElementById('filePreview');
-    if (preview) preview.innerHTML = '';
-    allFiles = [];
-    document.getElementById('fileInput').value = '';
-    document.getElementById('titleInput').dispatchEvent(new Event('input', {bubbles:true}));
-  }
-
-  window.addEventListener('DOMContentLoaded', ()=>{
-    const closeBtn = document.getElementById('successCloseBtn');
-    const nextBtn = document.getElementById('successNextBtn');
-    const success = document.getElementById('successModal');
-    if (closeBtn) closeBtn.addEventListener('click', ()=> hide('successModal'));
-    if (nextBtn) nextBtn.addEventListener('click', ()=> { hide('successModal'); clearTaskForm(); });
-    if (success) success.addEventListener('click', (e)=>{ if(e.target === success) hide('successModal'); });
-  });
-
-  let publishPending = false;
-  window.publishHandler = async function() {
-    if (publishPending) return;
-    const title = document.querySelector("input[placeholder='輸入任務標題...']").value.trim();
-    const description = document.querySelector("textarea.task-field").value.trim();
-    const name = document.querySelector("input[placeholder='請輸入您的姓名或暱稱']").value.trim();
-    const phone = document.querySelector("input[placeholder='請輸入電話']").value.trim();
-    const line = document.querySelector("input[placeholder='請輸入LINE ID']").value.trim();
-    const email = document.querySelector("input[placeholder='請輸入Email（選填）']").value.trim();
-
-    if (!title || !description || !name || !(phone || line)) {
-      alert('請完成必填欄位，電話與 LINE ID 至少擇一。');
-      return;
-    }
-    // 附件保留在使用者瀏覽器供預覽，不傳送至 lawyer-booking-api。
-    const selectedFileCount = allFiles.length;
-    if (selectedFileCount && !window.confirm(
-      '提醒：您選取的附件只供本機預覽，不會上傳或隨任務寄送。\n\n確定只提交任務文字與聯絡資料嗎？'
-    )) {
-      return;
-    }
-
-    publishPending = true;
-    show('loadingModal');
-    const wait3s = delay(3000);
-
-    try {
-      // 現有預約 API 僅接受 name、phone、email、message。
-      // 保留任務標題、描述及 LINE ID，全部整理在郵件的 message 欄位。
-      const message = [
-        '【LawAI 任務發布】',
-        '任務標題：' + title,
-        '',
-        '任務描述：',
-        description,
-        '',
-        'LINE ID：' + (line || '（未提供）'),
-        '',
-        '來源：LawAI 任務發布頁'
-      ].join('\n');
-      const payload = { name, phone, email, message };
-      const res = await window.LawAIRuntime.request(
-        'https://lawyer-booking-api.onrender.com/submit-appointment',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }
-      );
-
-      let result = {};
-      try { result = await res.json(); } catch (_) {}
-      await wait3s;
-      hide('loadingModal');
-
-      if (res.ok && (result.success === true || result.status === 'ok')) {
-        document.getElementById('taskAttachmentStatus').textContent =
-          selectedFileCount ? '任務文字已寄送；所選附件未上傳或寄出' : '任務文字已寄送（無附件）';
-        window.LawAIRuntime.track('task_success', 'task');
-        show('successModal');
-      } else {
-        alert('❌ 發生錯誤！\n\n錯誤訊息：' + (result.error || '伺服器未確認送出'));
-      }
-    } catch (e) {
-      await wait3s;
-      hide('loadingModal');
-      alert('❌ 送出未完成或尚待確認，請勿連續重複提交。\n\n' + (e?.message || e));
-    } finally {
-      publishPending = false;
-    }
-  };
-
-  // Remove original listener (if existed) and bind our handler
-  window.addEventListener('DOMContentLoaded', ()=>{
-    const btn = document.querySelector(".action-btn.publish");
-    if (btn) {
-      const clone = btn.cloneNode(true);
-      btn.parentNode.replaceChild(clone, btn);
-      clone.addEventListener("click", publishHandler);
-    }
-  });
+"use strict";
+var step=0,caseType="",urgency="",level=null,sending=false,edited=false;
+var $=function(id){return document.getElementById(id)},form=$("taskForm"),panels=Array.from(document.querySelectorAll("[data-step]")),progress=$("progress"),steps=Array.from(document.querySelectorAll("#steps li")),error=$("formError");
+function err(text,focus){error.textContent=text;if(focus)focus.focus();return false;}
+function message(){if(level===0)return["red","建議立即電話聯絡","目前的情況可能不能等待一般網路表單回覆。請先直接電話聯絡。如有人身安全立即危險，請撥 110；需緊急救護請撥 119。"];if(level===1)return["orange","請儘速聯繫","期限已接近，請確認正式文書記載日期，儘速電話或 LINE 聯絡。送出表單不會展延期限。"];if(level===2)return["","請留意程序期限","請先查明正式文件記載日期，保存證據，儘早聯繫法律專業人員。"];return["","一般法律需求","可先整理事件經過、相關日期及想達成的目標，再提交初步需求。"];}
+function contactButtons(){var div=document.createElement("div");div.className="links";div.innerHTML='<a class="link" href="tel:+886227000677">直接撥打電話</a><a class="link line" href="https://line.me/R/ti/p/@621sbqlu" target="_blank" rel="noopener noreferrer">LINE 聯繫</a>';return div;}
+function showTriage(){var box=$("triage");box.replaceChildren();box.hidden=level===null;if(level===null)return;var m=message();box.className="notice "+m[0];var title=document.createElement("strong");title.textContent=m[1];var body=document.createElement("p");body.textContent=m[2];box.append(title,body);if(level<2)box.append(contactButtons());}
+function summary(){$("summaryText").textContent="案件："+caseType+"　｜　急迫情境："+urgency+($("dateInput").value?"　｜　重要日期："+$("dateInput").value:"");}
+function go(n){step=n;panels.forEach(function(p,i){p.hidden=i!==n});steps.forEach(function(el,i){el.classList.toggle("active",i===n);el.classList.toggle("done",i<n);if(i===n)el.setAttribute("aria-current","step");else el.removeAttribute("aria-current")});$("counter").textContent="步驟 "+(n+1)+" / 4";$("trackFill").style.width=(n+1)*25+"%";progress.setAttribute("aria-valuenow",String(n+1));$("backBtn").hidden=n===0;$("nextBtn").hidden=n===3;$("sendBtn").hidden=n!==3;error.textContent="";if(n===3)summary();$("wizardTop").scrollIntoView({behavior:"smooth",block:"start"});}
+function validate(n){error.textContent="";if(n===0&&!caseType)return err("請選擇案件類型。");if(n===1&&!urgency)return err("請選擇急迫情境；不確定也可選擇最後一項。");if(n===2){if(!$("titleInput").value.trim())return err("請填案件主題。",$("titleInput"));if(!$("descInput").value.trim())return err("請簡述案件經過。",$("descInput"));}
+if(n===3){if(!$("nameInput").value.trim())return err("請填寫姓名或稱呼。",$("nameInput"));if(!$("phoneInput").value.trim()&&!$("lineInput").value.trim())return err("電話與 LINE ID 請至少填一項。",$("phoneInput"));if($("emailInput").value.trim()&&!$("emailInput").checkValidity())return err("Email 格式有誤，請修正或留空。",$("emailInput"));if(!$("consentInput").checked)return err("請先確認資料使用與提交說明。",$("consentInput"));}return true;}
+document.querySelectorAll("[data-case]").forEach(function(btn){btn.addEventListener("click",function(){caseType=btn.dataset.case;document.querySelectorAll("[data-case]").forEach(function(b){b.setAttribute("aria-pressed",String(b===btn))});if(!edited)$("titleInput").value=caseType+"法律協助";error.textContent="";});});
+document.querySelectorAll("[data-risk]").forEach(function(btn){btn.addEventListener("click",function(){urgency=btn.dataset.risk;level=Number(btn.dataset.level);document.querySelectorAll("[data-risk]").forEach(function(b){b.setAttribute("aria-pressed",String(b===btn))});showTriage();error.textContent="";});});
+$("titleInput").addEventListener("input",function(){edited=!!this.value.trim()});
+$("nextBtn").addEventListener("click",function(){if(validate(step)&&step<3)go(step+1)});
+$("backBtn").addEventListener("click",function(){if(step>0)go(step-1)});
+form.addEventListener("submit",async function(event){event.preventDefault();if(sending||!validate(3))return;sending=true;var button=$("sendBtn");button.disabled=true;button.textContent="正在傳送…";
+var priority=level===0?"急件：建議立即聯繫":level===1?"時效緊迫":level===2?"留意期限":"一般需求";
+var messageText=["【LawAI 法律需求中心】","案件類型："+caseType,"時效註記："+priority,"急迫情境："+urgency,"案件主題："+$("titleInput").value.trim(),"重要日期："+($("dateInput").value||"未填"),"希望協助："+($("goalInput").value||"未選擇"),"","案件經過：",$("descInput").value.trim(),"","LINE ID："+($("lineInput").value.trim()||"未提供"),"來源：LawAI 四階段法律需求表單"].join("\n");
+try{if(!window.LawAIRuntime||!window.LawAIRuntime.request)throw new Error("網站提交通道無法連線");
+var response=await window.LawAIRuntime.request("https://lawyer-booking-api.onrender.com/submit-appointment",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:$("nameInput").value.trim(),phone:$("phoneInput").value.trim(),email:$("emailInput").value.trim(),message:messageText})},60000);
+var result={};try{result=await response.json()}catch(ignore){}if(!response.ok||!(result.success===true||result.status==="ok"))throw new Error(result.error||"服務端未確認提交");
+form.hidden=true;$("wizardTop").hidden=true;$("complete").hidden=false;
+if(level<2){var tri=$("completeAlert");var m=message();var note=document.createElement("div");note.className="notice "+m[0];var b=document.createElement("strong");b.textContent="急件仍請直接聯絡";var p=document.createElement("p");p.textContent="提交成功不表示已有律師即時接手；請直接電話確認能否提供緊急協助。";note.append(b,p,contactButtons());tri.append(note);}
+if(window.LawAIRuntime.track)window.LawAIRuntime.track("task_success","task");
+$("complete").focus();$("complete").scrollIntoView({behavior:"smooth",block:"start"});
+}catch(e){err("提交尚未得到成功確認，請勿連續重複提交；如屬急件請直接電話聯繫。（"+(e.message||"連線異常")+"）");}
+finally{sending=false;button.disabled=false;button.textContent="提交法律需求";}
+});
+$("againBtn").addEventListener("click",function(){form.reset();caseType="";urgency="";level=null;edited=false;document.querySelectorAll("[data-case],[data-risk]").forEach(function(b){b.setAttribute("aria-pressed","false")});$("triage").hidden=true;$("completeAlert").replaceChildren();$("complete").hidden=true;$("wizardTop").hidden=false;form.hidden=false;go(0);});
 })();
-</script>
-
-
-<script>
-(function(){
-  // Elements
-  const $ = sel => document.querySelector(sel);
-  const titleEl = $('#titleInput');
-  const descEl = $('#descInput');
-  const nameEl = $('#nameInput');
-  const phoneEl = $('#phoneInput');
-  const lineEl  = $('#lineInput');
-  let publishBtn = $('#publishBtn');
-  const publishHint = $('#publishHint');
-
-  function isValid(){
-    const title = (titleEl?.value || '').trim();
-    const desc  = (descEl?.value || '').trim();
-    const name  = (nameEl?.value || '').trim();
-    const phone = (phoneEl?.value || '').trim();
-    const line  = (lineEl?.value  || '').trim();
-    const hasContact = !!(phone || line);
-    return !!(title && desc && name && hasContact);
-  }
-
-  function setBtnState(valid){
-    if(!publishBtn) return;
-    if(valid){
-      publishBtn.classList.remove('is-disabled');
-      publishBtn.setAttribute('aria-disabled','false');
-      publishBtn.removeAttribute('title');
-      if(publishHint) publishHint.style.display = 'none';
-    }else{
-      publishBtn.classList.add('is-disabled');
-      publishBtn.setAttribute('aria-disabled','true');
-      publishBtn.setAttribute('title','請完成必填欄位後再發佈');
-      if(publishHint) publishHint.style.display = 'flex';
-    }
-  }
-
-  function markInvalids(){
-    const missing = [];
-    function mark(el, cond){
-      if(!el) return;
-      if(cond){
-        el.classList.add('invalid');
-        el.setAttribute('aria-invalid','true');
-        missing.push(el);
-        setTimeout(()=>{ el.classList.remove('invalid'); }, 1600);
-      }else{
-        el.classList.remove('invalid');
-        el.removeAttribute('aria-invalid');
-      }
-    }
-
-    const needTitle = !(titleEl?.value || '').trim();
-    const needDesc  = !(descEl?.value  || '').trim();
-    const needName  = !(nameEl?.value  || '').trim();
-    const needContact = !((phoneEl?.value||'').trim() || (lineEl?.value||'').trim());
-
-    mark(titleEl, needTitle);
-    mark(descEl,  needDesc);
-    mark(nameEl,  needName);
-    // For contact, pulse both fields if neither provided
-    mark(phoneEl, needContact);
-    mark(lineEl,  needContact);
-
-    if(missing.length){
-      // Focus and scroll to the first missing field
-      const first = missing[0];
-      try{ first.focus({preventScroll:true}); }catch(e){}
-      first.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-  }
-
-  function update(){
-    setBtnState(isValid());
-  }
-
-  // Bind input events for live validation
-  [titleEl, descEl, nameEl, phoneEl, lineEl].forEach(el=>{
-    if(!el) return;
-    el.addEventListener('input', update);
-    el.addEventListener('blur', update);
-  });
-
-  // Initial state
-  update();
-
-  // Intercept publish click in our existing handler
-  const originalPublishHandler = window.publishHandler;
-  window.publishHandler = async function(){
-    if(!isValid()){
-      // act like a hard block and visually remind
-      markInvalids();
-      setBtnState(false);
-      return;
-    }
-    // valid -> proceed
-    if (typeof originalPublishHandler === 'function'){
-      return originalPublishHandler();
-    }
-  };
-
-  // Ensure the button always routes to our handler
-  window.addEventListener('DOMContentLoaded', ()=>{
-    const btn = document.querySelector('.action-btn.publish');
-    if(btn){
-      // Replace to remove previous listeners
-      const clone = btn.cloneNode(true);
-      clone.id = 'publishBtn'; // ensure id preserved on replace
-      publishBtn = clone;
-      clone.className = btn.className;
-      btn.parentNode.replaceChild(clone, btn);
-      clone.addEventListener('click', (e)=>{
-        // If invalid, prevent and show hints
-        if(!isValid()){
-          e.preventDefault();
-          markInvalids();
-          setBtnState(false);
-          return;
-        }
-        // valid -> call handler
-        window.publishHandler();
-      });
-      // keep disabled look initially if invalid
-      setBtnState(isValid());
-    }
-  });
-})();
-</script>
-
-</body>
-</html>
+</script></body></html>
