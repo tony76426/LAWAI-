@@ -28,7 +28,7 @@ function minifyCss(src){
 }
 const sourcePath=resolve(ROOT,"lawai_contral.css");
 const outputPath=resolve(ROOT,"lawai_contral.min.css");
-const generated=minifyCss(readFileSync(sourcePath,"utf8"))+"\\n";
+const generated=minifyCss(readFileSync(sourcePath,"utf8"))+"\n";
 if(process.argv.includes("--check")){
   if(readFileSync(outputPath,"utf8")!==generated){
     console.error("lawai_contral.min.css is stale; run node scripts/build-css.mjs");
