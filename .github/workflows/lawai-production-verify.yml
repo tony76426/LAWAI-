@@ -1,0 +1,63 @@
+name: LawAI production homepage resources and Lighthouse
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'lawai_contral.min.css'
+      - 'scripts/verify-homepage.mjs'
+      - '.github/workflows/lawai-production-verify.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  homepage-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify published CSS, LCP resources and destinations
+        run: |
+          for attempt in 1 2 3; do
+            if node scripts/verify-homepage.mjs --production; then exit 0; fi
+            if [ "$attempt" -eq 3 ]; then exit 1; fi
+            echo "Production may still be deploying; retrying read-only checks..."
+            sleep 25
+          done
+      - name: Lighthouse mobile + desktop (report only)
+        continue-on-error: true
+        run: |
+          mkdir -p reports
+          export CHROME_PATH="$(command -v google-chrome || command -v chromium)"
+          test -n "$CHROME_PATH"
+          npx --yes lighthouse@12 https://www.lawfavor.com/ \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+            --only-categories=performance --output=json \
+            --output-path=reports/lighthouse-mobile.json --quiet
+          npx --yes lighthouse@12 https://www.lawfavor.com/ \
+            --preset=desktop \
+            --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+            --only-categories=performance --output=json \
+            --output-path=reports/lighthouse-desktop.json --quiet
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          for (const mode of ['mobile','desktop']) {
+            const data=JSON.parse(readFileSync('reports/lighthouse-'+mode+'.json','utf8'));
+            console.log(mode+' Lighthouse performance score: '+Math.round(100*data.categories.performance.score));
+            console.log(mode+' LCP: '+(data.audits['largest-contentful-paint']?.displayValue||'not available'));
+            console.log(mode+' CLS: '+(data.audits['cumulative-layout-shift']?.displayValue||'not available'));
+          }
+          NODE
+      - name: Save Lighthouse machine reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lawai-homepage-lighthouse-reports
+          path: reports/*.json
+          if-no-files-found: ignore
+          retention-days: 14
