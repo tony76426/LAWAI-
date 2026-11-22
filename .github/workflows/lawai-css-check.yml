@@ -5,12 +5,18 @@ on:
       - 'lawai_contral.css'
       - 'lawai_contral.min.css'
       - 'scripts/build-css.mjs'
+      - 'scripts/verify-homepage.mjs'
+      - 'index.html'
+      - 'assets/images/**'
       - '.github/workflows/lawai-css-check.yml'
   pull_request:
     paths:
       - 'lawai_contral.css'
       - 'lawai_contral.min.css'
       - 'scripts/build-css.mjs'
+      - 'scripts/verify-homepage.mjs'
+      - 'index.html'
+      - 'assets/images/**'
       - '.github/workflows/lawai-css-check.yml'
 jobs:
   css-bundle-check:
@@ -22,4 +28,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/build-css.mjs --check
+      - name: Verify generated CSS is in sync
+        run: node scripts/build-css.mjs --check
+      - name: Check homepage LCP priorities and local assets
+        run: node scripts/verify-homepage.mjs
