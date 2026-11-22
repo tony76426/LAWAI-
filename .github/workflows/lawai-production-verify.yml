@@ -1,6 +1,10 @@
 name: LawAI production homepage resources and Lighthouse
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify-homepage.mjs'
+      - '.github/workflows/lawai-production-verify.yml'
   push:
     branches: [main]
     paths:
