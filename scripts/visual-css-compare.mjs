@@ -55,14 +55,14 @@ async function takeSnapshot(browser, url, width, label) {
   });
   const response = await page.goto(url, { waitUntil: 'load', timeout: 30000 });
   if (!response?.ok()) throw Error(label + ': homepage HTTP error ' + response?.status());
-  await page.evaluate(async () => {
-    await Promise.all([...document.images].map(img =>
-      img.complete ? Promise.resolve() : new Promise(resolve => {
-        img.addEventListener('load',resolve,{once:true});
-        img.addEventListener('error',resolve,{once:true});
-      })
-    ));
-  });
+  // Only the eager LCP image is required. Waiting on below-fold lazy images
+  // would deadlock while the browser is positioned at the top of the page.
+  await page.locator('main#main-content img.u-inline-0007').evaluate(img =>
+    img.complete ? true : new Promise(resolve => {
+      img.addEventListener('load',resolve,{once:true});
+      img.addEventListener('error',resolve,{once:true});
+    })
+  );
   await page.addStyleTag({content:
     '*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}'
   });
