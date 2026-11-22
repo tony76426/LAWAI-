@@ -6,27 +6,40 @@ on:
       - 'lawai_contral.min.css'
       - 'index.html'
       - 'scripts/visual-css-compare.mjs'
+      - 'lawai_header_scroll.js'
       - '.github/workflows/lawai-css-visual.yml'
   workflow_dispatch:
+    inputs:
+      baseline_sha:
+        description: 'Optional baseline commit; blank compares current code to itself for interaction smoke'
+        required: false
+        type: string
 jobs:
   responsive-css-compare:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Prepare original baseline at fixed commit
-        run: git worktree add --detach /tmp/lawai-css-baseline 5706c5d30de46e4b8c6a079861d9d2db9bc53977
+      - name: Prepare baseline from PR target (or optional manual input)
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          INPUT_BASE_SHA: ${{ inputs.baseline_sha }}
+        run: |
+          BASE_SHA="${PR_BASE_SHA:-${INPUT_BASE_SHA:-$(git rev-parse HEAD)}}"
+          git cat-file -e "${BASE_SHA}^{commit}"
+          echo "Comparing against baseline commit: ${BASE_SHA}"
+          git worktree add --detach /tmp/lawai-css-baseline "${BASE_SHA}"
       - name: Install local-only browser test packages
         run: npm install --no-save --no-package-lock playwright-core@1.56.1 pngjs@7.0.0
       - name: Start both static sites
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/lawai-css-baseline > /tmp/lawai-css-baseline.log 2>&1 &
           python3 -m http.server 8766 --bind 127.0.0.1 --directory . > /tmp/lawai-css-optimized.log 2>&1 &
-      - name: Compare all seven responsive layouts
+      - name: Compare seven breakpoints, page scroll and mobile navigation
         run: |
           export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
           node scripts/visual-css-compare.mjs
