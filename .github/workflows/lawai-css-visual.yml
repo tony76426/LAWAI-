@@ -1,0 +1,39 @@
+name: LawAI homepage responsive visual regression
+on:
+  pull_request:
+    paths:
+      - 'lawai_contral.css'
+      - 'lawai_contral.min.css'
+      - 'index.html'
+      - 'scripts/visual-css-compare.mjs'
+      - '.github/workflows/lawai-css-visual.yml'
+  workflow_dispatch:
+jobs:
+  responsive-css-compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prepare original baseline at fixed commit
+        run: git worktree add --detach /tmp/lawai-css-baseline 5706c5d30de46e4b8c6a079861d9d2db9bc53977
+      - name: Install local-only browser test packages
+        run: npm install --no-save --no-package-lock playwright-core@1.56.1 pngjs@7.0.0
+      - name: Start both static sites
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/lawai-css-baseline > /tmp/lawai-css-baseline.log 2>&1 &
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory . > /tmp/lawai-css-optimized.log 2>&1 &
+      - name: Compare all seven responsive layouts
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node scripts/visual-css-compare.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: css-before-after-viewport-shots
+          path: css-visual-artifacts/*.png
+          if-no-files-found: ignore
+          retention-days: 7
