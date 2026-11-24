@@ -36,8 +36,23 @@ const pages = [
   '/lawreserve.html', '/任務輸入頁版面.html',
 ];
 
+// Resolve the actual stylesheet link, preserving its cache/version query.
+function stylesheetURL(html, pageURL = origin + '/') {
+  const links = [...html.matchAll(/<link\b[^>]*>/gi)].map(([tag]) => {
+    const attrs = Object.fromEntries([...tag.matchAll(/\s+([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)]
+      .map(([, name, double, single]) => [name.toLowerCase(), double ?? single]));
+    if (!attrs.href || !attrs.rel?.toLowerCase().split(/\s+/).includes('stylesheet')) return null;
+    return new URL(attrs.href.replace(/&amp;|&#0*38;|&#x0*26;/gi, '&'), pageURL);
+  }).filter(url => url?.pathname === '/lawai_contral.min.css');
+  assert.equal(links.length, 1, 'Homepage must reference exactly one generated stylesheet');
+  const url = links[0];
+  assert.equal(url.origin, origin, 'Generated stylesheet must be same-origin');
+  assert.ok(url.search.length > 1, 'Homepage must use versioned generated stylesheet');
+  url.hash = '';
+  return url;
+}
+
 function checkMarkup(html) {
-  assert.match(html, /<link\b[^>]*href="lawai_contral\.min\.css\?[^"]+"[^>]*rel="stylesheet"/, 'Homepage must use versioned generated stylesheet');
   const imagePreloads = [...html.matchAll(/<link\b[^>]*>/g)]
     .map(m => m[0]).filter(tag => tag.includes('rel="preload"') && tag.includes('as="image"'));
   assert.equal(imagePreloads.length, 1, 'Homepage must prioritize exactly one image preload');
@@ -54,6 +69,7 @@ function checkMarkup(html) {
 }
 
 checkMarkup(home);
+const localCSS = stylesheetURL(home);
 for (const path of assets) {
   const local = path.slice(1);
   assert.ok(statSync(resolve(root, local)).size > 0, 'Missing or empty local asset: ' + local);
@@ -72,10 +88,10 @@ async function fetchBytes(path, attempts = 3) {
         signal: AbortSignal.timeout(25000),
         redirect: 'follow',
       });
-      if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + url.pathname);
+      if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + url.pathname + url.search);
       const bytes = Buffer.from(await response.arrayBuffer());
-      if (!bytes.length) throw new Error('Empty production response: ' + url.pathname);
-      return { bytes, type: response.headers.get('content-type') || '' };
+      if (!bytes.length) throw new Error('Empty production response: ' + url.pathname + url.search);
+      return { bytes, type: response.headers.get('content-type') || '', url: response.url || url.href };
     } catch (error) {
       lastError = error;
       if (attempt < attempts) await pause(2000 * attempt);
@@ -84,23 +100,28 @@ async function fetchBytes(path, attempts = 3) {
   throw lastError;
 }
 
-const indexResponse = await fetchBytes('/?lawai_audit=1');
+const indexResponse = await fetchBytes('/');
 assert.match(indexResponse.type, /text\/html/i, 'Homepage content-type unexpected');
-checkMarkup(indexResponse.bytes.toString('utf8'));
+const publishedHome = indexResponse.bytes.toString('utf8');
+checkMarkup(publishedHome);
+const publishedCSS = stylesheetURL(publishedHome, indexResponse.url);
 console.log('PASS: published homepage markup and responsive LCP priorities');
 
 for (const path of assets) {
-  const result = await fetchBytes(path);
+  const requestURL = path === '/lawai_contral.min.css' ? publishedCSS.href : path;
+  const result = await fetchBytes(requestURL);
   const expectedType = path.endsWith('.css') ? /text\/css/i :
     path.endsWith('.js') ? /javascript/i :
     path.endsWith('.webp') ? /image\/webp/i :
     path.endsWith('.png') ? /image\/png/i : /json/i;
-  assert.match(result.type, expectedType, 'Wrong content type for ' + path);
+  assert.match(result.type, expectedType, 'Wrong content type for ' + requestURL);
   if (path === '/lawai_contral.min.css') {
     assert.equal(sha(result.bytes), sha(read('lawai_contral.min.css')),
-      'Published minified CSS does not match GitHub working copy (deployment or CDN cache may be stale)');
+      'Published minified CSS does not match GitHub working copy at ' + publishedCSS.href + ' (deployment or CDN cache may be stale)');
+    assert.equal(publishedCSS.href, localCSS.href,
+      'Published homepage references a different CSS version than the GitHub working copy');
   }
-  console.log('PASS: ' + path + ' (' + result.bytes.length + ' bytes)');
+  console.log('PASS: ' + requestURL + ' (' + result.bytes.length + ' bytes)');
 }
 for (const path of pages) {
   const result = await fetchBytes(encodeURI(path));
