@@ -142,6 +142,47 @@ try {
     }
   }
 
+  // Test the real CSS without the snapshot's injected animation overrides.
+  const motionContext = await browser.newContext({
+    viewport: {width:1440,height:900}, reducedMotion:'reduce'
+  });
+  try {
+    const page = await motionContext.newPage();
+    await page.route('**/*', route => new URL(route.request().url()).hostname === '127.0.0.1'
+      ? route.continue() : route.abort());
+    await page.goto(optimizedUrl,{waitUntil:'load',timeout:30000});
+    await page.waitForFunction(() => {
+      const link = document.querySelector('link[href*="lawai_feature_glass.css"]');
+      return link?.media === 'all' && !!link.sheet;
+    });
+    const cards = page.locator('.lawai-glass-features .feature-card');
+    if (!(await cards.count())) throw Error('Reduced-motion test: feature cards missing');
+    await cards.first().hover();
+    const issues = await page.evaluate(() => {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+        return ['Reduced-motion preference not active'];
+      const failures = [];
+      for (const card of document.querySelectorAll('.lawai-glass-features .feature-card')) {
+        const nodes = [card, ...card.querySelectorAll('*')];
+        const check = (node,pseudo) => {
+          const style = getComputedStyle(node,pseudo);
+          if (style.transitionProperty.split(',').some(value => value.trim() !== 'none') ||
+              style.animationName.split(',').some(value => value.trim() !== 'none'))
+            failures.push(node.className + (pseudo || '') + ': ' +
+              style.transitionProperty + ' / ' + style.animationName);
+        };
+        for (const node of nodes) check(node,null);
+        check(card,'::before');
+        check(card,'::after');
+      }
+      return failures;
+    });
+    if (issues.length) throw Error('Reduced-motion regression: '+issues.join('; '));
+    console.log('PASS: feature cards, icons, links and card pseudo-elements honor reduced motion');
+  } finally {
+    await motionContext.close();
+  }
+
   // Functional regression checks on the optimized build, not just screenshots.
   const mobileContext=await browser.newContext({
     viewport:{width:390,height:900}, reducedMotion:'reduce'

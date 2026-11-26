@@ -319,7 +319,8 @@
   .lawai-glass-features .feature-card *,
   .lawai-glass-features .feature-card::before,
   .lawai-glass-features .feature-card::after {
-    animation: none;
-    transition: none;
+    /* Accessibility override must win over more-specific card/hover rules. */
+    animation: none !important;
+    transition: none !important;
   }
 }
