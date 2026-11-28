@@ -7,6 +7,13 @@ on:
       - 'scripts/build-css.mjs'
       - 'scripts/verify-homepage.mjs'
       - 'index.html'
+      - 'lawai_feature_glass.css'
+      - 'lawai_footer_premium.css'
+      - 'lawai_home_header.css'
+      - 'lawai_header_premium.css'
+      - 'scripts/build-homepage-css.mjs'
+      - 'lawai_header_scroll.js'
+      - 'lawai_runtime.js'
       - 'assets/images/**'
       - '.github/workflows/lawai-css-check.yml'
   pull_request:
@@ -16,6 +23,13 @@ on:
       - 'scripts/build-css.mjs'
       - 'scripts/verify-homepage.mjs'
       - 'index.html'
+      - 'lawai_feature_glass.css'
+      - 'lawai_footer_premium.css'
+      - 'lawai_home_header.css'
+      - 'lawai_header_premium.css'
+      - 'scripts/build-homepage-css.mjs'
+      - 'lawai_header_scroll.js'
+      - 'lawai_runtime.js'
       - 'assets/images/**'
       - '.github/workflows/lawai-css-check.yml'
 jobs:
@@ -24,11 +38,11 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - name: Verify generated CSS is in sync
-        run: node scripts/build-css.mjs --check
+        run: node scripts/build-homepage-css.mjs --check
       - name: Check homepage LCP priorities and local assets
         run: node scripts/verify-homepage.mjs

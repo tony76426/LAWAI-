@@ -7,6 +7,9 @@ import { spawnSync } from 'node:child_process';
 
 const query = '?v=20261123-cssopt1&mode=test';
 const markup = '<link rel="stylesheet" href="lawai_contral.min.css?v=20261123-cssopt1&amp;mode=test">' +
+  '<link rel="stylesheet" href="lawai_feature_glass.css?v=feature1"><noscript><link rel="stylesheet" href="lawai_feature_glass.css?v=feature1"></noscript>' +
+  '<link rel="stylesheet" href="lawai_footer_premium.css?v=footer1"><noscript><link rel="stylesheet" href="lawai_footer_premium.css?v=footer1"></noscript>' +
+  '<style id="lawai-header-critical-20261119">header{color:red}</style>' +
   '<link rel="preload" as="image" href="/assets/images/lawai-main.webp" imagesrcset="test" fetchpriority="high">' +
   '<img class="u-inline-0007" loading="eager" fetchpriority="high">' +
   'lawai-mh-btn lawai-mh-drawer nav-galaxy line-float-btn';
@@ -28,10 +31,15 @@ const mock = [
   '  let body = "body{color:red}", type = "text/css";',
   '  if (p === "/") {',
   '    body = scenario === "old-version" ? markup.replace("20261123-cssopt1", "old") : markup;',
+  '    if (scenario === "old-feature") body = markup.replaceAll("feature1", "old");',
+  '    if (scenario === "old-header") body = markup.replace("header{color:red}", "header{color:blue}");',
   '    type = "text/html";',
   '  } else if (p === "/lawai_contral.min.css") {',
   '    if (url.search && scenario === "stale") body = "body{color:blue}";',
   '    if (url.search && scenario === "wrong-type") type = "text/html";',
+  '  } else if (p === "/lawai_feature_glass.css" || p === "/lawai_footer_premium.css") {',
+  '    if (url.search && scenario === "stale-feature" && p.includes("feature")) body = "body{color:blue}";',
+  '    if (url.search && scenario === "wrong-footer" && p.includes("footer")) type = "text/html";',
   '  } else if (p.endsWith(".js")) type = "application/javascript";',
   '  else if (p.endsWith(".webp")) type = "image/webp";',
   '  else if (p.endsWith(".png")) type = "image/png";',
@@ -73,11 +81,13 @@ test('published exact query is fetched, including HTML-escaped separator', () =>
   assert.equal(result.status, 0, result.stderr);
   assert.ok(result.stdout.includes('MOCK GET /lawai_contral.min.css' + query));
   assert.ok(!result.stdout.split('\n').includes('MOCK GET /lawai_contral.min.css'));
+  assert.match(result.stdout, /MOCK GET \/lawai_feature_glass\.css\?v=feature1/);
+  assert.match(result.stdout, /MOCK GET \/lawai_footer_premium\.css\?v=footer1/);
 });
 test('stale versioned CSS fails even when unversioned CSS would match', () => {
   const result = run('stale');
   assert.notEqual(result.status, 0);
-  assert.match(result.stderr, /Published minified CSS does not match/);
+  assert.match(result.stderr, /Published CSS does not match/);
 });
 test('wrong MIME at the versioned URL fails', () => {
   const result = run('wrong-type');
@@ -92,5 +102,31 @@ test('stale homepage CSS version fails even if bytes match', () => {
 test('unversioned stylesheet link fails local validation', () => {
   const result = run('local', markup.replace('lawai_contral.min.css?v=20261123-cssopt1&amp;mode=test', 'lawai_contral.min.css'));
   assert.notEqual(result.status, 0);
-  assert.match(result.stderr, /versioned generated stylesheet/);
+  assert.match(result.stderr, /versioned stylesheet/);
+});
+
+test('stale feature bytes fail at exact version URL', () => {
+  const result = run('stale-feature');
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Published CSS does not match/);
+});
+test('wrong footer MIME fails', () => {
+  const result = run('wrong-footer');
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Wrong content type/);
+});
+test('old feature version fails', () => {
+  const result = run('old-feature');
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /different CSS version/);
+});
+test('mismatched fallback fails local validation', () => {
+  const result = run('local', markup.replace('feature1', 'old'));
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /fallback version differs/);
+});
+test('stale published critical header fails', () => {
+  const result = run('old-header');
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Published critical header differs/);
 });
